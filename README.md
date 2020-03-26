@@ -4,7 +4,7 @@
 
 Dooz is a simple and elegant hugo theme specially designed for programmers or columnists.
 
-![screenshot](/tmp/screenshot.jpg)
+![screenshot](/static/tmp/screenshot.jpg)
 
 # Features
 
