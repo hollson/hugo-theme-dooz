@@ -1,8 +1,9 @@
-[中文文档](./README-ZH.md)
 
-# Dooz Theme for Hugo
+[English](./README.md)
 
-Dooz is a simple and elegant hugo theme specially designed for programmers or columnists.
+# Hugo-Theme-Dooz主题
+
+Dooz是一个简单优雅的hugo主题，专门为程序员或专栏作家设计。
 
 ![screenshot](/tmp/screenshot.jpg)
 

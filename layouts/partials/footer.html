@@ -14,14 +14,18 @@
                     <i class="fab fa-github fa-3x"></i></a>
             </span>&nbsp;&nbsp;
             <br><br>
-            友情链接：<a class="mysocial" href="https://github.com/hollson/dooz">Dooz Theme</a>&nbsp;
-            <a class="mysocial" href="https://gohugo.io/documentation/">Hugo文档</a>&nbsp;
-            <a class="mysocial" href="https://bulma.io/">Bulma框架</a>&nbsp;
+            {{i18n "links"}}：
+            <a class="mysocial" href="https://gohugo.io/documentation/">Mafool</a>&nbsp;&nbsp;
+            <a class="mysocial" href="https://gohugo.io/documentation/">Hugo</a>&nbsp;&nbsp;
+            <a class="mysocial" href="https://bulma.io/">Bulma</a>&nbsp;&nbsp;
+            <a class="mysocial" href="https://pixabay.com/zh/">Pixabay</a>&nbsp;
+
+
             <a class="mysocial" href="https://fuckcloudnative.io/">米开朗基杨</a>
             <a class="mysocial" href="https://hugo.aiaide.com/">Hugo中文帮助</a>
 
             <br><br>
-            {{i18n "copyright"}} &copy; {{ .Site.Title }} {{ now.Format "2006"}}
+            {{.Site.Copyright}} &copy; {{ .Site.Title }} {{ now.Format "2006"}}
             - <a class="mysocial" href="https://github.com/hollson/dooz">Hugo Theme</a>
         </p>
     </div>

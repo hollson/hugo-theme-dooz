@@ -6,6 +6,7 @@ languageCode = "en-us"
 defaultContentLanguage = "en"
 hasCJKLanguage = true
 enableEmoji= true
+copyright="版权所有"
 
 canonifyurls = true
 paginate = 10
@@ -23,6 +24,7 @@ metaDataFormat = "toml"
     # contentDir = "content/english"
     title = "Mafool"
     languageName = "English"
+    copyright="All Rights Reserved"
     weight = 1
     [languages.en.params]
       author= "shongsheng" #replace the dedault param

@@ -7,9 +7,6 @@ other = "Archives"
 [categories]
 other="Categories"
 
-[copyright]
-other = "Copyright"
-
 [download]
 other = "Download"
 
@@ -25,7 +22,7 @@ other="Search the articles..."
 [home]
 other = "Home"
 
-[Links]
+[links]
 other="Links"
 
 [myBlog]

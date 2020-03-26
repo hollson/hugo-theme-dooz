@@ -10,9 +10,6 @@ other="分类"
 [choiceness]
 other="精选"
 
-[copyright]
-other = "版权所有"
-
 [download]
 other = "下载"
 
@@ -28,7 +25,7 @@ other="搜索文章..."
 [home]
 other = "首页"
 
-[Links]
+[links]
 other="友情链接"
 
 [myBlog]
