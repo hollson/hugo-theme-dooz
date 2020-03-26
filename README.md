@@ -1,4 +1,6 @@
-[中文文档](./README-ZH.md)
+[**中文文档**](./README-ZH.md)
+
+**Demo：** 
 
 # Dooz Theme for Hugo
 
