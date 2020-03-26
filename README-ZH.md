@@ -1,11 +1,11 @@
 
-[English](./README.md)
+**[English](./README.md)**
 
 # Hugo-Theme-Dooz主题
 
 Dooz是一个简单优雅的hugo主题，专门为程序员或专栏作家设计。
 
-![screenshot](/tmp/screenshot.jpg)
+![screenshot](/static/tmp/screenshot.jpg)
 
 # Features
 
