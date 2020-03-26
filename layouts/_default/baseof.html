@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="{{ $.Site.LanguageCode | default "en" }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--SEO Meta-->
+    <title>{{ .Site.Title }} - {{if .IsHome}}{{ $.Site.Params.homeTitle }}{{else}}{{.Title}}{{end}}</title>
+    <meta name="keywords" content="{{ if .Keywords }}{{ .Keywords }}{{ else }}{{ .Site.Params.keywords }}{{ end }}">
+    <meta name="description" content="{{if .IsHome}}{{ $.Site.Params.description }}{{else}}{{.Description}}{{end}}" />
+
+    <!--Head Common-->
+    <link rel="shortcut icon" href="{{ "img/res/favicon.ico" | relURL }}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+    <link rel="stylesheet" href="{{ "css/blog.css" | absURL }}" />
+    {{ if .RSSLink }}
+    <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+    <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
+    {{ end }}
+    <script src={{"js/jquery.min.js"|absURL}}></script>
+
+    <!--Head Extend-->
+    {{ block "headex" . }}{{ end }}
+</head>
+
+<body>
+    <!--Header-->
+    {{ block "header" . }}
+    <!-- { partial "header" . }} -->
+    {{ end }}
+
+    <!--Main Container-->
+    <div class="container">
+        <div class="section">
+            {{ block "main" . }}{{ end }}
+        </div>
+    </div>
+
+    <!--Footer-->
+    {{ partial "footer" . }}
+
+    <!--Foot Extend：Some references that must be placed at the end, such as the reward script-->
+    {{ block "footex" . }}{{ end }}
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+</body>
+
+</html>

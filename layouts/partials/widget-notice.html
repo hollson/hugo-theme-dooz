@@ -1,0 +1,9 @@
+{{if $.Site.Params.Notice}}
+<div class="card">
+    <div class="card-content">
+        <h1 class="title is-6">{{i18n "notice"}}</h1>
+        <h6>{{.Site.Params.Notice|markdownify}}</h6>
+    </div>
+</div>
+<br>
+{{end}}

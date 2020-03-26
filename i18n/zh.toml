@@ -1,0 +1,72 @@
+[about]
+other = "关于"
+
+[archives]
+other = "归档"
+
+[categories]
+other="分类"
+
+[choiceness]
+other="精选"
+
+[copyright]
+other = "版权所有"
+
+[download]
+other = "下载"
+
+[emailAddress]
+other = "电邮地址"
+
+[featured]
+other="精选"
+
+[forSearch]
+other="搜索文章..."
+
+[home]
+other = "首页"
+
+[Links]
+other="友情链接"
+
+[myBlog]
+other = "我的博客"
+
+[nextPage]
+other = "下一页"
+
+[notice]
+other="公告"
+
+[prevPage]
+other = "上一页"
+
+[publishedAt]
+other="文章发表于"
+
+[readingTime]
+one = "0分钟阅读"
+other = "{{.Count}}分钟阅读"
+
+[recentPosts]
+other="最近发布"
+
+[related]
+other="相关文章"
+
+[tags]
+other="标签"
+
+[toc]
+other="目录"
+
+[translations]
+other="翻译"
+
+[welcome]
+other="欢迎光临我的博客！"
+
+[yourName]
+other = "你的名字"

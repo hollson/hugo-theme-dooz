@@ -1,0 +1,32 @@
+{{ define "header" }}
+{{ partial "header-norm" . }}
+{{ end }}
+
+{{ define "main" }}
+<div class="columns">
+    <div class="column is-9">
+        <div class="tile is-child box">
+            <div class="content">
+                {{ partial "publishat" . }}
+                <hr>
+                {{ if not (eq (.Param "showtoc") false) }}
+                <header>
+                    <h2>{{i18n "toc"}}</h2>
+                </header>
+                {{.TableOfContents}}
+                {{ end }}
+                <hr>
+                {{ .Content }}
+                <!-- Reward -->
+                {{ if .Site.Params.Reward }}
+                <hr> {{ partial "widget-reward" . }} {{ end }}
+            </div>
+        </div>
+    </div>
+    <div class="column is-3">
+        {{ partial "widget-recent.html" . }}
+        {{ partial "widget-related.html" . }}
+        {{ partial "widget-tags.html" . }}
+    </div>
+</div>
+{{ end }}

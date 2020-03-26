@@ -1,0 +1,9 @@
+<p class="subtitle is-size-6 has-text-grey-light" style="font-style: italic;">
+    {{ if  eq .Site.Language.Lang "zh"}}
+    {{i18n "PublishedAt"}} {{ .Date.Format "2006年1月2日," }}
+    {{ index .Site.Data.mois (printf "%s" .Date.Weekday) }} &middot;
+    {{ else }}
+    Published at {{ .Date.Format "Monday, January 2, 2006" }} &middot;
+    {{ end }}
+    <i class="far fa-clock"></i>&nbsp; {{i18n "readingTime" .ReadingTime}}
+</p>

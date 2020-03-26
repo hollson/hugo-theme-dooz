@@ -1,0 +1,22 @@
+{{ $paginator := $.Paginator }}
+<div class="columns">
+    <div class="column is-9">
+        <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
+            {{ if $paginator.HasPrev }}
+            <a class="pagination-previous" href="{{ $paginator.Prev.URL }}">{{i18n "prevPage"}}</a>
+            {{ end }}
+            {{ if $paginator.HasNext }}
+            <a class="pagination-next" href="{{ $paginator.Next.URL }}">{{i18n "nextPage"}}</a>
+            {{ end }}
+            <!-- <ul class="pagination-list">
+                {{ range $paginator.Pagers }}
+                <li class="pagination__item">
+                    <a class="pagination-link{{ if eq . $paginator }} is-current{{ end }}"
+                        aria-label="Goto page {{ .PageNumber }}" href="{{ .URL }}">{{ .PageNumber }}
+                    </a>
+                </li>
+                {{ end }}
+            </ul> -->
+        </nav>
+    </div>
+</div>

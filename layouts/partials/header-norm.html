@@ -1,0 +1,42 @@
+<section class="hero is-info is-medium"
+    style="background-image: url('{{ if .Params.image }}{{ .Params.image|relURL}}{{ else }}{{ .Site.Params.Hero|relURL}}{{ end }}');">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item title is-5 is-white"
+                        href="{{ .Site.BaseURL |relLangURL }}">{{ .Site.Title }}</a>
+                </div>
+                {{ partial "nav" .}}
+            </div>
+        </nav>
+    </div>
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class='container{{if eq .Type "post"}} has-text-left{{end}} column is-7'>
+                {{ range .Params.tags }}
+                <span class="bar_tag">
+                    <a href="{{ "/tags/"|relLangURL }}{{ .|urlize }}" title="{{.}}">{{.}}</a>
+                </span>
+                {{ end }}<br>
+                <span class="title is-size-2">
+                    {{ if eq .Type "tags" }}
+                    Tag# {{ .Title }}
+                    {{ else if eq .Type "archives" }}
+                    Archive@ {{ .Title }}
+                    {{ else if eq .Type "categories" }}
+                    Category -> {{ .Title }}
+                    {{ else if eq .Type "about" }}
+                    {{i18n "about"}}
+                    {{ else }}
+                    {{ .Title }}
+                    {{ end }}
+                </span><br>
+                {{ if eq .Type "article" }}
+                {{ .Date.Format "January 2, 2006" }} &middot;&nbsp;{{ .ReadingTime }} min read
+                {{ end }}
+                <span class="title is-size-6" style="font-style: italic;"> {{.Params.subtitle}}</span><br>
+            </div>
+        </div>
+    </div>
+</section>

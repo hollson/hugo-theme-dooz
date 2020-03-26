@@ -1,0 +1,108 @@
+# 全局设置
+baseURL = "https://hollson.github.io"
+title = "码夫庄园"
+theme = "dooz"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+hasCJKLanguage = true
+enableEmoji= true
+
+canonifyurls = true
+paginate = 10
+metaDataFormat = "toml"
+
+[languages]
+  [languages.zh]
+    # baseURL = "http://www.mafool.com"
+    languagedirection = "zh"
+    title = "码夫庄园"
+    languageName = "Chinese"
+    weight = 1
+  [languages.en]
+    # baseURL = "https://hollson.github.io"
+    # contentDir = "content/english"
+    title = "Mafool"
+    languageName = "English"
+    weight = 1
+    [languages.en.params]
+      author= "shongsheng" #replace the dedault param
+      homeTitle="Programmer's Exclusive Blog" 
+      slogan="A Hugo theme for programmers."
+      title_404="Sorry, page was not found."
+
+[outputs]
+home = ["HTML", "RSS"]
+
+# 首页设置
+[params]
+  author = "史布斯"
+  avatar = "img/my/avatar.jpg"
+
+  #打赏功能 
+  reward= true
+  rewardTitle="真诚赞赏，手留余香"
+  rewardPrompt="嗯，我的梦想是被读者的稿费包养~"
+
+
+  #公告信息(支持markdown语法)
+  notice="**[Dooz theme](https://github.com/hollson/)** updated, hurry up and experience it! `2020.03.22`"
+ 
+  #站点设置
+  timeOfMonth="2006年1月"
+  timeOfDay="2006年1月2日"
+  hero = "img/res/farm.jpg"
+  slogan = "提升码农亩产，掰直码农方向，授人以渔，功德无量，利在千秋 。"
+  image_404 = "img/res/404.jpg"
+  title_404 = "你来到了没有知识的荒原 :("
+
+  #SEO优化(meta中的信息)
+  homeTitle = "码农的专属博客"
+  keywords = "hugo,theme,personal,主题,个人博客,码农,github博客,golang,微服务"
+  description = "码夫庄园是一个使用hugo搭建的程序员专属博客站点，以优美的博客风格，丰富的展现方式向广大程序员们传播最新的golang、docker、k8s、微服务、大数据、人工智能、等技术。"
+
+# 友情链接
+# https://gohugo.io/documentation/
+
+[permalinks]
+    post = "/:year/:month/:title"
+
+# 分类体系（Taxonomies）表示作者对内容的一套或多套分类。比如标签（tags）、类目（categories）、归档（archives）等
+[taxonomies]
+    tag = "tags"
+    category = "categories"
+    archive = "archives"
+
+#https://gohugo.io/getting-started/configuration-markup#highlight markdown配置
+#https://gohugo.io/content-management/shortcodes/#highlight  短码
+#https://gohugo.io/content-management/syntax-highlighting/ 高亮
+[markup]
+  defaultMarkdownHandler = "goldmark" #默认的Markdown渲染器
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    [markup.goldmark.parser]
+      attribute = true
+      autoHeadingID = true
+      autoHeadingIDType = "github"
+    [markup.goldmark.renderer]
+      hardWraps = true
+      unsafe = false
+      xHTML = false
+  [markup.highlight]      #Hugo使用Chroma作为其代码突出显示器
+    codeFences = true     #代码栅栏
+    guessSyntax = true    #猜测
+    lineNoStart = 1       #行号初始值
+    lineNos = true        #显示行号
+    lineNumbersInTable = true
+    style = "monokai"     #代码风格，参考https://xyproto.github.io/splash/docs/longer/all.html
+    tabWidth = 8
+  [markup.tableOfContents] #配置TOC导航
+    startLevel = 1         #起始级别：H1
+    endLevel = 2           #结束级别：H3
+    ordered = false        #是否排序

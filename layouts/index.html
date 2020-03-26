@@ -1,0 +1,43 @@
+{{ define "header" }}
+{{ partial "header-home" . }}
+{{ end }}
+
+{{ define "main" }}
+
+<!--Default: Weight > Date > LinkTitle > FilePath, eg: .Pages.ByPublishDate.Reverse-->
+{{ $paginator := .Paginate (where .Site.RegularPages "Section" "post").ByWeight}}
+
+<div class="columns">
+    <div class="column is-9">
+        <div class="tile is-child box">
+            <div class="content">
+                <h3>{{i18n "welcome"}}</h3>
+                <hr>
+                {{ range $paginator.Pages }}
+                <article class="media">
+                    <div class="media-content">
+                        <div class="content">
+                            <p class="title is-4"><a href="{{ .Permalink  }}">{{ .LinkTitle }}</a></p>
+                            {{ partial "publishat" . }}
+                            <p>{{ with .Description }} {{.}} {{ else }} {{.Summary}} {{end}} </p>
+                        </div>
+                    </div>
+                </article>
+                <hr>
+                {{ end }}
+            </div>
+            {{ partial "pagination" .}}
+        </div>
+    </div>
+    <div class="column is-3">
+        {{ partial "widget-search" . }}
+        {{ partial "widget-notice" . }}
+        {{ partial "widget-featured" . }}
+        {{ partial "widget-recent" . }}
+        {{ partial "widget-category" . }}
+        {{ partial "widget-tags" . }}
+        {{ partial "widget-archives" . }}
+    </div>
+</div>
+
+{{ end }}

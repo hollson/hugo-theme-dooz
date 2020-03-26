@@ -1,0 +1,69 @@
+[about]
+other = "About"
+
+[archives]
+other = "Archives"
+
+[categories]
+other="Categories"
+
+[copyright]
+other = "Copyright"
+
+[download]
+other = "Download"
+
+[emailAddress]
+other = "Email Address"
+
+[featured]
+other="Featured"
+
+[forSearch]
+other="Search the articles..."
+
+[home]
+other = "Home"
+
+[Links]
+other="Links"
+
+[myBlog]
+other = "My Blog"
+
+[nextPage]
+other = "Next"  
+
+[notice]
+other="Notice"
+
+[prevPage]
+other = "Previous"
+
+[publishedAt]
+other="Published at"
+
+[readingTime]
+one = "0 min read"
+other = "{{.Count}} min read"
+
+[related]
+other="Related posts"
+
+[recentPosts]
+other="Recent posts"
+
+[tags]
+other="Tags"
+
+[toc]
+other="Table of contents"
+
+[translations]
+other="Translations"
+
+[welcome]
+other="Welcome to my blog"
+
+[yourName]
+other = "Your Name"  
