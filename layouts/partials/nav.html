@@ -1,13 +1,46 @@
-<div class="navbar-menu">
-    <div class="navbar-end">
-        <a class="navbar-item" href='{{ "" | absURL }}'>{{i18n "home"}}</a>
-        <a class="navbar-item" href='{{ "archives" | absURL }}'>{{i18n "archives"}} </a>
-        <a class="navbar-item" href='{{ "about" | absURL }}'>{{i18n "about"}}</a>
-        <span class="navbar-item">
-            <a class="button is-primary is-inverted" href="https://github.com/hollson/hugo-theme-dooz">
-                <span class="icon"><i class="fab fa-github"></i></span>
-                <span>{{i18n "download"}}</span>
-            </a>
-        </span>
+<nav class="navbar is-transparent container has-text-white">
+    <div class="navbar-brand">
+        <div class="navbar-item">
+            <a class="title is-5 is-white" href="{{ .Site.BaseURL | relLangURL }}">{{ .Site.Title }}</a>
+        </div>
+        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+            <!-- 移动端，三条杠 -->
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
-</div>
+
+    <div id="navbarExampleTransparentExample" class="navbar-menu has-text-dark">
+        <!-- <div class="navbar-start">
+            <a class="navbar-item" href="javascript:void(0);">
+                Home
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link" href="javascript:void(0);">
+                    Docs
+                </a>
+                <div class="navbar-dropdown is-boxed has-background-light">
+                    <a class="navbar-item" href="javascript:void(0);">
+                        Overview
+                    </a>
+                    <a class="navbar-item" href="javascript:void(0);">
+                        Modifiers
+                    </a>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="navbar-end">
+            <a class="navbar-item" href='{{ "" | absURL }}'>{{i18n "home"}}</a>
+            <a class="navbar-item" href='{{ "archives" | absURL }}'>{{i18n "archives"}} </a>
+            <a class="navbar-item" href='{{ "about" | absURL }}'>{{i18n "about"}}</a>
+            <span class="navbar-item">
+                <a class="button is-primary is-inverted" href="https://github.com/hollson/hugo-theme-dooz">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>{{i18n "download"}}</span>
+                </a>
+            </span>
+        </div>
+    </div>
+</nav>

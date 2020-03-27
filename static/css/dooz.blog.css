@@ -56,11 +56,13 @@
         transform: scale(1.4, 3.2); 
     } 
 }
+
 /* Personalized design of dooz */
 html,body {
     font-family: 'Open Sans', sans-serif;
     background: #F0F2F4;
     }
+    
 .hero{
     background-position: center;
     background-size: cover;
@@ -68,8 +70,9 @@ html,body {
     }
 .mysocial { color: hsl(0, 0%, 100%);}
 .mysocial:hover { color: hsl(0, 0%, 71%) }
+
 .bar_tag {
-    background-color: #fff0;color: #fff;
+    background-color: #fff0 !important;color: #fff !important;
     border: solid 1px #fff !important;
     align-items: center;
     border-radius: 290486px;
@@ -87,6 +90,15 @@ html,body {
     padding: 7rem 0 7rem 0 !important;
     max-height: 20rem;
 }
+
+.hero.is-info .navbar-item, .hero.is-info .navbar-link {
+  color: #fff !important;
+}
 .card,.box{
   box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 0px rgba(10,10,10,.1);
+}
+
+#navbarExampleTransparentExample{
+  background-color:transparent;
+  text-align: center;
 }
