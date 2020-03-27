@@ -1,7 +1,7 @@
 # 全局设置
 baseURL = "https://hollson.github.io"
 title = "码夫庄园"
-theme = "dooz"
+theme = "hugo-theme-dooz"
 languageCode = "en-us"
 defaultContentLanguage = "en"
 hasCJKLanguage = true
@@ -56,6 +56,7 @@ home = ["HTML", "RSS"]
   slogan = "提升码农亩产，掰直码农方向，授人以渔，功德无量，利在千秋 。"
   image_404 = "img/res/404.jpg"
   title_404 = "你来到了没有知识的荒原 :("
+  openShare= true
 
   #SEO优化(meta中的信息)
   homeTitle = "码农的专属博客"
@@ -73,6 +74,34 @@ home = ["HTML", "RSS"]
     tag = "tags"
     category = "categories"
     archive = "archives"
+    # series = "series"
+
+# 页脚导航菜单
+[[menu.friendly]]
+    name="Mafool"
+    url="http://www.mafool.com"
+    weight="1"
+[[menu.friendly]]
+    name="Hugo"
+    url="https://gohugo.io/documentation/"
+    weight="2"
+[[menu.friendly]]
+    name="Bulma"
+    url="https://bulma.io/"
+    weight="3"
+[[menu.friendly]]
+    name="Bootstrapious"
+    url="https://bootstrapious.com/"
+    weight="4"
+# [[menu.friendly]]
+#     name="米开朗基杨"
+#     url="https://fuckcloudnative.io/"
+#     weight="5"
+# [[menu.friendly]]
+#     name="Hugo中文帮助"
+#     url="https://hugo.aiaide.com/"
+#     weight="6"
+
 
 #https://gohugo.io/getting-started/configuration-markup#highlight markdown配置
 #https://gohugo.io/content-management/shortcodes/#highlight  短码

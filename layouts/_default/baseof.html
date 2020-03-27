@@ -26,6 +26,12 @@
     <script src={{"js/jquery.min.js"|relURL}}></script>
     <script src={{"js/dooz.blog.js"|relURL}}></script>
 
+    <!-- share -->
+    {{if .Site.Params.OpenShare}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/jquery.share.min.js"></script>
+    {{end}}
+
     <!--Head Extend-->
     {{ block "headex" . }}{{ end }}
 </head>

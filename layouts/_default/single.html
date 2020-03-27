@@ -7,7 +7,23 @@
     <div class="column is-9">
         <div class="tile is-child box">
             <div class="content">
-                {{ partial "publishat" . }}
+                <!-- Main container -->
+                <nav class="level">
+                    <!-- Left side -->
+                    <div class="level-left">
+                        <div class="level-item">
+                            {{ partial "publishat" . }}
+                        </div>
+                    </div>
+
+                    <!-- Right side -->
+                    {{if .Site.Params.OpenShare}}
+                    <div class="share-component level-right" data-disabled="google,diandian,tencent,qzone"
+                        data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣"
+                        data-mobile-sites="weibo,qq,qzone,tencent">
+                    </div>
+                    {{end}}
+                </nav>
                 <hr>
                 {{ if not (eq (.Param "showtoc") false) }}
                 <header>
@@ -20,7 +36,12 @@
                 <!-- Reward -->
                 {{ if .Site.Params.Reward }}
                 <hr> {{ partial "widget-reward" . }} {{ end }}
+
+                <br>
+                <br>
+
             </div>
+
         </div>
     </div>
     <div class="column is-3">
