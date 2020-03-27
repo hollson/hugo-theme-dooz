@@ -1,4 +1,4 @@
-<section class="hero is-info is-medium" style="background-image: url({{ .Site.Params.Hero | absURL }});">
+<section class="hero is-info is-medium" style="background-image: url({{ .Site.Params.Hero | relURL }});">
     <div class="hero-head">
         {{ partial "nav" . }}
     </div>

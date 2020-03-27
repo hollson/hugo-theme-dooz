@@ -1,5 +1,5 @@
 {{ define "headex" }}
-<link rel="stylesheet" href="{{ "css/reward.css" | absURL }}">
+<link rel="stylesheet" href="{{ "css/reward.css" | relURL }}">
 {{ end }}
 
 <div class="entry-shang text-center">
@@ -47,5 +47,5 @@
 </div>
 
 {{ define "footex" }}
-<script type="text/javascript" src="{{ "js/reward.js" | absURL }}"></script>
+<script type="text/javascript" src="{{ "js/reward.js" | relURL }}"></script>
 {{ end }}

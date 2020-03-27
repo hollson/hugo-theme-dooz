@@ -102,3 +102,8 @@ html,body {
   background-color:transparent;
   text-align: center;
 }
+
+/* markdown */
+.content pre{
+  padding: 1.25em 0.5rem !important;
+}

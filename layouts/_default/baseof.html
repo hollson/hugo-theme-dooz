@@ -13,16 +13,18 @@
 
     <!--Head Common-->
     <link rel="shortcut icon" href="{{ "img/res/favicon.ico" | relURL }}">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> -->
+    <link href="/css/fonts.googleapi.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/bulma.min.css" />
-    <link rel="stylesheet" href="{{ "css/dooz.blog.css" | absURL }}" />
+    <link rel="stylesheet" href="{{ "css/dooz.blog.css" | relURL }}" />
     {{ if .RSSLink }}
     <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
     <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
     {{ end }}
-    <script src={{"js/jquery.min.js"|absURL}}></script>
-    <script src={{"js/dooz.blog.js"|absURL}}></script>
+    <script src={{"js/jquery.min.js"|relURL}}></script>
+    <script src={{"js/dooz.blog.js"|relURL}}></script>
 
     <!--Head Extend-->
     {{ block "headex" . }}{{ end }}
@@ -46,7 +48,8 @@
 
     <!--Foot Extend：Some references that must be placed at the end, such as the reward script-->
     {{ block "footex" . }}{{ end }}
-    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script> -->
+    <script defer src="/js/fontawesome.all.js"></script>
 </body>
 
 </html>
