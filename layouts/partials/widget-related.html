@@ -5,10 +5,10 @@
 {{ if $.Scratch.Get "has_related" }}
 <div class="card">
   <div class="card-content">
-    <h1 class="title is-6">{{i18n "related"}}</h1>
+    <h2 class="title is-6">{{i18n "related"}}</h2>
     {{ $num_to_show := .Site.Params.related_content_limit | default 7 }}
     {{ range first $num_to_show (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
-    <h1><a href="{{ .Permalink | relURL }}">{{ .Title }}</a></h1>
+    <h2><a href="{{ .Permalink | relURL }}">{{ .Title }}</a></h2>
     <time class="has-text-grey-light is-size-7">{{ .Date.Day }} {{ .Date.Month }} {{ .Date.Year }}</time>
     {{ end }}
   </div>

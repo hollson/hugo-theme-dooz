@@ -17,7 +17,8 @@
                 <article class="media">
                     <div class="media-content">
                         <div class="content">
-                            <p class="title is-4"><a href="{{ .Permalink  }}">{{ .LinkTitle }}</a></p>
+                            <p class="title is-4">
+                                <a href="{{.Permalink}}" title="{{.LinkTitle}}">{{.LinkTitle}}</a></p>
                             {{ partial "publishat" . }}
                             <p>{{ with .Description }} {{.|markdownify}} {{ else }} {{.Summary|markdownify}} {{end}}
                             </p>

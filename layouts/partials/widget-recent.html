@@ -1,8 +1,8 @@
 <div class="card">
     <div class="card-content">
-        <h1 class="title is-6">{{i18n "recentPosts"}}</h1>
+        <h2 class="title is-6">{{i18n "recentPosts"}}</h2>
         {{ range first 5 (where .Site.RegularPages "Section" "post").ByPublishDate.Reverse }}
-        <h1><a class="is-size-6" href="{{ .Permalink | relURL }}">{{ .Title }}</a></h1>
+        <h2><a class="is-size-6" href="{{ .Permalink | relURL }}">{{ .Title }}</a></h2>
         {{ if  eq .Site.Language.Lang "zh"}}
         <time class="has-text-grey-light is-size-7">{{ .Date.Format "2006年1月2日" }} </time>
         {{ else }}

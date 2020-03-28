@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--SEO Meta-->
-    <title>{{ .Site.Title }} - {{if .IsHome}}{{ $.Site.Params.homeTitle }}{{else}}{{.Title}}{{end}}</title>
+    <title>{{ .Site.Title }}-{{if .IsHome}}{{ $.Site.Params.homeTitle }}{{else}}{{.Title}}{{end}}</title>
     <meta name="keywords" content="{{ if .Keywords }}{{ .Keywords }}{{ else }}{{ .Site.Params.keywords }}{{ end }}">
     <meta name="description" content="{{if .IsHome}}{{ $.Site.Params.description }}{{else}}{{.Description}}{{end}}" />
 
