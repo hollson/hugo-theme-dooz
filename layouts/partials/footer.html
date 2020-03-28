@@ -28,3 +28,24 @@
 <!-- to top -->
 <a id="rocket" href="#top"></a>
 <script type="text/javascript" src='{{ "js/dooz.totop.js?v=0.0.0" | relURL }}' async=""></script>
+
+<!-- 百度统计 -->
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = 'https://hm.baidu.com/hm.js?{{if strings.HasSuffix .Site.BaseURL "gitee.io"}}{{.Site.Params.analyze_baidu_gitee}}{{else}}{{.Site.Params.analyze_baidu_mafool}}{{end}}';
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{.Site.Params.analyze_google}}"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '{{.Site.Params.analyze_google}}');
+</script>

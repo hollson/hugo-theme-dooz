@@ -10,8 +10,8 @@
                 <span>
                     <a class="bar_tag" href="{{ "/tags/"|relLangURL }}{{ .|urlize }}" title="{{.}}">{{.}}</a>
                 </span>
-                {{ end }}<br>
-                <span class="title is-size-2">
+                {{ end }}
+                <h1 class="title is-size-2" style="margin-bottom:0.2rem;">
                     {{ if eq .Type "tags" }}
                     Tag# {{ .Title }}
                     {{ else if eq .Type "archives" }}
@@ -23,7 +23,7 @@
                     {{ else }}
                     {{ .Title }}
                     {{ end }}
-                </span><br>
+                </h1>
                 {{ if eq .Type "article" }}
                 {{ .Date.Format "January 2, 2006" }} &middot;&nbsp;{{ .ReadingTime }} min read
                 {{ end }}

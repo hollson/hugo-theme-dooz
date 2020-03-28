@@ -19,7 +19,8 @@
                         <div class="content">
                             <p class="title is-4"><a href="{{ .Permalink  }}">{{ .LinkTitle }}</a></p>
                             {{ partial "publishat" . }}
-                            <p>{{ with .Description }} {{.}} {{ else }} {{.Summary}} {{end}} </p>
+                            <p>{{ with .Description }} {{.|markdownify}} {{ else }} {{.Summary|markdownify}} {{end}}
+                            </p>
                         </div>
                     </div>
                 </article>

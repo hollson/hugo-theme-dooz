@@ -14,10 +14,13 @@
 <div class="zs-modal-box">
     <div class="zs-modal-head">
         <button type="button" class="close">×</button>
-        <span class="author"><a href="{{ .Site.BaseURL }}"><img
-                    src="{{ "img/reward/hollson.png" | relURL}}" />{{ .Site.Title }}</a></span>
+        <span class="author">
+            <a href="{{ .Site.BaseURL }}">
+                <img src="{{ "img/reward/hollson.png" | relURL}}" alt="{{.Site.Params.Author}}" />{{ .Site.Title }}
+            </a>
+        </span>
         {{ if .Site.Params.RewardPrompt }}
-        <p class="tip"><i></i><span>{{ .Site.Params.RewardPrompt }}</span></p>
+        <p class="tip"><i></i><span>{{ .Site.Params.RewardPrompt}}</span></p>
         {{ else }}
         <p class="tip"><i></i><span>真诚赞赏，手留余香</span></p>
         {{ end }}
@@ -35,14 +38,20 @@
         <div class="zs-modal-pay">
             <button class="btn btn-bred" id="pay-text">2元</button>
             <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
-            <img src="{{ "img/reward/wechat-2.png" | relURL }}" id="pay-image" />
+            <img src="{{ "img/reward/wechat-2.png" | relURL }}" alt="{{.Site.Params.Author}}" id="pay-image" />
         </div>
     </div>
     <div class="zs-modal-footer">
-        <label><input type="radio" name="zs-type" value="wechat" class="zs-type" checked="checked"><span><span
-                    class="zs-wechat"><img src="{{ "img/reward/wechat-btn.png" | relURL }}" /></span></label>
-        <label><input type="radio" name="zs-type" value="alipay" class="zs-type" class="zs-alipay"><img
-                src="{{ "img/reward/alipay-btn.png" | relURL }}" /></span></label>
+        <label>
+            <span class="zs-wechat"></span>
+            <input type="radio" name="zs-type" value="wechat" class="zs-type" checked="checked">
+            <img src="{{ "img/reward/wechat-btn.png" | relURL }}" alt="{{.Site.Params.Author}}" />
+            </span>&nbsp;
+            <span>
+                <input type="radio" name="zs-type" value="alipay" class="zs-type" class="zs-alipay">
+                <img src="{{ "img/reward/alipay-btn.png" | relURL }}" alt="{{.Site.Params.Author}}" />
+            </span>
+        </label>
     </div>
 </div>
 
