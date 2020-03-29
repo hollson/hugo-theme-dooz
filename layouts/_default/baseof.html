@@ -14,7 +14,6 @@
     <!--Head Common-->
     <link rel="shortcut icon" href="{{ "img/res/favicon.ico" | relURL }}">
     <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> -->
-    <link href="/css/fonts.googleapi.css" rel="stylesheet">
 
     <link crossorigin="anonymous" integrity="sha384-+pqJl+lfXqeZZHwVRNTbv2+eicpo+1TR/AEzHYYDKfAits/WRK21xLOwzOxZzJEZ"
         href="https://lib.baomitu.com/font-awesome/5.11.2/css/fontawesome.min.css" rel="stylesheet">
@@ -25,8 +24,6 @@
     <link rel="stylesheet" href="{{ "css/dooz.blog.css" | relURL }}" />
     <script crossorigin="anonymous" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh"
         src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
-
-    <script src={{"js/dooz.blog.js"|relURL}}></script>
 
     <!-- share -->
     {{if .Site.Params.OpenShare}}
@@ -41,6 +38,18 @@
 
     <!--Head Extend-->
     {{ block "headex" . }}{{ end }}
+
+    <link href="/css/fonts.googleapi.css" rel="stylesheet">
+    <script src={{"js/dooz.blog.js"|relURL}}></script>
+
+    <!--if  Site.Params.Href_Blank -->
+    <script>
+        $(document).ready(function () {
+            $('.content a[href^="http"]').each(function () {
+                $(this).attr('target', '_blank');
+            });
+        });
+    </script>
 </head>
 
 <body>

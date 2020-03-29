@@ -20,7 +20,7 @@
                             <p class="title is-4">
                                 <a href="{{.Permalink}}" title="{{.LinkTitle}}">{{.LinkTitle}}</a></p>
                             {{ partial "publishat" . }}
-                            <p>{{ with .Description }} {{.|markdownify}} {{ else }} {{.Summary|markdownify}} {{end}}
+                            <p>{{ with .Description }} {{.}} {{ else }} {{.Summary}} {{end}}
                             </p>
                         </div>
                     </div>
@@ -41,5 +41,4 @@
         {{ partial "widget-archives" . }}
     </div>
 </div>
-
 {{ end }}

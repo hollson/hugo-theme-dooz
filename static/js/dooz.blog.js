@@ -1,3 +1,10 @@
+$(document).ready(function () {
+    //为超链接加上target='_blank'属性
+    $('.content a[href^="http"]').each(function () {
+        $(this).attr('target', '_blank');
+    });
+});
+
 // Adaptive mobile terminal
 // https://bulma.io/documentation/components/navbar/
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,3 +27,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
