@@ -1,5 +1,32 @@
 {{ define "header" }}
 {{ partial "header-home" . }}
+<style>
+    .search {
+        position: relative;
+        display: inline-block;
+    }
+
+    .search-results {
+        display: none;
+        background-color: #fff;
+        position: absolute;
+        min-width: 100px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .search-results a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .search-results a:hover {
+        background-color: #ddd;
+    }
+</style>
+
 {{ end }}
 
 {{ define "main" }}
@@ -20,8 +47,7 @@
                             <p class="title is-4">
                                 <a href="{{.Permalink}}" title="{{.LinkTitle}}">{{.LinkTitle}}</a></p>
                             {{ partial "publishat" . }}
-                            <p>{{ with .Description }} {{.}} {{ else }} {{.Summary}} {{end}}
-                            </p>
+                            <p>{{ with .Description }} {{.}} {{ else }} {{.Summary}} {{end}}</p>
                         </div>
                     </div>
                 </article>

@@ -15,11 +15,8 @@
                     <div class="media-content">
                         <div class="content">
                             <p class="title is-4"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></p>
-                            <p class="subtitle is-size-6 has-text-grey-light">
-                                Published at {{ .Date.Format "January 2, 2006" }} &middot;
-                                <i class="far fa-clock"></i>&nbsp;{{.ReadingTime}} min read
-                            </p>
-                            <p>{{ .Summary }}...</p>
+                            {{ partial "publishat" . }}
+                            <p> {{ with .Description }} {{.}} {{ else }} {{.Summary}} {{end}}</p>
                         </div>
                     </div>
                 </article>

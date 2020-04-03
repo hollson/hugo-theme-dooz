@@ -1,6 +1,6 @@
 {{ $paginator := $.Paginator }}
 <div class="columns">
-    <div class="column is-9">
+    <div class="column is-12">
         <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
             {{ if $paginator.HasPrev }}
             <a class="pagination-previous" href="{{ $paginator.Prev.URL }}">{{i18n "prevPage"}}</a>
