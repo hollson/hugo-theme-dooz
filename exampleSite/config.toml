@@ -1,12 +1,13 @@
 # 全局设置
-baseURL = "https://hollson.github.io"
+baseURL = "http://www.mafool.com"
 title = "码夫庄园"
 theme = "hugo-theme-dooz"
-languageCode = "en-us"
-defaultContentLanguage = "en"
+languageCode = "en"
+defaultContentLanguage = "en"  #调整中英文
 hasCJKLanguage = true
 enableEmoji= true
 copyright="版权所有"
+googleAnalytics = "G-DK042XSJ2J" #内置了谷歌统计模板  {{ template "_internal/google_analytics_async.html" . }}
 
 canonifyurls = true
 paginate = 10
@@ -27,18 +28,25 @@ metaDataFormat = "toml"
     copyright="All Rights Reserved"
     weight = 1
     [languages.en.params]
-      author= "shongsheng" #replace the dedault param
+      #author= "shongsheng" #replace the dedault param
       homeTitle="Programmer's Exclusive Blog" 
       slogan="A Hugo theme for programmers."
       title_404="Sorry, page was not found."
 
 [outputs]
-home = ["HTML", "RSS"]
+#home = ["HTML", "RSS"]
+home = ["HTML", "RSS", "JSON"]
 
 # 首页设置
 [params]
-  author = "史布斯"
-  avatar = "img/my/avatar.jpg"
+  #Author
+  author = "sybs"
+  city = "Beijing"
+  avatar = "img/my/avatar.png"
+  aphorism="Your attitude determines your life"
+  github="https://github.com/xxx"
+  csdn="https://blog.csdn.net/xxx"
+  cnblog="https://www.cnblogs.com/xxx/"
 
   #打赏功能 
   reward= true
@@ -47,20 +55,25 @@ home = ["HTML", "RSS"]
 
 
   #公告信息(支持markdown语法)
-  notice="**[Dooz theme](https://github.com/hollson/)** updated, hurry up and experience it! `2020.03.22`"
+  notice="**[Dooz theme](https://github.com/hollson/hugo-theme-dooz)** updated, hurry up and experience it! `2020.03.22`"
  
   #站点设置
   timeOfMonth="2006年1月"
   timeOfDay="2006年1月2日"
-  hero = "img/res/farm.jpg"
+  hero = "img/res/hero.jpg"
   slogan = "提升码农亩产，掰直码农方向，授人以渔，功德无量，利在千秋 。"
   image_404 = "img/res/404.jpg"
   title_404 = "你来到了没有知识的荒原 :("
   openShare= true
+  
+  #百度统计
+  analyze_baidu="f185359ec6b829a6a93e1e1f2597f6d9"  #Mafool
+  # analyze_baidu_gitee="d4c707fc3a17c53bb106bb52238032f0"   #Gitee
+  analyze_google="G-DK042XSJ2J"
 
   #SEO优化(meta中的信息)
   homeTitle = "码农的专属博客"
-  keywords = "hugo,theme,personal,主题,个人博客,码农,github博客,golang,微服务"
+  keywords = "码农,hugo,theme,blog,developer,programmer,coder,geek,程序员,主题,个人博客,github博客,golang,微服务"
   description = "码夫庄园是一个使用hugo搭建的程序员专属博客站点，以优美的博客风格，丰富的展现方式向广大程序员们传播最新的golang、docker、k8s、微服务、大数据、人工智能、等技术。"
 
 # 友情链接
@@ -93,15 +106,10 @@ home = ["HTML", "RSS"]
     name="Bootstrapious"
     url="https://bootstrapious.com/"
     weight="4"
-# [[menu.friendly]]
-#     name="米开朗基杨"
-#     url="https://fuckcloudnative.io/"
-#     weight="5"
-# [[menu.friendly]]
-#     name="Hugo中文帮助"
-#     url="https://hugo.aiaide.com/"
-#     weight="6"
-
+[[menu.friendly]]
+    name="Youzhixueyuan"
+    url="https://youzhixueyuan.com/"
+    weight="5"
 
 #https://gohugo.io/getting-started/configuration-markup#highlight markdown配置
 #https://gohugo.io/content-management/shortcodes/#highlight  短码
@@ -133,7 +141,7 @@ home = ["HTML", "RSS"]
     lineNumbersInTable = true
     style = "monokai"     #代码风格，参考https://xyproto.github.io/splash/docs/longer/all.html
     tabWidth = 8
-  [markup.tableOfContents] #配置TOC导航
-    startLevel = 1         #起始级别：H1
-    endLevel = 2           #结束级别：H3
+  [markup.tableOfContents] #文档目录，H1作为SEO的关键字
+    startLevel = 2         #开始级别：H2
+    endLevel = 3           #结束级别：H3
     ordered = false        #是否排序

@@ -1,26 +1,17 @@
-[**中文文档**](./README-ZH.md)
 
+> [**中文文档**](./README-ZH.md)  
 
-**Demo：** https://hollson.github.io
+## Sample Site
+http://hollson.mafool.com
 
-# Dooz Theme for Hugo
+## Dooz Theme for Hugo
 
 Dooz is a simple and elegant hugo theme specially designed for programmers or columnists.
 
-![screenshot](/static/tmp/screenshot.jpg)
+![screenshot](/tmp/screenshot.jpg)
 
-# Features
 
-* Responsive design
-* Customizable markdown
-* Google search
-* ~~Disqus comments~~
-* ~~Google Analytics~~
-* ~~Announcement promotion~~
-
-Some features are being improved ...
-
-# Installation
+## Installation
 When you finish installing the [Hugo](https://gohugo.io/getting-started/installing/),You can create your own blog site：
 
 ```shell
@@ -32,8 +23,8 @@ $ git clone git@github.com:hollson/hugo-theme-dooz.git themes/dooz
 $ git submodule add git@github.com:hollson/hugo-theme-dooz.git themes/dooz
 ```
 
-# Quick Start
-You can use `./themes/dooz/exampleSite` to experience this theme:
+## Quick Start
+You can use the example given for a quick experience：
 ```shell
 $ cp -rp ./themes/dooz/exampleSite/* ./
 $ hugo server -w
@@ -42,127 +33,176 @@ Enter [`http://localhost:1313`](http://localhost:1313) in the browser's address 
 
 For more information check out the official [Hugo documentation](http://gohugo.io/overview/usage/).
 
-
-# Configuration
-
-After installing the Universal theme successfully, we recommend you to take a look at the [exampleSite](//github.com/devcows/hugo-universal-theme/tree/master/exampleSite) directory. You will find a working Hugo site configured with the Universal theme that you can use as a starting point for your site.
-
-First, let's take a look at the [config.toml](//github.com/devcows/hugo-universal-theme/tree/master/exampleSite/config.toml). It will be useful to learn how to customize your site. Feel free to play around with the settings.
-
-
-### Language
-
-Available translations are in the `/i18n` directory. You can configure the language modifying the following key.
-
+## Create Posts
+```shell
+hugo new post/mycategory-my-blog-title.md
+```
+You can customize your template in the “archetypes” directory ,As follows：
 ```toml
++++
+title= "{{with slicestr .Name (len (index (split .Name "-") 0))}}{{replace . "-" " "|strings.TrimLeft " "|title}}{{end}}"
+url= "/post/{{now.Unix}}/"
+#aliases = ["/posts/{{md5 now}}/"]
+keywords= "keyword1,keyword2"  #SEO keywords
+description= "Content description for SEO"
+image= "/img/res/blog.jpg"
+date= {{ slicestr .Date 0 10 }}
+categories= ["{{index (split .Name "-") 0|title}}"]
+tags= ["tag1", "tag2"]
+archives= "{{ now.Format "2006" }}"
+author= "{{.Site.Params.Author}}"
+height= {{now.Unix}}
+draft= false
++++
+```
+
+## Configuration
+```toml
+
+baseURL = "http://www.mafool.com"
+title = "码夫庄园"
+theme = "hugo-theme-dooz"
+languageCode = "en"
 defaultContentLanguage = "en"
-```
+hasCJKLanguage = true
+enableEmoji= true
+copyright="版权所有"
+googleAnalytics = "G-DKXXXXXX2J"
 
+canonifyurls = true
+paginate = 10
+metaDataFormat = "toml"
 
-### Comments
+[languages]
+  [languages.zh]
+    # baseURL = "http://www.mafool.com"
+    languagedirection = "zh"
+    title = "码夫庄园"
+    languageName = "Chinese"
+    weight = 1
+  [languages.en]
+    # baseURL = "https://hollson.github.io"
+    # contentDir = "content/english"
+    title = "Mafool"
+    languageName = "English"
+    copyright="All Rights Reserved"
+    weight = 1
+    [languages.en.params]
+      #author= "shongsheng" #replace the dedault param
+      homeTitle="Programmer's Exclusive Blog" 
+      slogan="A Hugo theme for programmers."
+      title_404="Sorry, page was not found."
 
-The optional comments system is powered by [Disqus](https://disqus.com). If you want to enable comments, create an account in Disqus and write down your shortname.
+[outputs]
+home = ["HTML", "RSS", "JSON"]
 
-```toml
-disqusShortname = "devcows"
-```
-
-You can disable the comments system by leaving the `disqusShortname` empty.
-
-
-### Google Analytics
-
-You can optionally enable Google Analytics. Type your tracking code in the ``.
-
-```toml
-googleAnalytics = "UA-XXXXX-X"
-```
-
-Leave the `googleAnalytics` key empty to disable it.
-
-
-### Recent posts
-
-The recent posts sections shows the four latest published blog posts, with their featured image and a summary. It defaults to show recent posts from all [main sections](https://gohugo.io/functions/where/#mainsections). This is either the section with the most posts or can be set explicitly in the configuration file (see linked docs).
-
-You can enable it in the configuration file.
-
-```toml
-[params.recent_posts]
-    enable = true
-    title = "From our blog"
-    subtitle = "Pellen
-```
-
-
-### Meta tags
-
-The following [HTML metadata](https://www.w3schools.com/tags/tag_meta.asp) can be set for every page. While the default value for some of them can be defined in `config.toml`, all of these properties can also be set through the respective [Hugo front matter variables](https://gohugo.io/content-management/front-matter/#front-matter-variables):
-
-| HTML meta `name`/`property`                              | Hugo front matter variable | Default variable in `config.toml` |
-| :------------------------------------------------------- | :------------------------- | :-------------------------------- |
-| `article:author`                                         | `facebook_author`          | -                                 |
-| `article:publisher`                                      | `facebook_site`            | `facebook_site`                   |
-| `author`                                                 | `author`                   | -                                 |
-| `description` / `og:description` / `twitter:description` | `description`              | `defaultDescription`              |
-| `keywords`                                               | `keywords`                 | `defaultKeywords`                 |
-| `og:image` / `twitter:image`                             | `banner`                   | `default_sharing_image`           |
-| `title` / `og:title` / `twitter:title`                   | `title`                    | -                                 |
-| `twitter:creator`                                        | `twitter_author`           | -                                 |
-| `twitter:site`                                           | `twitter_site`             | `twitter_site`                    |
-
-Besides, certain [Open Graph](http://ogp.me/) metadata is automatically set:
-
-- `article:published_time`, `article:modified_time`, `og:updated_time` and `article:expiration_time` are set based on [Hugo's (predefined) front matter variables `date`, `publishDate`, `lastmod` and `expiryDate`](https://gohugo.io/content-management/front-matter/#predefined).
-- `article:section` and `article:tag` are set based on [Hugo's `categories` and `tags` taxonomies](https://gohugo.io/content-management/taxonomies/#default-taxonomies). Since there can only be one `article:section`, only the first element of the `categories` array is used as `article:section`.
-
-You can set default values for all pages in the `config.toml` file as below:
-
-```toml
 [params]
-    defaultKeywords = ["devcows", "hugo", "go"]
-    defaultDescription = "Site template made by Devcows using Hugo"
-    default_sharing_image = "img/sharing-default.png"
-    facebook_site = "https://www.facebook.com/GolangSociety/"
-    twitter_site = "GoHugoIO"
+  #Author
+  author = "史布斯"
+  city = "Beijing"
+  avatar = "img/my/avatar.png"
+  aphorism="生活，是一种态度，请善待她"
+  github="https://github.com/hollson"
+  csdn="https://blog.csdn.net/gusand"
+  cnblog="https://www.cnblogs.com/hollson/"
+
+  #打赏功能 
+  reward= true
+  rewardTitle="真诚赞赏，手留余香"
+  rewardPrompt="嗯，我的梦想是被读者的稿费包养~"
+
+
+  #公告信息(支持markdown语法)
+  notice="**[Dooz theme](https://github.com/hollson/hugo-theme-dooz)** updated, hurry up and experience it! `2020.03.22`"
+ 
+  #站点设置
+  timeOfMonth="2006年1月"
+  timeOfDay="2006年1月2日"
+  hero = "img/res/hero.jpg"
+  slogan = "提升码农亩产，掰直码农方向，授人以渔，功德无量，利在千秋 。"
+  image_404 = "img/res/404.jpg"
+  title_404 = "你来到了没有知识的荒原 :("
+  openShare= true
+  
+  #百度统计
+  analyze_baidu="f185359ec6b8XXXXXXXX597f6d9"  #Mafool
+
+  #SEO Info(meta中的信息)
+  homeTitle = "码农的专属博客"
+  keywords = "码农,hugo,theme,blog,developer,programmer,coder,geek,程序员,主题,个人博客,github博客,golang,微服务"
+  description = "码夫庄园是一个使用hugo搭建的程序员专属博客站点，以优美的博客风格，丰富的展现方式向广大程序员们传播最新的golang、docker、k8s、微服务、大数据、人工智能、等技术。"
+
+[permalinks]
+    post = "/:year/:month/:title"
+
+# Classification basis：e.g.：tags、categories、archives...
+[taxonomies]
+    tag = "tags"
+    category = "categories"
+    archive = "archives"
+    # series = "series"
+
+# nav menu
+[[menu.friendly]]
+    name="Mafool"
+    url="http://www.mafool.com"
+    weight="1"
+[[menu.friendly]]
+    name="Mafool"
+    url="http://www.mafool.com"
+    weight="2"
+[[menu.friendly]]
+    name="Mafool"
+    url="http://www.mafool.com"
+    weight="3"    
+[[menu.friendly]]
+    name="Mafool"
+    url="http://www.mafool.com"
+    weight="4"
+[[menu.friendly]]
+    name="Mafool"
+    url="http://www.mafool.com"
+    weight="5"
+
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    [markup.goldmark.parser]
+      attribute = true
+      autoHeadingID = true
+      autoHeadingIDType = "github"
+    [markup.goldmark.renderer]
+      hardWraps = true
+      unsafe = false
+      xHTML = false
+  [markup.highlight]      #Hugo使用Chroma作为其代码突出显示器
+    codeFences = true     #代码栅栏
+    guessSyntax = true    #猜测
+    lineNoStart = 1       #行号初始值
+    lineNos = true        #显示行号
+    lineNumbersInTable = true
+    style = "monokai"     #代码风格
+    tabWidth = 8
+  [markup.tableOfContents] #文档目录，H1作为SEO的关键字
+    startLevel = 2         #开始级别：H2
+    endLevel = 3           #结束级别：H3
+    ordered = false        #是否排序
 ```
-
-The resulting HTML will be the following:
-
-```html
-<meta name="keywords" content="devcows, hugo, go">
-<meta name="description" content="Site template made by Devcows using Hugo">
-<meta property="og:description" content="Site template made by Devcows using Hugo">
-<meta property="og:image" content="img/sharing-default.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="800">
-<meta property="og:image:height" content="420">
-<meta property="article:publisher" content="https://www.facebook.com/GolangSociety/">
-<meta name="twitter:description" content="Site template made by Devcows using Hugo">
-<meta name="twitter:site" content="@GoHugoIO">
-```
-
-You can also override the default values from the `config.toml` by setting the respective keys in the individual pages front matter. As an example, here's the front matter from the [`faq.md` file](exampleSite/content/faq.md) in the [`exampleSite` directory](exampleSite):
-
-```yaml
-+++
-title = "FAQ"
-description = "Frequently asked questions"
-keywords = ["FAQ","How do I","questions","what if"]
-+++
-```
-
-Which results in the following HTML:
-
-```html
-<title>FAQ</title>
-<meta name="keywords" content="FAQ,How do I,questions,what if">
-<meta name="description" content="Frequently asked questions">
-<meta property="og:description" content="Frequently asked questions">
-<meta name="twitter:description" content="Frequently asked questions">
-```
+**Some important references：**
+>  https://gohugo.io/getting-started/configuration-markup#highlight  # Markdown Config
+>  https://gohugo.io/content-management/syntax-highlighting/   # High lighting
+>  https://xyproto.github.io/splash/docs/longer/all.html  # Code Style
 
 
-### Contributing
+
+## Contributing
 
 Did you found a bug or got an idea for a new feature? Feel free to use the [issue tracker](https://github.com/hollson/hugo-theme-dooz/issues) to let us know. Or make directly a [pull request](https://github.com/hollson/hugo-theme-dooz/pulls).
