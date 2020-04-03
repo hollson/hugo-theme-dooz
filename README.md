@@ -1,14 +1,21 @@
 
 > [**中文文档**](./README-ZH.md)  
 
+<br/>
+
 ## Sample Site
 http://hollson.mafool.com
+
+<br/>
 
 ## Dooz Theme for Hugo
 
 Dooz is a simple and elegant hugo theme specially designed for programmers or columnists.
 
-![screenshot](/tmp/screenshot.jpg)
+![screenshot](static/tmp/screenshot.jpg)
+
+
+<br/>
 
 
 ## Installation
@@ -23,6 +30,8 @@ $ git clone git@github.com:hollson/hugo-theme-dooz.git themes/dooz
 $ git submodule add git@github.com:hollson/hugo-theme-dooz.git themes/dooz
 ```
 
+<br/>
+
 ## Quick Start
 You can use the example given for a quick experience：
 ```shell
@@ -32,6 +41,8 @@ $ hugo server -w
 Enter [`http://localhost:1313`](http://localhost:1313) in the browser's address bar,then see an example of the picture above.
 
 For more information check out the official [Hugo documentation](http://gohugo.io/overview/usage/).
+
+<br/>
 
 ## Create Posts
 ```shell
@@ -56,9 +67,10 @@ draft= false
 +++
 ```
 
+<br/>
+
 ## Configuration
 ```toml
-
 baseURL = "http://www.mafool.com"
 title = "码夫庄园"
 theme = "hugo-theme-dooz"
@@ -198,10 +210,13 @@ home = ["HTML", "RSS", "JSON"]
 ```
 **Some important references：**
 >  https://gohugo.io/getting-started/configuration-markup#highlight  # Markdown Config
+
 >  https://gohugo.io/content-management/syntax-highlighting/   # High lighting
+
 >  https://xyproto.github.io/splash/docs/longer/all.html  # Code Style
 
 
+<br/>
 
 ## Contributing
 
