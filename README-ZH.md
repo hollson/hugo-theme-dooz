@@ -1,15 +1,19 @@
 > [English Doc](./README.md)
 
-
+<br/>
 
 ## Hugo主题 - Dooz
 **Dooz是一个简单优雅的hugo主题，专门为`程序员`或`专栏作家`设计。**
 
 ![screenshot](static/tmp/screenshot.jpg)
 
+<br/>
+
 ## 示例站点
 http://hollson.mafool.com
 
+
+<br/>
 
 ## 安装主题
 提前安装好Hugo，具体可参考[官方安装文档](https://gohugo.io/getting-started/installing/)。
@@ -24,6 +28,9 @@ $ git clone git@github.com:hollson/hugo-theme-dooz.git themes/dooz
 $ git submodule add git@github.com:hollson/hugo-theme-dooz.git themes/dooz
 ```
 
+<br/>
+
+
 ## 快速演示
 
 在`hugo-theme-dooz`目录下又一个`exampleSite`文件，将里面的内容拷贝到站点根目录：
@@ -32,6 +39,8 @@ $ cp -rp ./themes/dooz/exampleSite/* ./
 $ hugo server -w  # 启动服务
 ```
 这时候，就可以在浏览器打开[`http://localhost:1313`](http://localhost:1313)， 看到上图的演示界面了。
+
+<br/>
 
 ## 创建文章
 ```shell
@@ -56,6 +65,8 @@ height= {{now.Unix}}
 draft= false
 +++
 ```
+
+<br/>
 
 ## 配置文件
 配置文件位于根目录下的`config.toml`文件中，配置示例如下：
@@ -196,11 +207,15 @@ home = ["HTML", "RSS", "JSON"]
     endLevel = 3           #结束级别：H3
     ordered = false        #是否排序
 ```
-
 **一些重要的配置参考：**
 >  https://gohugo.io/getting-started/configuration-markup#highlight  # Markdown配置
+
 >  https://gohugo.io/content-management/syntax-highlighting/   # 代码高亮
+
 >  https://xyproto.github.io/splash/docs/longer/all.html  # 代码风格
+
+
+<br/>
 
 ## 贡献
 您是否发现了错误或对新功能有想法？随时使用[问题跟踪工具](https://github.com/hollson/hugo-theme-dooz/issues)让我知道。或直接[提出请求](https://github.com/hollson/hugo-theme-dooz/pulls)。 你也可以添加微信向我咨询一切问题：
