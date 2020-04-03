@@ -20,7 +20,7 @@
             {{ end }}
             <br><br />
             {{.Site.Copyright}} &copy; {{ .Site.Title }} {{ now.Format "2006"}}
-            - <a class="mysocial" href="https://github.com/hollson/dooz">Hugo Theme</a>
+            - <a class="mysocial" href="https://github.com/hollson/hugo-theme-dooz">Hugo Theme</a>
         </p>
     </div>
 </footer>
@@ -34,7 +34,7 @@
     var _hmt = _hmt || [];
     (function () {
         var hm = document.createElement("script");
-        hm.src = 'https://hm.baidu.com/hm.js?{{if strings.HasSuffix .Site.BaseURL "gitee.io"}}{{.Site.Params.analyze_baidu_gitee}}{{else}}{{.Site.Params.analyze_baidu_mafool}}{{end}}';
+        hm.src = 'https://hm.baidu.com/hm.js?{{.Site.Params.analyze_baidu}}';
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
