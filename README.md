@@ -1,10 +1,7 @@
 
 > [**中文文档**](./README-ZH.md)  
 
-<br/>
 
-## Sample Site
-http://hollson.mafool.com
 
 <br/>
 
@@ -14,6 +11,11 @@ Dooz is a simple and elegant hugo theme specially designed for programmers or co
 
 ![screenshot](static/tmp/screenshot.jpg)
 
+
+<br/>
+
+## Sample Site
+http://hollson.mafool.com
 
 <br/>
 
