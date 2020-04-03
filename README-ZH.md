@@ -1,11 +1,15 @@
-> [English](./README.md)
+> [English Doc](./README.md)
+
+
+
+## Hugo主题 - Dooz
+**Dooz是一个简单优雅的hugo主题，专门为`程序员`或`专栏作家`设计。**
+
+![screenshot](static/tmp/screenshot.jpg)
 
 ## 示例站点
 http://hollson.mafool.com
 
-## Hugo主题 - Dooz
-Dooz是一个简单优雅的hugo主题，专门为`程序员`或`专栏作家`设计。
-![screenshot](static/tmp/screenshot.jpg)
 
 ## 安装主题
 提前安装好Hugo，具体可参考[官方安装文档](https://gohugo.io/getting-started/installing/)。
