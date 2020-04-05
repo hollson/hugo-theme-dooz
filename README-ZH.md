@@ -219,4 +219,4 @@ home = ["HTML", "RSS", "JSON"]
 ## 贡献
 您是否发现了错误或对新功能有想法？随时使用[问题跟踪工具](https://github.com/hollson/hugo-theme-dooz/issues)让我知道。或直接[提出请求](https://github.com/hollson/hugo-theme-dooz/pulls)。 你也可以添加微信向我咨询一切问题：
 
-![hollson](/static/img/reward/wechat.jpg)
+![hollson](/static/img/reward/wechat.png)
