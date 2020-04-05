@@ -22,6 +22,18 @@
                     </svg>
                 </span>
             </a>&nbsp;
+
+            <a href="javascript:void(0);" class="modal-wechat" data-target="modal-bis">
+                <span class="icon is-large">
+                    <svg t="1585983481253" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        p-id="8263" width="38" height="38">
+                        <path
+                            d="M512 0Q294 5 149.5 149.5T0 512q5 218 149.5 362.5T512 1024q218-5 362.5-149.5T1024 512q-5-218-149.5-362.5T512 0z m-74 523q0 1-1 2l-12 38-3 50 8 42-12 1h-22q-10 0-21-2l-12-2-46-9-7 4-4-2-80 41 32-80-46-40-32-43-21-58-3-50 9-47 28-57 30-35 28-23 35-20 43-17 23-6 23-4q17-1 34-1h2q17 0 34 1l13 2 26 6 30 9 29 13 31 19 41 36 10 11 19 30 22 57-14-1h-23q-10 1-19 2l-20 4-20 6-28 11-28 17-35 30-18 22-19 38-4 5z m434 72v11l-3 19-26 59-31 39-29 26 20 68-69-41-6 2-45 10-16 1h-20q-9 0-19-1l-11-2-16-3-22-7-30-13-28-17-31-28-20-26-24-59-4-55 4-22 25-59 30-37 42-31 37-16 29-8 20-4q14-1 29-1h1q14 0 27 1l11 2 16 3 21 7 30 13 29 18 32 29 20 26q1 0 1 1l25 61 4 34h-3z m-287-83q-10 0-17.5 7.5T560 537q0 10 7.5 17.5T585 562q15 0 23.5-7.5T617 537q0-10-8.5-17.5T585 512z m140 0q-10 0-17.5 7.5T700 537q0 10 7.5 17.5T725 562q15 0 23.5-7.5T757 537q0-10-8.5-17.5T725 512zM324 327q-15 0-26 8.5t-11 23q0 14.5 11 23t26 8.5q15 0 23.5-8.5t8.5-23q0-14.5-8.5-23T324 327z m179 0q-15 0-26.5 8.5t-11.5 23q0 14.5 11.5 23t26 8.5q14.5 0 23-8.5t8.5-23q0-14.5-8.5-23T503 327z"
+                            fill="#8a8a8a" p-id="8264"></path>
+                    </svg>
+                </span>
+            </a>&nbsp;
+
             <a href="{{.Site.Params.CSDN}}" target="_blank">
                 <span class="icon is-large">
                     <svg t="1585929761171" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -32,6 +44,7 @@
                     </svg>
                 </span>
             </a>&nbsp;
+
             <a href="{{.Site.Params.Cnblog}}" target="_blank">
                 <span class="icon is-large">
                     <svg t="1585929921096" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -44,4 +57,15 @@
             </a>
         </div>
     </div>
+</div>
+
+<!-- <div class="modal is-active"></div> -->
+<div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content" style="max-width: 430px;">
+        <p class="image">
+            <img src="{{.Site.Params.Wechat}}" alt="hollson">
+        </p>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
 </div>

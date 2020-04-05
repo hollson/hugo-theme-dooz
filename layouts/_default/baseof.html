@@ -12,12 +12,20 @@
         content='{{ if .Keywords }}{{delimit .Keywords ","}}{{ else }}{{.Site.Params.keywords}}{{ end }}'>
     <meta name="description" content="{{if .IsHome}}{{ $.Site.Params.description }}{{else}}{{.Description}}{{end}}" />
 
+    <!-- 百度资源提交校验 https://ziyuan.baidu.com/site/siteverify -->
+    <meta name="baidu-site-verification" content="v9szEmQLra" />
+    <meta name="360-site-verification" content="d8e961f98fb655e4b8cf9439cfd9ac7f" />
+    <meta name="sogou_site_verification" content="40NC9EdZDC" />
+    <meta name="shenma-site-verification" content="3200e3042e92157713a3b0aceeecb20a_1586020187" />
+    <meta name="google-site-verification" content="r8987bkunZHJeKut3ocu5NIJ5QEu53NA6Q_r7RrZ46c" />
+    <meta name="msvalidate.01" content="893A2865ABC54AC2782D118536831056" />
+
     <!--Head Common-->
     <link rel="shortcut icon" href="{{ "img/res/favicon.ico" | relURL }}">
     <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> -->
 
-    <link crossorigin="anonymous" integrity="sha384-+pqJl+lfXqeZZHwVRNTbv2+eicpo+1TR/AEzHYYDKfAits/WRK21xLOwzOxZzJEZ"
-        href="https://lib.baomitu.com/font-awesome/5.11.2/css/fontawesome.min.css" rel="stylesheet">
+    <!-- <link crossorigin="anonymous" integrity="sha384-+pqJl+lfXqeZZHwVRNTbv2+eicpo+1TR/AEzHYYDKfAits/WRK21xLOwzOxZzJEZ"
+        href="https://lib.baomitu.com/font-awesome/5.11.2/css/fontawesome.min.css" rel="stylesheet"> -->
 
     <link crossorigin="anonymous" integrity="sha384-5kGFOAqgEKnuF6c2jk2JANKHZgYVt38Wn2dVJENtq1EBCP54/1uzXU5mpxqL8WjN"
         href="https://lib.baomitu.com/bulma/0.8.0/css/bulma.min.css" rel="stylesheet">
@@ -50,6 +58,14 @@
                 $(this).attr('target', '_blank');
             });
         });
+
+        $(document).on('click', '.modal-wechat', function () {
+            $(".modal").addClass("is-active");
+        });
+
+        $(document).on('click', '.modal-background', function () {
+            $(".modal").removeClass("is-active");
+        });
     </script>
 </head>
 
@@ -72,7 +88,7 @@
     <!--Foot Extend：Some references that must be placed at the end, such as the reward script-->
     {{ block "footex" . }}{{ end }}
     <!-- <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script> -->
-    <script defer src="/js/fontawesome.all.js"></script>
+    <script defer src="https://cdn.staticfile.org/font-awesome/5.13.0/js/all.min.js"></script>
 </body>
 
 </html>

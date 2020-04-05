@@ -1,9 +1,19 @@
-$(document).ready(function () {
-    //为超链接加上target='_blank'属性
-    $('.content a[href^="http"]').each(function () {
-        $(this).attr('target', '_blank');
-    });
-});
+// $(document).ready(function () {
+//     $('.content a[href^="http"]').each(function () {
+//         $(this).attr('target', '_blank');
+//     });
+
+//     $(document).on('click', '.modal-wechat', function () {
+//         $(".wechating").addClass("is-active");
+//     });
+
+//     $(document).on('click', '.modal-background', function () {
+//         $(".wechating").removeClass("is-active");
+//     });
+
+// });
+
+
 
 // Adaptive mobile terminal
 // https://bulma.io/documentation/components/navbar/
