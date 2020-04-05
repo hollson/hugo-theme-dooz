@@ -9,7 +9,7 @@
 <br/>
 
 ## 示例站点
-http://hollson.mafool.com
+http://www.mafool.com
 
 
 <br/>
