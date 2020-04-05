@@ -1,5 +1,5 @@
 
-> ### Hugo Dooz主题[**中文文档**](./README-ZH.md)  - 码农的专属博客
+> #### Hugo Dooz主题[**中文文档**](./README-ZH.md)  - 码农的专属博客
 
 
 <br/>
