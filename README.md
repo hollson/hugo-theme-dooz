@@ -1,7 +1,6 @@
 
 > #### [**Hugo Dooz主题中文文档**](./README-ZH.md)  - 码农的专属博客
 
-
 <br/>
 
 ## Dooz Theme for Hugo
