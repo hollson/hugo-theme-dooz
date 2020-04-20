@@ -4,7 +4,7 @@
 ## Hugo主题 - Dooz
 **Dooz是一个简单优雅的hugo主题，专门为`程序员`或`专栏作家`设计。**
 
-![screenshot](static/tmp/screenshot.jpg)
+![screenshot](images/tn.png)
 
 <br/>
 

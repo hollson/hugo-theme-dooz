@@ -4,18 +4,11 @@
 name = "Dooz"
 license = "MIT"
 licenselink = "https://github.com/hollson/hugo-theme-dooz/blob/master/LICENSE"
-description = ""
+description = "Dooz is a simple and elegant hugo theme specially designed for programmers or columnists."
 homepage = "http://www.mafool.com/"
-tags = []
-features = []
+tags = ["blog","tech"]
 min_version = "0.41"
 
 [author]
   name = "hollson"
-  homepage = ""
-
-# If porting an existing theme
-[original]
-  name = ""
-  homepage = ""
-  repo = ""
+  homepage = "http://www.mafool.com/"
