@@ -1,7 +1,8 @@
 > [English Doc](./README.md)
 
+<br/>
 
-## Hugo主题 - Dooz
+## Hugo主题 - Dooz     
 **Dooz是一个简单优雅的hugo主题，专门为`程序员`或`专栏作家`设计。**
 
 ![screenshot](images/tn.png)
@@ -9,7 +10,7 @@
 <br/>
 
 ## 示例站点
-http://hollson.mafool.com
+http://www.mafool.com
 
 
 <br/>

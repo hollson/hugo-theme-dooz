@@ -1,5 +1,5 @@
 
-> #### Hugo Dooz主题[**中文文档**](./README-ZH.md)  - 码农的专属博客
+> #### [**Hugo Dooz主题中文文档**](./README-ZH.md)  - 码农的专属博客
 
 
 <br/>
@@ -14,7 +14,7 @@ Dooz is a simple and elegant hugo theme specially designed for programmers or co
 <br/>
 
 ## Sample Site
-http://hollson.mafool.com
+http://www.mafool.com
 
 <br/>
 
