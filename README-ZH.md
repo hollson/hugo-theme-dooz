@@ -35,7 +35,7 @@ $ git submodule add git@github.com:hollson/hugo-theme-dooz.git themes/hugo-theme
 
 在`hugo-theme-dooz`目录下又一个`exampleSite`文件，将里面的内容拷贝到站点根目录：
 ```shell
-$ cp -rp ./themes/dooz/exampleSite/* ./
+$ cp -rp ./themes/hugo-theme-dooz/exampleSite/* ./
 $ hugo server -w  # 启动服务
 ```
 这时候，就可以在浏览器打开[`http://localhost:1313`](http://localhost:1313)， 看到上图的演示界面了。
