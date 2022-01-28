@@ -22,10 +22,10 @@ http://www.mafool.com
 ```shell
 $ hugo new site myblog 
 $ cd myblog
-$ git clone git@github.com:hollson/hugo-theme-dooz.git themes/dooz
+$ git clone git@github.com:hollson/hugo-theme-dooz.git themes/hugo-theme-dooz
 
 # 也可以在现有的站点下添加git子模块
-$ git submodule add git@github.com:hollson/hugo-theme-dooz.git themes/dooz
+$ git submodule add git@github.com:hollson/hugo-theme-dooz.git themes/hugo-theme-dooz
 ```
 
 <br/>

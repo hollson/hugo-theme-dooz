@@ -1,8 +1,11 @@
 ---
-title: "史宏生"
-archives: "" #不做任何归档
+title: "About"
+date: 2020-03-20
+archives: ""
 author: Hollson
+weight: 1  #按权重从大到小
 ---
+
 
 [![](/img/my/wechat.jpg "史宏生")](https://github.com/hollson)
 
