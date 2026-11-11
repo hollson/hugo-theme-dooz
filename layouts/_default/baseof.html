@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ $.Site.LanguageCode | default "en" }}">
+<html lang="{{ $.Site.Language.Locale | default "en" }}">
 
 <head>
     <meta charset="utf-8">
@@ -11,6 +11,15 @@
     <meta name="keywords"
         content='{{ if .Keywords }}{{delimit .Keywords ","}}{{ else }}{{.Site.Params.keywords}}{{ end }}'>
     <meta name="description" content="{{if .IsHome}}{{ $.Site.Params.description }}{{else}}{{.Description}}{{end}}" />
+
+    <!--Open Graph / Twitter-->
+    <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+    <meta property="og:description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    {{ with .Params.images }}<meta property="og:image" content="{{ index . 0 | absURL }}">{{ end }}
+    {{ with .Params.image }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
+    <meta name="twitter:card" content="summary_large_image">
 
     <!-- 百度资源提交校验 https://ziyuan.baidu.com/site/siteverify -->
     <meta name="baidu-site-verification" content="v9szEmQLra" />
@@ -27,12 +36,10 @@
     <!-- <link crossorigin="anonymous" integrity="sha384-+pqJl+lfXqeZZHwVRNTbv2+eicpo+1TR/AEzHYYDKfAits/WRK21xLOwzOxZzJEZ"
         href="https://lib.baomitu.com/font-awesome/5.11.2/css/fontawesome.min.css" rel="stylesheet"> -->
 
-    <link crossorigin="anonymous" integrity="sha384-5kGFOAqgEKnuF6c2jk2JANKHZgYVt38Wn2dVJENtq1EBCP54/1uzXU5mpxqL8WjN"
-        href="https://lib.baomitu.com/bulma/0.8.0/css/bulma.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://lib.baomitu.com/bulma/0.9.4/css/bulma.min.css" />
 
     <link rel="stylesheet" href="{{ "css/dooz.blog.css" | relURL }}" />
-    <script crossorigin="anonymous" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh"
-        src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://lib.baomitu.com/jquery/3.7.1/jquery.min.js"></script>
 
     <!-- share -->
     {{if .Site.Params.OpenShare}}
@@ -83,7 +90,7 @@
     <!--Foot Extend：Some references that must be placed at the end, such as the reward script-->
     {{ block "footex" . }}{{ end }}
     <!-- <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script> -->
-    <script defer src="https://cdn.staticfile.org/font-awesome/5.13.0/js/all.min.js"></script>
+    <script defer src="https://cdn.staticfile.org/font-awesome/5.15.4/js/all.min.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,24 @@
+{{ define "header" }}
+{{ partial "header-norm" . }}
+{{ end }}
+
+{{ define "main" }}
+<div class="columns">
+  <div class="column is-9">
+    <div class="tile is-child box">
+      <div class="content">
+        <h2 class="title is-4">{{ .Title }}</h2>
+        <ul class="widget-list">
+        {{ range .Data.Terms.Alphabetical }}
+          <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a> ({{ .Count }})</li>
+        {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="column is-3">
+    {{ partial "widget-recent.html" . }}<br>
+    {{ partial "widget-category" . }}
+  </div>
+</div>
+{{ end }}

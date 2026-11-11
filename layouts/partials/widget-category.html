@@ -3,7 +3,7 @@
         <h2 class="title is-6">{{i18n "categories"}}</h2>
         <ul class="widget-list">
             {{ range .Site.Taxonomies.categories }}
-            <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a></li>
+            <li><a href="{{ "categories" | relURL }}/{{ .Page.Title | urlize }}">{{ .Page.Title }} ({{ .Count }})</a></li>
             {{ end }}
         </ul>
     </div>

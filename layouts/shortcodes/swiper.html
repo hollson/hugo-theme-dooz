@@ -27,7 +27,7 @@
   'use strict';
 
   document.addEventListener('DOMContentLoaded', function () {
-    {{ $swiper := .Site.Data.swiper }}
+    {{ $swiper := hugo.Data.swiper }}
     var options = JSON.parse({{ $swiper | jsonify }});
     {{ $optionName := .Params.option }}
     var optionName = JSON.parse({{ $optionName | jsonify }});

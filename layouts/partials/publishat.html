@@ -1,9 +1,13 @@
 <p class="subtitle is-size-6 has-text-grey-light" style="font-style: italic;">
-    {{ if  eq .Site.Language.Lang "zh"}}
+    {{ $author := .Params.author | default .Site.Params.Author }}
+    {{ if $author }}<i class="far fa-user"></i>&nbsp;{{ $author }}&nbsp;&middot;&nbsp;{{ end }}
+    {{ if eq .Site.Language.Lang "zh"}}
     {{i18n "PublishedAt"}} {{ .Date.Format "2006年1月2日," }}
-    {{ index .Site.Data.mois (printf "%s" .Date.Weekday) }} &middot;
+    {{ index hugo.Data.mois (printf "%s" .Date.Weekday) }} &middot;
     {{ else }}
     Published at {{ .Date.Format "Monday, January 2, 2006" }} &middot;
     {{ end }}
+    {{ if and .Lastmod (ne .Lastmod .Date) }}<span title="更新于 {{ .Lastmod.Format "2006年1月2日" }}">（已更新）</span>{{ end }}
     <i class="far fa-clock"></i>&nbsp; {{i18n "readingTime" .ReadingTime}}
+    {{ with .Params.categories }}&nbsp;&middot;&nbsp;{{ range . }}<a class="has-text-grey-light" href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>&nbsp;{{ end }}{{ end }}
 </p>

@@ -24,7 +24,7 @@
                     {{ .Title }}
                     {{ end }}
                 </h1>
-                {{ if eq .Type "article" }}
+                {{ if eq .Type "post" }}
                 {{ .Date.Format "January 2, 2006" }} &middot;&nbsp;{{ .ReadingTime }} min read
                 {{ end }}
                 <span class="title is-size-6" style="font-style: italic;"> {{.Params.subtitle}}</span><br>

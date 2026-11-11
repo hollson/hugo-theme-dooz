@@ -1,4 +1,4 @@
-{{ range first 1 (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
+{{ range first 1 (where (where .Site.RegularPages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
 {{ $.Scratch.Set "has_related" true }}
 {{ end }}
 
@@ -7,7 +7,7 @@
   <div class="card-content">
     <h2 class="title is-6">{{i18n "related"}}</h2>
     {{ $num_to_show := .Site.Params.related_content_limit | default 10 }}
-    {{ range first $num_to_show (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
+    {{ range first $num_to_show (where (where .Site.RegularPages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
     <h2><a href="{{ .Permalink | relURL }}">{{ .Title }}</a></h2>
     <time class="has-text-grey-light is-size-7">{{ .Date.Day }} {{ .Date.Month }} {{ .Date.Year }}</time>
     {{ end }}

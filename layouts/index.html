@@ -46,7 +46,7 @@
                     <div class="media-content">
                         <div class="content">
                             <p class="title is-4">
-                                <a href="{{.Permalink}}" title="{{.LinkTitle}}">{{.LinkTitle}}</a></p>
+                                <a href="{{.RelPermalink}}" title="{{.LinkTitle}}">{{.LinkTitle}}</a></p>
                             {{ partial "publishat" . }}
                             <p>{{ with .Description }} {{.}} {{ else }} {{.Summary}} {{end}}</p>
                         </div>
