@@ -8,7 +8,12 @@
         (dict "name" "GitHub" "url" "https://github.com")
         (dict "name" "Stack Overflow" "url" "https://stackoverflow.com")
         (dict "name" "掘金" "url" "https://juejin.cn")
-        (dict "name" "Hugo" "url" "https://gohugo.io")))
+        (dict "name" "Hacker News" "url" "https://news.ycombinator.com")))
+    (dict "title" "前沿技术" "items" (slice
+        (dict "name" "Hugging Face" "url" "https://huggingface.co")
+        (dict "name" "PyTorch" "url" "https://pytorch.org")
+        (dict "name" "LangChain" "url" "https://www.langchain.com")
+        (dict "name" "Kubernetes" "url" "https://kubernetes.io")))
 -}}
 {{- end -}}
 
@@ -49,7 +54,7 @@
 
                 <div class="footer-col footer-col-sub">
                     <h3 class="footer-title">订阅与更新</h3>
-                    <p class="footer-note">{{ with .Site.Params.timeOfMonth }}自 {{ . }} 起{{ end }}持续更新，不追热点，只写踩过的坑。订阅 RSS 可第一时间收到新文章。</p>
+                    <p class="footer-note">{{ with .Site.Params.timeOfMonth }}自 {{ . }} 起，{{ end }}只写踩过的坑。</p>
                     {{ with .Site.Home.OutputFormats.Get "rss" }}
                     <a class="footer-subscribe" href="{{ .RelPermalink }}">
                         {{ partial "icon" (dict "name" "rss" "size" 15) }}<span>订阅 RSS</span>
