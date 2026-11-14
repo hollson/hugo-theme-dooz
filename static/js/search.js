@@ -63,6 +63,19 @@
     });
     input.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') { close(); input.blur(); }
+        if (e.key === 'Enter') {
+            var first = box.querySelector('.search-item');
+            if (first) window.location.href = first.getAttribute('href');
+        }
+    });
+
+    /* 结果项点击显式跳转，避免被上层元素拦截默认行为 */
+    box.addEventListener('click', function (e) {
+        var item = e.target.closest ? e.target.closest('.search-item') : null;
+        if (item) {
+            e.preventDefault();
+            window.location.href = item.getAttribute('href');
+        }
     });
     document.addEventListener('click', function (e) {
         if (!root.contains(e.target)) close();

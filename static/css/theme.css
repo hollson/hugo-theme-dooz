@@ -200,8 +200,12 @@ article.media:hover {
     pointer-events: none;
 }
 
-/* 内容层压在遮罩之上 */
-.hero-head,
+/* 内容层压在遮罩之上；导航层必须高于正文层，否则搜索结果面板会被正文区挡住点击 */
+.hero-head {
+    position: relative;
+    z-index: 5;
+}
+
 .hero-body {
     position: relative;
     z-index: 1;
@@ -398,8 +402,10 @@ body {
 .nav-search .search-results {
     top: calc(100% + 6px);
     left: 0;
-    width: 320px;
     right: auto;
+    width: 300px;
+    max-width: calc(100vw - 2rem);
+    text-align: left;
 }
 
 @media screen and (max-width: 1023px) {
