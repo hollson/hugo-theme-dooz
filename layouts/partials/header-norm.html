@@ -13,7 +13,7 @@
                 {{ end }}
                 <h1 class="title is-size-2" style="margin-bottom:0.2rem;">
                     {{ if eq .Type "tags" }}
-                    Tag# {{ .Title }}
+                    {{ if eq .Kind "taxonomy" }}{{i18n "tags"}}{{ else }}{{ .Title }}{{ end }}
                     {{ else if eq .Type "archives" }}
                     Archive@ {{ .Title }}
                     {{ else if eq .Type "categories" }}

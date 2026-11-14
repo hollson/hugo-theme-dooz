@@ -3,22 +3,31 @@
 {{ end }}
 
 {{ define "main" }}
-<div class="columns">
-  <div class="column is-9">
-    <div class="tile is-child box">
-      <div class="content">
-        <h2 class="title is-4">{{ .Title }}</h2>
-        <ul class="widget-list">
-        {{ range .Data.Terms.Alphabetical }}
-          <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a> ({{ .Count }})</li>
+{{- $posts := len (where site.RegularPages "Section" "post") -}}
+<div class="container">
+    <div class="section tag-page">
+        {{ if .Data.Terms }}
+        <p class="tag-summary">
+            <span>共 <strong>{{ len .Data.Terms }}</strong> 个标签</span>
+            <span class="tag-dot">·</span>
+            <span><strong>{{ $posts }}</strong> 篇文章</span>
+            <span class="tag-dot">·</span>
+            <span>按使用频率排列</span>
+        </p>
+
+        <div class="tag-cloud">
+            {{ range .Data.Terms.ByCount }}
+            {{ $c := .Count }}
+            {{ $w := cond (gt $c 12) 12 $c }}
+            <a class="tag-pill" style="--w: {{ $w }}" href="{{ .Page.RelPermalink }}">
+                <span class="tag-pill-name">{{ .Page.Title }}</span>
+                <span class="tag-pill-count">{{ $c }}</span>
+            </a>
+            {{ end }}
+        </div>
+        {{ else }}
+        <p class="tag-summary">还没有标签。</p>
         {{ end }}
-        </ul>
-      </div>
     </div>
-  </div>
-  <div class="column is-3">
-    {{ partial "widget-recent.html" . }}<br>
-    {{ partial "widget-category" . }}
-  </div>
 </div>
 {{ end }}
