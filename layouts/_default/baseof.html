@@ -39,12 +39,11 @@
     <link rel="stylesheet" href="https://lib.baomitu.com/bulma/0.9.4/css/bulma.min.css" />
 
     <link rel="stylesheet" href="{{ "css/dooz.blog.css" | relURL }}" />
-    <script src="https://lib.baomitu.com/jquery/3.7.1/jquery.min.js"></script>
 
     <!-- share -->
     {{if .Site.Params.OpenShare}}
     <link rel="stylesheet" href="/css/share.min.css" />
-    <script src="/js/jquery.share.min.js"></script>
+    <script src="/js/share.js"></script>
     {{end}}
 
     <!--Head Extend-->
@@ -53,22 +52,6 @@
     <link href="/css/fonts.googleapi.css" rel="stylesheet">
     <script src={{"js/dooz.blog.js"|relURL}}></script>
 
-    <!--if  Site.Params.Href_Blank -->
-    <script>
-        $(document).ready(function () {
-            $('.content a[href^="http"]').each(function () {
-                $(this).attr('target', '_blank');
-            });
-        });
-
-        $(document).on('click', '.modal-wechat', function () {
-            $(".modal").addClass("is-active");
-        });
-
-        $(document).on('click', '.modal-background', function () {
-            $(".modal").removeClass("is-active");
-        });
-    </script>
 </head>
 
 <body>

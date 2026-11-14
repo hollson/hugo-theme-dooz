@@ -1,19 +1,26 @@
-// $(document).ready(function () {
-//     $('.content a[href^="http"]').each(function () {
-//         $(this).attr('target', '_blank');
-//     });
+// 零依赖实现：外链新窗口打开、微信弹窗开关（原 jQuery 版行为不变）
+document.addEventListener('DOMContentLoaded', () => {
+    // 正文外链加 target=_blank 与 rel=noopener
+    document.querySelectorAll('.content a[href^="http"]').forEach(a => {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener');
+    });
 
-//     $(document).on('click', '.modal-wechat', function () {
-//         $(".wechating").addClass("is-active");
-//     });
+    // 打开微信弹窗
+    document.querySelectorAll('.modal-wechat').forEach(el => {
+        el.addEventListener('click', () => {
+            document.querySelectorAll('.modal').forEach(m => m.classList.add('is-active'));
+        });
+    });
 
-//     $(document).on('click', '.modal-background', function () {
-//         $(".wechating").removeClass("is-active");
-//     });
-
-// });
-
-
+    // 点击遮罩关闭弹窗
+    document.querySelectorAll('.modal-background').forEach(el => {
+        el.addEventListener('click', () => {
+            const modal = el.closest('.modal');
+            if (modal) modal.classList.remove('is-active');
+        });
+    });
+});
 
 // Adaptive mobile terminal
 // https://bulma.io/documentation/components/navbar/
@@ -37,5 +44,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
-
