@@ -1,4 +1,4 @@
-/* 站点内搜索：读取 /index.json，纯前端过滤，无第三方依赖 */
+/* 站点内搜索：读取 /index.json，标题与正文匹配，结果带上下文片段并高亮关键词 */
 (function () {
     'use strict';
 
@@ -11,17 +11,45 @@
     var pages = null;
     var failed = false;
 
-    function escapeHtml(str) {
+    function esc(str) {
         return String(str).replace(/[&<>"']/g, function (c) {
             return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
         });
     }
 
+    /* 在文本中高亮第一个命中词 */
+    function highlight(text, q) {
+        var lower = text.toLowerCase();
+        var i = lower.indexOf(q.toLowerCase());
+        if (i === -1) return esc(text);
+        return esc(text.slice(0, i)) +
+            '<mark>' + esc(text.slice(i, i + q.length)) + '</mark>' +
+            esc(text.slice(i + q.length));
+    }
+
+    /* 截取关键词附近的上下文，前后各留一段，命中词高亮 */
+    function snippet(content, q) {
+        if (!content) return '';
+        var lower = content.toLowerCase();
+        var i = lower.indexOf(q.toLowerCase());
+        if (i === -1) {
+            return esc(content.slice(0, 110)) + (content.length > 110 ? '…' : '');
+        }
+        var start = Math.max(0, i - 50);
+        var end = Math.min(content.length, i + q.length + 90);
+        return (start > 0 ? '…' : '') +
+            esc(content.slice(start, i)) +
+            '<mark>' + esc(content.slice(i, i + q.length)) + '</mark>' +
+            esc(content.slice(i + q.length, end)) +
+            (end < content.length ? '…' : '');
+    }
+
     function load() {
         if (pages || failed) return;
+        failed = true;
         fetch(indexUrl)
             .then(function (r) { return r.json(); })
-            .then(function (data) { pages = data || []; })
+            .then(function (data) { pages = data || []; failed = false; })
             .catch(function () { failed = true; });
     }
 
@@ -32,21 +60,28 @@
 
     function render(q) {
         if (!pages) return;
-        var lower = q.toLowerCase();
+        var ql = q.toLowerCase();
         var hits = [];
-        for (var i = 0; i < pages.length && hits.length < 8; i++) {
+
+        for (var i = 0; i < pages.length; i++) {
             var p = pages[i];
             var t = (p.title || '').toLowerCase();
             var c = (p.content || '').toLowerCase();
-            if (t.indexOf(lower) !== -1 || c.indexOf(lower) !== -1) hits.push(p);
+            var inTitle = t.indexOf(ql) !== -1;
+            var inBody = c.indexOf(ql) !== -1;
+            if (inTitle || inBody) hits.push({ page: p, score: inTitle ? 2 : 1 });
         }
+
+        hits.sort(function (a, b) { return b.score - a.score; });
+
         if (!hits.length) {
             box.innerHTML = '<div class="search-empty">没有匹配的文章</div>';
         } else {
-            box.innerHTML = hits.map(function (p) {
-                return '<a class="search-item" href="' + escapeHtml(p.url) + '">' +
-                    '<span class="search-title">' + escapeHtml(p.title) + '</span>' +
-                    '<span class="search-date">' + escapeHtml(p.date || '') + '</span>' +
+            box.innerHTML = hits.slice(0, 8).map(function (h) {
+                var p = h.page;
+                return '<a class="search-item" href="' + esc(p.url) + '">' +
+                    '<span class="search-title">' + highlight(p.title || '', q) + '</span>' +
+                    '<span class="search-snippet">' + snippet(p.content || '', q) + '</span>' +
                     '</a>';
             }).join('');
         }
@@ -77,6 +112,7 @@
             window.location.href = item.getAttribute('href');
         }
     });
+
     document.addEventListener('click', function (e) {
         if (!root.contains(e.target)) close();
     });

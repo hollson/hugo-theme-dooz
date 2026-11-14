@@ -5,8 +5,7 @@
 {{- dict
     "title" $p.LinkTitle
     "url" $p.RelPermalink
-    "date" ($p.Date.Format "2006-01-02")
-    "content" ($p.Plain | truncate 200)
+    "content" ($p.Plain | replaceRE "\\s+" " " | truncate 6000)
   | jsonify -}}
 {{- end }}
 ]

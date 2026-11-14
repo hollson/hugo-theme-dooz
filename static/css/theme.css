@@ -347,15 +347,28 @@ body {
 .search-title {
     display: block;
     font-size: 0.875rem;
+    font-weight: 600;
     color: var(--c-ink);
-    line-height: 1.4;
+    line-height: 1.45;
 }
 
-.search-date {
-    display: block;
-    font-size: 0.75rem;
+/* 正文片段：关键词附近的上下文，最多两行 */
+.search-snippet {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin-top: 3px;
+    font-size: 0.78rem;
+    line-height: 1.6;
     color: var(--c-ink-soft);
-    margin-top: 2px;
+}
+
+.search-item mark {
+    padding: 0 2px;
+    border-radius: 2px;
+    background-color: rgba(15, 118, 110, 0.14);
+    color: var(--c-accent-strong);
 }
 
 .search-empty {
@@ -403,7 +416,7 @@ body {
     top: calc(100% + 6px);
     left: 0;
     right: auto;
-    width: 300px;
+    width: 340px;
     max-width: calc(100vw - 2rem);
     text-align: left;
 }
