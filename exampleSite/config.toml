@@ -31,7 +31,6 @@ metaDataFormat = "toml"
       #author= "shongsheng" #replace the dedault param
       homeTitle="Programmer's Exclusive Blog" 
       slogan="A Hugo theme for programmers."
-      title_404="Sorry, page was not found."
 
 [outputs]
 #home = ["HTML", "RSS"]
@@ -62,8 +61,6 @@ home = ["HTML", "RSS", "JSON"]
   timeOfDay="2006年1月2日"
   hero = "img/res/hero.jpg"
   slogan = "提升码农亩产，掰直码农方向，授人以渔，功德无量，利在千秋 。"
-  image_404 = "img/res/404.jpg"
-  title_404 = "你来到了没有知识的荒原 :("
   openShare= true
   
   #百度统计

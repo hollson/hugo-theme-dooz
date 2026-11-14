@@ -1233,3 +1233,86 @@ body {
     color: var(--c-accent, #0f766e);
     border-color: var(--c-accent, #0f766e);
 }
+
+/* ===== 404：保留站点头图，内容与站点同色系 ===== */
+.nf-page {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 23.4rem ≈ header-home 的 hero 高度，首屏刚好是 banner + 404 区 */
+    min-height: max(24rem, calc(100vh - 23.4rem));
+    padding: 3.4rem 1.5rem;
+    background: var(--c-bg, #f7f7f5);
+    color: var(--c-ink, #1c2724);
+}
+
+.nf-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.nf-kicker {
+    margin: 0;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--c-accent, #0f766e);
+}
+
+.nf-code {
+    margin: 1.1rem 0 0.45rem;
+    font-size: clamp(5.5rem, 15vw, 10rem);
+    line-height: 0.9;
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    color: var(--c-ink, #1c2724);
+    user-select: none;
+}
+
+.nf-title {
+    margin: 1.3rem 0 0.9rem;
+    font-size: clamp(1.25rem, 2.1vw, 1.5rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--c-ink, #1c2724);
+}
+
+.nf-title::after {
+    content: "";
+    display: block;
+    width: 42px;
+    height: 2px;
+    margin: 0.9rem auto 0;
+    background: var(--c-accent, #0f766e);
+    opacity: 0.75;
+}
+
+body.page-404 {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--c-bg, #f7f7f5);
+}
+
+body.page-404 > .container {
+    width: 100%;
+    max-width: none;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+body.page-404 > .container > .section {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+@media (max-width: 640px) {    .nf-page {
+        padding: 2.8rem 1.25rem;
+    }
+}
+

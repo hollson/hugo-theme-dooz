@@ -1,22 +1,15 @@
+{{ define "bodyclass" }} class="page-404"{{ end }}
+
+{{ define "header" }}
+{{ partial "header-home" . }}
+{{ end }}
+
 {{ define "main" }}
-<!-- Page Header -->
-<header class="intro-header"
-    style="background-image: url('{{if .Site.Params.Image_404}}{{.Site.Params.Image_404|relURL}}{{else}}{{"/img/res/404.jpg"|relURL}}{{end}}')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading" id="tag-heading">
-                    <h1>404</h1>
-                    <span class="subheading">
-                        {{if .Site.Params.Title_404}}{{.Site.Params.Title_404}}{{else}}
-                        {{ "The page you're looking for doesn't exist. :("}}{{end}}
-                    </span>
-                </div>
-            </div>
-        </div>
+<section class="nf-page">
+    <div class="nf-inner">
+        <p class="nf-kicker">{{ i18n "pageNotFoundKicker" }}</p>
+        <div class="nf-code" aria-hidden="true">404</div>
+        <h1 class="nf-title">{{ i18n "pageNotFoundTitle" }}</h1>
     </div>
-</header>
-<script>
-    document.body.classList.add('page-fullscreen');
-</script>
+</section>
 {{ end }}

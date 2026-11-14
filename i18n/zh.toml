@@ -70,3 +70,8 @@ other="欢迎光临我的博客！"
 
 [yourName]
 other = "你的名字"
+[pageNotFoundKicker]
+other="404 · PAGE NOT FOUND"
+
+[pageNotFoundTitle]
+other="你来到了没有知识的荒原 :("

@@ -97,7 +97,6 @@ metaDataFormat = "toml"
       #author= "shongsheng" #replace the dedault param
       homeTitle="Programmer's Exclusive Blog" 
       slogan="A Hugo theme for programmers."
-      title_404="Sorry, page was not found."
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]
@@ -126,8 +125,6 @@ home = ["HTML", "RSS", "JSON"]
   timeOfDay="2006-01-02"
   hero = "img/res/hero.jpg"
   slogan = "A Hugo theme for programmers."
-  image_404 = "img/res/404.jpg"
-  title_404 = "Sorry, page was not found. :("
   openShare= true
 
   #SEO Info(meta info)
