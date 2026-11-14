@@ -33,6 +33,8 @@
         });
     }
 
+    var MAX_LINES = 20;
+
     function init() {
         var blocks = document.querySelectorAll('.content .highlight');
 
@@ -51,6 +53,28 @@
             btn.setAttribute('title', '复制代码');
             btn.innerHTML = ICON_COPY;
             wrap.appendChild(btn);
+
+            /* 超过 20 行的代码：限高 + 展开/收起 */
+            var codeText = getCode(block);
+            var lines = codeText ? codeText.split('\n').length : 0;
+            if (lines > MAX_LINES) {
+                wrap.classList.add('is-collapsed');
+
+                var toggle = document.createElement('button');
+                toggle.type = 'button';
+                toggle.className = 'code-toggle';
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.textContent = '展开全部（共 ' + lines + ' 行）';
+                wrap.appendChild(toggle);
+
+                toggle.addEventListener('click', function () {
+                    var collapsed = wrap.classList.toggle('is-collapsed');
+                    toggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+                    toggle.textContent = collapsed
+                        ? '展开全部（共 ' + lines + ' 行）'
+                        : '收起代码';
+                });
+            }
 
             btn.addEventListener('click', function () {
                 copy(getCode(block)).then(function () {
