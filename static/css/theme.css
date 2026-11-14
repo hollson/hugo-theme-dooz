@@ -450,3 +450,47 @@ body {
 .search-results::-webkit-scrollbar-track {
     background: transparent;
 }
+
+/* ============================================================
+ * 代码块复制按钮
+ * ============================================================ */
+.code-wrap {
+    position: relative;
+}
+
+.copy-code {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    color: rgba(248, 248, 242, 0.55);
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+}
+
+.copy-code:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.18);
+    opacity: 1;
+}
+
+.copy-code.is-copied {
+    color: #7dd3c7;
+    border-color: rgba(125, 211, 199, 0.5);
+    opacity: 1;
+}
+
+.copy-code:focus-visible {
+    outline: 2px solid #7dd3c7;
+    outline-offset: 1px;
+}
