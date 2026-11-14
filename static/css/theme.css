@@ -153,3 +153,32 @@ article.media:hover {
         box-shadow: none;
     }
 }
+
+/* ============================================================
+ * 正文排版（阶段 5a）
+ * 只调行高与标题间距，不改字号、列宽、页面结构
+ * ============================================================ */
+
+.content p,
+.content li,
+.content blockquote,
+.content figcaption {
+    line-height: 1.85;
+}
+
+/* 二级标题：下边框分隔，拉开上方留白 */
+.content h2 {
+    margin-top: 2.6rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--c-line);
+}
+
+/* 三级标题：略小留白，不加线 */
+.content h3 {
+    margin-top: 1.9rem;
+}
+
+/* 段落之间保持呼吸感 */
+.content p + p {
+    margin-top: 1.1rem;
+}
