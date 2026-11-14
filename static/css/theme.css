@@ -530,16 +530,17 @@ body {
 }
 
 /* ============================================================
- * 页脚（品牌 + 本站/社区两组链接 + 底栏）
+ * 页脚（品牌 + 本站 + 技术社区 + 订阅与数据 + 底栏）
  * ============================================================ */
 .footer {
     padding: 3rem 1.5rem 1.6rem;
+    background-image: linear-gradient(180deg, #182422 0%, #141e1c 100%);
 }
 
 .footer-main {
     display: grid;
-    grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(0, 1fr));
-    gap: 2.6rem;
+    grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr)) minmax(0, 1.25fr);
+    gap: 2.4rem;
     align-items: start;
 }
 
@@ -558,7 +559,7 @@ body {
 
 .footer-tagline {
     margin: 0.8rem 0 1.3rem;
-    max-width: 24rem;
+    max-width: 20rem;
     font-size: 0.95rem;
     line-height: 1.75;
     color: #9aa6a3;
@@ -567,7 +568,7 @@ body {
 .footer-social {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.35rem 1.4rem;
+    gap: 0.35rem 1.3rem;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -592,16 +593,30 @@ body {
 
 .footer-links {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem;
+    grid-column: 2 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem 1.6rem;
 }
 
 .footer-title {
-    margin: 0 0 0.75rem;
-    font-size: 0.84rem;
+    position: relative;
+    margin: 0 0 0.85rem;
+    padding-left: 0.65rem;
+    font-size: 0.86rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
-    color: #8b9b98;
+    letter-spacing: 0.06em;
+    color: #9fb0ac;
+}
+
+.footer-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.1em;
+    width: 2px;
+    height: 1em;
+    background-color: #7dd3c7;
+    opacity: 0.55;
 }
 
 .footer-col ul {
@@ -619,11 +634,71 @@ body {
     font-size: 0.97rem;
     color: #c3ccca;
     text-decoration: none;
-    transition: color 0.18s ease;
+    transition: color 0.18s ease, border-color 0.18s ease;
+    border-bottom: 1px solid transparent;
 }
 
 .footer-col a:hover {
     color: #7dd3c7;
+    border-bottom-color: rgba(125, 211, 199, 0.5);
+}
+
+.footer-note {
+    margin: 0 0 1.1rem;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: #8b9b98;
+}
+
+.footer-subscribe {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.95rem;
+    font-size: 0.9rem;
+    color: #d7e2df;
+    text-decoration: none;
+    background-color: rgba(125, 211, 199, 0.08);
+    border: 1px solid rgba(125, 211, 199, 0.28);
+    border-radius: 999px;
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.footer-subscribe:hover {
+    color: #ffffff;
+    background-color: rgba(125, 211, 199, 0.16);
+    border-color: rgba(125, 211, 199, 0.55);
+}
+
+.footer-subscribe svg {
+    flex: none;
+}
+
+.footer-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    list-style: none;
+    margin: 1.2rem 0 0;
+    padding: 0;
+}
+
+.footer-stats li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.footer-stats strong {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #e4ecea;
+    line-height: 1.3;
+}
+
+.footer-stats span {
+    font-size: 0.78rem;
+    color: #8b9b98;
 }
 
 .footer-bottom {
@@ -646,13 +721,17 @@ body {
     color: #7dd3c7;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
     .footer-main {
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
     }
 
     .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .footer-links {
         grid-column: 1 / -1;
     }
 }
@@ -667,8 +746,13 @@ body {
     }
 
     .footer-links {
+        grid-column: auto;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.6rem 1.2rem;
+        gap: 1.7rem 1.2rem;
+    }
+
+    .footer-col-sub {
+        grid-column: 1 / -1;
     }
 
     .footer-bottom {

@@ -51,6 +51,20 @@
                     </ul>
                 </div>
                 {{ end }}
+
+                <div class="footer-col footer-col-sub">
+                    <h3 class="footer-title">订阅与更新</h3>
+                    <p class="footer-note">{{ with .Site.Params.timeOfMonth }}自 {{ . }} 起{{ end }}持续更新，不追热点，只写踩过的坑。订阅 RSS 可第一时间收到新文章。</p>
+                    {{ with .Site.Home.OutputFormats.Get "rss" }}
+                    <a class="footer-subscribe" href="{{ .RelPermalink }}">
+                        {{ partial "icon" (dict "name" "rss" "size" 15) }}<span>订阅 RSS</span>
+                    </a>
+                    {{ end }}
+                    <ul class="footer-stats">
+                        <li><strong>{{ len (where site.RegularPages "Section" "post") }}</strong><span>篇文章</span></li>
+                        <li><strong>{{ len .Site.Taxonomies.categories }}</strong><span>个分类</span></li>
+                    </ul>
+                </div>
             </nav>
         </div>
 
