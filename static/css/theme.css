@@ -1037,3 +1037,192 @@ body {
         transform: none;
     }
 }
+
+/* ============================================================
+ * 归档页：竖向时间轴
+ * ============================================================ */
+.archive-page {
+    padding: 2rem 0 4.4rem;
+}
+
+.archive-timeline {
+    position: relative;
+    padding-left: 2.9rem;
+}
+
+.archive-timeline::before {
+    content: "";
+    position: absolute;
+    left: 0.78rem;
+    top: 0.55rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: linear-gradient(180deg,
+            rgba(15, 118, 110, 0.4) 0%,
+            #e9e7e2 22%,
+            #e9e7e2 82%,
+            rgba(233, 231, 226, 0) 100%);
+}
+
+.tl-year {
+    position: relative;
+    margin-bottom: 2.7rem;
+    animation: tag-rise 0.5s ease both;
+    animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+.tl-year::before {
+    content: "";
+    position: absolute;
+    left: -2.42rem;
+    top: 0.5rem;
+    width: 9px;
+    height: 9px;
+    background-color: var(--c-accent, #0f766e);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.1);
+}
+
+.tl-year-title {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    margin: 0 0 0.9rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--c-ink, #1c2724);
+}
+
+.tl-year-count {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #8b9794;
+}
+
+.tl-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tl-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+    margin-left: -0.7rem;
+    padding: 0.42rem 0.7rem;
+    color: #2c3835;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.tl-item time {
+    flex: none;
+    min-width: 2.7rem;
+    font-size: 0.78rem;
+    color: #8b9794;
+    font-variant-numeric: tabular-nums;
+}
+
+.tl-title {
+    font-size: 0.96rem;
+    line-height: 1.5;
+}
+
+.tl-cat {
+    flex: none;
+    margin-left: auto;
+    padding: 0.08rem 0.5rem;
+    font-size: 0.72rem;
+    color: var(--c-accent, #0f766e);
+    background-color: rgba(15, 118, 110, 0.07);
+    border-radius: 99px;
+}
+
+.tl-item:hover {
+    color: var(--c-accent, #0f766e);
+    background-color: var(--c-surface, #ffffff);
+    box-shadow: 0 2px 10px rgba(28, 39, 36, 0.06);
+}
+
+@media (max-width: 560px) {
+    .archive-page {
+        padding: 1.2rem 0 3rem;
+    }
+
+    .archive-timeline {
+        padding-left: 1.9rem;
+    }
+
+    .archive-timeline::before {
+        left: 0.42rem;
+    }
+
+    .tl-year::before {
+        left: -1.96rem;
+        top: 0.62rem;
+        width: 7px;
+        height: 7px;
+    }
+
+    .tl-year-title {
+        font-size: 1.25rem;
+    }
+
+    .tl-item {
+        gap: 0.7rem;
+        margin-left: -0.45rem;
+        padding: 0.4rem 0.45rem;
+    }
+
+    .tl-item time {
+        min-width: 2.3rem;
+    }
+
+    .tl-cat {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tl-year {
+        animation: none;
+    }
+}
+
+/* 无日期文章：紧凑收纳，不拖成长串时间轴 */
+.tl-undated {
+    margin-top: 3.2rem;
+    padding-top: 2rem;
+    border-top: 1px dashed var(--c-line, #e6e4df);
+}
+
+.tl-undated-note {
+    margin: -0.2rem 0 1rem;
+    font-size: 0.82rem;
+    color: #8b9794;
+}
+
+.tl-undated-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.7rem;
+}
+
+.tl-undated-list a {
+    padding: 0.26rem 0.68rem;
+    font-size: 0.82rem;
+    color: #6b7875;
+    background-color: #fbfbfa;
+    border: 1px solid #eeece8;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: color 0.18s ease, border-color 0.18s ease;
+}
+
+.tl-undated-list a:hover {
+    color: var(--c-accent, #0f766e);
+    border-color: var(--c-accent, #0f766e);
+}

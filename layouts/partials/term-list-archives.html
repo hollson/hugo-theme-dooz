@@ -1,0 +1,48 @@
+{{- $posts := where site.RegularPages "Section" "post" -}}
+{{- $cutoff := time.AsTime "1900-01-01" -}}
+{{- $dated := where $posts "Date" "ge" $cutoff -}}
+{{- $undated := where $posts "Date" "lt" $cutoff -}}
+{{- $groups := $dated.GroupByDate "2006" -}}
+
+<div class="container">
+    <div class="section archive-page">
+        <div class="tag-intro">
+            <span class="tag-eyebrow">Archive</span>
+            <p class="tag-summary">
+                共 <strong>{{ len $posts }}</strong> 篇文章
+                {{- with $groups }}，自 <strong>{{ (index . (sub (len .) 1)).Key }}</strong> 起{{ end }}
+            </p>
+        </div>
+
+        <div class="archive-timeline">
+            {{ range $i, $g := $groups }}
+            <section class="tl-year" style="--i: {{ $i }}">
+                <h2 class="tl-year-title">{{ $g.Key }}<span class="tl-year-count">{{ len $g.Pages }} 篇</span></h2>
+                <ul class="tl-list">
+                    {{ range $g.Pages }}
+                    <li>
+                        <a class="tl-item" href="{{ .RelPermalink }}">
+                            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01-02" }}</time>
+                            <span class="tl-title">{{ .LinkTitle }}</span>
+                            {{ with .Params.categories }}<span class="tl-cat">{{ index . 0 }}</span>{{ end }}
+                        </a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </section>
+            {{ end }}
+        </div>
+
+        {{ with $undated }}
+        <section class="tl-undated">
+            <h2 class="tl-year-title">未标注日期<span class="tl-year-count">{{ len . }} 篇</span></h2>
+            <p class="tl-undated-note">这些笔记没有写 date 字段，暂不参与时间排序。</p>
+            <div class="tl-undated-list">
+                {{ range . }}
+                <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                {{ end }}
+            </div>
+        </section>
+        {{ end }}
+    </div>
+</div>

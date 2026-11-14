@@ -3,53 +3,11 @@
 {{ end }}
 
 {{ define "main" }}
-{{- $posts := len (where site.RegularPages "Section" "post") -}}
-{{- $terms := .Data.Terms.ByCount -}}
-{{- $max := 1 -}}
-{{- with index $terms 0 }}{{ $max = .Count }}{{ end -}}
-
-<div class="container">
-    <div class="section tag-page">
-        {{ if $terms }}
-        <div class="tag-intro">
-            <span class="tag-eyebrow">Topics</span>
-            <p class="tag-summary">
-                共 <strong>{{ len $terms }}</strong> 个标签，分布在 <strong>{{ $posts }}</strong> 篇文章里
-            </p>
-        </div>
-
-        <section class="tag-popular">
-            <h2 class="tag-section-title">最常用</h2>
-            <div class="tag-cards">
-                {{ range $i, $t := first 8 $terms }}
-                {{ $p := div (mul $t.Count 100) $max }}
-                <a class="tag-card" href="{{ $t.Page.RelPermalink }}" style="--p: {{ $p }}%; --i: {{ $i }}">
-                    <span class="tag-card-rank">{{ printf "%02d" (add $i 1) }}</span>
-                    <span class="tag-card-name">{{ $t.Page.Title }}</span>
-                    <span class="tag-card-count">{{ $t.Count }} 篇</span>
-                    <span class="tag-card-bar"><i></i></span>
-                </a>
-                {{ end }}
-            </div>
-        </section>
-
-        {{ with after 8 $terms }}
-        <section class="tag-more">
-            <h2 class="tag-section-title">更多标签</h2>
-            <div class="tag-cloud">
-                {{ range $i, $t := . }}
-                <a class="tag-pill{{ if eq $t.Count 1 }} is-quiet{{ end }}" href="{{ $t.Page.RelPermalink }}"
-                    style="--i: {{ $i }}">
-                    <span class="tag-pill-name">{{ $t.Page.Title }}</span>
-                    <span class="tag-pill-count">{{ $t.Count }}</span>
-                </a>
-                {{ end }}
-            </div>
-        </section>
-        {{ end }}
-        {{ else }}
-        <p class="tag-summary">还没有标签。</p>
-        {{ end }}
-    </div>
-</div>
+{{- if eq .Type "archives" -}}
+{{ partial "term-list-archives.html" . }}
+{{- else if eq .Type "tags" -}}
+{{ partial "term-list-tags.html" . }}
+{{- else -}}
+{{ partial "term-list-default.html" . }}
+{{- end -}}
 {{ end }}

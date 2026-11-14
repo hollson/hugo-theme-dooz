@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="section tag-page">
+        {{ if .Data.Terms }}
+        <div class="tag-intro">
+            <span class="tag-eyebrow">{{ .Type }}</span>
+            <p class="tag-summary">共 <strong>{{ len .Data.Terms }}</strong> 个{{ if eq .Type "categories" }}分类{{ else }}条目{{ end }}</p>
+        </div>
+        <div class="tag-cloud">
+            {{ range .Data.Terms.ByCount }}
+            <a class="tag-pill" href="{{ .Page.RelPermalink }}">
+                <span class="tag-pill-name">{{ .Page.Title }}</span>
+                <span class="tag-pill-count">{{ .Count }}</span>
+            </a>
+            {{ end }}
+        </div>
+        {{ else }}
+        <p class="tag-summary">暂无内容。</p>
+        {{ end }}
+    </div>
+</div>
