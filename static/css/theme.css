@@ -317,8 +317,9 @@ body {
     left: 0;
     right: 0;
     z-index: 20;
-    max-height: 320px;
+    max-height: min(360px, 60vh);
     overflow-y: auto;
+    overscroll-behavior: contain;
     background: var(--c-surface);
     border: 1px solid var(--c-line);
     border-radius: 6px;
@@ -356,7 +357,7 @@ body {
 .search-snippet {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     overflow: hidden;
     margin-top: 3px;
     font-size: 0.78rem;
@@ -434,4 +435,18 @@ body {
     .nav-search .search-results {
         width: 100%;
     }
+}
+
+/* 结果列表滚动条：细线、贴合卡片圆角 */
+.search-results::-webkit-scrollbar {
+    width: 6px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+    background-color: rgba(28, 39, 36, 0.18);
+    border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-track {
+    background: transparent;
 }
