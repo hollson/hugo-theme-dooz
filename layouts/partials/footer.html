@@ -1,31 +1,17 @@
 {{- $tagline := .Site.Params.footerTagline | default "写代码的人，把踩过的坑记下来。" -}}
 
-{{- /* 页脚技术导航：可在站点 params 中用 footerGroups 覆盖 */ -}}
+{{- /* 页脚链接：可在站点 params 中用 footerGroups 覆盖 */ -}}
 {{- $groups := .Site.Params.footerGroups -}}
 {{- if not $groups -}}
 {{- $groups = slice
-    (dict "title" "语言与运行时" "items" (slice
-        (dict "name" "Go" "url" "https://go.dev")
-        (dict "name" "Rust" "url" "https://www.rust-lang.org")
-        (dict "name" "Python" "url" "https://www.python.org")
-        (dict "name" "TypeScript" "url" "https://www.typescriptlang.org")
-        (dict "name" "Java" "url" "https://dev.java")))
-    (dict "title" "架构与运维" "items" (slice
-        (dict "name" "Kubernetes" "url" "https://kubernetes.io")
-        (dict "name" "Docker" "url" "https://www.docker.com")
-        (dict "name" "Nginx" "url" "https://nginx.org")
-        (dict "name" "PostgreSQL" "url" "https://www.postgresql.org")
-        (dict "name" "Redis" "url" "https://redis.io")))
-    (dict "title" "AI 与框架" "items" (slice
-        (dict "name" "PyTorch" "url" "https://pytorch.org")
-        (dict "name" "Hugging Face" "url" "https://huggingface.co")
-        (dict "name" "LangChain" "url" "https://www.langchain.com")
-        (dict "name" "React" "url" "https://react.dev")
-        (dict "name" "Spring" "url" "https://spring.io")))
-    (dict "title" "社区与工具" "items" (slice
+    (dict "title" "本站" "items" (slice
+        (dict "name" "首页" "url" ("" | relLangURL))
+        (dict "name" "归档" "url" ("archives" | relLangURL))
+        (dict "name" "标签" "url" ("tags" | relLangURL))
+        (dict "name" "关于" "url" ("about" | relLangURL))))
+    (dict "title" "技术社区" "items" (slice
         (dict "name" "GitHub" "url" "https://github.com")
         (dict "name" "Stack Overflow" "url" "https://stackoverflow.com")
-        (dict "name" "Hacker News" "url" "https://news.ycombinator.com")
         (dict "name" "掘金" "url" "https://juejin.cn")
         (dict "name" "Hugo" "url" "https://gohugo.io")))
 -}}
@@ -39,9 +25,6 @@
                 <p class="footer-tagline">{{ $tagline }}</p>
 
                 <ul class="footer-social">
-                    {{ with .Site.Params.github }}
-                    <li><a href="{{ . }}" target="_blank" rel="noopener me" aria-label="GitHub">{{ partial "icon" (dict "name" "github" "size" 16) }}<span>GitHub</span></a></li>
-                    {{ end }}
                     {{ with .Site.Params.csdn }}
                     <li><a href="{{ . }}" target="_blank" rel="noopener me">CSDN</a></li>
                     {{ end }}
