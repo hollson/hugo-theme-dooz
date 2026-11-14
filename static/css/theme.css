@@ -97,3 +97,59 @@ pre code {
     min-width: 0;
 }
 
+
+/* ============================================================
+ * 动效层（阶段 4）
+ * 只加过渡与 hover 反馈，不改尺寸、位置、颜色值
+ * ============================================================ */
+
+/* 链接颜色过渡 */
+a {
+    transition: color 0.15s ease;
+}
+
+/* 导航项：hover 底色过渡 */
+.navbar-item,
+.navbar-link {
+    transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+/* 标签胶囊 */
+.bar_tag {
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+/* 文章列表项：hover 时轻微底色提亮，不做位移 */
+article.media {
+    border-radius: 4px;
+    transition: background-color 0.18s ease;
+}
+article.media:hover {
+    background-color: #fcfcfa;
+}
+
+/* 侧栏小部件：hover 时阴影极轻加深 */
+.box {
+    transition: box-shadow 0.18s ease;
+}
+.box:hover {
+    box-shadow: 0 2px 10px rgba(28, 39, 36, 0.06);
+}
+
+/* 尊重系统的“减少动态效果”设置 */
+@media (prefers-reduced-motion: reduce) {
+    a,
+    .navbar-item,
+    .navbar-link,
+    .bar_tag,
+    article.media,
+    .box {
+        transition: none;
+    }
+    article.media:hover {
+        background-color: transparent;
+    }
+    .box:hover {
+        box-shadow: none;
+    }
+}
