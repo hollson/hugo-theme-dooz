@@ -9,7 +9,16 @@
         var pres = block.querySelectorAll('pre');
         var pre = pres.length ? pres[pres.length - 1] : block;
         var code = pre.querySelector('code') || pre;
-        return (code.innerText || code.textContent || '').replace(/\s+$/, '');
+
+        /* 用 textContent：Chroma 每行是 display:flex 的嵌套 span，
+           innerText 会把每行换行算两遍，导致行数翻倍、复制出空行 */
+        var text = code.textContent;
+        if (!text) text = code.innerText || '';
+
+        return text
+            .replace(/\u00a0/g, ' ')
+            .replace(/[ \t]+\n/g, '\n')
+            .replace(/\s+$/, '');
     }
 
     function copy(text) {
