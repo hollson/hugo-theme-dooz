@@ -359,3 +359,60 @@ body {
     font-size: 0.8125rem;
     color: var(--c-ink-soft);
 }
+
+/* ============================================================
+ * 顶部导航搜索（阶段 6e）
+ * ============================================================ */
+.nav-search {
+    padding: 0.25rem 0.75rem;
+}
+
+.nav-search .search {
+    position: relative;
+}
+
+.nav-search-input {
+    width: 210px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 999px;
+    outline: none;
+    transition: width 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.nav-search-input:focus {
+    width: 260px;
+    background-color: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+/* 结果面板在导航层之上展开 */
+.nav-search .search-results {
+    top: calc(100% + 6px);
+    left: 0;
+    width: 320px;
+    right: auto;
+}
+
+@media screen and (max-width: 1023px) {
+    .nav-search {
+        padding: 0.5rem 0.75rem;
+    }
+
+    .nav-search-input,
+    .nav-search-input:focus {
+        width: 100%;
+    }
+
+    .nav-search .search-results {
+        width: 100%;
+    }
+}

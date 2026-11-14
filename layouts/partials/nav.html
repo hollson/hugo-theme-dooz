@@ -33,6 +33,13 @@
         </div> -->
 
         <div class="navbar-end">
+            <div class="navbar-item nav-search">
+                <div class="search" data-index='{{ "index.json" | relURL }}'>
+                    <input class="nav-search-input" id="search-input" type="text"
+                        placeholder='{{i18n "forSearch"}}' autocomplete="off" aria-label='{{i18n "forSearch"}}'>
+                    <div class="search-results" id="search-results" role="listbox"></div>
+                </div>
+            </div>
             <a class="navbar-item" href='{{ "" | relURL }}'>{{i18n "home"}}</a>
             <a class="navbar-item" href='{{ "archives" | relURL }}'>{{i18n "archives"}} </a>
             <a class="navbar-item" href='{{ "about" | relURL }}'>{{i18n "about"}}</a>
