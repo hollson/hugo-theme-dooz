@@ -14,7 +14,9 @@
             <div class="content">
               <p class="title is-4"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></p>
               {{ partial "publishat" . }}
-              <p>{{ with .Description }}{{.}}{{else}}{{.Summary}}{{end}}</p>
+              {{ $excerpt := "" }}
+              {{ with .Description }}{{ $excerpt = . }}{{ else }}{{ $excerpt = .Summary }}{{ end }}
+              <p class="summary">{{ $excerpt | plainify | replaceRE "\\[TOC\\]" "" | truncate 100 }}</p>
             </div>
           </div>
         </article>

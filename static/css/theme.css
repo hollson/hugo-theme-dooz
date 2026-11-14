@@ -182,3 +182,52 @@ article.media:hover {
 .content p + p {
     margin-top: 1.1rem;
 }
+
+/* ============================================================
+ * Hero 区（阶段 5b-1：只加遮罩，不动版式）
+ * 让标题在图片上更清晰，高度与布局保持原样
+ * ============================================================ */
+
+.hero {
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(11, 24, 22, 0.30) 0%, rgba(11, 24, 22, 0.52) 100%);
+    pointer-events: none;
+}
+
+/* 内容层压在遮罩之上 */
+.hero-head,
+.hero-body {
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================================
+ * 字体字标（导航左侧）
+ * ============================================================ */
+.mafool-logo {
+    display: inline-block;
+    font-family: inherit;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: #ffffff;
+    text-decoration: none;
+    transition: opacity 0.18s ease;
+}
+.mafool-logo:hover {
+    color: #ffffff;
+    opacity: 0.82;
+}
+
+@media screen and (max-width: 768px) {
+    .mafool-logo {
+        font-size: 1.25rem;
+    }
+}
