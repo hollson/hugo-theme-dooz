@@ -24,7 +24,6 @@
                         <a class="tl-item" href="{{ .RelPermalink }}">
                             <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01-02" }}</time>
                             <span class="tl-title">{{ .LinkTitle }}</span>
-                            {{ with .Params.categories }}<span class="tl-cat">{{ index . 0 }}</span>{{ end }}
                         </a>
                     </li>
                     {{ end }}

@@ -1042,12 +1042,14 @@ body {
  * 归档页：竖向时间轴
  * ============================================================ */
 .archive-page {
+    max-width: 760px;
+    margin: 0 auto;
     padding: 2rem 0 4.4rem;
 }
 
 .archive-timeline {
     position: relative;
-    padding-left: 2.9rem;
+    padding-left: 2.5rem;
 }
 
 .archive-timeline::before {
@@ -1074,7 +1076,7 @@ body {
 .tl-year::before {
     content: "";
     position: absolute;
-    left: -2.42rem;
+    left: -2.02rem;
     top: 0.5rem;
     width: 9px;
     height: 9px;
@@ -1131,16 +1133,6 @@ body {
     line-height: 1.5;
 }
 
-.tl-cat {
-    flex: none;
-    margin-left: auto;
-    padding: 0.08rem 0.5rem;
-    font-size: 0.72rem;
-    color: var(--c-accent, #0f766e);
-    background-color: rgba(15, 118, 110, 0.07);
-    border-radius: 99px;
-}
-
 .tl-item:hover {
     color: var(--c-accent, #0f766e);
     background-color: var(--c-surface, #ffffff);
@@ -1149,6 +1141,7 @@ body {
 
 @media (max-width: 560px) {
     .archive-page {
+        max-width: none;
         padding: 1.2rem 0 3rem;
     }
 

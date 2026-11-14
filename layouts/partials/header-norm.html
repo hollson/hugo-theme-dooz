@@ -15,9 +15,9 @@
                     {{ if eq .Type "tags" }}
                     {{ if eq .Kind "taxonomy" }}{{i18n "tags"}}{{ else }}{{ .Title }}{{ end }}
                     {{ else if eq .Type "archives" }}
-                    Archive@ {{ .Title }}
+                    {{ if eq .Kind "taxonomy" }}归档{{ else }}{{ .Title }}{{ end }}
                     {{ else if eq .Type "categories" }}
-                    Category -> {{ .Title }}
+                    {{ if eq .Kind "taxonomy" }}分类{{ else }}{{ .Title }}{{ end }}
                     {{ else if eq .Type "about" }}
                     {{i18n "about"}}
                     {{ else }}
