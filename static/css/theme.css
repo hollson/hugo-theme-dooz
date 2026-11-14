@@ -1041,6 +1041,16 @@ body {
 /* ============================================================
  * 归档页：竖向时间轴
  * ============================================================ */
+.term-title {
+    margin-bottom: 0.25rem;
+}
+
+.term-count {
+    margin: 0 0 0.2rem;
+    font-size: 0.82rem;
+    color: #8b9794;
+}
+
 .archive-page {
     max-width: 760px;
     margin: 0 auto;

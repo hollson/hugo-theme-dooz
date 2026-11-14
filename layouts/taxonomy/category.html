@@ -3,31 +3,5 @@
 {{ end }}
 
 {{ define "main" }}
-{{ $cat := lower .Title }}
-
-<div class="columns">
-    <div class="column is-9">
-        <div class="tile is-child box">
-            <div class="content">
-                {{ range $key, $value := .Site.Taxonomies.categories }}{{ if eq $key $cat }}{{ range $value.Pages }}
-                <article class="media">
-                    <div class="media-content">
-                        <div class="content">
-                            <p class="title is-4"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></p>
-                            {{ partial "publishat" . }}
-                            <p>{{ with .Description }} {{.}} {{ else }} {{.Summary}} {{end}}</p>
-                        </div>
-                    </div>
-                </article>
-                <br>
-                {{ end }}{{ end }}{{ end }}
-            </div>
-        </div>
-    </div>
-    <div class="column is-3">
-        {{ partial "widget-recent.html" . }}<br>
-        {{ partial "widget-category" . }}
-    </div>
-</div>
-
+{{ partial "term-post-list.html" . }}
 {{ end }}
