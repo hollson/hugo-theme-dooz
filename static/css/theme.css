@@ -1133,6 +1133,16 @@ body {
     line-height: 1.5;
 }
 
+.tl-cat {
+    flex: none;
+    margin-left: auto;
+    padding: 0.08rem 0.5rem;
+    font-size: 0.72rem;
+    color: var(--c-accent, #0f766e);
+    background-color: rgba(15, 118, 110, 0.07);
+    border-radius: 99px;
+}
+
 .tl-item:hover {
     color: var(--c-accent, #0f766e);
     background-color: var(--c-surface, #ffffff);
@@ -1172,6 +1182,10 @@ body {
 
     .tl-item time {
         min-width: 2.3rem;
+    }
+
+    .tl-cat {
+        display: none;
     }
 
     .tl-cat {
