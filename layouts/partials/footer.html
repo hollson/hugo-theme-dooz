@@ -1,27 +1,83 @@
+{{- $tagline := .Site.Params.footerTagline | default "写代码的人，把踩过的坑记下来。" -}}
+
+{{- /* 页脚技术导航：可在站点 params 中用 footerGroups 覆盖 */ -}}
+{{- $groups := .Site.Params.footerGroups -}}
+{{- if not $groups -}}
+{{- $groups = slice
+    (dict "title" "语言与运行时" "items" (slice
+        (dict "name" "Go" "url" "https://go.dev")
+        (dict "name" "Rust" "url" "https://www.rust-lang.org")
+        (dict "name" "Python" "url" "https://www.python.org")
+        (dict "name" "TypeScript" "url" "https://www.typescriptlang.org")
+        (dict "name" "Java" "url" "https://dev.java")))
+    (dict "title" "架构与运维" "items" (slice
+        (dict "name" "Kubernetes" "url" "https://kubernetes.io")
+        (dict "name" "Docker" "url" "https://www.docker.com")
+        (dict "name" "Nginx" "url" "https://nginx.org")
+        (dict "name" "PostgreSQL" "url" "https://www.postgresql.org")
+        (dict "name" "Redis" "url" "https://redis.io")))
+    (dict "title" "AI 与框架" "items" (slice
+        (dict "name" "PyTorch" "url" "https://pytorch.org")
+        (dict "name" "Hugging Face" "url" "https://huggingface.co")
+        (dict "name" "LangChain" "url" "https://www.langchain.com")
+        (dict "name" "React" "url" "https://react.dev")
+        (dict "name" "Spring" "url" "https://spring.io")))
+    (dict "title" "社区与工具" "items" (slice
+        (dict "name" "GitHub" "url" "https://github.com")
+        (dict "name" "Stack Overflow" "url" "https://stackoverflow.com")
+        (dict "name" "Hacker News" "url" "https://news.ycombinator.com")
+        (dict "name" "掘金" "url" "https://juejin.cn")
+        (dict "name" "Hugo" "url" "https://gohugo.io")))
+-}}
+{{- end -}}
+
 <footer class="footer">
-    <div class="content has-text-centered">
-        <p>
-            <span class="icon is-large">
-                <a href="https://twitter.com/" class="mysocial" rel="me">
-                    {{ partial "icon" (dict "name" "twitter" "size" 40) }}</a>
-            </span>&nbsp;&nbsp;
-            <span class="icon is-large">
-                <a href="https://www.youtube.com/" class="mysocial" rel="me">
-                    {{ partial "icon" (dict "name" "youtube" "size" 40) }}</a>
-            </span>&nbsp;&nbsp;
-            <span class="icon is-large">
-                <a href="https://github.com/" class="mysocial" rel="me">
-                    {{ partial "icon" (dict "name" "github" "size" 40) }}</a>
-            </span>&nbsp;&nbsp;
-            <br><br>
-            {{i18n "links"}}：
-            {{ range .Site.Menus.friendly }}
-            <a class="mysocial" href="{{.URL}}" target="_blank">{{.Name}}</a>
-            {{ end }}
-            <br><br />
-            {{.Site.Copyright}} &copy; {{ .Site.Title }} {{ now.Format "2006"}}
-            - <a class="mysocial" href="https://github.com/hollson/hugo-theme-dooz">Hugo Theme</a>
-        </p>
+    <div class="container">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a class="footer-logo" href="{{ .Site.BaseURL | relLangURL }}" aria-label="{{ .Site.Title }}">Mafool</a>
+                <p class="footer-tagline">{{ $tagline }}</p>
+
+                <ul class="footer-social">
+                    {{ with .Site.Params.github }}
+                    <li><a href="{{ . }}" target="_blank" rel="noopener me" aria-label="GitHub">{{ partial "icon" (dict "name" "github" "size" 16) }}<span>GitHub</span></a></li>
+                    {{ end }}
+                    {{ with .Site.Params.csdn }}
+                    <li><a href="{{ . }}" target="_blank" rel="noopener me">CSDN</a></li>
+                    {{ end }}
+                    {{ with .Site.Params.cnblog }}
+                    <li><a href="{{ . }}" target="_blank" rel="noopener me">博客园</a></li>
+                    {{ end }}
+                    {{ with .Site.Home.OutputFormats.Get "rss" }}
+                    <li><a href="{{ .RelPermalink }}" aria-label="RSS">RSS</a></li>
+                    {{ end }}
+                    {{ with .Site.Params.email }}
+                    <li><a href="mailto:{{ . }}" aria-label="邮件">{{ partial "icon" (dict "name" "mail" "size" 15) }}<span>联系</span></a></li>
+                    {{ end }}
+                </ul>
+            </div>
+
+            <nav class="footer-links" aria-label="技术资源导航">
+                {{ range $groups }}
+                <div class="footer-col">
+                    <h3 class="footer-title">{{ .title }}</h3>
+                    <ul>
+                        {{ range .items }}
+                        <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a></li>
+                        {{ end }}
+                    </ul>
+                </div>
+                {{ end }}
+            </nav>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; {{ now.Format "2006" }} {{ .Site.Title }}{{ with .Site.Copyright }} · {{ . }}{{ end }}</p>
+            <p class="footer-meta">
+                {{ with .Site.Params.icp }}<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">{{ . }}</a>{{ end }}
+                <span>由 <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> 与 <a href="https://bulma.io" target="_blank" rel="noopener">Bulma</a> 构建</span>
+            </p>
+        </div>
     </div>
 </footer>
 
@@ -29,23 +85,26 @@
 <a id="rocket" href="#top" aria-label="回到顶部" title="回到顶部"><i></i></a>
 <script type="text/javascript" src='{{ "js/dooz.totop.js?v=0.0.0" | relURL }}' async=""></script>
 
+{{ with .Site.Params.analyze_baidu }}
 <!-- 百度统计 -->
 <script>
     var _hmt = _hmt || [];
     (function () {
         var hm = document.createElement("script");
-        hm.src = 'https://hm.baidu.com/hm.js?{{.Site.Params.analyze_baidu}}';
+        hm.src = 'https://hm.baidu.com/hm.js?{{ . }}';
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
 </script>
+{{ end }}
 
-
+{{ with .Site.Params.analyze_google }}
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{.Site.Params.analyze_google}}"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', '{{.Site.Params.analyze_google}}');
+    gtag('config', '{{ . }}');
 </script>
+{{ end }}

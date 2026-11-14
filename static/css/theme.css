@@ -528,3 +528,141 @@ body {
     outline: 2px solid #7dd3c7;
     outline-offset: -2px;
 }
+
+/* ============================================================
+ * 页脚（IT 博客式：品牌 + 技术导航 + 底栏）
+ * ============================================================ */
+.footer {
+    padding: 3.2rem 1.5rem 1.6rem;
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: minmax(240px, 1fr) 2.9fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.footer-logo {
+    display: inline-block;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-logo:hover {
+    color: #7dd3c7;
+}
+
+.footer-tagline {
+    margin: 0.7rem 0 1.2rem;
+    max-width: 20rem;
+    font-size: 0.84rem;
+    line-height: 1.7;
+    color: #93a09d;
+}
+
+.footer-social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8rem;
+}
+
+.footer-social a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: #93a09d;
+}
+
+.footer-social a:hover {
+    color: #7dd3c7;
+}
+
+.footer-social svg {
+    flex: none;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem 1.2rem;
+}
+
+.footer-title {
+    margin: 0 0 0.9rem;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #7d8f8c;
+}
+
+.footer-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-col li {
+    margin-bottom: 0.55rem;
+    line-height: 1.4;
+}
+
+.footer-col a {
+    font-size: 0.84rem;
+    color: #b6c0bd;
+}
+
+.footer-col a:hover {
+    color: #7dd3c7;
+}
+
+.footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    margin-top: 2.6rem;
+    padding-top: 1.3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.78rem;
+    color: #7d8f8c;
+}
+
+.footer-bottom a {
+    color: #93a09d;
+}
+
+.footer-bottom a:hover {
+    color: #7dd3c7;
+}
+
+@media (max-width: 1023px) {
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: 2.2rem;
+    }
+
+    .footer-links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.8rem 1.2rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .footer {
+        padding: 2.4rem 1.2rem 1.4rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
