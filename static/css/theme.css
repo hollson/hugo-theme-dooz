@@ -1,0 +1,99 @@
+/* ============================================================
+ * theme.css — 配色层（阶段 3）
+ * 只定义颜色变量与颜色替换，不改字号、行高、间距、布局
+ * 换色只改下面 :root 里的值
+ * ============================================================ */
+
+:root {
+    --c-accent: #0f766e;        /* 主色：墨青 */
+    --c-accent-strong: #0b5d57; /* 主色深，hover 用 */
+    --c-ink: #1c2724;           /* 正文标题 */
+    --c-ink-soft: #4b5754;      /* 次要文字 */
+    --c-bg: #f7f7f5;            /* 页面底色 */
+    --c-surface: #ffffff;       /* 卡片/内容白 */
+    --c-line: #e6e4df;          /* 分隔线 */
+}
+
+/* 页面底色 */
+body,
+body.has-background-light {
+    background-color: var(--c-bg);
+}
+
+/* 链接 */
+a {
+    color: var(--c-accent);
+}
+a:hover {
+    color: var(--c-accent-strong);
+}
+
+/* 正文标题与强调色 */
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6,
+.title,
+.subtitle {
+    color: var(--c-ink);
+}
+
+/* 正文内链接保持主色，不被标题色覆盖 */
+.content a:hover {
+    color: var(--c-accent-strong);
+}
+
+/* 分隔线 */
+.content hr,
+hr {
+    background-color: var(--c-line);
+    border-color: var(--c-line);
+}
+
+/* 引用块：主色左边线 */
+.content blockquote {
+    border-left: 3px solid var(--c-accent);
+}
+
+/* 表格表头 */
+.content table th {
+    background-color: #f2f2ee;
+    color: var(--c-ink);
+}
+
+/* 代码块：底色与文字色由 Chroma 内联样式提供，容器仅做继承 */
+pre code {
+    color: inherit;
+    background: transparent;
+}
+
+/* 选中文字 */
+::selection {
+    background: rgba(15, 118, 110, 0.18);
+}
+
+/* 长代码行：滚动发生在代码块内部，不撑破页面 */
+.content .highlight {
+    max-width: 100%;
+    overflow-x: auto;
+}
+.content .highlight > div {
+    max-width: 100%;
+}
+.content .highlight table {
+    margin: 0;
+    border: 0;
+}
+.content .highlight pre {
+    margin: 0;
+    overflow-x: visible;
+}
+/* 栅格列默认 min-width:auto，会让长内容把整列撑宽 */
+.columns .column,
+.column,
+.content {
+    min-width: 0;
+}
+
