@@ -1,37 +1,22 @@
-/*
-回到顶部：在body底部添加a链接，并引入script(须在尾端）
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src='{{ "js/dooz.totop.js?v=0.0.0" | absURL }}' async=""></script>
-
-零依赖实现（原 jQuery 版行为不变）
-*/
+/* 回到顶部：滚动 400px 后淡入的圆形按钮，点击平滑回到顶部 */
 (function () {
     'use strict';
 
     function init() {
-        var rocket = document.getElementById('rocket');
-        if (!rocket) return;
+        var btn = document.getElementById('totop');
+        if (!btn) return;
+
+        var THRESHOLD = 400;
 
         function toggle() {
-            rocket.classList.toggle('show', window.pageYOffset > 500);
+            btn.classList.toggle('show', window.pageYOffset > THRESHOLD);
         }
 
         window.addEventListener('scroll', toggle, { passive: true });
         toggle();
 
-        rocket.addEventListener('click', function (e) {
-            e.preventDefault();
-            rocket.classList.add('launch');
+        btn.addEventListener('click', function () {
             window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            var done = function () {
-                rocket.classList.remove('show', 'launch');
-            };
-            if ('onscrollend' in window) {
-                window.addEventListener('scrollend', done, { once: true });
-            } else {
-                setTimeout(done, 600);
-            }
         });
     }
 
