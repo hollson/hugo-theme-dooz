@@ -4,11 +4,6 @@
 {{- $groups := .Site.Params.footerGroups -}}
 {{- if not $groups -}}
 {{- $groups = slice
-    (dict "title" "本站" "items" (slice
-        (dict "name" "首页" "url" ("" | relLangURL))
-        (dict "name" "归档" "url" ("archives" | relLangURL))
-        (dict "name" "标签" "url" ("tags" | relLangURL))
-        (dict "name" "关于" "url" ("about" | relLangURL))))
     (dict "title" "技术社区" "items" (slice
         (dict "name" "GitHub" "url" "https://github.com")
         (dict "name" "Stack Overflow" "url" "https://stackoverflow.com")
