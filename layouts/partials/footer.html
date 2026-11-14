@@ -54,7 +54,7 @@
 
                 <div class="footer-col footer-col-sub">
                     <h3 class="footer-title">订阅与更新</h3>
-                    <p class="footer-note">{{ with .Site.Params.timeOfMonth }}自 {{ . }} 起，{{ end }}只写踩过的坑。</p>
+                    <p class="footer-note">{{ .Site.Params.footerNote | default "不定期更新，只发值得读完的。" }}</p>
                     {{ with .Site.Home.OutputFormats.Get "rss" }}
                     <a class="footer-subscribe" href="{{ .RelPermalink }}">
                         {{ partial "icon" (dict "name" "rss" "size" 15) }}<span>订阅 RSS</span>
