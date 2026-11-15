@@ -9,7 +9,8 @@
 
     var indexUrl = root.getAttribute('data-index') || '/index.json';
     var pages = null;
-    var failed = false;
+    var loading = false;
+    var pendingQuery = '';
 
     function esc(str) {
         return String(str).replace(/[&<>"']/g, function (c) {
@@ -45,12 +46,20 @@
     }
 
     function load() {
-        if (pages || failed) return;
-        failed = true;
+        if (pages || loading) return;
+        loading = true;
         fetch(indexUrl)
             .then(function (r) { return r.json(); })
-            .then(function (data) { pages = data || []; failed = false; })
-            .catch(function () { failed = true; });
+            .then(function (data) {
+                pages = data || [];
+                loading = false;
+                if (pendingQuery) {
+                    var q = pendingQuery;
+                    pendingQuery = '';
+                    render(q);
+                }
+            })
+            .catch(function () { loading = false; });
     }
 
     function close() {
@@ -69,15 +78,30 @@
             var c = (p.content || '').toLowerCase();
             var inTitle = t.indexOf(ql) !== -1;
             var inBody = c.indexOf(ql) !== -1;
-            if (inTitle || inBody) hits.push({ page: p, score: inTitle ? 2 : 1 });
+            if (!inTitle && !inBody) continue;
+
+            var score = inBody ? 20 : 0;
+            if (inTitle) {
+                if (t === ql) {
+                    score = 120;
+                } else if (t.indexOf(ql) === 0) {
+                    score = 90 - Math.min(25, t.length);
+                } else {
+                    score = 60 - Math.min(20, t.length);
+                }
+            }
+            hits.push({ page: p, score: score });
         }
 
-        hits.sort(function (a, b) { return b.score - a.score; });
+        hits.sort(function (a, b) {
+            if (b.score !== a.score) return b.score - a.score;
+            return a.page.title.length - b.page.title.length;
+        });
 
         if (!hits.length) {
             box.innerHTML = '<div class="search-empty">没有匹配的文章</div>';
         } else {
-            box.innerHTML = hits.slice(0, 8).map(function (h) {
+            box.innerHTML = hits.map(function (h) {
                 var p = h.page;
                 return '<a class="search-item" href="' + esc(p.url) + '">' +
                     '<span class="search-title">' + highlight(p.title || '', q) + '</span>' +
@@ -93,8 +117,21 @@
     input.addEventListener('input', function () {
         var q = input.value.trim();
         clearTimeout(timer);
-        if (!q) { close(); return; }
-        timer = setTimeout(function () { load(); render(q); }, 180);
+        if (!q) { pendingQuery = ''; close(); return; }
+        if (q.length < 2) {
+            pendingQuery = '';
+            box.innerHTML = '<div class="search-empty">再输入 1 个字符开始搜索</div>';
+            box.classList.add('is-open');
+            return;
+        }
+        pendingQuery = q;
+        load();
+        timer = setTimeout(function () {
+            if (pages) {
+                pendingQuery = '';
+                render(q);
+            }
+        }, 180);
     });
     input.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') { close(); input.blur(); }

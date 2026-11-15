@@ -31,6 +31,19 @@
 
     <!--Head Common-->
     <link rel="shortcut icon" href="{{ "img/res/favicon.ico" | relURL }}">
+    {{ with .Site.Params.logoFontUrl }}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="{{ . | safeURL }}" rel="stylesheet">
+    {{ end }}
+    {{ $logoFont := .Site.Params.logoFontFamily | default "\"Fraunces\", serif" }}
+    {{ $logoWeight := .Site.Params.logoFontWeight | default 700 }}
+    <style>
+        :root {
+            --logo-font: {{ $logoFont | safeCSS }};
+            --logo-font-weight: {{ $logoWeight }};
+        }
+    </style>
     <link rel="stylesheet" href="{{ "css/bulma.min.css" | relURL }}" />
 
     <link rel="stylesheet" href="{{ "css/dooz.blog.css" | relURL }}" />
@@ -40,8 +53,8 @@
     {{if .Site.Params.OpenShare}}
     <link rel="stylesheet" href="/css/share.min.css" />
     <script src="/js/share.js"></script>
-    <script defer src='{{ "js/search.js" | relURL }}'></script>
-    <script defer src='{{ "js/copy-code.js" | relURL }}'></script>
+    <script defer src='{{ "js/search.js" | relURL }}?v={{ now.Unix }}'></script>
+    <script defer src='{{ "js/copy-code.js" | relURL }}?v={{ now.Unix }}'></script>
     {{end}}
 
     <!--Head Extend-->

@@ -1,0 +1,16 @@
+{{- $lang := .Type | default "text" -}}
+<div class="code-block" data-lang="{{ $lang }}">
+    <div class="code-head">
+        <span class="code-lang"><span class="code-dot" aria-hidden="true"></span>{{ $lang }}</span>
+        <div class="code-actions">
+            <button type="button" class="code-copy" aria-label="复制代码" title="复制代码">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span class="code-copy-label">复制</span>
+            </button>
+            <button type="button" class="code-expand" aria-expanded="false" hidden>展开</button>
+        </div>
+    </div>
+    <div class="code-body">
+        {{ highlight .Inner $lang .Options }}
+    </div>
+</div>

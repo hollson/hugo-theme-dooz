@@ -1,7 +1,7 @@
 <nav class="navbar is-transparent container has-text-white">
     <div class="navbar-brand">
         <div class="navbar-item">
-            <a class="mafool-logo" href="{{ .Site.BaseURL | relLangURL }}" aria-label="{{ .Site.Title }}">Mafool</a>
+            <a class="mafool-logo" href="{{ .Site.BaseURL | relLangURL }}" aria-label="{{ .Site.Params.logoText | default "Mafool" }}">{{ .Site.Params.logoText | default "Mafool" }}</a>
         </div>
 
         <!--for mobile-->

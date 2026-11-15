@@ -219,16 +219,21 @@ article.media:hover {
  * 字体字标（导航左侧）
  * ============================================================ */
 .mafool-logo {
-    display: inline-block;
-    font-family: inherit;
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    line-height: 1.2;
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--logo-font, "Fraunces", "Bodoni 72", Didot, Georgia, "Times New Roman", serif);
+    font-size: 2rem;
+    font-weight: var(--logo-font-weight, 700);
+    font-style: normal;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    font-optical-sizing: auto;
+    font-variation-settings: "SOFT" 0, "WONK" 1;
     color: #ffffff;
     text-decoration: none;
-    transition: opacity 0.18s ease;
+    transition: opacity 0.18s ease, color 0.18s ease;
 }
+
 .mafool-logo:hover {
     color: #ffffff;
     opacity: 0.82;
@@ -236,7 +241,7 @@ article.media:hover {
 
 @media screen and (max-width: 768px) {
     .mafool-logo {
-        font-size: 1.25rem;
+        font-size: 1.6rem;
     }
 }
 
@@ -321,7 +326,7 @@ body {
     left: 0;
     right: 0;
     z-index: 20;
-    max-height: min(360px, 60vh);
+    max-height: min(540px, 76vh);
     overflow-y: auto;
     overscroll-behavior: contain;
     background: var(--c-surface);
@@ -361,7 +366,7 @@ body {
 .search-snippet {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     overflow: hidden;
     margin-top: 3px;
     font-size: 0.78rem;
@@ -421,7 +426,7 @@ body {
     top: calc(100% + 6px);
     left: 0;
     right: auto;
-    width: 340px;
+    width: 390px;
     max-width: calc(100vw - 2rem);
     text-align: left;
 }
@@ -569,9 +574,13 @@ body {
 
 .footer-logo {
     display: inline-block;
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-family: var(--logo-font, "Fraunces", "Bodoni 72", Didot, Georgia, "Times New Roman", serif);
+    font-size: 1.8rem;
+    font-weight: var(--logo-font-weight, 700);
+    font-style: normal;
+    letter-spacing: -0.015em;
+    font-optical-sizing: auto;
+    font-variation-settings: "SOFT" 0, "WONK" 1;
     color: #ffffff;
     text-decoration: none;
 }
@@ -1611,6 +1620,7 @@ body.page-404 {
 
 .hero-gradient {
     position: relative;
+    z-index: 10;
     isolation: isolate;
     min-height: 400px;
     background-color: var(--c-bg, #edf7ff);
@@ -1716,9 +1726,10 @@ body:not(.page-404) > .container > .section {
     margin: 0 !important;
 }
 
-/* 桌面端侧栏：滚到窗口顶部后固定，内容超出时在栏内独立滚动 */
+/* 文章详情页：左侧栏固定，目录导航始终可见；
+ * 列表页与首页保持普通页面滚动，侧栏随页面一起到底。 */
 @media screen and (min-width: 1024px) {
-    .content-columns > .sidebar-column {
+    body.is-article .content-columns > .sidebar-column {
         position: sticky;
         top: 0.75rem;
         align-self: flex-start;
@@ -1726,16 +1737,21 @@ body:not(.page-404) > .container > .section {
         overflow-y: auto;
         overscroll-behavior: contain;
         scrollbar-width: thin;
+        scrollbar-color: rgba(15, 118, 110, 0.28) transparent;
         padding-right: 0.3rem;
     }
 
-    .content-columns > .sidebar-column::-webkit-scrollbar {
+    body.is-article .content-columns > .sidebar-column::-webkit-scrollbar {
         width: 6px;
     }
 
-    .content-columns > .sidebar-column::-webkit-scrollbar-thumb {
-        background: rgba(15, 118, 110, 0.18);
+    body.is-article .content-columns > .sidebar-column::-webkit-scrollbar-thumb {
+        background: rgba(15, 118, 110, 0.24);
         border-radius: 999px;
+    }
+
+    body.is-article .content-columns > .sidebar-column::-webkit-scrollbar-track {
+        background: transparent;
     }
 }
 
@@ -2044,4 +2060,165 @@ html {
     }
 }
 
+
+
+/* ============================================================
+ * 正文代码块：顶部语言 / 复制 / 展开工具栏
+ * ============================================================ */
+.code-block {
+    position: relative;
+    margin: 1.5rem 0;
+    overflow: hidden;
+    background-color: #282a36;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(15, 23, 20, 0.12);
+}
+
+.code-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    min-height: 38px;
+    padding: 0 0.7rem 0 0.95rem;
+    background-image: linear-gradient(180deg, #2b2d3d 0%, #242634 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    user-select: none;
+}
+
+.code-lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    overflow: hidden;
+    color: #aeb6d0;
+    font-family: "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 0.76rem;
+    letter-spacing: 0.06em;
+    text-transform: lowercase;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.code-dot {
+    flex: 0 0 auto;
+    width: 8px;
+    height: 8px;
+    background-color: #b87333;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.13);
+}
+
+.code-actions {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.code-copy,
+.code-expand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.32rem;
+    height: 26px;
+    padding: 0 0.6rem;
+    color: #aab1c9;
+    font-size: 0.75rem;
+    line-height: 1;
+    background-color: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: color 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.code-copy svg {
+    flex: 0 0 auto;
+}
+
+.code-copy:hover,
+.code-expand:hover {
+    color: #ffffff;
+    background-color: rgba(184, 115, 51, 0.18);
+    border-color: rgba(184, 115, 51, 0.45);
+}
+
+.code-copy.is-copied {
+    color: #7dd3c7;
+    border-color: rgba(125, 211, 199, 0.45);
+}
+
+.code-copy:focus-visible,
+.code-expand:focus-visible {
+    outline: 2px solid #7dd3c7;
+    outline-offset: 1px;
+}
+
+.code-expand[hidden] {
+    display: none;
+}
+
+.code-body {
+    position: relative;
+    max-height: none;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+    transition: max-height 0.25s ease;
+}
+
+.code-block.is-collapsed .code-body {
+    max-height: 410px;
+    overflow-y: auto;
+}
+
+/* 折叠时不再用渐变遮住代码，保留完整可读性 */
+.code-block.is-collapsed .code-body::after {
+    content: none;
+}
+
+.content .code-block .highlight {
+    margin: 0;
+    border-radius: 0;
+}
+
+.content .code-block .highlight > div,
+.content .code-block .highlight pre {
+    background-color: transparent !important;
+}
+
+.code-body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.code-body::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+}
+
+.code-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+@media screen and (max-width: 560px) {
+    .code-head {
+        padding-right: 0.55rem;
+        padding-left: 0.75rem;
+    }
+
+    .code-copy,
+    .code-expand {
+        padding: 0 0.45rem;
+    }
+
+    .code-copy-label {
+        display: none;
+    }
+}
 
