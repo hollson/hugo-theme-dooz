@@ -1,18 +1,21 @@
 <div class="card">
     <div class="card-content container has-text-centered">
         <div class="container">
+            {{ with .Site.Params.avatar }}
             <figure class="image  container has-text-centered" style="width: 66%;">
-                <img src="{{ .Site.Params.Avatar | relURL }}" alt="作者头像" style="border-radius: 50%; object-fit: cover;">
+                <img src="{{ . | relURL }}" alt="{{ $.Site.Params.author | default "作者头像" }}" style="border-radius: 50%; object-fit: cover;">
             </figure>
+            {{ end }}
         </div>
         <br>
         <div>
-            <p class="title is-6">{{ .Site.Params.Author }}</p>
-            <p class="subtitle is-6"><small>{{.Site.Params.Aphorism}}</small></p>
+            <p class="title is-6">{{ .Site.Params.author }}</p>
+            <p class="subtitle is-6"><small>{{ .Site.Params.aphorism }}</small></p>
         </div>
         <br>
         <div>
-            <a href="{{.Site.Params.Github}}" target="_blank">
+            {{ with .Site.Params.github }}
+            <a href="{{ . }}" target="_blank" rel="noopener me">
                 <span class="icon is-large">
                     <svg t="1585929692621" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
                         p-id="1132" width="38" height="38">
@@ -22,7 +25,9 @@
                     </svg>
                 </span>
             </a>&nbsp;
+            {{ end }}
 
+            {{ with .Site.Params.wechat }}
             <a href="javascript:void(0);" class="modal-wechat" data-target="modal-bis">
                 <span class="icon is-large">
                     <svg t="1585983481253" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -33,8 +38,10 @@
                     </svg>
                 </span>
             </a>&nbsp;
+            {{ end }}
 
-            <a href="{{.Site.Params.CSDN}}" target="_blank">
+            {{ with .Site.Params.csdn }}
+            <a href="{{ . }}" target="_blank" rel="noopener me">
                 <span class="icon is-large">
                     <svg t="1585929761171" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
                         p-id="1476" width="38" height="38">
@@ -44,8 +51,10 @@
                     </svg>
                 </span>
             </a>&nbsp;
+            {{ end }}
 
-            <a href="{{.Site.Params.Cnblog}}" target="_blank">
+            {{ with .Site.Params.cnblog }}
+            <a href="{{ . }}" target="_blank" rel="noopener me">
                 <span class="icon is-large">
                     <svg t="1585929921096" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
                         p-id="2146" width="38" height="38">
@@ -55,17 +64,19 @@
                     </svg>
                 </span>
             </a>
+            {{ end }}
         </div>
     </div>
 </div>
 
-<!-- <div class="modal is-active"></div> -->
+{{ with .Site.Params.wechat }}
 <div class="modal" id="modal-bis" role="dialog" aria-modal="true" aria-label="微信二维码">
     <div class="modal-background"></div>
     <div class="modal-content" style="max-width: 430px;">
         <p class="image">
-            <img src="{{ .Site.Params.Wechat | relURL }}" alt="微信二维码">
+            <img src="{{ . | relURL }}" alt="微信二维码">
         </p>
     </div>
-    <button class="modal-close is-large" aria-label="close"></button>
+    <button class="modal-close is-large" aria-label="关闭"></button>
 </div>
+{{ end }}

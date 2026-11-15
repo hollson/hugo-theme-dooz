@@ -1,220 +1,155 @@
 > [English Doc](./README.md)
 
-<br/>
+# Dooz
 
-## Hugo主题 - Dooz     
-**Dooz是一个简单优雅的hugo主题，专门为`程序员`或`专栏作家`设计。**
+一个适合程序员和长期写作者的 Hugo 主题：克制的排版、内置搜索、文章目录、代码块工具条，以及可配置的 Logo 和社交链接。
 
-![screenshot](images/tn.png)
+## 特性
 
-<br/>
+- 首页 Hero、文章列表、分类、标签、归档
+- 全站搜索：标题优先评分，输入至少 2 个字符，结果列表可滚动
+- CSDN 风格代码块：语言标识、复制、展开/收起，超过 20 行自动折叠
+- 详情页左侧目录固定，正文自然滚动
+- Logo 文本、字体、字重全部可配置
+- GitHub / CSDN / 博客园 / 邮箱等社交入口按需显示
+- 微信二维码为可选能力，示例站默认不包含
+- 响应式布局，移动端折叠导航
+- 支持中英文与自定义 i18n
 
-## 示例站点
-http://www.mafool.com
+## 安装
 
+需要 Hugo **0.158.0** 或更高版本。
 
-<br/>
-
-## 安装主题
-提前安装好Hugo，具体可参考[官方安装文档](https://gohugo.io/getting-started/installing/)。
-在完成Hugo的安装后，接下来我们创建并运行这个示例站点：
-
-```shell
-$ hugo new site myblog 
-$ cd myblog
-$ git clone git@github.com:hollson/hugo-theme-dooz.git themes/hugo-theme-dooz
-
-# 也可以在现有的站点下添加git子模块
-$ git submodule add git@github.com:hollson/hugo-theme-dooz.git themes/hugo-theme-dooz
+```bash
+hugo new site myblog
+cd myblog
+git clone https://github.com/yourname/hugo-theme-dooz.git themes/hugo-theme-dooz
 ```
 
-<br/>
+或者作为子模块：
 
-
-## 快速演示
-
-在`hugo-theme-dooz`目录下又一个`exampleSite`文件，将里面的内容拷贝到站点根目录：
-```shell
-$ cp -rp ./themes/hugo-theme-dooz/exampleSite/* ./
-$ hugo server -w  # 启动服务
+```bash
+git submodule add https://github.com/yourname/hugo-theme-dooz.git themes/hugo-theme-dooz
 ```
-这时候，就可以在浏览器打开[`http://localhost:1313`](http://localhost:1313)， 看到上图的演示界面了。
 
-<br/>
-
-## 创建文章
-```shell
-hugo new post/mycategory-我的博客标题.md
-```
-创建文章命令非常简单，但是如果想让自动填写`归档`、`分类`、`自定义url`、`自定义SEO`等信息，你可以自行改动`archetypes/post.md`模版文件，如下所示：
+在 `hugo.toml` 中启用：
 
 ```toml
-+++
-title= "{{with slicestr .Name (len (index (split .Name "-") 0))}}{{replace . "-" " "|strings.TrimLeft " "|title}}{{end}}"
-url= "/post/{{now.Unix}}/"
-#aliases = ["/posts/{{md5 now}}/"]
-keywords= "keyword1,keyword2"  #SEO keywords
-description= "Content description for SEO"
-image= "/img/res/blog.jpg"
-date= {{ slicestr .Date 0 10 }}
-categories= ["{{index (split .Name "-") 0|title}}"]
-tags= ["tag1", "tag2"]
-archives= "{{ now.Format "2006" }}"
-author= "{{.Site.Params.Author}}"
-height= {{now.Unix}}
-draft= false
-+++
+theme = "hugo-theme-dooz"
 ```
 
-<br/>
+## 快速体验示例站
 
-## 配置文件
-配置文件位于根目录下的`config.toml`文件中，配置示例如下：
+```bash
+cp -rp themes/hugo-theme-dooz/exampleSite/* ./
+hugo server -D
+```
+
+打开 <http://localhost:1313>。示例站里的作者、邮箱、社交链接、头像都是占位数据，可直接替换。
+
+## 配置
+
+最小配置如下，完整示例见 [`exampleSite/config.toml`](exampleSite/config.toml)：
+
 ```toml
-baseURL = "http://www.mafool.com"
-title = "码夫庄园"
-theme = "hugo-theme-dooz"         #主题
-languageCode = "zh"
-defaultContentLanguage = "zh"    # 选择语言环境
+baseURL = "https://example.com/"
+title = "Dooz Demo"
+theme = "hugo-theme-dooz"
+locale = "zh-CN"
+defaultContentLanguage = "zh"
 hasCJKLanguage = true
-enableEmoji= true
-copyright="版权所有"
-googleAnalytics = "G-DKXXXXXX2J"  #谷歌内置的统计分析模块
-canonifyurls = true
-paginate = 10       #分页数
-metaDataFormat = "toml"
 
-[languages]
-  [languages.zh]
-    # baseURL = "http://www.mafool.com"
-    languagedirection = "zh"
-    title = "码夫庄园"
-    languageName = "Chinese"
-    weight = 1
-  [languages.en]            # 纯中文环境可以忽略这段
-    # baseURL = "https://hollson.github.io"
-    # contentDir = "content/english"    
-    title = "Mafool"
-    languageName = "English"
-    copyright="All Rights Reserved"
-    weight = 1    
-    [languages.en.params]    
-      #author= "shongsheng" #replace the dedault param    
-      homeTitle="Programmer's Exclusive Blog"     
-      slogan="A Hugo theme for programmers."    
+[pagination]
+  pagerSize = 10
 
 [outputs]
-home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS", "JSON"]  # JSON 供站内搜索使用
 
 [params]
-  #Author
-  author = "史布斯"
-  city = "Beijing"
-  avatar = "img/my/avatar.png"
-  aphorism="我的箴言我的箴言"
-  github="https://github.com/hollson"  #我的博客链接
-  csdn="https://blog.csdn.net/gusand"
-  cnblog="https://www.cnblogs.com/hollson/"
+  author = "示例作者"
+  email = "hello@example.com"
+  city = "示例城市"
+  avatar = "img/res/avatar.svg"
+  aphorism = "写代码，也写生活。"
 
-  #打赏功能 
-  reward= true
-  rewardTitle="真诚赞赏，手留余香"
-  rewardPrompt="嗯，我的梦想是被读者的稿费包养~"
+  logoText = "Dooz"
+  logoFontFamily = '"Fraunces", "Bodoni 72", Didot, Georgia, serif'
+  logoFontWeight = 700
+  logoFontUrl = ""                # 可选，在线字体地址
 
-  #公告信息(支持markdown语法)
-  notice="**[Dooz theme](https://github.com/hollson/hugo-theme-dooz)** updated, hurry up and experience it! `2020.03.22`"
+  github = "https://github.com/example"
+  csdn = "https://blog.csdn.net/example"
+  cnblog = "https://www.cnblogs.com/example/"
+  # wechat = "img/wechat.png"    # 可选，不填则不显示二维码入口
 
-  #站点设置
-  timeOfMonth="2006年1月"
-  timeOfDay="2006年1月2日"
+  repo = "https://github.com/yourname/hugo-theme-dooz"
+
   hero = "img/res/hero.jpg"
-  slogan = "提升码农亩产，掰直码农方向，授人以渔，功德无量，利在千秋 。"
-  openShare= true
-
-  #百度统计
-  analyze_baidu="f185359ec6b8XXXXXXXX597f6d9"  # https://tongji.baidu.com/web/welcome/login
-
-  #SEO信息(meta中的信息)
-  homeTitle = "码农的专属博客"
-  keywords = "码农,hugo,theme,blog,developer,programmer,coder,geek,程序员,主题,个人博客,github博客,golang,微服务"
-  description = "码夫庄园是一个使用hugo搭建的程序员专属博客站点，以优美的博客风格，丰富的展现方式向广大程序员们传播最新的golang、docker、k8s、微服务、大数据、人工智能、等技术。"
-
-[permalinks]
-    post = "/:year/:month/:title"
-
-# 分类依据，如：tags、categories、archives...
-[taxonomies]
-    tag = "tags"
-    category = "categories"
-    archive = "archives"
-    # series = "series"
-
-# 导航目录
-[[menu.friendly]]
-    name="Mafool"    
-    url="http://www.mafool.com"    
-    weight="1"
-[[menu.friendly]]
-    name="Mafool"    
-    url="http://www.mafool.com"    
-    weight="2"
-[[menu.friendly]]
-    name="Mafool"    
-    url="http://www.mafool.com"    
-    weight="3"    
-[[menu.friendly]]
-    name="Mafool"    
-    url="http://www.mafool.com"    
-    weight="4"
-[[menu.friendly]]
-    name="Mafool"    
-    url="http://www.mafool.com"
-    weight="5"
-
-# Markdown样式风格
-[markup]
-  defaultMarkdownHandler = "goldmark"
-  [markup.goldmark]
-    [markup.goldmark.extensions]    
-      definitionList = true    
-      footnote = true    
-      linkify = true    
-      strikethrough = true    
-      table = true    
-      taskList = true    
-      typographer = true    
-    [markup.goldmark.parser]    
-      attribute = true    
-      autoHeadingID = true    
-      autoHeadingIDType = "github"    
-    [markup.goldmark.renderer]
-      hardWraps = true
-      unsafe = false    
-      xHTML = false
-  [markup.highlight]      #Hugo使用Chroma作为其代码突出显示器
-    codeFences = true     #代码栅栏
-    guessSyntax = true    #猜测
-    lineNoStart = 1       #行号初始值
-    lineNos = true        #显示行号
-    lineNumbersInTable = true
-    style = "monokai"     #代码风格，可根据喜好调整
-    tabWidth = 8
-  [markup.tableOfContents] #文档目录，H1作为SEO的关键字
-    startLevel = 2         #开始级别：H2  
-    endLevel = 3           #结束级别：H3
-    ordered = false        #是否排序
+  slogan = "简单、克制，适合长期写作。"
+  openShare = true
 ```
-**一些重要的配置参考：**
->  https://gohugo.io/getting-started/configuration-markup#highlight  # Markdown配置
 
->  https://gohugo.io/content-management/syntax-highlighting/   # 代码高亮
+### Logo
 
->  https://xyproto.github.io/splash/docs/longer/all.html  # 代码风格
+- `logoText`：显示在导航和页脚的 Logo 文本
+- `logoFontFamily`：CSS 字体栈
+- `logoFontWeight`：字重
+- `logoFontUrl`：可选在线字体地址；留空时使用系统字体
 
+### 社交链接
 
-<br/>
+只渲染已配置的入口。设为空字符串或删除对应键即可隐藏；`wechat` 只在配置了二维码图片时显示入口和弹窗。
+
+## 写文章
+
+```bash
+hugo new content post/my-first-post.md
+```
+
+Front matter 示例：
+
+```toml
++++
+title = "我的第一篇文章"
+date = 2026-03-22
+description = "用于列表摘要和 SEO 的一句话。"
+cover = "img/res/hero.jpg"
+categories = ["随笔"]
+tags = ["Hugo", "写作"]
+archives = "2026"
+author = "示例作者"
+pinned = false
++++
+```
+
+### H2 标题图标
+
+主题支持给文章内的 H2 加轻量线性图标，需要开启 Goldmark 的属性解析：
+
+```toml
+[markup.goldmark.parser]
+  attribute = true
+```
+
+然后在标题后加属性：
+
+```markdown
+## 概述 {data-icon="book"}
+## 准备工作 {data-icon="tools"}
+## 示例代码 {data-icon="code"}
+```
+
+当前内置图标：`book`、`tools`、`file`、`code`、`play`、`link`。
+
+## 文档
+
+- [Hugo 静态博客指南](docs/Hugo静态博客指南.md)：安装、内容、主题、部署
+- [主题功能与配置](docs/theme-features.md)：搜索、代码块、目录、Logo、页脚
 
 ## 贡献
-您是否发现了错误或对新功能有想法？随时使用[问题跟踪工具](https://github.com/hollson/hugo-theme-dooz/issues)让我知道。或直接[提出请求](https://github.com/hollson/hugo-theme-dooz/pulls)。 你也可以添加微信向我咨询一切问题：
 
-![hollson](/static/img/reward/wechat.png)
+欢迎提交 Issue 或 Pull Request。请勿在示例站、截图或文档中提交真实个人二维码、邮箱、手机号等隐私信息。
+
+## License
+
+[MIT](LICENSE)

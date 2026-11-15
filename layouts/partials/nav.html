@@ -1,7 +1,7 @@
 <nav class="navbar is-transparent container has-text-white">
     <div class="navbar-brand">
         <div class="navbar-item">
-            <a class="mafool-logo" href="{{ .Site.BaseURL | relLangURL }}" aria-label="{{ .Site.Params.logoText | default "Mafool" }}">{{ .Site.Params.logoText | default "Mafool" }}</a>
+            <a class="dooz-logo" href="{{ .Site.BaseURL | relLangURL }}" aria-label="{{ .Site.Params.logoText | default .Site.Title }}">{{ .Site.Params.logoText | default .Site.Title }}</a>
         </div>
 
         <!--for mobile-->
@@ -44,12 +44,14 @@
             <a class="navbar-item" href='{{ "tags/" | relURL }}'>{{i18n "tags"}}</a>
             <a class="navbar-item" href='{{ "archives" | relURL }}'>{{i18n "archives"}} </a>
             <a class="navbar-item" href='{{ "about" | relURL }}'>{{i18n "about"}}</a>
+            {{ with .Site.Params.repo }}
             <span class="navbar-item">
-                <a class="button is-primary is-inverted" href="https://github.com/hollson/hugo-theme-dooz">
+                <a class="button is-primary is-inverted" href="{{ . }}">
                     <span class="icon">{{ partial "icon" (dict "name" "github" "size" 18) }}</span>
-                    <span>{{i18n "theme"}}</span>
+                    <span>{{ i18n "theme" }}</span>
                 </a>
             </span>
+            {{ end }}
         </div>
     </div>
 </nav>

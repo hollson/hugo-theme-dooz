@@ -10,3 +10,6 @@ _gen
 *workspace
 .qoder
 public/
+resources/
+exampleSite/resources/
+exampleSite/public/

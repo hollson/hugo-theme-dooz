@@ -218,7 +218,7 @@ article.media:hover {
 /* ============================================================
  * 字体字标（导航左侧）
  * ============================================================ */
-.mafool-logo {
+.dooz-logo {
     display: inline-flex;
     align-items: center;
     font-family: var(--logo-font, "Fraunces", "Bodoni 72", Didot, Georgia, "Times New Roman", serif);
@@ -234,13 +234,13 @@ article.media:hover {
     transition: opacity 0.18s ease, color 0.18s ease;
 }
 
-.mafool-logo:hover {
+.dooz-logo:hover {
     color: #ffffff;
     opacity: 0.82;
 }
 
 @media screen and (max-width: 768px) {
-    .mafool-logo {
+    .dooz-logo {
         font-size: 1.6rem;
     }
 }

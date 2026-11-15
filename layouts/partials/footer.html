@@ -21,10 +21,13 @@
     <div class="container">
         <div class="footer-main">
             <div class="footer-brand">
-                <a class="footer-logo" href="{{ .Site.BaseURL | relLangURL }}" aria-label="{{ .Site.Params.logoText | default "Mafool" }}">{{ .Site.Params.logoText | default "Mafool" }}</a>
+                <a class="footer-logo" href="{{ .Site.BaseURL | relLangURL }}" aria-label="{{ .Site.Params.logoText | default .Site.Title }}">{{ .Site.Params.logoText | default .Site.Title }}</a>
                 <p class="footer-tagline">{{ $tagline }}</p>
 
                 <ul class="footer-social">
+                    {{ with .Site.Params.github }}
+                    <li><a href="{{ . }}" target="_blank" rel="noopener me">GitHub</a></li>
+                    {{ end }}
                     {{ with .Site.Params.csdn }}
                     <li><a href="{{ . }}" target="_blank" rel="noopener me">CSDN</a></li>
                     {{ end }}

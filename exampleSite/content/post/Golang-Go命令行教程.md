@@ -3,7 +3,7 @@ title:       "Golang之命令行教程"
 subtitle:    "Go是用于管理Go源代码的工具"
 description: "Go是由Robert Griesemer，Rob Pike和Ken Thompson在Google设计的一种静态类型的编译型编程语言。Go在语法上类似于C，但是具有内存安全性，垃圾回收，结构化类型和CSP样式的并发性。由于其域名golang.org，该语言通常称为“ Golang”，但专有名称是Go。"
 date:        2020-03-19
-author:      "shongsheng"
+author:      "示例作者"
 image:       "img/res/blog.jpg"
 tags:        ["golang","command"]
 categories:  ["Golang"]
@@ -245,7 +245,7 @@ $ go list -json errors|less
 
 
 ## 12. mod  
-**说明：** 依赖包管理, [参考链接](https://blog.csdn.net/Gusand/article/details/99507561) 。
+**说明：** 依赖包管理, [参考链接](https://go.dev/doc/modules/managing-dependencies) 。
 
 
 ## 13. run

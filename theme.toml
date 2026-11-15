@@ -1,14 +1,11 @@
-# theme.toml template for a Hugo theme
-# See https://github.com/gohugoio/hugoThemes#themetoml for an example
-
 name = "Dooz"
 license = "MIT"
-licenselink = "https://github.com/hollson/hugo-theme-dooz/blob/master/LICENSE"
-description = "Dooz is a simple and elegant hugo theme specially designed for programmers or columnists."
-homepage = "http://www.mafool.com/"
-tags = ["blog","tech"]
-min_version = "0.41"
+licenselink = "https://github.com/yourname/hugo-theme-dooz/blob/main/LICENSE"
+description = "Dooz is a clean, elegant Hugo theme for programmers and long-form writers, with built-in search, article TOC, and a CSDN-style code block toolbar."
+homepage = "https://github.com/yourname/hugo-theme-dooz"
+tags = ["blog", "tech", "search", "code", "responsive"]
+min_version = "0.158.0"
 
 [author]
-  name = "hollson"
-  homepage = "http://www.mafool.com/"
+  name = "Dooz Contributors"
+  homepage = "https://github.com/yourname/hugo-theme-dooz"

@@ -1,27 +1,17 @@
 ---
-title: "About"
+title: "关于"
 date: 2020-03-20
 archives: ""
-author: Hollson
-weight: 1  #按权重从大到小
+author: "示例作者"
+weight: 1  # 按权重排序
 ---
 
+# 你好，我是示例作者
 
-[![](/img/my/wechat.jpg "史宏生")](https://github.com/hollson)
+这是一个可以公开演示的示例关于页。你可以把这里换成自己的介绍、项目经历和联系方式；公开主题仓库里不保留任何个人二维码或真实邮箱。
 
-**_Hongsheng Shi_** 
+- 邮箱：hello@example.com
+- GitHub：https://github.com/example
+- 兴趣：写作、开源、长期主义
 
-Has more than a decade of Internet experience, including in e-commerce, smart finance and taxation, short video and other fields.
-
-Good at golang、dotnet field development, usually like to study docker, k8s, distributed storage, big data, etc., and have certain research on blockchain and artificial intelligence.
-
-He has also contributed to open source projects, such as Hugo, and is currently involved in the development of the markdown parser.
-
-I like movies, Musical Instruments and writing a blog to share my life and technical experience.
-
-If you are interested in me, please harass me：
-
- hollson@qq.com
-
-
-2020.03.20
+> 这个页面的作用是展示排版，不包含任何真实个人信息。
