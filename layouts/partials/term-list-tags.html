@@ -3,8 +3,9 @@
 {{- $max := 1 -}}
 {{- with index $terms 0 }}{{ $max = .Count }}{{ end -}}
 
-<div class="container">
-    <div class="section tag-page">
+<div class="columns content-columns">
+    <div class="column is-9 main-column">
+        <div class="tag-page">
         {{ if $terms }}
         <div class="tag-intro">
             <span class="tag-eyebrow">Topics</span>
@@ -45,5 +46,11 @@
         {{ else }}
         <p class="tag-summary">还没有标签。</p>
         {{ end }}
+        </div>
+    </div>
+    <div class="column is-3 sidebar-column">
+        {{ partial "widget-recent.html" . }}<br>
+        {{ partial "widget-archives" . }}
+        {{ partial "widget-category" . }}
     </div>
 </div>

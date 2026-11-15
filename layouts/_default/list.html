@@ -4,8 +4,8 @@
 
 {{ define "main" }}
 {{ $paginator := .Paginator }}
-<div class="columns">
-  <div class="column is-9">
+<div class="columns content-columns">
+  <div class="column is-9 main-column">
     <div class="tile is-child box">
       <div class="content">
         {{ range $paginator.Pages }}
@@ -26,7 +26,7 @@
       {{ partial "pagination" . }}
     </div>
   </div>
-  <div class="column is-3">
+  <div class="column is-3 sidebar-column">
     {{ partial "widget-recent.html" . }}<br>
     {{ partial "widget-category" . }}
   </div>

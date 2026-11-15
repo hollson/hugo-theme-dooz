@@ -1254,8 +1254,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* 23.4rem ≈ header-home 的 hero 高度，首屏刚好是 banner + 404 区 */
-    min-height: max(24rem, calc(100vh - 23.4rem));
+    /* 25rem ≈ 400px Hero 高度，首屏刚好是 banner + 404 区 */
+    min-height: max(24rem, calc(100vh - 25rem));
     padding: 3.4rem 1.5rem;
     background: var(--c-bg, #f7f7f5);
     color: var(--c-ink, #1c2724);
@@ -1344,17 +1344,17 @@ body.has-background-light {
     color: var(--c-ink);
 }
 
-/* 去掉厚重卡片感，只保留发丝级边框 */
+/* 卡片内部统一白底，页面保持很淡的渐变背景；不描边 */
 .box {
-    background: transparent;
-    border: 1px solid var(--c-border-faint);
+    background-color: var(--c-surface, #ffffff);
+    border: 0;
     border-radius: 12px;
     box-shadow: none;
 }
 
 .card {
-    background: transparent;
-    border: 1px solid var(--c-border);
+    background-color: var(--c-surface, #ffffff);
+    border: 0;
     border-radius: 10px;
     box-shadow: none;
 }
@@ -1439,6 +1439,27 @@ article.media:hover {
     color: var(--c-accent) !important;
 }
 
+/* 侧栏标签的小图标：只做视觉引导，不抢文字层级 */
+.tag.sidebar-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.34rem;
+    padding-left: 0.5rem;
+    padding-right: 0.7rem;
+}
+
+.sidebar-tag-icon {
+    flex: 0 0 auto;
+    width: 0.76rem;
+    height: 0.76rem;
+    opacity: 0.52;
+    transition: opacity 0.2s ease;
+}
+
+.sidebar-tag:hover .sidebar-tag-icon {
+    opacity: 0.95;
+}
+
 /* 标签索引页：保留原有卡片形态，只去掉厚重边框与阴影 */
 .tag-card {
     background: var(--c-surface-soft);
@@ -1494,4 +1515,206 @@ body.page-404 {
 .nf-page {
     background: transparent;
 }
+
+/* ============================================================
+ * 左侧栏与渐变 Hero
+ * 侧栏比例沿用 9/3（约 25% / 75%），与参考页 24% / 76% 接近
+ * ============================================================ */
+
+/* 桌面端：侧栏在左，主内容在右；手机端仍保持正文在前 */
+.content-columns > .main-column {
+    order: 2;
+}
+
+.content-columns > .sidebar-column {
+    order: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .content-columns > .main-column {
+        order: 1;
+    }
+
+    .content-columns > .sidebar-column {
+        order: 2;
+    }
+}
+
+/* Hero：背景图 + 同色系渐变遮罩，底部渐隐进内容区 */
+.hero.hero-gradient {
+    background-color: var(--c-bg, #edf7ff);
+}
+
+.hero-gradient {
+    position: relative;
+    isolation: isolate;
+    min-height: 400px;
+    background-color: var(--c-bg, #edf7ff);
+    background-image: var(--c-bg-gradient);
+    background-position: center center;
+    background-size: cover;
+}
+
+/* 背景图单独一层，底部渐隐交给上方的同色遮罩，避免 mask 合成时的闪块 */
+.hero-gradient::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: var(--hero-image, none);
+    background-position: center 42%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    pointer-events: none;
+}
+
+/* 深青压暗 + 标题周围柔光，并在底部渐隐到页面底色，保证白字可读又看得到图 */
+.hero-gradient::before {
+    z-index: 1;
+    background:
+        radial-gradient(900px 300px at 50% 48%, rgba(4, 26, 24, 0.30), transparent 70%),
+        linear-gradient(180deg,
+            rgba(248, 251, 254, 0) 0%,
+            rgba(248, 251, 254, 0) 46%,
+            rgba(248, 251, 254, 0.40) 64%,
+            rgba(248, 251, 254, 0.86) 82%,
+            var(--c-bg, #f8fbfe) 100%),
+        linear-gradient(180deg,
+            rgba(4, 24, 22, 0.82) 0%,
+            rgba(8, 44, 40, 0.62) 34%,
+            rgba(12, 60, 56, 0.45) 58%,
+            rgba(12, 60, 56, 0.10) 82%,
+            rgba(12, 60, 56, 0) 100%);
+}
+
+.hero-gradient .hero-body {
+    z-index: 2;
+}
+
+/* Hero 之后内容直接贴上来，形成参考页那种“卡片压着 Hero 下沿”的关系 */
+body:not(.page-404) > .container > .section {
+    padding-top: 0;
+}
+
+/* 文章页 hero 标题与参考页一致：居中，而不是偏在侧栏上方 */
+.hero-gradient .hero-body > .container > .column {
+    text-align: center !important;
+}
+
+/* 移动端导航折叠按钮在深色渐变上保持可见 */
+.hero-gradient .navbar-burger {
+    color: #ffffff;
+}
+
+/* 导航栏与正文列（侧栏 + 主列）同宽，左右边缘和内容卡片对齐 */
+.hero-head .navbar.container {
+    width: calc(100% - 1.5rem);
+    max-width: 1272px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
+    .hero-head .navbar.container {
+        max-width: 888px;
+    }
+}
+
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
+    .hero-head .navbar.container {
+        max-width: 1080px;
+    }
+}
+
+/* 分页：上一页/下一页并排居中，不再分列两端 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+
+.pagination-previous,
+.pagination-next {
+    float: none;
+    margin: 0 !important;
+}
+
+/* 桌面端侧栏：滚到窗口顶部后固定，内容超出时在栏内独立滚动 */
+@media screen and (min-width: 1024px) {
+    .content-columns > .sidebar-column {
+        position: sticky;
+        top: 0.75rem;
+        align-self: flex-start;
+        max-height: calc(100vh - 1.5rem);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        padding-right: 0.3rem;
+    }
+
+    .content-columns > .sidebar-column::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .content-columns > .sidebar-column::-webkit-scrollbar-thumb {
+        background: rgba(15, 118, 110, 0.18);
+        border-radius: 999px;
+    }
+}
+
+/* 文章目录移到左侧栏后，保持与侧栏其他卡片一致的轻量排版 */
+.toc-widget .card-content {
+    padding-bottom: 1rem;
+}
+
+.toc-sidebar nav {
+    margin: 0;
+}
+
+.toc-sidebar ul {
+    margin: 0;
+    padding-left: 1rem;
+    list-style: none;
+}
+
+.toc-sidebar > nav > ul {
+    padding-left: 0;
+}
+
+.toc-sidebar ul ul {
+    padding-left: 0.85rem;
+}
+
+.toc-sidebar li {
+    margin: 0.22rem 0;
+}
+
+.toc-sidebar a {
+    display: block;
+    color: #40565a;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+.toc-sidebar a:hover {
+    color: var(--c-accent);
+}
+
+/* 目录跳转：平滑滚动到正文锚点，并给标题留一点顶部呼吸空间 */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
 

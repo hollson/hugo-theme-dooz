@@ -10,8 +10,10 @@
 {{ $end := time.AsTime (printf "%d-01-01" (add (int $year) 1)) }}
 {{ $posts = (where (where (where site.RegularPages "Section" "post") "Date" "ge" $start) "Date" "lt" $end).ByDate.Reverse }}
 {{ end }}
-<div class="archive-page">
-    <div class="archive-timeline">
+<div class="columns content-columns">
+    <div class="column is-9 main-column">
+        <div class="archive-page">
+            <div class="archive-timeline">
         <section class="tl-year">
             <h2 class="tl-year-title">{{ $year }}<span class="tl-year-count">{{ len $posts }} 篇</span></h2>
             <ul class="tl-list">
@@ -26,6 +28,13 @@
                 {{ end }}
             </ul>
         </section>
+            </div>
+        </div>
+    </div>
+    <div class="column is-3 sidebar-column">
+        {{ partial "widget-recent.html" . }}<br>
+        {{ partial "widget-category" . }}
+        {{ partial "widget-tags" . }}
     </div>
 </div>
 {{ end }}

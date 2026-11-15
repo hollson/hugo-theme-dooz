@@ -10,8 +10,8 @@
 <!--Default: Weight > Date > LinkTitle > FilePath, eg: .Pages.ByPublishDate.Reverse-->
 {{ $paginator := .Paginate (where .Site.RegularPages "Section" "post").ByWeight}}
 
-<div class="columns">
-    <div class="column is-9">
+<div class="columns content-columns">
+    <div class="column is-9 main-column">
         <div class="tile is-child box">
             <div class="content">
                 <h3>{{i18n "welcome"}}</h3>
@@ -35,7 +35,7 @@
             {{ partial "pagination" .}}
         </div>
     </div>
-    <div class="column is-3">
+    <div class="column is-3 sidebar-column">
         {{ partial "widget-notice" . }}
         {{ partial "widget-author" . }}<br>
         <!-- {{ partial "widget-featured" . }} -->

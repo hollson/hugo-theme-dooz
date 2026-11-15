@@ -1,9 +1,9 @@
-{{if $.Site.Params.Notice}}
+{{ if and .Site.Params.noticeEnable .Site.Params.notice }}
 <div class="card">
     <div class="card-content">
         <h2 class="title is-6">{{i18n "notice"}}</h2>
-        <h6>{{.Site.Params.Notice|markdownify}}</h6>
+        <h6>{{.Site.Params.notice|markdownify}}</h6>
     </div>
 </div>
 <br>
-{{end}}
+{{ end }}

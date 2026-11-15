@@ -4,8 +4,9 @@
 {{- $undated := where $posts "Date" "lt" $cutoff -}}
 {{- $groups := $dated.GroupByDate "2006" -}}
 
-<div class="container">
-    <div class="section archive-page">
+<div class="columns content-columns">
+    <div class="column is-9 main-column">
+        <div class="archive-page">
         <div class="tag-intro">
             <span class="tag-eyebrow">Archive</span>
             <p class="tag-summary">
@@ -44,5 +45,11 @@
             </div>
         </section>
         {{ end }}
+        </div>
+    </div>
+    <div class="column is-3 sidebar-column">
+        {{ partial "widget-recent.html" . }}<br>
+        {{ partial "widget-category" . }}
+        {{ partial "widget-tags" . }}
     </div>
 </div>

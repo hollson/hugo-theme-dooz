@@ -1,5 +1,4 @@
-<section class="hero is-info is-medium"
-    style="background-image: url('{{ if .Params.Image }}{{ .Params.Image|relURL}}{{ else }}{{ .Site.Params.Hero|relURL}}{{ end }}');">
+<section class="hero is-info is-medium hero-gradient" style="--hero-image: url('{{ if .Params.Image }}{{ .Params.Image|relURL}}{{ else }}{{ .Site.Params.Hero|relURL}}{{ end }}');">
     <div class="hero-head">
         {{ partial "nav" .}}
     </div>
