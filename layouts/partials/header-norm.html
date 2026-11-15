@@ -5,11 +5,6 @@
     <div class="hero-body">
         <div class="container has-text-centered">
             <div class='container{{if eq .Type "post"}} has-text-left{{end}} column is-7'>
-                {{ range .Params.tags }}
-                <span>
-                    <a class="bar_tag" href="{{ "/tags/"|relLangURL }}{{ .|urlize }}" title="{{.}}">{{.}}</a>
-                </span>
-                {{ end }}
                 <h1 class="title is-size-2" style="margin-bottom:0.2rem;">
                     {{ if eq .Type "tags" }}
                     {{ if eq .Kind "taxonomy" }}{{i18n "tags"}}{{ else }}{{ .Title }}{{ end }}
@@ -23,8 +18,12 @@
                     {{ .Title }}
                     {{ end }}
                 </h1>
-                {{ if eq .Type "post" }}
-                {{ .Date.Format "January 2, 2006" }} &middot;&nbsp;{{ .ReadingTime }} min read
+                {{ with .Params.tags }}
+                <div class="hero-tag-list" aria-label="标签">
+                    {{ range . }}
+                    <span><a class="bar_tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/" title="{{ . }}">{{ . }}</a></span>
+                    {{ end }}
+                </div>
                 {{ end }}
                 <span class="title is-size-6" style="font-style: italic;"> {{.Params.subtitle}}</span><br>
             </div>

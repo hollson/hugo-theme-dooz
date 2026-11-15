@@ -8,7 +8,11 @@
 {{ define "main" }}
 
 <!--Default: Weight > Date > LinkTitle > FilePath, eg: .Pages.ByPublishDate.Reverse-->
-{{ $paginator := .Paginate (where .Site.RegularPages "Section" "post").ByWeight}}
+<!-- 置顶文章优先，其余保持 Weight > Date 的原有排序 -->
+{{ $posts := where .Site.RegularPages "Section" "post" }}
+{{ $pinned := where $posts "Params.pinned" true }}
+{{ $normal := $posts | complement $pinned }}
+{{ $paginator := .Paginate ($pinned.ByWeight | append $normal.ByWeight) }}
 
 <div class="columns content-columns">
     <div class="column is-9 main-column">
@@ -17,15 +21,26 @@
                 <h3>{{i18n "welcome"}}</h3>
                 <hr>
                 {{ range $paginator.Pages }}
-                <article class="media">
+                {{ $cover := .Params.cover }}
+                {{ $permalink := .RelPermalink }}
+                <article class="media post-list-item{{ if $cover }} has-cover{{ end }}">
+                    {{ with $cover }}
+                    <div class="media-left post-list-cover">
+                        <a href="{{ $permalink }}" aria-hidden="true" tabindex="-1">
+                            <img src="{{ . | relURL }}" alt="" loading="lazy" decoding="async">
+                        </a>
+                    </div>
+                    {{ end }}
                     <div class="media-content">
                         <div class="content">
-                            <p class="title is-4">
-                                <a href="{{.RelPermalink}}" title="{{.LinkTitle}}">{{.LinkTitle}}</a></p>
-                            {{ partial "publishat" . }}
+                            <div class="post-list-head">
+                                <p class="title is-4">
+                                    <a href="{{.RelPermalink}}" title="{{.LinkTitle}}">{{.LinkTitle}}</a></p>
+                            </div>
                             {{ $excerpt := "" }}
                             {{ with .Description }}{{ $excerpt = . }}{{ else }}{{ $excerpt = .Summary }}{{ end }}
                             <p class="summary">{{ $excerpt | plainify | htmlUnescape | replaceRE "\\[TOC\\]" "" | truncate 100 }}</p>
+                            {{ partial "post-list-meta" . }}
                         </div>
                     </div>
                 </article>

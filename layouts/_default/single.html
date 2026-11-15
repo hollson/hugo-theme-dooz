@@ -7,24 +7,16 @@
     <div class="column is-9 main-column">
         <div class="tile is-child box">
             <div class="content">
-                <!-- Main container -->
-                <nav class="level">
-                    <!-- Left side -->
-                    <div class="level-left">
-                        <div class="level-item">
-                            {{ partial "publishat" . }}
-                        </div>
-                    </div>
-
-                    <!-- Right side -->
-                    {{if .Site.Params.OpenShare}}
-                    <div class="share-component level-right" data-disabled="google,diandian,tencent,qzone"
-                        data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣"
-                        data-mobile-sites="weibo,qq,qzone,tencent">
-                    </div>
-                    {{end}}
-                </nav>
-                <hr>
+                <!-- Article metadata -->
+                <div class="article-meta-banner">
+                    {{ partial "post-list-meta" . }}
+                </div>
+                {{if .Site.Params.OpenShare}}
+                <div class="share-component" data-disabled="google,diandian,tencent,qzone"
+                    data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣"
+                    data-mobile-sites="weibo,qq,qzone,tencent">
+                </div>
+                {{end}}
                 {{ .Content }}
                 <!-- Reward -->
                 {{ if .Site.Params.Reward }}

@@ -9,16 +9,33 @@ document.addEventListener('DOMContentLoaded', () => {
     // 打开微信弹窗
     document.querySelectorAll('.modal-wechat').forEach(el => {
         el.addEventListener('click', () => {
-            document.querySelectorAll('.modal').forEach(m => m.classList.add('is-active'));
+            const targetId = el.dataset.target;
+            const modal = targetId ? document.getElementById(targetId) : document.querySelector('.modal');
+            if (modal) {
+                modal.classList.add('is-active');
+                document.body.classList.add('is-clipped');
+            }
         });
     });
 
-    // 点击遮罩关闭弹窗
-    document.querySelectorAll('.modal-background').forEach(el => {
+    // 点击遮罩或关闭按钮关闭弹窗
+    document.querySelectorAll('.modal-background, .modal-close').forEach(el => {
         el.addEventListener('click', () => {
             const modal = el.closest('.modal');
-            if (modal) modal.classList.remove('is-active');
+            if (modal) {
+                modal.classList.remove('is-active');
+                document.body.classList.remove('is-clipped');
+            }
         });
+    });
+
+    // Esc 关闭弹窗
+    document.addEventListener('keydown', event => {
+        if (event.key !== 'Escape') return;
+        document.querySelectorAll('.modal.is-active').forEach(modal => {
+            modal.classList.remove('is-active');
+        });
+        document.body.classList.remove('is-clipped');
     });
 });
 

@@ -1,0 +1,29 @@
+<div class="post-list-meta">
+    <div class="post-list-meta-main">
+        {{ if .Params.pinned }}<span class="post-pinned">置顶</span>{{ end }}
+        {{ with .Params.categories }}
+        <span class="post-list-category-group" aria-label="分类">
+            {{ range . }}
+            <a class="post-category-link" href="{{ "/categories/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>
+            {{ end }}
+        </span>
+        {{ end }}
+        {{ with .Params.tags }}
+        <span class="post-list-tag-group" aria-label="标签">
+            {{ range . }}
+            <a class="post-tag-link" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/"><span class="post-tag-hash" aria-hidden="true">#</span>{{ . }}</a>
+            {{ end }}
+        </span>
+        {{ end }}
+    </div>
+    <div class="post-list-meta-right">
+        <span class="post-list-reading">
+            {{ partial "icon" (dict "name" "clock" "size" 13) }}
+            <span>{{ .ReadingTime }} 分钟</span>
+        </span>
+        <span class="post-list-date">
+            {{ partial "icon" (dict "name" "calendar" "size" 13) }}
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+        </span>
+    </div>
+</div>

@@ -41,8 +41,8 @@ other = "Previous"
 other="Published at"
 
 [readingTime]
-one = "0 min read"
-other = "{{.Count}} min read"
+one = "0 min"
+other = "{{.Count}} min"
 
 [related]
 other="Related posts"

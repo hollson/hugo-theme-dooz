@@ -7,16 +7,18 @@
                 <p class="term-count">共 {{ len $posts }} 篇文章</p>
                 <hr>
                 {{ range $posts }}
-                <article class="media">
+                <article class="media post-list-item">
                     <div class="media-content">
                         <div class="content">
-                            <p class="title is-4">
-                                <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">{{ .LinkTitle }}</a>
-                            </p>
-                            {{ partial "publishat" . }}
+                            <div class="post-list-head">
+                                <p class="title is-4">
+                                    <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">{{ .LinkTitle }}</a>
+                                </p>
+                            </div>
                             {{ $excerpt := "" }}
                             {{ with .Description }}{{ $excerpt = . }}{{ else }}{{ $excerpt = .Summary }}{{ end }}
                             <p class="summary">{{ $excerpt | plainify | htmlUnescape | replaceRE "\\[TOC\\]" "" | truncate 100 }}</p>
+                            {{ partial "post-list-meta" . }}
                         </div>
                     </div>
                 </article>

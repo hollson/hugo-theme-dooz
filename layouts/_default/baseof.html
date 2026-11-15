@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="{{ "css/bulma.min.css" | relURL }}" />
 
     <link rel="stylesheet" href="{{ "css/dooz.blog.css" | relURL }}" />
-    <link rel="stylesheet" href="{{ "css/theme.css" | relURL }}" />
+    <link rel="stylesheet" href="{{ "css/theme.css" | relURL }}?v={{ now.Unix }}" />
 
     <!-- share -->
     {{if .Site.Params.OpenShare}}
