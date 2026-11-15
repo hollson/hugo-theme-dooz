@@ -1,17 +1,21 @@
 /* ============================================================
- * theme.css — 配色层（阶段 3）
- * 只定义颜色变量与颜色替换，不改字号、行高、间距、布局
+ * theme.css — 配色与视觉层
+ * 前面定义颜色变量与颜色替换；末尾“淡雅视觉层”统一页面表面与正文排版
  * 换色只改下面 :root 里的值
  * ============================================================ */
 
 :root {
     --c-accent: #0f766e;        /* 主色：墨青 */
     --c-accent-strong: #0b5d57; /* 主色深，hover 用 */
-    --c-ink: #1c2724;           /* 正文标题 */
-    --c-ink-soft: #4b5754;      /* 次要文字 */
-    --c-bg: #f7f7f5;            /* 页面底色 */
-    --c-surface: #ffffff;       /* 卡片/内容白 */
-    --c-line: #e6e4df;          /* 分隔线 */
+    --c-ink: #222226;           /* 正文标题 */
+    --c-ink-soft: #59636b;      /* 次要文字 */
+    --c-bg: #f8fbfe;            /* 页面底色 */
+    --c-surface: #ffffff;       /* 浮层/内容白 */
+    --c-surface-soft: rgba(255, 255, 255, 0.58); /* 无边框卡片 */
+    --c-line: #e8eef3;          /* 分隔线 */
+    --c-border: rgba(34, 34, 38, 0.10);    /* 侧栏/标签卡浅边框 */
+    --c-border-faint: rgba(34, 34, 38, 0.06); /* 正文区极淡边框 */
+    --c-bg-gradient: linear-gradient(90deg, #edf7ff 0%, #f8fcff 34%, #ffffff 78%);
 }
 
 /* 页面底色 */
@@ -1324,5 +1328,170 @@ body.page-404 > .container > .section {
 @media (max-width: 640px) {    .nf-page {
         padding: 2.8rem 1.25rem;
     }
+}
+
+/* ============================================================
+ * 淡雅视觉层（参考 docs/样式示例.html）
+ * 只调整页面表面、卡片观感与正文排版；
+ * header、9/3 栅格、侧栏顺序、深色 footer 均保持原结构。
+ * ============================================================ */
+
+/* 页面底色：雾蓝到白的横向渐变，正文直接落在背景上 */
+body,
+body.has-background-light {
+    background-color: var(--c-bg);
+    background-image: var(--c-bg-gradient);
+    color: var(--c-ink);
+}
+
+/* 去掉厚重卡片感，只保留发丝级边框 */
+.box {
+    background: transparent;
+    border: 1px solid var(--c-border-faint);
+    border-radius: 12px;
+    box-shadow: none;
+}
+
+.card {
+    background: transparent;
+    border: 1px solid var(--c-border);
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+.box:hover,
+.card:hover {
+    box-shadow: none;
+}
+
+/* 正文：更接近参考页的黑灰文字与舒展行距 */
+.content {
+    color: #4d4d4d;
+}
+
+.content p,
+.content li {
+    line-height: 1.85;
+}
+
+.content h2 {
+    margin: 2.2rem 0 0.7rem;
+    padding-bottom: 0;
+    border-bottom: 0;
+    font-size: 1.4rem;
+    line-height: 1.55;
+    font-weight: 600;
+}
+
+.content h3 {
+    margin-top: 1.6rem;
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+
+hr {
+    height: 1px;
+    background-color: var(--c-line);
+}
+
+/* 列表页：标题回到墨色，hover 才用主色 */
+.title.is-4 a {
+    color: var(--c-ink);
+}
+
+.title.is-4 a:hover {
+    color: var(--c-accent);
+}
+
+.has-text-grey-light {
+    color: #8e989f !important;
+}
+
+/* 首页/列表文章行：只留极淡的白色水洗，不再出现卡片 */
+article.media {
+    border-radius: 0;
+    transition: background-color 0.18s ease;
+}
+
+article.media:hover {
+    background: rgba(255, 255, 255, 0.42);
+}
+
+/* 右侧栏：卡片透明，仅保留内边距与标题层级 */
+.card-content {
+    padding: 1.1rem 1.15rem 1.35rem;
+}
+
+/* 侧栏标签：去掉 Bulma 默认灰底，改为极淡的墨青水洗 */
+.tag {
+    background: rgba(15, 118, 110, 0.06) !important;
+    border: 1px solid rgba(15, 118, 110, 0.14);
+    color: #40565a !important;
+}
+
+.tag a {
+    color: #40565a !important;
+}
+
+.tag:hover {
+    background: rgba(15, 118, 110, 0.12) !important;
+    border-color: rgba(15, 118, 110, 0.26);
+    color: var(--c-accent) !important;
+}
+
+/* 标签索引页：保留原有卡片形态，只去掉厚重边框与阴影 */
+.tag-card {
+    background: var(--c-surface-soft);
+    border: 1px solid var(--c-border);
+    box-shadow: none;
+}
+
+.tag-card:hover {
+    background: rgba(255, 255, 255, 0.86);
+    border-color: rgba(34, 34, 38, 0.15);
+    box-shadow: none;
+    transform: translateY(-2px);
+}
+
+.tag-card-bar {
+    background: #e6eef5;
+}
+
+.tag-pill {
+    background: rgba(255, 255, 255, 0.58);
+    border: 1px solid rgba(34, 34, 38, 0.075);
+}
+
+.tag-pill:hover {
+    background: #ffffff;
+    border-color: rgba(15, 118, 110, 0.26);
+    box-shadow: 0 4px 14px rgba(34, 34, 38, 0.06);
+}
+
+.tag-pill.is-quiet {
+    background: rgba(255, 255, 255, 0.42);
+    border-color: rgba(34, 34, 38, 0.065);
+    color: #6f7a80;
+}
+
+/* 归档时间轴：hover 不再浮起白卡片 */
+.tl-item:hover {
+    background: rgba(255, 255, 255, 0.44);
+    box-shadow: none;
+}
+
+.tl-undated-list a {
+    background: rgba(255, 255, 255, 0.46);
+    border: 1px solid var(--c-border);
+}
+
+/* 404：沿用同一片底色渐变，内容区不再自带实色背景 */
+body.page-404 {
+    background-color: var(--c-bg);
+    background-image: var(--c-bg-gradient);
+}
+
+.nf-page {
+    background: transparent;
 }
 
