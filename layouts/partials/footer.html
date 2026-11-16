@@ -37,9 +37,9 @@
                     {{ with .Site.Home.OutputFormats.Get "rss" }}
                     <li><a href="{{ .RelPermalink }}" aria-label="RSS">RSS</a></li>
                     {{ end }}
-                    {{ with .Site.Params.email }}
+                    <!-- {{ with .Site.Params.email }}
                     <li><a href="mailto:{{ . }}" aria-label="{{ i18n "footerContact" }}">{{ partial "icon" (dict "name" "mail" "size" 15) }}<span>{{ i18n "footerContact" }}</span></a></li>
-                    {{ end }}
+                    {{ end }} -->
                 </ul>
             </div>
 

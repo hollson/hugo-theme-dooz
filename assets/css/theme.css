@@ -1803,6 +1803,104 @@ body:not(.page-404) > .container > .section {
     color: var(--c-accent);
 }
 
+/* 目录树：按 tocLevels 过滤层级后，用虚线连接上下级 */
+.toc-sidebar .toc-tree {
+    margin: 0;
+}
+
+.toc-tree .toc-list,
+.toc-tree .toc-sublist {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.toc-tree .toc-list {
+    padding-left: 0.12rem;
+}
+
+.toc-tree .toc-item {
+    position: relative;
+    margin: 0.3rem 0;
+}
+
+.toc-tree .toc-sublist {
+    position: relative;
+    margin: 0.25rem 0 0.15rem 0.38rem;
+    padding-left: 0.9rem;
+}
+
+.toc-tree .toc-sublist::before {
+    content: "";
+    position: absolute;
+    top: 0.12rem;
+    bottom: 0.42rem;
+    left: 0;
+    border-left: 1px dashed rgba(15, 118, 110, 0.26);
+}
+
+.toc-tree .toc-sublist > .toc-item::before {
+    content: "";
+    position: absolute;
+    top: 0.84em;
+    left: -0.9rem;
+    width: 0.56rem;
+    border-top: 1px dashed rgba(15, 118, 110, 0.26);
+}
+
+.toc-tree .toc-sublist > .toc-item::after {
+    content: "";
+    position: absolute;
+    top: calc(0.84em - 0.2rem);
+    left: -0.96rem;
+    width: 0.28rem;
+    height: 0.28rem;
+    border: 1px solid rgba(15, 118, 110, 0.42);
+    border-radius: 50%;
+    background: var(--c-bg, #fff);
+}
+
+.toc-tree .toc-link {
+    display: block;
+    padding: 0.12rem 0.3rem;
+    border-radius: 5px;
+    color: #40565a;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+    transition: color 0.16s ease, background-color 0.16s ease;
+}
+
+.toc-tree .toc-link:hover {
+    color: var(--c-accent);
+    background: rgba(15, 118, 110, 0.06);
+}
+
+.toc-tree .toc-ancestor .toc-link {
+    color: #708286;
+    font-weight: 500;
+}
+
+.toc-tree .toc-ancestor .toc-link:hover {
+    color: var(--c-accent);
+}
+
+.toc-tree .toc-link.is-active,
+.toc-tree .toc-ancestor .toc-link.is-active {
+    color: var(--c-accent);
+    background: rgba(15, 118, 110, 0.11);
+    font-weight: 600;
+}
+
+.toc-tree .toc-item.is-active-parent > .toc-link {
+    color: #55777b;
+}
+
+.toc-tree .toc-sublist > .toc-item.is-active::after {
+    border-color: var(--c-accent);
+    background: var(--c-accent);
+}
+
 /* 目录跳转：平滑滚动到正文锚点，并给标题留一点顶部呼吸空间 */
 html {
     scroll-behavior: smooth;

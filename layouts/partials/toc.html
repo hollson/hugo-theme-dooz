@@ -1,0 +1,23 @@
+{{- $page := . -}}
+{{- $defaultLevels := slice 2 3 -}}
+{{- $raw := $page.Params.tocLevels -}}
+{{- if not $raw -}}{{- $raw = $page.Site.Params.tocLevels -}}{{- end -}}
+{{- if not $raw -}}{{- $raw = $defaultLevels -}}{{- end -}}
+{{- if not (reflect.IsSlice $raw) -}}{{- $raw = slice $raw -}}{{- end -}}
+{{- $levels := slice -}}
+{{- range $raw -}}
+  {{- $digits := replaceRE "[^0-9]" "" (printf "%v" .) -}}
+  {{- if $digits -}}
+    {{- $n := int $digits -}}
+    {{- if and (ge $n 1) (le $n 6) -}}
+      {{- $levels = $levels | append $n -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $levels -}}{{- $levels = $defaultLevels -}}{{- end -}}
+{{- $html := partial "toc-tree.html" (dict "headings" $page.Fragments.Headings "levels" $levels) -}}
+{{- with $html -}}
+<nav id="TableOfContents" class="toc-tree" aria-label="{{ i18n "toc" }}">
+    <ul class="toc-list">{{ . | safeHTML }}</ul>
+</nav>
+{{- end -}}

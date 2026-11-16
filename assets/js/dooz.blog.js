@@ -39,6 +39,85 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// 文章目录滚动联动：正文滚动时高亮当前章节
+document.addEventListener('DOMContentLoaded', () => {
+    const toc = document.querySelector('.toc-tree');
+    if (!toc) return;
+
+    const links = Array.from(toc.querySelectorAll('a.toc-link'));
+    const headings = links.map(link => {
+        let id = link.getAttribute('href') || '';
+        try {
+            id = decodeURIComponent(id.replace(/^#/, ''));
+        } catch (error) {
+            id = id.replace(/^#/, '');
+        }
+        return {
+            link,
+            element: id ? document.getElementById(id) : null
+        };
+    }).filter(item => item.element);
+
+    if (!headings.length) return;
+
+    let ticking = false;
+
+    const clearActive = () => {
+        links.forEach(link => {
+            link.classList.remove('is-active');
+            link.removeAttribute('aria-current');
+            const item = link.closest('.toc-item');
+            if (item) item.classList.remove('is-active', 'is-active-parent');
+        });
+    };
+
+    const setActive = active => {
+        clearActive();
+        active.link.classList.add('is-active');
+        active.link.setAttribute('aria-current', 'location');
+
+        let item = active.link.closest('.toc-item');
+        if (item) {
+            item.classList.add('is-active');
+            item = item.parentElement ? item.parentElement.closest('.toc-item') : null;
+        }
+        while (item) {
+            item.classList.add('is-active-parent');
+            item = item.parentElement ? item.parentElement.closest('.toc-item') : null;
+        }
+    };
+
+    const update = () => {
+        ticking = false;
+        const offset = 88;
+        let current = headings[0];
+
+        headings.forEach(item => {
+            if (item.element.getBoundingClientRect().top <= offset) {
+                current = item;
+            }
+        });
+
+        // 滚到页面底部时，高亮最后一个章节
+        if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+            current = headings[headings.length - 1];
+        }
+
+        setActive(current);
+    };
+
+    const requestUpdate = () => {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(update);
+    };
+
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    window.addEventListener('load', requestUpdate);
+    update();
+});
+
 // Adaptive mobile terminal
 // https://bulma.io/documentation/components/navbar/
 document.addEventListener('DOMContentLoaded', () => {

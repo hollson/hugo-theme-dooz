@@ -40,11 +40,11 @@
     </div>
     <div class="column is-3 sidebar-column">
         {{ if not (eq (.Param "showtoc") false) }}
-        {{ with .TableOfContents }}
+        {{ with partial "toc.html" . }}
         <div class="card toc-widget">
             <div class="card-content">
                 <h2 class="title is-6">{{ i18n "toc" }}</h2>
-                <div class="toc-sidebar">{{ . }}</div>
+                <div class="toc-sidebar">{{ . | safeHTML }}</div>
             </div>
         </div>
         <br>

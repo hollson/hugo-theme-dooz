@@ -18,6 +18,8 @@ copyright = "MIT Licensed"
 
 # ===== 主题参数 =====
 [params]
+  favicon = "assets/favicon.ico"  # 站点图标，留空或不配置则用默认值
+
   # 作者信息：替换成你自己的信息即可
   author = "Hollson"
   email = "hello@example.com"
@@ -56,6 +58,11 @@ copyright = "MIT Licensed"
   openShare = true
   openSearch = true
   openCodeCopy = true
+
+  # 文章目录显示层级：数组写法，支持 "H1"..."H6" 或 1...6。
+  # 例如 ["H2","H3"] 只显示二级和三级标题；
+  # 只写 ["H3"] 时，为保留树状结构会自动带上它的上级 H2/H1。
+  tocLevels = ["H2","H3"]
 
   # 打赏：true 时文章页底部显示赞赏入口
   reward = true

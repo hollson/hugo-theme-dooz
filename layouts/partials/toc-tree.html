@@ -1,0 +1,18 @@
+{{- $levels := .levels -}}
+{{- $html := "" -}}
+{{- range .headings -}}
+  {{- $level := int .Level -}}
+  {{- $childHTML := partial "toc-tree.html" (dict "headings" .Headings "levels" $levels) -}}
+  {{- $selected := in $levels $level -}}
+  {{- if or $selected $childHTML -}}
+    {{- $class := cond $selected "toc-item" "toc-item toc-ancestor" -}}
+    {{- $href := printf "#%s" .ID -}}
+    {{- $title := .Title | htmlEscape -}}
+    {{- $html = printf "%s<li class=\"%s toc-level-%d\"><a class=\"toc-link\" href=\"%s\">%s</a>" $html $class $level $href $title -}}
+    {{- with $childHTML -}}
+      {{- $html = printf "%s<ul class=\"toc-sublist\">%s</ul>" $html . -}}
+    {{- end -}}
+    {{- $html = printf "%s</li>" $html -}}
+  {{- end -}}
+{{- end -}}
+{{- return $html -}}

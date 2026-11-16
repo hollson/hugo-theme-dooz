@@ -22,7 +22,7 @@
     <meta name="twitter:card" content="summary_large_image">
 
     <!--Head Common-->
-    <link rel="shortcut icon" href="{{ "assets/favicon.ico" | relURL }}">
+    <link rel="shortcut icon" href="{{ .Site.Params.favicon | default "assets/favicon.ico" | relURL }}">
     {{ $logoFont := .Site.Params.logoFontFamily | default "\"Fraunces\", serif" }}
     {{ if and .Site.Params.logoFontUrl (not (findRE "(?i)fraunces" $logoFont)) }}
     {{ with .Site.Params.logoFontUrl }}
