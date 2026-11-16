@@ -15,7 +15,7 @@
         <div class="archive-page">
             <div class="archive-timeline">
         <section class="tl-year">
-            <h2 class="tl-year-title">{{ $year }}<span class="tl-year-count">{{ len $posts }} 篇</span></h2>
+            <h2 class="tl-year-title">{{ $year }}<span class="tl-year-count">{{ i18n "postCount" (len $posts) }}</span></h2>
             <ul class="tl-list">
                 {{ range $posts }}
                 <li>

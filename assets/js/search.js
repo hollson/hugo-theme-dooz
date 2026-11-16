@@ -99,7 +99,7 @@
         });
 
         if (!hits.length) {
-            box.innerHTML = '<div class="search-empty">没有匹配的文章</div>';
+            box.innerHTML = '<div class="search-empty">' + esc(root.getAttribute('data-no-results') || '') + '</div>';
         } else {
             box.innerHTML = hits.map(function (h) {
                 var p = h.page;
@@ -120,7 +120,7 @@
         if (!q) { pendingQuery = ''; close(); return; }
         if (q.length < 2) {
             pendingQuery = '';
-            box.innerHTML = '<div class="search-empty">再输入 1 个字符开始搜索</div>';
+            box.innerHTML = '<div class="search-empty">' + esc(root.getAttribute('data-min-length') || '') + '</div>';
             box.classList.add('is-open');
             return;
         }

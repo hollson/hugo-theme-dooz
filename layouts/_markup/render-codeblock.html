@@ -1,13 +1,18 @@
 {{- $lang := .Type | default "text" -}}
-<div class="code-block" data-lang="{{ $lang }}">
+<div class="code-block" data-lang="{{ $lang }}"
+    data-copy-label="{{ i18n "codeCopy" }}"
+    data-copy-copied="{{ i18n "codeCopied" }}"
+    data-copy-failed="{{ i18n "codeCopyFailed" }}"
+    data-expand-label="{{ i18n "codeExpand" }}"
+    data-collapse-label="{{ i18n "codeCollapse" }}">
     <div class="code-head">
         <span class="code-lang"><span class="code-dot" aria-hidden="true"></span>{{ $lang }}</span>
         <div class="code-actions">
-            <button type="button" class="code-copy" aria-label="复制代码" title="复制代码">
+            <button type="button" class="code-copy" aria-label="{{ i18n "codeCopy" }}" title="{{ i18n "codeCopy" }}">
                 <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                <span class="code-copy-label">复制</span>
+                <span class="code-copy-label">{{ i18n "codeCopy" }}</span>
             </button>
-            <button type="button" class="code-expand" aria-expanded="false" hidden>展开</button>
+            <button type="button" class="code-expand" aria-expanded="false" hidden>{{ i18n "codeExpand" }}</button>
         </div>
     </div>
     <div class="code-body">

@@ -3,7 +3,7 @@ title= "Markdown Syntax Guide"
 subtitle= "MdEditor is the most popular markdown online editor"
 description= "Markdown is a markup language that can be written in a plain text editor to give plain text content a certain format with a simple markup syntax. It allows people to write documents in plain text format that is easy to read and write, and then convert them into well-formed HTML pages. The Markdown file has the suffix “.md”"
 author= "示例作者"
-image= "img/res/coder.jpg"
+image= "assets/coder.jpg"
 date= 2020-03-24
 tags= ["markdown"]
 categories= ["Markdown"]
@@ -83,7 +83,7 @@ The <abbr title="Hyper Text Markup Language">HTML</abbr> specification is mainta
 [anchor-id]: https://www.mdeditor.com/
 [mailto:test.test@gmail.com](mailto:test.test@gmail.com)
 GFM a-tail link @pandao
-邮箱地址自动链接 test.test@gmail.com  www@example.com
+邮箱地址自动链接 test.test@gmail.com  www@vip.qq.com
 > @pandao
 
 ### 多语言代码高亮 Codes
@@ -127,7 +127,7 @@ import (
 
 func main() {
     //模拟一个post提交请求
-    resp, err := http.Post("https://example.com", "application/x-www-form-urlencoded", strings.NewReader("id=1"))
+    resp, err := http.Post("http://www.mafool.com", "application/x-www-form-urlencoded", strings.NewReader("id=1"))
     if err != nil {
         panic(err)
     }

@@ -22,13 +22,13 @@
     <meta name="twitter:card" content="summary_large_image">
 
     <!--Head Common-->
-    <link rel="shortcut icon" href="{{ "img/res/favicon.ico" | relURL }}">
+    <link rel="shortcut icon" href="{{ "assets/favicon.ico" | relURL }}">
+    {{ $logoFont := .Site.Params.logoFontFamily | default "\"Fraunces\", serif" }}
+    {{ if and .Site.Params.logoFontUrl (not (findRE "(?i)fraunces" $logoFont)) }}
     {{ with .Site.Params.logoFontUrl }}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="{{ . | safeURL }}" rel="stylesheet">
     {{ end }}
-    {{ $logoFont := .Site.Params.logoFontFamily | default "\"Fraunces\", serif" }}
+    {{ end }}
     {{ $logoWeight := .Site.Params.logoFontWeight | default 700 }}
     <style>
         :root {
@@ -36,24 +36,36 @@
             --logo-font-weight: {{ $logoWeight }};
         }
     </style>
-    <link rel="stylesheet" href="{{ "css/bulma.min.css" | relURL }}" />
+    {{ $bulma := resources.Get "css/bulma.min.css" | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $bulma.RelPermalink }}" integrity="{{ $bulma.Data.Integrity }}" />
 
-    <link rel="stylesheet" href="{{ "css/dooz.blog.css" | relURL }}" />
-    <link rel="stylesheet" href="{{ "css/theme.css" | relURL }}?v={{ now.Unix }}" />
+    {{ $blogCSS := resources.Get "css/dooz.blog.css" | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $blogCSS.RelPermalink }}" integrity="{{ $blogCSS.Data.Integrity }}" />
+    {{ $themeCSS := resources.Get "css/theme.css" | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $themeCSS.RelPermalink }}" integrity="{{ $themeCSS.Data.Integrity }}" />
 
-    <!-- share -->
+    <!-- Share -->
     {{if .Site.Params.OpenShare}}
-    <link rel="stylesheet" href="/css/share.min.css" />
-    <script src="/js/share.js"></script>
-    <script defer src='{{ "js/search.js" | relURL }}?v={{ now.Unix }}'></script>
-    <script defer src='{{ "js/copy-code.js" | relURL }}?v={{ now.Unix }}'></script>
+    {{ $shareCSS := resources.Get "css/share.min.css" | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $shareCSS.RelPermalink }}" integrity="{{ $shareCSS.Data.Integrity }}" />
+    {{ $shareJS := resources.Get "js/share.js" | resources.Fingerprint }}
+    <script defer src="{{ $shareJS.RelPermalink }}" integrity="{{ $shareJS.Data.Integrity }}"></script>
     {{end}}
+    {{ if or (not (isset .Site.Params "opensearch")) .Site.Params.opensearch }}
+    {{ $searchJS := resources.Get "js/search.js" | resources.Fingerprint }}
+    <script defer src="{{ $searchJS.RelPermalink }}" integrity="{{ $searchJS.Data.Integrity }}"></script>
+    {{ end }}
+    {{ if or (not (isset .Site.Params "opencodecopy")) .Site.Params.opencodecopy }}
+    {{ $copyCodeJS := resources.Get "js/copy-code.js" | resources.Fingerprint }}
+    <script defer src="{{ $copyCodeJS.RelPermalink }}" integrity="{{ $copyCodeJS.Data.Integrity }}"></script>
+    {{ end }}
 
     <!--Head Extend-->
     {{ block "headex" . }}{{ end }}
 
     <!-- 远程 Open Sans 已停用，改用系统字体栈（theme.css） -->
-    <script src={{"js/dooz.blog.js"|relURL}}></script>
+    {{ $blogJS := resources.Get "js/dooz.blog.js" | resources.Fingerprint }}
+    <script defer src="{{ $blogJS.RelPermalink }}" integrity="{{ $blogJS.Data.Integrity }}"></script>
 </head>
 
 <body{{ block "bodyclass" . }}{{ end }}>

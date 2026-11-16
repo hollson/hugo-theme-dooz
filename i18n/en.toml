@@ -7,6 +7,46 @@ other = "Archives"
 [categories]
 other="Categories"
 
+[categoryCount]
+one = "{{.Count}} category"
+other = "{{.Count}} categories"
+
+[topics]
+other = "Topics"
+
+[expandButton]
+other = "Expand or collapse"
+
+[close]
+other = "Close"
+
+[tabLink]
+other = "Tab"
+
+[pagination]
+other = "Pagination"
+
+[gotoPage]
+other = "Go to page {{.Count}}"
+
+[featuredImage]
+other = "Featured article image"
+
+[codeCollapse]
+other = "Collapse"
+
+[codeCopy]
+other = "Copy"
+
+[codeCopyFailed]
+other = "Copy failed; please select manually"
+
+[codeCopied]
+other = "Copied"
+
+[codeExpand]
+other = "Expand"
+
 [download]
 other = "Download"
 
@@ -16,8 +56,64 @@ other = "Email Address"
 [featured]
 other="Featured"
 
+[footerArticles]
+one = "article"
+other = "articles"
+
+[footerCategories]
+one = "category"
+other = "categories"
+
+[footerContact]
+other = "Contact"
+
+[footerBuiltWithPrefix]
+other = "Built with"
+
+[footerBuiltWithSuffix]
+other = ""
+
+[and]
+other = "and"
+
+[cnblogs]
+other = "Cnblogs"
+
+[juejin]
+other = "Juejin"
+
+[footerLinksLabel]
+other = "Technical resources"
+
+[footerSubscribe]
+other = "Subscribe and updates"
+
+[footerSubscribeRSS]
+other = "Subscribe to RSS"
+
+[footerTagline]
+other = "Code is a craft; notes bring order."
+
+[footerTechnicalCommunity]
+other = "Tech communities"
+
+[footerTechnology]
+other = "Emerging technologies"
+
+[footerTop]
+other = "Back to top"
+
 [forSearch]
 other="Search the articles..."
+
+[forSearchEmpty]
+other = "No matching articles"
+
+[forSearchMinLength]
+other = "Type 1 more character to search"
+
+[forSearchMinLengthCount]
+other = "Type {{.Count}} more characters to search"
 
 [home]
 other = "Home"
@@ -28,8 +124,18 @@ other="Links"
 [myBlog]
 other = "My Blog"
 
+[noContent]
+other = "No content yet."
+
+[noTags]
+other = "No tags yet."
+
 [nextPage]
 other = "Next"  
+
+[postCount]
+one = "{{.Count}} post"
+other = "{{.Count}} posts"
 
 [notice]
 other="Notice"
@@ -40,8 +146,99 @@ other = "Previous"
 [publishedAt]
 other="Published at"
 
+[archiveSince]
+other = "Since {{.Year}}"
+
+[archiveUndated]
+other = "Undated"
+
+[archiveUndatedNote]
+other = "These notes have no date field and are not included in chronological sorting."
+
+[tagCountSummary]
+other = "{{.TagCount}} tags across {{.PostCount}} posts"
+
+[tagPopular]
+other = "Most popular"
+
+[tagMore]
+other = "More tags"
+
+[tagCount]
+one = "{{.Count}} tag"
+other = "{{.Count}} tags"
+
+[termCount]
+one = "{{.Count}} entry"
+other = "{{.Count}} entries"
+
+[termPostCount]
+one = "{{.Count}} post"
+other = "{{.Count}} posts"
+
+[termPinned]
+other = "Pinned"
+
+[updatedAt]
+other = "Updated {{.Date}}"
+
+[updated]
+other = "Updated"
+
+[rewardTitle]
+other = "Your support is appreciated"
+
+[rewardButton]
+other = "Support this site"
+
+[rewardAmountAny]
+other = "Any amount"
+
+[rewardScanToPay]
+other = "Scan with "
+
+[rewardScanToPaySuffix]
+other = " to complete payment"
+
+[wechat]
+other = "WeChat"
+
+[alipay]
+other = "Alipay"
+
+[rewardAmount]
+one = "{{.Count}} yuan"
+other = "{{.Count}} yuan"
+
+[shareTo]
+other = "Share to "
+
+[shareCopied]
+other = "Link copied. Share it on "
+
+[shareCopyFailed]
+other = "Copy failed. Please copy the URL from the address bar."
+
+[socialWeibo]
+other = "Weibo"
+
+[socialWechat]
+other = "WeChat"
+
+[socialDouban]
+other = "Douban"
+
+[authorAvatar]
+other = "Author avatar"
+
+[wechatQrCode]
+other = "WeChat QR code"
+
+[shareDescription]
+other = "Share this article"
+
 [readingTime]
-one = "0 min"
+one = "{{.Count}} min"
 other = "{{.Count}} min"
 
 [related]

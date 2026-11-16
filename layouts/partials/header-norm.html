@@ -9,9 +9,9 @@
                     {{ if eq .Type "tags" }}
                     {{ if eq .Kind "taxonomy" }}{{i18n "tags"}}{{ else }}{{ .Title }}{{ end }}
                     {{ else if eq .Type "archives" }}
-                    {{ if eq .Kind "taxonomy" }}归档{{ else }}{{ .Title }}{{ end }}
+                    {{ if eq .Kind "taxonomy" }}{{ i18n "archives" }}{{ else }}{{ .Title }}{{ end }}
                     {{ else if eq .Type "categories" }}
-                    {{ if eq .Kind "taxonomy" }}分类{{ else }}{{ .Title }}{{ end }}
+                    {{ if eq .Kind "taxonomy" }}{{ i18n "categories" }}{{ else }}{{ .Title }}{{ end }}
                     {{ else if eq .Type "about" }}
                     {{i18n "about"}}
                     {{ else }}
@@ -19,7 +19,7 @@
                     {{ end }}
                 </h1>
                 {{ with .Params.tags }}
-                <div class="hero-tag-list" aria-label="标签">
+                <div class="hero-tag-list" aria-label="{{ i18n "tags" }}">
                     {{ range . }}
                     <span><a class="bar_tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/" title="{{ . }}">{{ . }}</a></span>
                     {{ end }}

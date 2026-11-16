@@ -44,6 +44,11 @@
         var copyBtn = block.querySelector('.code-copy');
         var copyLabel = block.querySelector('.code-copy-label');
         var expandBtn = block.querySelector('.code-expand');
+        var copyText = block.getAttribute('data-copy-label') || 'Copy';
+        var copiedText = block.getAttribute('data-copy-copied') || 'Copied';
+        var copyFailedText = block.getAttribute('data-copy-failed') || 'Copy failed; please select manually';
+        var expandText = block.getAttribute('data-expand-label') || 'Expand';
+        var collapseText = block.getAttribute('data-collapse-label') || 'Collapse';
         var codeText = getCode(block);
         var lines = codeText ? codeText.split('\n').length : 0;
 
@@ -51,12 +56,12 @@
             block.classList.add('is-collapsed');
             expandBtn.hidden = false;
             expandBtn.setAttribute('aria-expanded', 'false');
-            expandBtn.textContent = '展开';
+            expandBtn.textContent = expandText;
 
             expandBtn.addEventListener('click', function () {
                 var collapsed = block.classList.toggle('is-collapsed');
                 expandBtn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
-                expandBtn.textContent = collapsed ? '展开' : '收起';
+                expandBtn.textContent = collapsed ? expandText : collapseText;
             });
         }
 
@@ -65,14 +70,14 @@
         copyBtn.addEventListener('click', function () {
             copy(getCode(block)).then(function () {
                 copyBtn.classList.add('is-copied');
-                if (copyLabel) copyLabel.textContent = '已复制';
+                if (copyLabel) copyLabel.textContent = copiedText;
                 if (copyLabelTimer) clearTimeout(copyLabelTimer);
                 copyLabelTimer = setTimeout(function () {
                     copyBtn.classList.remove('is-copied');
-                    if (copyLabel) copyLabel.textContent = '复制';
+                    if (copyLabel) copyLabel.textContent = copyText;
                 }, 1600);
             }).catch(function () {
-                copyBtn.setAttribute('title', '复制失败，请手动选择');
+                copyBtn.setAttribute('title', copyFailedText);
             });
         });
     }

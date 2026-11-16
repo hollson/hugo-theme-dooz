@@ -22,7 +22,7 @@ copyright = "MIT Licensed"
   author = "示例作者"
   email = "hello@example.com"
   city = "示例城市"
-  avatar = "img/res/avatar.svg"
+  avatar = "assets/avatar.jpg"
   aphorism = "写代码，也写生活。"
 
   # 站点 Logo：文字和字体都可以在这里配置
@@ -37,23 +37,30 @@ copyright = "MIT Licensed"
   csdn = "https://blog.csdn.net/example"
   cnblog = "https://www.cnblogs.com/example/"
   # 微信二维码是可选能力；示例站不放置二维码
-  # wechat = "img/wechat.png"
+  # wechat = "assets/wechat.png"
 
   # 主题仓库地址，用于导航栏的 GitHub 按钮
-  repo = "https://github.com/yourname/hugo-theme-dooz"
+  repo = "https://github.com/hollson/hugo-theme-dooz"
 
   # 公告（支持 Markdown）
   noticeEnable = true
-  notice = "**[Dooz](https://github.com/yourname/hugo-theme-dooz)** 是一个为程序员和写作者准备的 Hugo 主题。"
+  notice = "**[Dooz](https://github.com/hollson/hugo-theme-dooz)** 是一个为程序员和写作者准备的 Hugo 主题。"
 
   # 首页 Hero 与文案
-  hero = "img/res/hero.jpg"
+  hero = "assets/hero.jpg"
   slogan = "简单、克制，适合长期写作。"
   timeOfMonth = "2006年1月"
   timeOfDay = "2006年1月2日"
 
-  # 分享按钮
+  # 分享 / 搜索 / 代码复制开关
   openShare = true
+  openSearch = true
+  openCodeCopy = true
+
+  # 打赏：true 时文章页底部显示赞赏入口
+  reward = true
+  rewardTitle = "真诚赞赏，手留余香"
+  rewardPrompt = "嗯，我的梦想是被读者的稿费包养~"
 
   # 页脚
   footerTagline = "代码是手艺，笔记是章法。"
@@ -62,6 +69,17 @@ copyright = "MIT Licensed"
   homeTitle = "Dooz · 程序员博客主题"
   keywords = "Hugo,主题,博客,程序员,静态站点"
   description = "Dooz 是一个简洁优雅的 Hugo 主题，内置搜索、代码块工具条、文章目录和响应式布局。"
+
+# 需要多语言站点时，启用下面的结构并把 defaultContentLanguage 改为主语言；
+# i18n/zh.toml、i18n/en.toml 已内置，模板文案会自动跟随语言切换。
+# [languages.zh]
+#   title = "我的中文站"
+#   languageName = "Chinese"
+#   weight = 1
+# [languages.en]
+#   title = "My English Site"
+#   languageName = "English"
+#   weight = 2
 
 # 固定链接
 [permalinks]
