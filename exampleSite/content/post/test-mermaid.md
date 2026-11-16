@@ -7,8 +7,7 @@ enableToc: false
 enableTocContent: false
 tags:
 - diagram
-series:
--
+series: []
 categories:
 - Markdown
 libraries:

@@ -2329,3 +2329,19 @@ html {
     }
 }
 
+/* Mermaid 图表：与正文卡片保持轻量边界 */
+.content .mermaid {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    overflow-x: auto;
+    background: #fbfdfd;
+    border: 1px solid rgba(15, 118, 110, 0.12);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.content .mermaid svg {
+    max-width: 100%;
+    height: auto;
+}
+

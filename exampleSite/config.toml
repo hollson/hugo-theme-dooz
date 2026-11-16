@@ -64,6 +64,12 @@ copyright = "MIT Licensed"
   # 只写 ["H3"] 时，为保留树状结构会自动带上它的上级 H2/H1。
   tocLevels = ["H2","H3"]
 
+  # Mermaid 图表：全局启用写 mermaid = true；
+  # 也可以只在文章 front matter 中写 libraries: ["mermaid"]。
+  # mermaid = true
+  # mermaidURL = "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"
+  # mermaidTheme = "default"
+
   # 打赏：true 时文章页底部显示赞赏入口
   reward = true
   rewardTitle = "真诚赞赏，手留余香"

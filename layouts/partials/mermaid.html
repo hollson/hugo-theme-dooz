@@ -1,0 +1,54 @@
+{{- $enabled := false -}}
+{{- $libraries := .Params.libraries | default (slice) -}}
+{{- if in $libraries "mermaid" -}}{{- $enabled = true -}}{{- end -}}
+{{- if or .Params.mermaid .Site.Params.mermaid -}}{{- $enabled = true -}}{{- end -}}
+{{- if $enabled -}}
+{{- $mermaidURL := .Site.Params.mermaidURL | default "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js" -}}
+<script src="{{ $mermaidURL | safeURL }}" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var initialized = false;
+    var rendered = false;
+
+    function renderMermaid() {
+        if (rendered || !window.mermaid) return;
+
+        if (!initialized) {
+            window.mermaid.initialize({
+                startOnLoad: false,
+                theme: {{ .Site.Params.mermaidTheme | default "default" | jsonify | safeJS }},
+                securityLevel: 'loose'
+            });
+            initialized = true;
+        }
+
+        document.querySelectorAll('.code-block').forEach(function (block) {
+            if ((block.dataset.lang || '').toLowerCase() !== 'mermaid') return;
+            var code = block.querySelector('code[data-lang]') || block.querySelector('.code-body code');
+            if (!code) return;
+            var container = document.createElement('div');
+            container.className = 'mermaid';
+            container.textContent = code.textContent;
+            block.replaceWith(container);
+        });
+
+        document.querySelectorAll('pre code.language-mermaid').forEach(function (code) {
+            var container = document.createElement('div');
+            container.className = 'mermaid';
+            container.textContent = code.textContent;
+            code.parentElement.replaceWith(container);
+        });
+
+        window.mermaid.run({
+            nodes: Array.prototype.slice.call(document.querySelectorAll('.mermaid'))
+        }).catch(function () {
+            // 单个图表语法错误时保留其余图表，避免整页初始化中断。
+        });
+        rendered = true;
+    }
+
+    renderMermaid();
+    window.addEventListener('load', renderMermaid, { once: true });
+});
+</script>
+{{- end -}}
