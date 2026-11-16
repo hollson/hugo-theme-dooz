@@ -55,7 +55,7 @@ url= "/post/{{now.Unix}}/"
 #aliases = ["/posts/{{md5 now}}/"]
 keywords= "keyword1,keyword2"  #SEO keywords
 description= "Content description for SEO"
-image= "/img/res/blog.jpg"
+image= "/img/asset/blog.jpg"
 date= {{ slicestr .Date 0 10 }}
 categories= ["{{index (split .Name "-") 0|title}}"]
 tags= ["tag1", "tag2"]
@@ -127,7 +127,7 @@ home = ["HTML", "RSS", "JSON"]
   #站点设置
   timeOfMonth="2006年1月"
   timeOfDay="2006年1月2日"
-  hero = "img/res/hero.jpg"
+  hero = "img/asset/hero.jpg"
   slogan = "提升码农亩产，掰直码农方向，授人以渔，功德无量，利在千秋 。"
   openShare= true
 

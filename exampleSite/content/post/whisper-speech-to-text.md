@@ -7,8 +7,8 @@ draft: false
 hideToc: false
 enableToc: true
 enableTocContent: false
-image: "/img/post/ai/whisper-speech-to-text-cover.webp"
-cover: "/img/post/ai/whisper-speech-to-text-cover.webp"
+image: "/img/post/whisper-speech-to-text-cover.webp"
+cover: "/img/post/whisper-speech-to-text-cover.webp"
 categories:
 - AI
 tags:

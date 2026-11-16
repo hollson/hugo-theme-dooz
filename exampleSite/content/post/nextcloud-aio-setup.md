@@ -7,8 +7,8 @@ draft: false
 hideToc: false
 enableToc: true
 enableTocContent: false
-image: "/img/res/bg8.jpg"
-cover: "/img/post/docker/nextcloud-aio-cover.webp"
+image: "/img/asset/blog2.jpg"
+cover: "/img/post/nextcloud-aio-cover.webp"
 categories:
 - Operations
 tags:

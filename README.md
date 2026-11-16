@@ -56,7 +56,7 @@ url= "/post/{{now.Unix}}/"
 #aliases = ["/posts/{{md5 now}}/"]
 keywords= "keyword1,keyword2"  #SEO keywords
 description= "Content description for SEO"
-image= "/img/res/blog.jpg"
+image= "/img/asset/blog.jpg"
 date= {{ slicestr .Date 0 10 }}
 categories= ["{{index (split .Name "-") 0|title}}"]
 tags= ["tag1", "tag2"]
@@ -123,7 +123,7 @@ home = ["HTML", "RSS", "JSON"]
   #Default Site Config of 
   timeOfMonth="2006.01"
   timeOfDay="2006-01-02"
-  hero = "img/res/hero.jpg"
+  hero = "img/asset/hero.jpg"
   slogan = "A Hugo theme for programmers."
   openShare= true
 
