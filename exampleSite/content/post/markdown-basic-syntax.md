@@ -16,6 +16,8 @@ tags:
 pinned: false
 archives:
 - 2026
+libraries:
+- mermaid
 url: "/post/markdown-syntax/"
 ---
 
