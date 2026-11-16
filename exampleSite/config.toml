@@ -70,11 +70,6 @@ copyright = "MIT Licensed"
   # mermaidURL = "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"
   # mermaidTheme = "default"
 
-  # 打赏：true 时文章页底部显示赞赏入口
-  reward = true
-  rewardTitle = "真诚赞赏，手留余香"
-  rewardPrompt = "嗯，我的梦想是被读者的稿费包养~"
-
   # 页脚
   footerTagline = "代码是手艺，笔记是章法。"
 

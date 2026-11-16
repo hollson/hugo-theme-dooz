@@ -182,30 +182,6 @@ other = "更新于 {{.Date}}"
 
 [updated]
 other = "已更新"
-[rewardTitle]
-other = "真诚赞赏，手留余香"
-
-[rewardButton]
-other = "赞赏支持"
-
-[rewardAmountAny]
-other = "任意金额"
-
-[rewardScanToPay]
-other = "使用"
-
-[rewardScanToPaySuffix]
-other = "扫描二维码完成支付"
-
-[wechat]
-other = "微信"
-
-[alipay]
-other = "支付宝"
-
-[rewardAmount]
-one = "{{.Count}}元"
-other = "{{.Count}}元"
 
 [shareTo]
 other = "分享到"

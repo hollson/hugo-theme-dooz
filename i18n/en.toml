@@ -185,31 +185,6 @@ other = "Updated {{.Date}}"
 [updated]
 other = "Updated"
 
-[rewardTitle]
-other = "Your support is appreciated"
-
-[rewardButton]
-other = "Support this site"
-
-[rewardAmountAny]
-other = "Any amount"
-
-[rewardScanToPay]
-other = "Scan with "
-
-[rewardScanToPaySuffix]
-other = " to complete payment"
-
-[wechat]
-other = "WeChat"
-
-[alipay]
-other = "Alipay"
-
-[rewardAmount]
-one = "{{.Count}} yuan"
-other = "{{.Count}} yuan"
-
 [shareTo]
 other = "Share to "
 

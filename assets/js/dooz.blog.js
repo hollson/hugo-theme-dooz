@@ -153,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dshangType = document.getElementById('pay-type');
     const dshangImage = document.getElementById('pay-image');
     const dshangText = document.getElementById('pay-text');
+    const dshangImageBase = dshangBox.dataset.imageBase || '/reward';
 
     const showDshang = el => { if (el) el.style.display = 'block'; };
     const hideDshang = el => { if (el) el.style.display = 'none'; };
@@ -175,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const radio = dshangBox.querySelector('.zs-type:checked');
         const type = radio ? radio.value : 'wechat';
         if (dshangType) dshangType.textContent = dshangType.getAttribute('data-' + type) || type;
-        if (dshangImage) dshangImage.setAttribute('src', '/img/dshang/' + type + '-' + num + '.png');
+        if (dshangImage) dshangImage.setAttribute('src', dshangImageBase + '/' + type + '-' + num + '.png');
         if (dshangText) {
             dshangText.textContent = btn.textContent.trim();
             dshangText.setAttribute('data-num', num);

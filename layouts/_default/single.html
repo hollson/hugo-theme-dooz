@@ -27,9 +27,8 @@
                 {{end}}
                 {{ .Content }}
 
-                <!-- Reward -->
-                {{ if .Site.Params.Reward }}
-                <hr> {{ partial "widget-reward" . }} {{ end }}
+                <!-- 文章底部扩展：站点可覆盖 partials/article-footer.html -->
+                {{ partial "article-footer.html" . }}
 
                 <br>
                 <br>
