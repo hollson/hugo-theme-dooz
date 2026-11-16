@@ -185,6 +185,30 @@ other = "Updated {{.Date}}"
 [updated]
 other = "Updated"
 
+[calloutInfo]
+other = "Info"
+
+[calloutNote]
+other = "Note"
+
+[calloutTip]
+other = "Tip"
+
+[calloutImportant]
+other = "Important"
+
+[calloutCaution]
+other = "Caution"
+
+[calloutSuccess]
+other = "Success"
+
+[calloutWarning]
+other = "Warning"
+
+[calloutDanger]
+other = "Danger"
+
 [shareTo]
 other = "Share to "
 

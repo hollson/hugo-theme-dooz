@@ -183,6 +183,30 @@ other = "更新于 {{.Date}}"
 [updated]
 other = "已更新"
 
+[calloutInfo]
+other = "信息"
+
+[calloutNote]
+other = "注意"
+
+[calloutTip]
+other = "提示"
+
+[calloutImportant]
+other = "重要"
+
+[calloutCaution]
+other = "当心"
+
+[calloutSuccess]
+other = "完成"
+
+[calloutWarning]
+other = "警告"
+
+[calloutDanger]
+other = "危险"
+
 [shareTo]
 other = "分享到"
 

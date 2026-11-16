@@ -1,0 +1,25 @@
+{{- if eq .Type "alert" -}}
+    {{- $titles := dict
+        "info" (i18n "calloutInfo")
+        "note" (i18n "calloutNote")
+        "tip" (i18n "calloutTip")
+        "important" (i18n "calloutImportant")
+        "success" (i18n "calloutSuccess")
+        "warning" (i18n "calloutWarning")
+        "caution" (i18n "calloutCaution")
+        "danger" (i18n "calloutDanger")
+    -}}
+    {{- $title := .AlertTitle | plainify | strings.TrimSpace -}}
+    {{- if not $title -}}
+        {{- $title = index $titles .AlertType | default (title .AlertType) -}}
+    {{- end -}}
+    <div class="callout callout-{{ .AlertType }}" role="note">
+        <div class="callout-head">
+            <span class="callout-icon" aria-hidden="true">{{ if or (eq .AlertType "warning") (eq .AlertType "caution") (eq .AlertType "danger") }}!{{ else if eq .AlertType "success" }}✓{{ else }}i{{ end }}</span>
+            <span class="callout-title">{{ $title }}</span>
+        </div>
+        <div class="callout-body">{{ .Text }}</div>
+    </div>
+{{- else -}}
+    <blockquote>{{ .Text }}</blockquote>
+{{- end -}}

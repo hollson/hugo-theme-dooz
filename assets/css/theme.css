@@ -70,6 +70,89 @@ hr {
     border-left: 3px solid var(--c-accent);
 }
 
+/* Callout：Obsidian 风格提示框 */
+.content .callout {
+    --callout-accent: #2f6fed;
+    --callout-bg: #f0f5ff;
+    margin: 1.2rem 0;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid var(--c-line);
+    border-left: 4px solid var(--callout-accent);
+    border-radius: 10px;
+    background: var(--callout-bg);
+}
+
+.content .callout-note {
+    --callout-accent: #64748b;
+    --callout-bg: #f4f6f8;
+}
+
+.content .callout-tip {
+    --callout-accent: #0f766e;
+    --callout-bg: #effaf7;
+}
+
+.content .callout-important {
+    --callout-accent: #7c3aed;
+    --callout-bg: #f5f3ff;
+}
+
+.content .callout-success {
+    --callout-accent: #15803d;
+    --callout-bg: #f0fdf4;
+}
+
+.content .callout-caution,
+.content .callout-warning {
+    --callout-accent: #b45309;
+    --callout-bg: #fff8eb;
+}
+
+.content .callout-danger {
+    --callout-accent: #b42318;
+    --callout-bg: #fff1f0;
+}
+
+.content .callout-head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.45rem;
+}
+
+.content .callout-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    background: var(--callout-accent);
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.content .callout-title {
+    color: var(--c-ink);
+    font-weight: 700;
+}
+
+.content .callout-body {
+    color: var(--c-ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.content .callout-body > p {
+    margin: 0.35rem 0 0;
+}
+
+.content .callout-body > p:first-child {
+    margin-top: 0;
+}
+
 /* 表格表头 */
 .content table th {
     background-color: #f2f2ee;
