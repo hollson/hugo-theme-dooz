@@ -1,4 +1,4 @@
-// 零依赖实现：外链新窗口打开、微信弹窗开关（原 jQuery 版行为不变）
+// 零依赖实现：外链新窗口打开、微信弹窗开关
 document.addEventListener('DOMContentLoaded', () => {
     // 正文外链加 target=_blank 与 rel=noopener
     document.querySelectorAll('.content a[href^="http"]').forEach(a => {
@@ -139,4 +139,56 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+});
+
+// 打赏弹窗：零依赖实现
+document.addEventListener('DOMContentLoaded', () => {
+    const dshangBg = document.querySelector('.zs-modal-bg');
+    const dshangBox = document.querySelector('.zs-modal-box');
+    if (!dshangBg || !dshangBox) return;
+
+    const dshangBtns = dshangBox.querySelector('.zs-modal-btns');
+    const dshangFooter = dshangBox.querySelector('.zs-modal-footer');
+    const dshangPanel = dshangBox.querySelector('.zs-modal-pay');
+    const dshangType = document.getElementById('pay-type');
+    const dshangImage = document.getElementById('pay-image');
+    const dshangText = document.getElementById('pay-text');
+
+    const showDshang = el => { if (el) el.style.display = 'block'; };
+    const hideDshang = el => { if (el) el.style.display = 'none'; };
+
+    const closeDshang = () => {
+        hideDshang(dshangBg);
+        hideDshang(dshangBox);
+    };
+
+    const openDshang = () => {
+        showDshang(dshangBg);
+        showDshang(dshangBox);
+        showDshang(dshangBtns);
+        showDshang(dshangFooter);
+        hideDshang(dshangPanel);
+    };
+
+    const chooseDshang = btn => {
+        const num = btn.getAttribute('data-num');
+        const radio = dshangBox.querySelector('.zs-type:checked');
+        const type = radio ? radio.value : 'wechat';
+        if (dshangType) dshangType.textContent = dshangType.getAttribute('data-' + type) || type;
+        if (dshangImage) dshangImage.setAttribute('src', '/img/dshang/' + type + '-' + num + '.png');
+        if (dshangText) {
+            dshangText.textContent = btn.textContent.trim();
+            dshangText.setAttribute('data-num', num);
+        }
+        showDshang(dshangPanel);
+        hideDshang(dshangBtns);
+        hideDshang(dshangFooter);
+    };
+
+    document.addEventListener('click', e => {
+        if (e.target.closest('.show-zs')) { openDshang(); return; }
+        if (e.target.closest('.zs-modal-box .close') || e.target.classList.contains('zs-modal-bg')) { closeDshang(); return; }
+        const btn = e.target.closest('.zs-modal-btns .btn');
+        if (btn) chooseDshang(btn);
+    });
 });

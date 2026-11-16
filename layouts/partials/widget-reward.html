@@ -39,24 +39,19 @@
         <div class="zs-modal-pay">
             <button class="btn btn-bred" id="pay-text">{{ i18n "rewardAmount" 2 }}</button>
             <p>{{ i18n "rewardScanToPay" }}<span id="pay-type" data-wechat="{{ i18n "wechat" }}" data-alipay="{{ i18n "alipay" }}">{{ i18n "wechat" }}</span>{{ i18n "rewardScanToPaySuffix" }}</p>
-            <img src="{{ "img/reward/wechat-2.png" | relURL }}" alt="{{.Site.Params.Author}}" id="pay-image" />
+            <img src="{{ "img/dshang/wechat-2.png" | relURL }}" alt="{{.Site.Params.Author}}" id="pay-image" />
         </div>
     </div>
     <div class="zs-modal-footer">
         <label>
             <span class="zs-wechat"></span>
             <input type="radio" name="zs-type" value="wechat" class="zs-type" checked="checked">
-            <img src="{{ "img/reward/wechat-btn.png" | relURL }}" alt="{{.Site.Params.Author}}" />
+            <img src="{{ "img/dshang/wechat-btn.png" | relURL }}" alt="{{.Site.Params.Author}}" />
             </span>&nbsp;
             <span>
                 <input type="radio" name="zs-type" value="alipay" class="zs-type" class="zs-alipay">
-                <img src="{{ "img/reward/alipay-btn.png" | relURL }}" alt="{{.Site.Params.Author}}" />
+                <img src="{{ "img/dshang/alipay-btn.png" | relURL }}" alt="{{.Site.Params.Author}}" />
             </span>
         </label>
     </div>
 </div>
-
-{{ define "footex" }}
-{{ $rewardJS := resources.Get "js/reward.js" | resources.Fingerprint }}
-<script defer src="{{ $rewardJS.RelPermalink }}" integrity="{{ $rewardJS.Data.Integrity }}"></script>
-{{ end }}
