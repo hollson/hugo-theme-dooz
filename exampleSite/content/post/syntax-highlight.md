@@ -1,12 +1,12 @@
 ---
-title: "Syntax highlighting"
-date: 2019-12-18T10:33:41+09:00
-description: "Syntax highlighting test"
+title: "代码语法高亮"
+date: 2025-12-18T10:33:41+09:00
+description: "测试代码块的语法高亮效果"
 draft: false
 hideToc: false
 enableToc: true
 enableTocContent: false
-author: Jeus
+author: "Hollson"
 authorEmoji: 🎅
 tags:
 - hugo
@@ -17,13 +17,13 @@ categories:
 image: images/feature2/color-palette.png
 ---
 
-# Code Syntax Highlighting
+# 代码语法高亮
 
-Verify the following code blocks render as code blocks and highlight properly. 
+检查下面这些代码块能否正常显示，并带有语法高亮。 
 
-More about tuning syntax highlighting is the [Hugo documentation](https://gohugo.io/content-management/syntax-highlighting/).
+关于语法高亮的更多设置，请参考 [Hugo 文档](https://gohugo.io/content-management/syntax-highlighting/)。
 
-## Diff
+## Diff 对比
 
 ``` diff {hl_lines=[4,"6-7"]}
 *** /path/to/original	''timestamp''
@@ -51,7 +51,7 @@ It is important to spell
 +new line
 ```
 
-## Makefile
+## Makefile 构建文件
 
 ``` makefile {linenos=false}
 CC=gcc
@@ -99,7 +99,7 @@ body {
 }
 ```
 
-## Objective C
+## Objective-C
 
 ``` objectivec
 #import <stdio.h>
@@ -215,7 +215,7 @@ public class HelloWorld {
 }
 ```
 
-## Latex Equation
+## LaTeX 公式
 
 ```latex
 \frac{d}{dx}\left( \int_{0}^{x} f(u)\,du\right)=f(x).

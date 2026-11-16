@@ -66,7 +66,7 @@ hasCJKLanguage = true
   home = ["HTML", "RSS", "JSON"]  # JSON 供站内搜索使用
 
 [params]
-  author = "示例作者"
+  author = "Hollson"
   email = "hello@example.com"
   city = "示例城市"
   avatar = "img/res/avatar.svg"
@@ -117,7 +117,7 @@ cover = "img/res/hero.jpg"
 categories = ["随笔"]
 tags = ["Hugo", "写作"]
 archives = "2026"
-author = "示例作者"
+author = "Hollson"
 pinned = false
 +++
 ```

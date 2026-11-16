@@ -1,16 +1,16 @@
 ---
-title: "Deploy a Private Cloud with Nextcloud AIO"
+title: "用 Nextcloud 部署私有网盘"
 date: 2024-10-27T21:00:00+08:00
-description: "Deploy a private cloud with the official Nextcloud All-in-One image. Covers Docker startup, HTTPS setup, basic configuration, upgrades, and backups."
-keywords: "Nextcloud, private cloud, self-hosted, Docker, AIO"
+description: "使用 Nextcloud 官方 All-in-One 镜像部署私有网盘，涵盖 Docker 启动、HTTPS 配置、基础设置、升级和备份。"
+keywords: "Nextcloud, 私有云, 私有网盘, Docker, AIO"
 draft: false
 hideToc: false
 enableToc: true
 enableTocContent: false
-image: "/assets/blog2.jpg"
-cover: "/img/post/nextcloud-aio-cover.webp"
+image: "/assets/blog3.jpg"
+cover: "/post/nextcloud-aio-cover.webp"
 categories:
-- Operations
+- cloud
 tags:
 - nextcloud
 - private-cloud
@@ -20,23 +20,25 @@ archives:
 url: "/post/nextcloud-aio/"
 ---
 
-Bring up Nextcloud with a single command. The official All-in-One image takes care of the database, cache, and HTTPS certificates, making it a convenient choice for individuals and small teams.
 
-## 1. Choose a deployment method
+用一条命令把 Nextcloud 跑起来。数据库、缓存、HTTPS 证书都由官方 All-in-One 镜像自动配好，适合个人和小团队自建网盘。
 
-Nextcloud can be installed with either All-in-One (AIO) or Docker Compose.
+## 🧭 一、方案选型
 
-AIO runs a single management container and sets up the other components for you. Installation, upgrades, and backups are managed through a web interface. Docker Compose is a better fit if you already use Nginx or want to manage each component yourself.
+Nextcloud 有两种装法：All-in-One 和 Docker Compose。
 
-## 2. Prepare the environment
+AIO 只跑一个管理容器，其余组件自动搭好，点点鼠标就能装、能升级、能备份。Compose 适合已有 Nginx、需要自己掌握每个组件的场景。
 
-- A server or NAS with at least 4 GB of memory and two CPU cores; an SSD is recommended.
-- A domain name pointed at the server's IP address, with ports 80 and 443 open.
-- Docker installed. If you installed Docker through Snap, replace it with the official version; AIO is not compatible with the Snap package.
 
-A domain is not required for LAN-only access; you can connect directly by IP, but client synchronization may be limited.
+## 🧰 二、环境准备
 
-## 3. Start the service
+- 服务器或 NAS，4 GB 内存、双核起步，硬盘用 SSD
+- 一个域名，解析到服务器 IP，放通 80 和 443 端口
+- 已装 Docker。若是从 snap 装的，先换成官方版本，AIO 不兼容 snap
+
+只想内网用可以不要域名，直接 IP 访问，但客户端同步会受限。
+
+## 🚀 三、启动服务
 
 ```bash
 sudo docker run -d \
@@ -50,47 +52,47 @@ sudo docker run -d \
   ghcr.io/nextcloud-releases/all-in-one:latest
 ```
 
-Keep the container and volume names unchanged; AIO uses them for upgrades and backups. If port 8080 is already in use, publish a different host port.
+容器名和卷名别改，自动升级和备份靠它们认路。8080 被占用就换个端口。
 
-## 4. Complete the initial setup
+## ⚙️ 四、初始化
 
-Open `https://SERVER_IP:8080`. Your browser will warn about the certificate; continue to the page. It will show a passphrase made up of several words. Save it, as you will need it to sign in.
+打开 `https://服务器IP:8080`，证书报错点继续访问。页面会给一串单词组成的口令，登录用的，先存好。
 
-After signing in:
+登录后三步：
 
-1. **Enter your domain.** AIO checks the DNS record and ports, then obtains a certificate. If you do not have a domain, you can request a free `xxx.dedyn.io` domain here.
-2. **Choose optional components.** Online office documents, Talk video calls (which require port 3478), and virus scanning are optional.
-3. **Start the containers.** Set the time zone to `Asia/Shanghai` and wait a few minutes for all containers to become healthy.
+1. **填域名**：系统自动检查解析和端口，签发证书。没有域名可以在这里免费申请 `xxx.dedyn.io`
+2. **选组件**：Office 在线文档、Talk 视频会议（要开 3478 端口）、病毒扫描等，不勾也能用
+3. **启动**：时区选 `Asia/Shanghai`，等几分钟容器全绿
 
-Then visit `https://YOUR_DOMAIN` and sign in with the administrator account.
+然后访问 `https://你的域名`，用管理员账号登录。
 
-## 5. Configure the basics
+## 🎛️ 五、基础配置
 
-In **Administration settings**, take care of these three items:
+进「管理设置」，做三件事：
 
-- **Switch background jobs to cron.** Otherwise, tasks such as thumbnail generation and email notifications can take much longer.
+- **后台任务改 cron**：否则缩略图、邮件通知都会拖很久
 
   ```bash
   docker exec -u www-data nextcloud-aio-nextcloud php occ background:cron
   ```
 
-- **Configure SMTP.** Enter your email settings under **Basic settings** and send a test message to confirm delivery.
-- **Enable two-factor authentication.** Add a second factor for the administrator under **Security**.
+- **配 SMTP**：在「基本设置」填邮箱，点测试发信确认能收到
+- **开 2FA**：在「安全」里给管理员加两步验证
 
-If you use a reverse proxy, also configure `trusted_domains` and `overwrite.cli.url`; otherwise, Nextcloud may report that the domain is not trusted.
+如果前面挂了反向代理，还要补 `trusted_domains` 和 `overwrite.cli.url`，不然会提示域名不受信任。
 
-## 6. Upgrade and back up
+## 🔄 六、升级与备份
 
-**Upgrade:** Start the update from the AIO panel and wait for it to finish. Major versions cannot be skipped.
+**升级**：AIO 面板点更新，等它跑完。大版本不能跳级。
 
-**Back up:** Include the database, `config`, and `data`. AIO provides Borg backups in its panel; configure a destination and daily schedule. Store the generated encryption key separately—without it, the backup cannot be opened.
+**备份**：数据库、`config`、`data` 三样都要。面板里有 Borg 备份，设好目录和每天的时间即可。生成的加密密钥单独存好，丢了备份就打不开。
 
-## 7. References
+## 📚 七、参考资料
 
-- [Nextcloud](https://nextcloud.com/)
-- [Download and install](https://nextcloud.com/install/)
-- [Administrator manual](https://docs.nextcloud.com/server/latest/admin_manual/)
-- [Official AIO tutorial](https://nextcloud.com/blog/how-to-install-the-nextcloud-all-in-one-on-linux/)
-- [AIO source code](https://github.com/nextcloud/all-in-one)
-- [Server source code](https://github.com/nextcloud/server)
-- [Server releases](https://download.nextcloud.com/server/releases/)
+- 官网：<https://nextcloud.com/>
+- 下载安装：<https://nextcloud.com/install/>
+- 管理员手册：<https://docs.nextcloud.com/server/latest/admin_manual/>
+- AIO 官方教程：<https://nextcloud.com/blog/how-to-install-the-nextcloud-all-in-one-on-linux/>
+- AIO 源码：<https://github.com/nextcloud/all-in-one>
+- 服务端源码：<https://github.com/nextcloud/server>
+- 发行包下载：<https://download.nextcloud.com/server/releases/>

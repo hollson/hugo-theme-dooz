@@ -1,7 +1,7 @@
 ---
-title: "Mermaid support"
-date: 2019-11-17T12:00:06+09:00
-description: "Generate diagrams, charts, graphs or flows from markdown-like text via javascript."
+title: "Mermaid 图表支持"
+date: 2023-11-17T12:00:06+09:00
+description: "用类似 Markdown 的文本，通过 JavaScript 生成流程图、时序图、甘特图等图表。"
 draft: false
 enableToc: false
 enableTocContent: false
@@ -18,43 +18,43 @@ image: images/feature2/workflow.png
 
 ```mermaid
 graph TD;
-  A-->B;
-  A-->C;
-  B-->D;
+  A[开始]-->B[处理];
+  A-->C[审核];
+  B-->D[完成];
   C-->D;
 ```
 
 ```mermaid
 sequenceDiagram
-  participant Alice
-  participant Bob
-  Alice->John: Hello John, how are you?
-  loop Healthcheck
-      John->John: Fight against hypochondria
+  participant 张三
+  participant 李四
+  张三->李四: 你好，最近怎么样？
+  loop 健康检查
+      李四->李四: 别再胡思乱想了
   end
-  Note right of John: Rational thoughts <br/>prevail...
-  John-->Alice: Great!
-  John->Bob: How about you?
-  Bob-->John: Jolly good!
+  Note right of 李四: 理性思考<br/>占上风……
+  李四-->张三: 挺好的！
+  李四->王五: 你呢？
+  王五-->李四: 一切都好！
 ```
 
 ```mermaid
 graph TD
-A[Hard] -->|Text| B(Round)
-B --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
+A[困难] -->|文字| B(选择)
+B --> C{判断}
+C -->|方案一| D[结果一]
+C -->|方案二| E[结果二]
 ```
 
 ```mermaid
 gantt
-section Section
-Completed :done,    des1, 2014-01-06,2014-01-08
-Active        :active,  des2, 2014-01-07, 3d
-Parallel 1   :         des3, after des1, 1d
-Parallel 2   :         des4, after des1, 1d
-Parallel 3   :         des5, after des3, 1d
-Parallel 4   :         des6, after des4, 1d
+section 阶段
+已完成     :done,    des1, 2014-01-06,2014-01-08
+进行中     :active,  des2, 2014-01-07, 3d
+并行任务 1 :         des3, after des1, 1d
+并行任务 2 :         des4, after des1, 1d
+并行任务 3 :         des5, after des3, 1d
+并行任务 4 :         des6, after des4, 1d
 ```
 
 ```mermaid
@@ -78,17 +78,17 @@ class Class10 {
 
 ```mermaid
 stateDiagram
-[*] --> Still
-Still --> [*]
-Still --> Moving
-Moving --> Still
-Moving --> Crash
-Crash --> [*]
+[*] --> 静止
+静止 --> [*]
+静止 --> 移动
+移动 --> 静止
+移动 --> 崩溃
+崩溃 --> [*]
 ```
 
 ```mermaid
 pie
-"Dogs" : 386
-"Cats" : 85
-"Rats" : 15 
+"狗" : 386
+"猫" : 85
+"老鼠" : 15
 ```

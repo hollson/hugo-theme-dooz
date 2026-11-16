@@ -1,14 +1,14 @@
 ---
-title: "Transcribe Audio Messages with Whisper"
+title: "用 Whisper 转写语音消息"
 date: 2026-11-15T20:42:00+08:00
-description: "Transcribe audio from messages, meetings, and interviews with OpenAI Whisper and Python. Includes format conversion, the 25 MB limit, and a ready-to-run script."
-keywords: "Whisper, speech to text, transcription, Python, OpenAI, audio"
+description: "用 OpenAI Whisper 和 Python 转写语音消息、会议和采访，包含格式转换、25 MB 限制和可直接运行的脚本。"
+keywords: "Whisper, 语音转文字, 转写, Python, OpenAI, 音频"
 draft: false
 hideToc: false
 enableToc: true
 enableTocContent: false
-image: "/img/post/whisper-speech-to-text-cover.webp"
-cover: "/img/post/whisper-speech-to-text-cover.webp"
+image: "/post/whisper-speech-to-text-cover.webp"
+cover: "/post/whisper-speech-to-text-cover.webp"
 categories:
 - AI
 tags:
@@ -20,19 +20,20 @@ archives:
 url: "/post/whisper-speech-to-text/"
 ---
 
-![Transcribe audio messages with Whisper](/img/post/ai/whisper-speech-to-text-cover.webp)
 
-## Overview {data-icon="book"}
+![用 Whisper 把语音消息转成文字](/post/whisper-speech-to-text-cover.webp)
 
-Whisper is OpenAI's speech recognition model: give it an audio file, and it returns text. Transcription depends on the audio, not the app used to record it. Audio exported from WeChat, Feishu, DingTalk, meetings, or a phone recorder can all be processed.
+## 概述 {data-icon="book"}
 
-The Python script below converts unsupported formats to MP3 before calling Whisper. It is useful for transcribing voice messages, meeting recordings, and interview audio.
+Whisper 是 OpenAI 的语音识别模型：给它一个音频文件，它返回文字。转写只看音频，和录音用的 App 无关。微信、飞书、钉钉、会议、手机录音，只要能导出音频，都能处理。
 
-## Prerequisites {data-icon="tools"}
+下面是一个 Python 脚本：格式不对先转 mp3，再调用 Whisper。适合整理语音消息、会议记录和采访素材。
 
-### 1. Install ffmpeg
+## 准备工作 {data-icon="tools"}
 
-Use ffmpeg to convert formats such as OGG and AMR:
+### 1. 安装 ffmpeg
+
+用来把 ogg、amr 等格式转成 mp3：
 
 ```bash
 # Ubuntu / Debian
@@ -42,31 +43,31 @@ sudo apt-get install ffmpeg
 brew install ffmpeg
 ```
 
-### 2. Install the OpenAI SDK
+### 2. 安装 OpenAI SDK
 
 ```bash
 pip install --upgrade openai
 ```
 
-### 3. Set your API key
+### 3. 设置 API Key
 
-The script reads the key from an environment variable. Do not put it in your source code:
+脚本从环境变量读取密钥，不要把 Key 写进代码：
 
 ```bash
 export OPENAI_API_KEY="sk-..."
 ```
 
-The API call uploads the audio to OpenAI. For private or unpublished material, consider running Whisper locally or getting permission first.
+调用 API 会把音频上传到 OpenAI。涉及隐私或未公开内容时，建议本地部署 Whisper，或先取得授权。
 
-## Formats and file size {data-icon="file"}
+## 格式与大小 {data-icon="file"}
 
-The API supports `mp3`, `mp4`, `mpeg`, `mpga`, `m4a`, `wav`, and `webm`. Each file must be no larger than 25 MB. Split longer recordings with ffmpeg first.
+接口支持 `mp3`、`mp4`、`mpeg`、`mpga`、`m4a`、`wav`、`webm`，单个文件不超过 25 MB。超长录音先用 ffmpeg 分段。
 
-WeChat voice messages commonly use the `silk` format, which ffmpeg cannot process directly. Convert them to `wav` with `silk-v3-decoder` first. AMR files can generally be converted directly to MP3.
+微信语音常见 `silk` 格式，ffmpeg 不能直接处理，需要先用 `silk-v3-decoder` 转成 `wav`；`amr` 一般可以直接转 mp3。
 
-## Python script {data-icon="code"}
+## Python 脚本 {data-icon="code"}
 
-Save this as `whisper_transcribe.py`:
+保存为 `whisper.py`：
 
 ```python
 #!/usr/bin/env python3
@@ -89,7 +90,7 @@ def main():
 
     audio = args.audio
     if not audio.is_file():
-        sys.exit(f"File not found: {audio}")
+        sys.exit(f"文件不存在：{audio}")
 
     if audio.suffix.lower() not in SUPPORTED:
         mp3 = audio.with_suffix(".mp3")
@@ -99,11 +100,11 @@ def main():
                 check=True,
             )
         except FileNotFoundError:
-            sys.exit("ffmpeg was not found. Install it first.")
+            sys.exit("未找到 ffmpeg，请先安装")
         audio = mp3
 
     if audio.stat().st_size > MAX_SIZE:
-        sys.exit("The file exceeds 25 MB. Split it into smaller parts first.")
+        sys.exit("文件超过 25 MB，请先分段")
 
     client = OpenAI()
     kwargs = {"model": "whisper-1", "response_format": "text"}
@@ -118,24 +119,24 @@ if __name__ == "__main__":
     main()
 ```
 
-## Usage {data-icon="play"}
+## 使用方式 {data-icon="play"}
 
 ```bash
-# Chinese (the default)
-python3 whisper_transcribe.py voice-message.m4a
+# 中文，默认按 zh 识别
+python3 whisper.py 语音消息.m4a
 
-# Automatically detect the language
-python3 whisper_transcribe.py meeting-recording.wav --language auto
+# 自动识别语言
+python3 whisper.py 会议录音.wav --language auto
 
-# Specify English
-python3 whisper_transcribe.py interview.mp3 --language en
+# 指定英文
+python3 whisper.py 采访.mp3 --language en
 ```
 
-Use `--language auto` when a recording contains many English technical terms. If speakers overlap or there is loud background music, denoise the audio or separate the vocals first for better results.
+录音里英文术语多时用 `--language auto`；多人重叠或背景音乐重时，先降噪或分离人声，结果会更稳。
 
-## References {data-icon="link"}
+## 参考链接 {data-icon="link"}
 
-- [OpenAI Speech-to-Text documentation](https://platform.openai.com/docs/guides/speech-to-text)
+- [OpenAI Speech to Text 文档](https://platform.openai.com/docs/guides/speech-to-text)
 - [OpenAI Python SDK](https://github.com/openai/openai-python)
 - [FFmpeg](https://ffmpeg.org/)
-- [silk-v3-decoder for WeChat Silk audio](https://github.com/kn007/silk-v3-decoder)
+- [silk-v3-decoder（微信 silk 解码）](https://github.com/kn007/silk-v3-decoder)

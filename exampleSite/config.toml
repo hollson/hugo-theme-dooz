@@ -1,6 +1,6 @@
 # ===== 站点基础 =====
 baseURL = "https://example.com/"
-title = "Dooz Demo"
+title = "Mafool's Blog"
 theme = "hugo-theme-dooz"
 locale = "zh-CN"
 defaultContentLanguage = "zh"
@@ -19,14 +19,14 @@ copyright = "MIT Licensed"
 # ===== 主题参数 =====
 [params]
   # 作者信息：替换成你自己的信息即可
-  author = "示例作者"
+  author = "Hollson"
   email = "hello@example.com"
-  city = "示例城市"
+  city = "Xian"
   avatar = "assets/avatar.jpg"
-  aphorism = "写代码，也写生活。"
+  aphorism = "写代码，也写生活"
 
   # 站点 Logo：文字和字体都可以在这里配置
-  logoText = "Dooz"
+  logoText = "Mafool"
   logoFontFamily = '"Fraunces", "Bodoni 72", Didot, Georgia, "Times New Roman", serif'
   logoFontWeight = 700
   # 可选：引入在线字体；留空则使用系统字体
@@ -44,11 +44,11 @@ copyright = "MIT Licensed"
 
   # 公告（支持 Markdown）
   noticeEnable = true
-  notice = "**[Dooz](https://github.com/hollson/hugo-theme-dooz)** 是一个为程序员和写作者准备的 Hugo 主题。"
+  notice = "📢 &nbsp; **[Dooz](https://github.com/hollson/hugo-theme-dooz)** 主题更新啦, 喜欢的话欢迎点个 Star 支持一下。 [更新日志...](https://github.com/hollson/hugo-theme-dooz/releases)"
 
   # 首页 Hero 与文案
   hero = "assets/hero.jpg"
-  slogan = "简单、克制，适合长期写作。"
+  slogan = "分享点滴心得，温暖每一段探索之路。"
   timeOfMonth = "2006年1月"
   timeOfDay = "2006年1月2日"
 
@@ -66,9 +66,9 @@ copyright = "MIT Licensed"
   footerTagline = "代码是手艺，笔记是章法。"
 
   # SEO
-  homeTitle = "Dooz · 程序员博客主题"
+  homeTitle = "Mafool · 程序员博客主题"
   keywords = "Hugo,主题,博客,程序员,静态站点"
-  description = "Dooz 是一个简洁优雅的 Hugo 主题，内置搜索、代码块工具条、文章目录和响应式布局。"
+  description = "Mafool 是一个简洁优雅的 Hugo 主题，内置搜索、代码块工具条、文章目录和响应式布局。"
 
 # 需要多语言站点时，启用下面的结构并把 defaultContentLanguage 改为主语言；
 # i18n/zh.toml、i18n/en.toml 已内置，模板文案会自动跟随语言切换。
