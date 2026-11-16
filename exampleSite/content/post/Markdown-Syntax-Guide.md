@@ -1,16 +1,16 @@
-+++
-title= "Markdown Syntax Guide"
-subtitle= "MdEditor is the most popular markdown online editor"
-description= "Markdown is a markup language that can be written in a plain text editor to give plain text content a certain format with a simple markup syntax. It allows people to write documents in plain text format that is easy to read and write, and then convert them into well-formed HTML pages. The Markdown file has the suffix “.md”"
-author= "示例作者"
-image= "assets/coder.jpg"
-date= 2020-03-24
-tags= ["markdown"]
-categories= ["Markdown"]
-archives= 2020
-height= 1
-draft= false
-+++
+---
+title: "Markdown Syntax Guide"
+subtitle: "MdEditor is the most popular markdown online editor"
+description: "Markdown is a markup language that can be written in a plain text editor to give plain text content a certain format with a simple markup syntax. It allows people to write documents in plain text format that is easy to read and write, and then convert them into well-formed HTML pages. The Markdown file has the suffix “.md”"
+author: "示例作者"
+image: "assets/coder.jpg"
+date: 2020-03-24
+tags: ["markdown"]
+categories: ["Markdown"]
+archives: 2020
+height: 1
+draft: false
+---
 
 
 # 欢迎使用Markdown在线编辑器MdEditor
