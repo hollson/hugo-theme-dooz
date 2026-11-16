@@ -7,7 +7,7 @@ licenselink = "https://github.com/hollson/hugo-theme-dooz/blob/master/LICENSE"
 description = "Dooz is a simple and elegant hugo theme specially designed for programmers or columnists."
 homepage = "http://www.mafool.com/"
 tags = ["blog","tech"]
-min_version = "0.41"
+min_version = "0.43.0"
 
 [author]
   name = "hollson"

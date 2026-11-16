@@ -1,48 +1,30 @@
-<div class="box">
-    <h2 class="title is-6">{{i18n "featured"}}</h2>
+{{- $posts := where .Site.RegularPages "Section" "post" -}}
+{{- $featured := where $posts "Params.pinned" true -}}
+{{- with $featured -}}
+<div class="box widget-featured">
+    <h2 class="title is-6">{{ i18n "featured" }}</h2>
+    {{ range first 5 .ByWeight }}
+    {{ $post := . }}
+    {{ $cover := .Params.cover | default .Params.image }}
+    {{ $author := .Params.author | default $.Site.Params.Author }}
     <article class="media">
+        {{ with $cover }}
         <div class="media-left">
             <figure>
-                <img class="image is-64x64"
-                    src="{{ "img/asset/gopher-hero.svg" | relURL }}"
-                    alt="Image">
+                <a href="{{ $post.RelPermalink }}" tabindex="-1" aria-hidden="true">
+                    <img class="image is-64x64" src="{{ . | relURL }}" alt="" loading="lazy" decoding="async">
+                </a>
             </figure>
         </div>
+        {{ end }}
         <div class="media-content">
             <div class="content">
-                <span>使用Hugo搭建静态博客</span>
-                <small>Sybs@</small> <small>03-22</small>
-                </p>
+                <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a><br>
+                {{ with $author }}<small>{{ . }}</small>{{ end }}
+                <time class="has-text-grey-light is-size-7" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
             </div>
         </div>
     </article>
-    <!-- <article class="media">
-        <div class="media-left">
-            <figure>
-                <img class="image is-64x64" src="/img/asset/mafool.png" alt="Image">
-            </figure>
-        </div>
-        <div class="media-content">
-            <div class="content">
-                <span>使用Hugo搭建静态博客</span>
-                <small>Sybs@</small> <small>03-22</small>
-                </p>
-            </div>
-        </div>
-    </article> -->
-    <article class="media">
-        <div class="media-left">
-            <figure>
-                <img class="image is-64x64"
-                    src="{{ "img/post/editormd-logo.png" | relURL }}" alt="Image">
-            </figure>
-        </div>
-        <div class="media-content">
-            <div class="content">
-                <span>MdEditor是一个在线Markdown编辑器</span><br>
-                <small>Sybs@</small> <small>03-22</small>
-                </p>
-            </div>
-        </div>
-    </article>
+    {{ end }}
 </div>
+{{- end -}}

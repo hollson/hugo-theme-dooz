@@ -7,6 +7,45 @@ other = "归档"
 [categories]
 other="分类"
 
+[categoryCount]
+other = "{{.Count}} 个分类"
+
+[topics]
+other = "主题"
+
+[expandButton]
+other = "展开或收起"
+
+[close]
+other = "关闭"
+
+[tabLink]
+other = "选项卡"
+
+[pagination]
+other = "分页导航"
+
+[gotoPage]
+other = "前往第 {{.Count}} 页"
+
+[featuredImage]
+other = "精选文章图片"
+
+[codeCollapse]
+other = "收起"
+
+[codeCopy]
+other = "复制"
+
+[codeCopyFailed]
+other = "复制失败，请手动选择"
+
+[codeCopied]
+other = "已复制"
+
+[codeExpand]
+other = "展开"
+
 [choiceness]
 other="精选"
 
@@ -19,8 +58,64 @@ other = "电邮地址"
 [featured]
 other="精选"
 
+[footerArticles]
+one = "篇文章"
+other = "篇文章"
+
+[footerCategories]
+one = "个分类"
+other = "个分类"
+
+[footerContact]
+other = "联系"
+
+[footerBuiltWithPrefix]
+other = "由"
+
+[footerBuiltWithSuffix]
+other = "构建"
+
+[and]
+other = "与"
+
+[cnblogs]
+other = "博客园"
+
+[juejin]
+other = "掘金"
+
+[footerLinksLabel]
+other = "技术资源导航"
+
+[footerSubscribe]
+other = "订阅与更新"
+
+[footerSubscribeRSS]
+other = "订阅 RSS"
+
+[footerTagline]
+other = "代码是手艺，笔记是章法。"
+
+[footerTechnicalCommunity]
+other = "技术社区"
+
+[footerTechnology]
+other = "前沿技术"
+
+[footerTop]
+other = "回到顶部"
+
 [forSearch]
 other="搜索文章..."
+
+[forSearchEmpty]
+other = "没有匹配的文章"
+
+[forSearchMinLength]
+other = "再输入 1 个字符开始搜索"
+
+[forSearchMinLengthCount]
+other = "再输入 {{.Count}} 个字符开始搜索"
 
 [home]
 other = "首页"
@@ -31,8 +126,17 @@ other="友情链接"
 [myBlog]
 other = "我的博客"
 
+[noContent]
+other = "暂无内容。"
+
+[noTags]
+other = "还没有标签。"
+
 [nextPage]
 other = "下一页"
+
+[postCount]
+other = "{{.Count}} 篇文章"
 
 [notice]
 other="公告"
@@ -43,8 +147,95 @@ other = "上一页"
 [publishedAt]
 other="文章发表于"
 
+[archiveSince]
+other = "始于 {{.Year}}"
+
+[archiveUndated]
+other = "未标注日期"
+
+[archiveUndatedNote]
+other = "这些笔记没有填写 date 字段，暂不参与时间排序。"
+
+[tagCountSummary]
+other = "共 {{.TagCount}} 个标签，分布在 {{.PostCount}} 篇文章里"
+
+[tagPopular]
+other = "最常用"
+
+[tagMore]
+other = "更多标签"
+
+[tagCount]
+other = "{{.Count}} 个标签"
+
+[termCount]
+other = "{{.Count}} 个条目"
+
+[termPostCount]
+other = "共 {{.Count}} 篇文章"
+
+[termPinned]
+other = "置顶"
+
+[updatedAt]
+other = "更新于 {{.Date}}"
+
+[updated]
+other = "已更新"
+[rewardTitle]
+other = "真诚赞赏，手留余香"
+
+[rewardButton]
+other = "赞赏支持"
+
+[rewardAmountAny]
+other = "任意金额"
+
+[rewardScanToPay]
+other = "使用"
+
+[rewardScanToPaySuffix]
+other = "扫描二维码完成支付"
+
+[wechat]
+other = "微信"
+
+[alipay]
+other = "支付宝"
+
+[rewardAmount]
+one = "{{.Count}}元"
+other = "{{.Count}}元"
+
+[shareTo]
+other = "分享到"
+
+[shareCopied]
+other = "链接已复制，去"
+
+[shareCopyFailed]
+other = "复制失败，请手动复制地址栏链接"
+
+[socialWeibo]
+other = "微博"
+
+[socialWechat]
+other = "微信"
+
+[socialDouban]
+other = "豆瓣"
+
+[authorAvatar]
+other = "作者头像"
+
+[wechatQrCode]
+other = "微信二维码"
+
+[shareDescription]
+other = "分享这篇文章"
+
 [readingTime]
-one = "0 分钟"
+one = "{{.Count}} 分钟"
 other = "{{.Count}} 分钟"
 
 [recentPosts]

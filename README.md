@@ -56,7 +56,7 @@ url= "/post/{{now.Unix}}/"
 #aliases = ["/posts/{{md5 now}}/"]
 keywords= "keyword1,keyword2"  #SEO keywords
 description= "Content description for SEO"
-image= "/img/asset/blog.jpg"
+image= "/assets/blog.jpg"
 date= {{ slicestr .Date 0 10 }}
 categories= ["{{index (split .Name "-") 0|title}}"]
 tags= ["tag1", "tag2"]
@@ -123,9 +123,16 @@ home = ["HTML", "RSS", "JSON"]
   #Default Site Config of 
   timeOfMonth="2006.01"
   timeOfDay="2006-01-02"
-  hero = "img/asset/hero.jpg"
+  hero = "assets/hero.jpg"
   slogan = "A Hugo theme for programmers."
   openShare= true
+  openSearch = true      # optional, defaults to true
+  openCodeCopy = true    # optional, defaults to true
+  # Fraunces is bundled locally; logoFontUrl for other families may make external requests.
+
+  # Optional online analytics; enabling these sends requests to external services.
+  # analyze_baidu = "your-baidu-site-id"
+  # analyze_google = "your-google-measurement-id"
 
   #SEO Info(meta info)
   homeTitle = "Programmer's Exclusive Blog"

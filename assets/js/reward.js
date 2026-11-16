@@ -36,7 +36,7 @@
             var num = btn.getAttribute('data-num');
             var radio = box.querySelector('.zs-type:checked');
             var type = radio ? radio.value : 'wechat';
-            if (payType) payType.textContent = type === 'alipay' ? '支付宝' : '微信';
+            if (payType) payType.textContent = payType.getAttribute('data-' + type) || type;
             if (payImage) payImage.setAttribute('src', '/img/reward/' + type + '-' + num + '.png');
             if (payText) {
                 payText.textContent = btn.textContent.trim();

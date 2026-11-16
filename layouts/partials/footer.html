@@ -1,15 +1,15 @@
-{{- $tagline := .Site.Params.footerTagline | default "代码是手艺，笔记是章法。" -}}
+{{- $tagline := .Site.Params.footerTagline | default (i18n "footerTagline") -}}
 
 {{- /* 页脚链接：可在站点 params 中用 footerGroups 覆盖 */ -}}
 {{- $groups := .Site.Params.footerGroups -}}
 {{- if not $groups -}}
 {{- $groups = slice
-    (dict "title" "技术社区" "items" (slice
+    (dict "title" (i18n "footerTechnicalCommunity") "items" (slice
         (dict "name" "GitHub" "url" "https://github.com")
         (dict "name" "Stack Overflow" "url" "https://stackoverflow.com")
-        (dict "name" "掘金" "url" "https://juejin.cn")
+        (dict "name" (i18n "juejin") "url" "https://juejin.cn")
         (dict "name" "Hacker News" "url" "https://news.ycombinator.com")))
-    (dict "title" "前沿技术" "items" (slice
+    (dict "title" (i18n "footerTechnology") "items" (slice
         (dict "name" "Hugging Face" "url" "https://huggingface.co")
         (dict "name" "PyTorch" "url" "https://pytorch.org")
         (dict "name" "LangChain" "url" "https://www.langchain.com")
@@ -29,18 +29,18 @@
                     <li><a href="{{ . }}" target="_blank" rel="noopener me">CSDN</a></li>
                     {{ end }}
                     {{ with .Site.Params.cnblog }}
-                    <li><a href="{{ . }}" target="_blank" rel="noopener me">博客园</a></li>
+                    <li><a href="{{ . }}" target="_blank" rel="noopener me">{{ i18n "cnblogs" }}</a></li>
                     {{ end }}
                     {{ with .Site.Home.OutputFormats.Get "rss" }}
                     <li><a href="{{ .RelPermalink }}" aria-label="RSS">RSS</a></li>
                     {{ end }}
                     {{ with .Site.Params.email }}
-                    <li><a href="mailto:{{ . }}" aria-label="邮件">{{ partial "icon" (dict "name" "mail" "size" 15) }}<span>联系</span></a></li>
+                    <li><a href="mailto:{{ . }}" aria-label="{{ i18n "footerContact" }}">{{ partial "icon" (dict "name" "mail" "size" 15) }}<span>{{ i18n "footerContact" }}</span></a></li>
                     {{ end }}
                 </ul>
             </div>
 
-            <nav class="footer-links" aria-label="技术资源导航">
+            <nav class="footer-links" aria-label="{{ i18n "footerLinksLabel" }}">
                 {{ range $groups }}
                 <div class="footer-col">
                     <h3 class="footer-title">{{ .title }}</h3>
@@ -53,15 +53,15 @@
                 {{ end }}
 
                 <div class="footer-col footer-col-sub">
-                    <h3 class="footer-title">订阅与更新</h3>
+                    <h3 class="footer-title">{{ i18n "footerSubscribe" }}</h3>
                     {{ with .Site.Home.OutputFormats.Get "rss" }}
                     <a class="footer-subscribe" href="{{ .RelPermalink }}">
-                        {{ partial "icon" (dict "name" "rss" "size" 15) }}<span>订阅 RSS</span>
+                        {{ partial "icon" (dict "name" "rss" "size" 15) }}<span>{{ i18n "footerSubscribeRSS" }}</span>
                     </a>
                     {{ end }}
                     <ul class="footer-stats">
-                        <li><strong>{{ len (where site.RegularPages "Section" "post") }}</strong><span>篇文章</span></li>
-                        <li><strong>{{ len .Site.Taxonomies.categories }}</strong><span>个分类</span></li>
+                        <li><strong>{{ len (where site.RegularPages "Section" "post") }}</strong><span>{{ i18n "footerArticles" (len (where site.RegularPages "Section" "post")) }}</span></li>
+                        <li><strong>{{ len .Site.Taxonomies.categories }}</strong><span>{{ i18n "footerCategories" (len .Site.Taxonomies.categories) }}</span></li>
                     </ul>
                 </div>
             </nav>
@@ -71,15 +71,16 @@
             <p class="footer-copy">&copy; {{ now.Format "2006" }} {{ .Site.Title }}{{ with .Site.Copyright }} · {{ . }}{{ end }}</p>
             <p class="footer-meta">
                 {{ with .Site.Params.icp }}<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">{{ . }}</a>{{ end }}
-                <span>由 <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> 与 <a href="https://bulma.io" target="_blank" rel="noopener">Bulma</a> 构建</span>
+                <span>{{ i18n "footerBuiltWithPrefix" }} <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> {{ i18n "and" }} <a href="https://bulma.io" target="_blank" rel="noopener">Bulma</a> {{ i18n "footerBuiltWithSuffix" }}</span>
             </p>
         </div>
     </div>
 </footer>
 
 <!-- 回到顶部（火箭） -->
-<a id="rocket" href="#top" aria-label="回到顶部" title="回到顶部"><i></i></a>
-<script type="text/javascript" src='{{ "js/dooz.totop.js?v=0.0.0" | relURL }}' async=""></script>
+<a id="rocket" href="#top" aria-label="{{ i18n "footerTop" }}" title="{{ i18n "footerTop" }}"><i></i></a>
+{{ $totopJS := resources.Get "js/dooz.totop.js" | resources.Fingerprint }}
+<script defer src="{{ $totopJS.RelPermalink }}" integrity="{{ $totopJS.Data.Integrity }}"></script>
 
 {{ with .Site.Params.analyze_baidu }}
 <!-- 百度统计 -->

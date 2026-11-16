@@ -55,7 +55,7 @@ url= "/post/{{now.Unix}}/"
 #aliases = ["/posts/{{md5 now}}/"]
 keywords= "keyword1,keyword2"  #SEO keywords
 description= "Content description for SEO"
-image= "/img/asset/blog.jpg"
+image= "/assets/blog.jpg"
 date= {{ slicestr .Date 0 10 }}
 categories= ["{{index (split .Name "-") 0|title}}"]
 tags= ["tag1", "tag2"]
@@ -127,12 +127,16 @@ home = ["HTML", "RSS", "JSON"]
   #站点设置
   timeOfMonth="2006年1月"
   timeOfDay="2006年1月2日"
-  hero = "img/asset/hero.jpg"
+  hero = "assets/hero.jpg"
   slogan = "提升码农亩产，掰直码农方向，授人以渔，功德无量，利在千秋 。"
   openShare= true
+  openSearch = true      # 可选，默认为 true
+  openCodeCopy = true    # 可选，默认为 true
+  # Fraunces 已随主题本地提供；其他字体的 logoFontUrl 可能会产生外部请求。
 
-  #百度统计
-  analyze_baidu="f185359ec6b8XXXXXXXX597f6d9"  # https://tongji.baidu.com/web/welcome/login
+  # 可选联网统计；启用后会请求对应的外部服务，默认关闭
+  # analyze_baidu = "your-baidu-site-id"
+  # analyze_google = "your-google-measurement-id"
 
   #SEO信息(meta中的信息)
   homeTitle = "码农的专属博客"

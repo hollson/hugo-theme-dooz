@@ -1,7 +1,7 @@
 {{ $paginator := $.Paginator }}
 <div class="columns">
     <div class="column is-12">
-        <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
+        <nav class="pagination is-rounded" role="navigation" aria-label="{{ i18n "pagination" }}">
             {{ if $paginator.HasPrev }}
             <a class="pagination-previous" href="{{ $paginator.Prev.URL }}">{{i18n "prevPage"}}</a>
             {{ end }}
@@ -12,7 +12,7 @@
                 {{ range $paginator.Pagers }}
                 <li class="pagination__item">
                     <a class="pagination-link{{ if eq . $paginator }} is-current{{ end }}"
-                        aria-label="Goto page {{ .PageNumber }}" href="{{ .URL }}">{{ .PageNumber }}
+                        aria-label='{{ i18n "gotoPage" .PageNumber }}' href="{{ .URL }}">{{ .PageNumber }}
                     </a>
                 </li>
                 {{ end }}

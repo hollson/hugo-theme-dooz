@@ -6,10 +6,10 @@
     'use strict';
 
     var SITES = [
-        { name: 'weibo',    cls: 'icon-weibo',    label: '微博',     url: 'https://service.weibo.com/share/share.php?url={u}&title={t}' },
+        { name: 'weibo',    cls: 'icon-weibo',    label: 'Weibo',    url: 'https://service.weibo.com/share/share.php?url={u}&title={t}' },
         { name: 'qq',       cls: 'icon-qq',       label: 'QQ',       url: 'https://connect.qq.com/widget/shareqq/index.html?url={u}&title={t}&summary={d}' },
-        { name: 'wechat',   cls: 'icon-wechat',   label: '微信',     url: null },
-        { name: 'douban',   cls: 'icon-douban',   label: '豆瓣',     url: 'https://www.douban.com/share/service?href={u}&name={t}&text={d}' },
+        { name: 'wechat',   cls: 'icon-wechat',   label: 'WeChat',   url: null },
+        { name: 'douban',   cls: 'icon-douban',   label: 'Douban',   url: 'https://www.douban.com/share/service?href={u}&name={t}&text={d}' },
         { name: 'linkedin', cls: 'icon-linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/shareArticle?mini=true&url={u}&title={t}&summary={d}' },
         { name: 'facebook', cls: 'icon-facebook', label: 'Facebook', url: 'https://www.facebook.com/sharer/sharer.php?u={u}' },
         { name: 'twitter',  cls: 'icon-twitter',  label: 'Twitter',  url: 'https://twitter.com/share?url={u}&text={t}' }
@@ -47,6 +47,15 @@
     }
 
     function render(box) {
+        function label(key, fallback) {
+            return box.getAttribute('data-' + key) || fallback;
+        }
+
+        var labels = {
+            weibo: label('social-weibo', 'Weibo'),
+            wechat: label('social-wechat', 'WeChat'),
+            douban: label('social-douban', 'Douban')
+        };
         var data = {
             u: encodeURIComponent(location.href),
             t: encodeURIComponent(document.title),
@@ -60,8 +69,9 @@
 
             var a = document.createElement('a');
             a.className = 'social-share-icon ' + site.cls;
-            a.setAttribute('title', '分享到' + site.label);
-            a.setAttribute('aria-label', '分享到' + site.label);
+            var siteLabel = labels[site.name] || site.label;
+            a.setAttribute('title', label('share-to', 'Share to ') + siteLabel);
+            a.setAttribute('aria-label', label('share-to', 'Share to ') + siteLabel);
 
             if (site.url) {
                 a.href = site.url.replace('{u}', data.u).replace('{t}', data.t).replace('{d}', data.d);
@@ -72,7 +82,7 @@
                 a.addEventListener('click', function (e) {
                     e.preventDefault();
                     copy(location.href).then(function (ok) {
-                        toast(ok ? '链接已复制，去' + site.label + '粘贴分享' : '复制失败，请手动复制地址栏链接');
+                        toast(ok ? label('share-copied', 'Link copied. Share it on ') + siteLabel : label('share-copy-failed', 'Copy failed. Please copy the URL from the address bar.'));
                     });
                 });
             }

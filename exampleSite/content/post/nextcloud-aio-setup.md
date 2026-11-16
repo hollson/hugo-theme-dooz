@@ -7,7 +7,7 @@ draft: false
 hideToc: false
 enableToc: true
 enableTocContent: false
-image: "/img/asset/blog2.jpg"
+image: "/assets/blog2.jpg"
 cover: "/img/post/nextcloud-aio-cover.webp"
 categories:
 - Operations

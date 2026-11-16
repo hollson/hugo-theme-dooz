@@ -41,7 +41,7 @@ home = ["HTML", "RSS", "JSON"]
   #Author
   author = "sybs"
   city = "Beijing"
-  avatar = "img/avatar.jpg"
+  avatar = "assets/avatar.jpg"
   aphorism="Your attitude determines your life"
   github="https://github.com/xxx"
   csdn="https://blog.csdn.net/xxx"
@@ -59,14 +59,16 @@ home = ["HTML", "RSS", "JSON"]
   #站点设置
   timeOfMonth="2006年1月"
   timeOfDay="2006年1月2日"
-  hero = "img/asset/hero.jpg"
+  hero = "assets/hero.jpg"
   slogan = "提升码农亩产，掰直码农方向，授人以渔，功德无量，利在千秋 。"
   openShare= true
+  openSearch = true
+  openCodeCopy = true
+  # Fraunces is bundled locally; logoFontUrl is only used for other font families.
   
-  #百度统计
-  analyze_baidu="f185359ec6b829a6a93e1e1f2597f6d9"  #Mafool
-  # analyze_baidu_gitee="d4c707fc3a17c53bb106bb52238032f0"   #Gitee
-  analyze_google="G-DK042XSJ2J"
+  # Optional online analytics; enabling these sends requests to external services.
+  # analyze_baidu = "your-baidu-site-id"
+  # analyze_google = "your-google-measurement-id"
 
   #SEO优化(meta中的信息)
   homeTitle = "码农的专属博客"
