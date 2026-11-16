@@ -1,9 +1,3 @@
----
-title: "{{ replace .Name "-" " " | title }}"
-date: {{ .Date }}
-draft: true
----
-
 +++
 title= "{{with slicestr .Name (len (index (split .Name "-") 0))}}{{replace . "-" " "|strings.TrimLeft " "|title}}{{end}}"
 url= "/post/{{now.Unix}}/"
@@ -19,5 +13,3 @@ author= "{{.Site.Params.Author}}"
 height= {{now.Unix}}
 draft= false
 +++
-
-

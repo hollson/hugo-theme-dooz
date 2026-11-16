@@ -41,7 +41,7 @@ home = ["HTML", "RSS", "JSON"]
   #Author
   author = "sybs"
   city = "Beijing"
-  avatar = "img/res/avatar.jpg"
+  avatar = "img/avatar.jpg"
   aphorism="Your attitude determines your life"
   github="https://github.com/xxx"
   csdn="https://blog.csdn.net/xxx"
