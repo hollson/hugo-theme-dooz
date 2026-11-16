@@ -1,8 +1,20 @@
 {{- $tagline := .Site.Params.footerTagline | default (i18n "footerTagline") -}}
 
-{{- /* 页脚链接：可在站点 params 中用 footerGroups 覆盖 */ -}}
-{{- $groups := .Site.Params.footerGroups -}}
-{{- if not $groups -}}
+{{- /* 页脚社交入口：可用 footerSocial 数组完全覆盖；否则沿用 github / csdn / cnblog */ -}}
+{{- $social := slice -}}
+{{- if isset .Site.Params "footerSocial" -}}
+{{- $social = .Site.Params.footerSocial -}}
+{{- else -}}
+{{- with .Site.Params.github -}}{{- $social = $social | append (dict "name" "GitHub" "url" .) -}}{{- end -}}
+{{- with .Site.Params.csdn -}}{{- $social = $social | append (dict "name" "CSDN" "url" .) -}}{{- end -}}
+{{- with .Site.Params.cnblog -}}{{- $social = $social | append (dict "name" (i18n "cnblogs") "url" .) -}}{{- end -}}
+{{- end -}}
+
+{{- /* 页脚链接分组：可用 footerGroups 覆盖；每个分组包含 title 和 items */ -}}
+{{- $groups := slice -}}
+{{- if isset .Site.Params "footerGroups" -}}
+{{- $groups = .Site.Params.footerGroups -}}
+{{- else -}}
 {{- $groups = slice
     (dict "title" (i18n "footerTechnicalCommunity") "items" (slice
         (dict "name" "GitHub" "url" "https://github.com")
@@ -25,21 +37,14 @@
                 <p class="footer-tagline">{{ $tagline }}</p>
 
                 <ul class="footer-social">
-                    {{ with .Site.Params.github }}
-                    <li><a href="{{ . }}" target="_blank" rel="noopener me">GitHub</a></li>
+                    {{ range $social }}
+                    <li><a href="{{ .url }}" target="_blank" rel="noopener me">{{ .name }}</a></li>
                     {{ end }}
-                    {{ with .Site.Params.csdn }}
-                    <li><a href="{{ . }}" target="_blank" rel="noopener me">CSDN</a></li>
-                    {{ end }}
-                    {{ with .Site.Params.cnblog }}
-                    <li><a href="{{ . }}" target="_blank" rel="noopener me">{{ i18n "cnblogs" }}</a></li>
-                    {{ end }}
+                    {{ if or (not (isset .Site.Params "footerRss")) .Site.Params.footerRss }}
                     {{ with .Site.Home.OutputFormats.Get "rss" }}
                     <li><a href="{{ .RelPermalink }}" aria-label="RSS">RSS</a></li>
                     {{ end }}
-                    <!-- {{ with .Site.Params.email }}
-                    <li><a href="mailto:{{ . }}" aria-label="{{ i18n "footerContact" }}">{{ partial "icon" (dict "name" "mail" "size" 15) }}<span>{{ i18n "footerContact" }}</span></a></li>
-                    {{ end }} -->
+                    {{ end }}
                 </ul>
             </div>
 

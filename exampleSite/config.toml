@@ -72,6 +72,27 @@ copyright = "MIT Licensed"
   # 页脚
   footerTagline = "代码是手艺，笔记是章法。"
 
+  # 页脚社交入口（可选）。配置后会覆盖 github / csdn / cnblog 的默认组合。
+  # footerSocial = [
+  #   { name = "GitHub", url = "https://github.com/example" },
+  #   { name = "博客园", url = "https://www.cnblogs.com/example/" },
+  #   { name = "CSDN", url = "https://blog.csdn.net/example" },
+  # ]
+  # 是否显示 RSS 入口，默认 true
+  # footerRss = true
+
+  # 页脚链接分组（可选）。每个分组有 title，items 为 name/url 数组。
+  # footerGroups = [
+  #   { title = "技术社区", items = [
+  #     { name = "GitHub", url = "https://github.com" },
+  #     { name = "Stack Overflow", url = "https://stackoverflow.com" },
+  #   ]},
+  #   { title = "前沿技术", items = [
+  #     { name = "Hugging Face", url = "https://huggingface.co" },
+  #     { name = "PyTorch", url = "https://pytorch.org" },
+  #   ]},
+  # ]
+
   # SEO
   homeTitle = "Mafool · 程序员博客主题"
   keywords = "Hugo,主题,博客,程序员,静态站点"
