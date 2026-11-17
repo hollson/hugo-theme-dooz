@@ -46,6 +46,8 @@ hugo server -D
 
 Open <http://localhost:1313>. All author details, emails, social links and avatars in `exampleSite` are placeholders.
 
+Runtime CSS, JavaScript, fonts, KaTeX, and Mermaid assets are bundled locally, so page rendering does not require a CDN. External links in sample content are only followed when clicked.
+
 ## Configuration
 
 See [`exampleSite/config.toml`](exampleSite/config.toml) for the full example.
@@ -73,7 +75,6 @@ hasCJKLanguage = true
   logoText = "Dooz"
   logoFontFamily = '"Fraunces", "Bodoni 72", Didot, Georgia, serif'
   logoFontWeight = 700
-  logoFontUrl = ""
 
   github = "https://github.com/example"
   csdn = "https://blog.csdn.net/example"

@@ -18,6 +18,7 @@ archives:
 - 2026
 libraries:
 - mermaid
+- katex
 url: "/post/markdown-syntax/"
 ---
 
@@ -61,7 +62,7 @@ url: "/post/markdown-syntax/"
 
 插入图片，格式如下：
 
-![沙漠中的岩石](https://markdown.com.cn/images/shiprock.jpg)
+![沙漠中的岩石](../markdown-guide-shiprock.jpg)
 
 
 

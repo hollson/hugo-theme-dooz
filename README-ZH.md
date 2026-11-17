@@ -47,6 +47,8 @@ hugo server -D
 
 打开 <http://localhost:1313>。示例站里的作者、邮箱、社交链接、头像都是占位数据，可直接替换。
 
+主题运行所需的 CSS、JavaScript、字体及 KaTeX、Mermaid 资源均随主题本地提供，页面渲染不依赖 CDN。示例文章中的外部链接仅在点击时访问。
+
 ## 配置
 
 最小配置如下，完整示例见 [`exampleSite/config.toml`](exampleSite/config.toml)：
@@ -75,7 +77,6 @@ hasCJKLanguage = true
   logoText = "Dooz"
   logoFontFamily = '"Fraunces", "Bodoni 72", Didot, Georgia, serif'
   logoFontWeight = 700
-  logoFontUrl = ""                # 可选，在线字体地址
 
   github = "https://github.com/example"
   csdn = "https://blog.csdn.net/example"
@@ -94,7 +95,6 @@ hasCJKLanguage = true
 - `logoText`：显示在导航和页脚的 Logo 文本
 - `logoFontFamily`：CSS 字体栈
 - `logoFontWeight`：字重
-- `logoFontUrl`：可选在线字体地址；留空时使用系统字体
 
 ### 社交链接
 

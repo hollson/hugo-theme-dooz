@@ -268,12 +268,10 @@ export  $initHighlight;
 <head>
   <meta charset="utf-8">
   <title>Hello world</title>
-  <link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
   <div id="app"></div>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js"></script>
   <script src="vendor/prism.js"></script>
   <script src="examples.bundle.js"></script>
 </body>

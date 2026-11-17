@@ -24,11 +24,6 @@
     <!--Head Common-->
     <link rel="shortcut icon" href="{{ .Site.Params.favicon | default "assets/favicon.ico" | relURL }}">
     {{ $logoFont := .Site.Params.logoFontFamily | default "\"Fraunces\", serif" }}
-    {{ if and .Site.Params.logoFontUrl (not (findRE "(?i)fraunces" $logoFont)) }}
-    {{ with .Site.Params.logoFontUrl }}
-    <link href="{{ . | safeURL }}" rel="stylesheet">
-    {{ end }}
-    {{ end }}
     {{ $logoWeight := .Site.Params.logoFontWeight | default 700 }}
     <style>
         :root {

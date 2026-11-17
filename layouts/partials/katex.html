@@ -1,0 +1,45 @@
+{{- $libraries := .Params.libraries | default (slice) -}}
+{{- $enabled := or (in $libraries "katex") .Params.math .Site.Params.math -}}
+{{- if $enabled }}
+{{- $katexCSS := resources.Get "vendor/katex/katex.min.css" | resources.Fingerprint -}}
+{{- $katexJS := resources.Get "vendor/katex/katex.min.js" | resources.Fingerprint -}}
+{{- $autoRenderJS := resources.Get "vendor/katex/contrib/auto-render.min.js" | resources.Fingerprint -}}
+{{- range resources.Match "vendor/katex/fonts/*" -}}
+    {{- $fontURL := .RelPermalink -}}
+{{- end -}}
+<link rel="stylesheet" href="{{ $katexCSS.RelPermalink }}" integrity="{{ $katexCSS.Data.Integrity }}">
+<script defer src="{{ $katexJS.RelPermalink }}" integrity="{{ $katexJS.Data.Integrity }}"></script>
+<script defer src="{{ $autoRenderJS.RelPermalink }}" integrity="{{ $autoRenderJS.Data.Integrity }}"></script>
+<script>
+(function () {
+    function renderMath() {
+        var article = document.querySelector('.main-column .content');
+        if (!article) {
+            console.error('KaTeX could not find the article content to render.');
+            return;
+        }
+        if (typeof window.renderMathInElement !== 'function') {
+            console.error('KaTeX auto-render failed to load from the local theme assets.');
+            return;
+        }
+
+        window.renderMathInElement(article, {
+            delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '\\[', right: '\\]', display: true },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '$', right: '$', display: false }
+            ],
+            ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'option'],
+            throwOnError: false
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', renderMath);
+    } else {
+        renderMath();
+    }
+})();
+</script>
+{{- end -}}

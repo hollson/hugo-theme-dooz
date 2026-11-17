@@ -19,8 +19,7 @@ archives:
 ---
 
 {{< box >}}
-Hugo 目前还需要 goldmark 的 KaTeX 扩展支持，相关进展见：
-[https://github.com/gohugoio/hugo/issues/6544](https://github.com/gohugoio/hugo/issues/6544)
+Hugo 不会直接渲染 LaTeX 公式。需要启用 Goldmark 的 passthrough 扩展，保留公式定界符供浏览器中的 KaTeX 渲染。
 {{< /box >}}
 
 在 Hugo 项目中，可以借助第三方 JavaScript 库启用数学公式。
@@ -28,18 +27,23 @@ Hugo 目前还需要 goldmark 的 KaTeX 扩展支持，相关进展见：
 
 本示例使用 [KaTeX](https://katex.org/)。
 
-- 在 `/layouts/partials/math.html` 下创建一个局部模板。
-- 在模板中引用 [Auto-render 扩展](https://katex.org/docs/autorender.html)，或把这些脚本放到本地托管。
-- 在页面模板中引入这个局部模板：
+- 示例主题已内置 KaTeX Auto-render。单篇文章在 front matter 中启用：
 
-```
-{{ if or .Params.math .Site.Params.math }}
-{{ partial "math.html" . }}
-{{ end }}
+```yaml
+libraries:
+  - katex
 ```
 
-- 如果要在全站启用 KaTeX，在项目配置中把 `math` 设为 `true`。
-- 如果只想在单篇文章启用，在文章 front matter 中加上 `math: true`。
+- 也可以为单篇文章设置 `math: true`，或在站点配置中设置 `params.math = true` 全站启用。
+- 在站点配置中启用 Goldmark passthrough，并配置与 KaTeX 相同的公式定界符：
+
+```toml
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)'], ['$', '$']]
+```
 
 **提示：** 可参考 [KaTeX 支持的 TeX 函数](https://katex.org/docs/supported.html)。
 
