@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>页面布局结构演示</title>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 1.6;
+  background: #f5f7fa;
+  padding: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.page-title {
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+}
+
+.layout-box {
+  position: relative;
+  border-radius: 10px;
+  padding: 24px;
+  background: #fff;
+}
+
+.id-tag {
+  position: absolute;
+  top: -12px;
+  left: 12px;
+  background: #1f2937;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+  z-index: 5;
+}
+
+#header {
+  border: 2px solid #ef4444;
+  margin-bottom: 16px;
+}
+
+#nav {
+  border: 2px dashed #fca5a5;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px;
+}
+
+#hero {
+  border: 2px solid #3b82f6;
+  margin-bottom: 16px;
+}
+
+#breadcrumb {
+  border: 2px solid #f97316;
+  margin-bottom: 16px;
+}
+
+#container {
+  border: 2px solid #22c55e;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 16px;
+  padding: 24px;
+}
+
+#sidebar {
+  border: 2px solid #a855f7;
+  width: 260px;
+  flex-shrink: 0;
+}
+
+#main {
+  border: 2px solid #06b6d4;
+  flex: 1;
+  cursor: pointer;
+}
+
+#content {
+  border: 2px dashed #64748b;
+  padding: 20px;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+#footer {
+  border: 2px solid #78350f;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ef4444;
+}
+
+.search-box input {
+  padding: 6px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  outline: none;
+}
+
+.nav-links ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #334155;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #ef4444;
+}
+
+.drawer-trigger {
+  padding: 5px 10px;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* 右侧抽屉：顶部留间隙，标签位置收进边框内一点 */
+#drawer {
+  position: fixed;
+  top: 24px;
+  right: 0;
+  width: 320px;
+  height: calc(100vh - 48px);
+  border: 2px solid #ec4899;
+  background: #fff;
+  padding: 24px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 100;
+  overflow-y: auto;
+}
+#drawer.open {
+  transform: translateX(0);
+}
+#drawer .id-tag {
+  top: 4px;
+  left: 4px;
+}
+.drawer-close {
+  margin-bottom:16px;
+  padding:4px 8px;
+  cursor:pointer;
+}
+
+.hero-content h1 {
+  font-size: 28px;
+  color: #1e40af;
+  margin-bottom: 8px;
+}
+.hero-content p {
+  color: #475569;
+}
+
+.breadcrumb-list {
+  display: flex;
+  list-style: none;
+  gap: 8px;
+  color: #f97316;
+  font-size: 14px;
+}
+.breadcrumb-list a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.sidebar-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #7c3aed;
+  margin-bottom: 10px;
+}
+.sidebar-list {
+  list-style: none;
+  color: #475569;
+}
+.sidebar-list li {
+  padding: 6px 0;
+  border-bottom: 1px dashed #e2e8f0;
+}
+
+.main-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0891b2;
+  margin-bottom: 12px;
+}
+.content-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+.content-text {
+  color: #334155;
+}
+
+.footer-text {
+  text-align: center;
+  color: #78350f;
+  font-weight: 500;
+}
+
+.layout-legend {
+  margin-top: 24px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px;
+}
+.layout-legend h3 {
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #1f2937;
+}
+.legend-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  font-size: 14px;
+  color: #475569;
+}
+.legend-list span {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* 遮罩层 */
+#mask {
+  position: fixed;
+  inset:0;
+  background:rgba(0,0,0,0.4);
+  z-index:99;
+  display:none;
+}
+#mask.show {
+  display:block;
+}
+</style>
+</head>
+<body>
+
+<div class="page-title">页面布局结构演示</div>
+
+<header id="header" class="layout-box">
+  <span class="id-tag">header</span>
+  <div class="header-inner">
+    <div class="logo">LOGO</div>
+    <nav id="nav" class="layout-box">
+      <span class="id-tag">nav</span>
+      <div class="search-box">
+        <input type="search" placeholder="搜索...">
+      </div>
+      <div class="nav-links">
+        <ul>
+          <li><a href="#">首页</a></li>
+          <li><a href="#">文章</a></li>
+          <li><a href="#">关于</a></li>
+        </ul>
+      </div>
+      <button class="drawer-trigger" id="openDrawer">打开抽屉</button>
+    </nav>
+  </div>
+</header>
+
+<section id="hero" class="layout-box">
+  <span class="id-tag">hero</span>
+  <div class="hero-content">
+    <h1>Hero 首屏横幅</h1>
+    <p>站点介绍、核心标语、CTA按钮区域</p>
+  </div>
+</section>
+
+<div id="breadcrumb" class="layout-box">
+  <span class="id-tag">breadcrumb</span>
+  <nav>
+    <ul class="breadcrumb-list">
+      <li><a href="#">首页</a></li>
+      <li>/</li>
+      <li><a href="#">文章列表</a></li>
+      <li>/</li>
+      <li>当前页面</li>
+    </ul>
+  </nav>
+</div>
+
+<div id="container" class="layout-box">
+  <span class="id-tag">container</span>
+
+  <aside id="sidebar" class="layout-box">
+    <span class="id-tag">sidebar</span>
+    <div class="sidebar-title">侧边栏</div>
+    <ul class="sidebar-list">
+      <li>目录</li>
+      <li>分类</li>
+      <li>标签</li>
+      <li>最新文章</li>
+    </ul>
+  </aside>
+
+  <main id="main" class="layout-box">
+    <span class="id-tag">main</span>
+    <div class="main-title">主内容区（点击此区域打开抽屉）</div>
+
+    <div id="content">
+      <span class="id-tag">content</span>
+      <h2 class="content-title">内容标题</h2>
+      <p class="content-text">这里是正文内容区域，用于展示页面主体信息。点击外层main区域即可唤出右侧抽屉。</p>
+    </div>
+  </main>
+</div>
+
+<footer id="footer" class="layout-box">
+  <span class="id-tag">footer</span>
+  <div class="footer-text">Footer 页脚｜版权信息｜备案信息｜友情链接</div>
+</footer>
+
+<!-- 右侧侧滑抽屉 drawer -->
+<div id="mask"></div>
+<div id="drawer" class="layout-box">
+  <span class="id-tag">drawer</span>
+  <button class="drawer-close" id="closeDrawer">关闭</button>
+  <p>侧滑抽屉，常用于：用户面板、筛选、快捷菜单、购物车等</p>
+</div>
+
+<div class="layout-legend">
+  <h3>区域说明</h3>
+  <div class="legend-list">
+    <div><span>header</span>：页眉，包含 Logo、导航区域</div>
+    <div><span>nav</span>：导航区，内含搜索框 + 菜单链接 + 抽屉触发按钮</div>
+    <div><span>hero</span>：首屏横幅，展示站点核心标语</div>
+    <div><span>breadcrumb</span>：面包屑导航，页面路径</div>
+    <div><span>container</span>：外层布局容器，包裹 sidebar + main</div>
+    <div><span>sidebar</span>：固定侧边栏，目录、分类、标签等附属信息</div>
+    <div><span>main</span>：语义主内容容器（点击打开抽屉）</div>
+    <div><span>content</span>：通用正文内容块</div>
+    <div><span>drawer</span>：右侧侧滑抽屉（浮层组件，顶部预留间隙）</div>
+    <div><span>footer</span>：页脚，版权、备案、友链</div>
+  </div>
+</div>
+
+<script>
+const drawer = document.getElementById('drawer');
+const mask = document.getElementById('mask');
+const openBtn = document.getElementById('openDrawer');
+const closeBtn = document.getElementById('closeDrawer');
+const mainBox = document.getElementById('main');
+
+function openDrawer(){
+  drawer.classList.add('open');
+  mask.classList.add('show');
+}
+function closeDrawer(){
+  drawer.classList.remove('open');
+  mask.classList.remove('show');
+}
+openBtn.onclick = openDrawer;
+closeBtn.onclick = closeDrawer;
+mask.onclick = closeDrawer;
+mainBox.onclick = openDrawer;
+</script>
+
+</body>
+</html>
+<!-- （注：内容由AI生成） -->
