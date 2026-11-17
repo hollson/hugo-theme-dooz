@@ -62,8 +62,7 @@ url: "/post/markdown-syntax/"
 
 插入图片，格式如下：
 
-![沙漠中的岩石](../markdown-guide-shiprock.jpg)
-
+![圣胡安山脉](../san-juan-mountains.jpg)
 
 
 ### 无序列表

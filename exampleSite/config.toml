@@ -1,6 +1,6 @@
 # ===== 站点基础 =====
 baseURL = "https://example.com/"
-title = "Mafool's Blog"
+title = "Dooz·花园"
 theme = "hugo-theme-dooz"
 locale = "zh-CN"
 defaultContentLanguage = "zh"
@@ -28,8 +28,8 @@ copyright = "MIT Licensed"
   aphorism = "写代码，也写生活"
 
   # 站点 Logo：文字和字体都可以在这里配置
-  logoText = "Mafool"
-  logoFontFamily = '"Fraunces", "Bodoni 72", Didot, Georgia, "Times New Roman", serif'
+  logoText = "Dooz"
+  logoFontFamily = 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif'
   logoFontWeight = 700
 
   # 社交链接：不需要的留空或删除即可
@@ -92,7 +92,7 @@ copyright = "MIT Licensed"
   # ]
 
   # SEO
-  homeTitle = "Mafool · 程序员博客主题"
+  homeTitle = "Hugo静态博客演示"
   keywords = "Hugo,主题,博客,程序员,静态站点"
   description = "Mafool 是一个简洁优雅的 Hugo 主题，内置搜索、代码块工具条、文章目录和响应式布局。"
 
