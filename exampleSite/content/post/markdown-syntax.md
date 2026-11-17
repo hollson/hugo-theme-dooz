@@ -1,19 +1,19 @@
 ---
-title: "Markdown 基础语法"
-date: 2025-03-22T09:00:00+08:00
-description: "Markdown 基础语法中文示例：标题、段落、强调、引用、列表、代码、链接、图片、转义和 HTML。"
+title: "Markdown 语法指南与示例"
+date: 2024-03-22T09:00:00+08:00
+description: "一份通俗易懂的 Markdown 语法中文教程，用丰富示例讲清标题、段落、文字强调、引用、列表、代码块、链接、图片、转义和 HTML 等常用写法，新手也能快速上手，适合作为日常写作的速查手册。"
 keywords: "Markdown, 基础语法, 写作"
 draft: false
 hideToc: false
 enableToc: true
 enableTocContent: false
+pinned: true
 author: "Hollson"
+cover: "https://markdown.com.cn/hero.png"
 categories:
-- Markdown
+- 教程指南
 tags:
 - markdown
-- syntax
-pinned: false
 archives:
 - 2026
 libraries:
@@ -23,7 +23,7 @@ url: "/post/markdown-syntax/"
 ---
 
 
-# Markdown 基础语法
+# Markdown 语法指南与示例
 
 ## 功能特性
 
@@ -124,23 +124,100 @@ function hello() {
 
 ### 数学公式
 
-行内公式：$E = mc^2$
+**质能公式：** $E = mc^2$
 
-块级公式：
+**黄金分割：** $$ \varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887… $$
 
+
+**微积分：**
 $$
 \int_{a}^{b} f(x) \, dx = F(b) - F(a)
 $$
 
+**无穷：**
+$$
+ \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } } 
+$$
+
+
 ### Mermaid 图表
+
+
+```mermaid
+graph TD;
+  A[开始]-->B[处理];
+  A-->C[审核];
+  B-->D[完成];
+  C-->D;
+```
+
+```mermaid
+sequenceDiagram
+  participant 张三
+  participant 李四
+  张三->李四: 你好，最近怎么样？
+  loop 健康检查
+      李四->李四: 别再胡思乱想了
+  end
+  Note right of 李四: 理性思考<br/>占上风……
+  李四-->张三: 挺好的！
+  李四->王五: 你呢？
+  王五-->李四: 一切都好！
+```
 
 ```mermaid
 graph TD
-    A[开始] --> B{判断}
-    B -->|条件1| C[处理1]
-    B -->|条件2| D[处理2]
-    C --> E[结束]
-    D --> E
+A[困难] -->|文字| B(选择)
+B --> C{判断}
+C -->|方案一| D[结果一]
+C -->|方案二| E[结果二]
+```
+
+```mermaid
+gantt
+section 阶段
+已完成     :done,    des1, 2014-01-06,2014-01-08
+进行中     :active,  des2, 2014-01-07, 3d
+并行任务 1 :         des3, after des1, 1d
+并行任务 2 :         des4, after des1, 1d
+并行任务 3 :         des5, after des3, 1d
+并行任务 4 :         des6, after des4, 1d
+```
+
+```mermaid
+classDiagram
+Class01 <|-- AveryLongClass : Cool
+<<interface>> Class01
+Class09 --> C2 : Where am i?
+Class09 --* C3
+Class09 --|> Class07
+Class07 : equals()
+Class07 : Object[] elementData
+Class01 : size()
+Class01 : int chimp
+Class01 : int gorilla
+class Class10 {
+  <<service>>
+  int id
+  size()
+}
+```
+
+```mermaid
+stateDiagram
+[*] --> 静止
+静止 --> [*]
+静止 --> 移动
+移动 --> 静止
+移动 --> 崩溃
+崩溃 --> [*]
+```
+
+```mermaid
+pie
+"狗" : 386
+"猫" : 85
+"老鼠" : 15
 ```
 
 ### Callout

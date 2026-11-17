@@ -1,27 +1,23 @@
 ---
 title: "用 Nextcloud 部署私有网盘"
 date: 2024-10-27T21:00:00+08:00
-description: "使用 Nextcloud 官方 All-in-One 镜像部署私有网盘，涵盖 Docker 启动、HTTPS 配置、基础设置、升级和备份。"
+description: "手把手教你用 Nextcloud 官方 All-in-One 镜像搭建自己的私有网盘：从 Docker 一键启动、HTTPS 证书配置，到日常使用设置、版本升级与数据备份，步骤清晰可照抄，让你把照片和文件牢牢掌握在自己手里。"
 keywords: "Nextcloud, 私有云, 私有网盘, Docker, AIO"
 draft: false
 hideToc: false
 enableToc: true
 enableTocContent: false
-image: "/assets/blog3.jpg"
-cover: "/post/nextcloud-aio-cover.webp"
+image: "/post/nextcloud-aio-cover.webp"
 categories:
-- cloud
-tags:
-- nextcloud
-- private-cloud
-pinned: true
+- 工具软件
 archives:
 - 2024
 url: "/post/nextcloud-aio/"
 ---
 
 
-用一条命令把 Nextcloud 跑起来。数据库、缓存、HTTPS 证书都由官方 All-in-One 镜像自动配好，适合个人和小团队自建网盘。
+
+> 用一条命令把 Nextcloud 跑起来。数据库、缓存、HTTPS 证书都由官方 All-in-One 镜像自动配好，适合个人和小团队自建网盘。
 
 ## 🧭 一、方案选型
 

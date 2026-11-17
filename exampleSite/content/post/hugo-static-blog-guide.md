@@ -1,21 +1,19 @@
 ---
 title: "Hugo 静态博客指南"
 date: 2026-11-17T00:00:00+08:00
-description: "从安装 Hugo 到创建文章、主题、发布博客的完整实操指南，含 GitHub Pages 部署与其他免费托管平台。"
+description: "一份手把手的 Hugo 静态博客搭建教程，从安装配置、创建文章和主题，到本地预览与正式发布，完整演示 GitHub Pages 自动部署流程，并推荐其他免费托管平台，零基础也能快速建好个人博客。"
 keywords: "Hugo, 静态博客, Markdown, GitHub Pages"
 draft: false
 hideToc: false
 enableToc: true
 enableTocContent: false
 author: "Hollson"
-image: "/assets/blog.jpg"
-cover: "/assets/blog2.jpg"
+image: "https://gohugo.io/images/hugo-logo-wide.svg"
+# cover: "https://gohugo.io/images/hugo-logo-wide.svg"
 categories:
-- Hugo
+- 教程指南
 tags:
-- hugo
-- static-site
-- blog
+- Hugo
 pinned: false
 archives:
 - 2026

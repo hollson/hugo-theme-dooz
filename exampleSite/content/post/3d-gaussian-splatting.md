@@ -1,7 +1,7 @@
 ---
 title: "3DGS技术·让你的照片秒变3D场景"
 date: 2026-11-17T10:02:00+08:00
-description: "通俗介绍 3D 高斯溅射的原理、照片重建流程、应用场景与局限，并与 NeRF 等技术进行比较。"
+description: "用大白话讲透 3D 高斯溅射（3DGS）这项热门技术：它如何把普通照片重建为可实时漫游的 3D 场景，完整流程、典型应用与当前局限是什么，再与 NeRF 等方案横向对比，帮你快速看懂 3D 重建的新方向。"
 keywords: "3D 高斯溅射, 3DGS, 三维重建, 实时渲染"
 draft: false
 hideToc: false
@@ -11,11 +11,9 @@ author: "Hollson"
 libraries:
 - mermaid
 categories:
-- 3D 技术
+- 人工智能
 tags:
-- 3d-gaussian-splatting
-- 3d-reconstruction
-- rendering
+- 3DGS
 pinned: false
 archives:
 - 2026
