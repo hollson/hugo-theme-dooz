@@ -1,5 +1,5 @@
 ---
-title: "3D高斯溅射·让你的照片秒变3D场景？"
+title: "3DGS技术·让你的照片秒变3D场景"
 date: 2026-11-17T10:02:00+08:00
 description: "通俗介绍 3D 高斯溅射的原理、照片重建流程、应用场景与局限，并与 NeRF 等技术进行比较。"
 keywords: "3D 高斯溅射, 3DGS, 三维重建, 实时渲染"
@@ -8,6 +8,8 @@ hideToc: false
 enableToc: true
 enableTocContent: false
 author: "Hollson"
+libraries:
+- mermaid
 categories:
 - 3D 技术
 tags:
@@ -20,7 +22,7 @@ archives:
 url: "/post/3d-gaussian-splatting/"
 ---
 
-# 3D高斯溅射·让你的照片秒变3D场景
+# 3DGS技术·让你的照片秒变3D场景
 
 
 > 想象一下：你对着一栋建筑拍了几百张照片，几分钟后，电脑就把这栋建筑变成了一个可以随意旋转、走进去观看的3D场景。这就是3D高斯溅射（3D Gaussian Splatting，简称3DGS）正在做的事情。
