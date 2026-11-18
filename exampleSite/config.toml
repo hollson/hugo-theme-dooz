@@ -1,85 +1,121 @@
-# ===== 站点基础 =====
-baseURL = "https://example.com/"
-title = "Dooz·花园"
-theme = "hugo-theme-dooz"
-locale = "zh-CN"
-defaultContentLanguage = "zh"
-hasCJKLanguage = true
-enableEmoji = true
-copyright = "MIT Licensed"
+# ==============================================================
+# Hugo 主题 Dooz · 示例站完整配置
+# -------------------------------------------------------------
+# 用法：复制本文件到你的站点根目录，按需修改即可。
+# 说明：所有主题支持的参数都列在这里，可选项以 # 注释形式给出。
+# 分组: 1.站点基础, 2.站点参数, 3.多语言, 4.固定链接与分类, 5.Markdown
+# ==============================================================
 
-# 分页
+
+# ==============================================================
+# 1. 站点基础（Hugo 顶层配置）
+# ==============================================================
+baseURL = "https://example.com/"           # 站点根地址，必须以协议开头、以 / 结尾
+title = "Dooz·花园"                         # 站点标题，显示在浏览器标签和 hero 区
+theme = "hugo-theme-dooz"                  # 使用的主题目录名（themes/ 下）
+locale = "zh-CN"                           # 语言/地区代码（替代旧版 languageCode）
+defaultContentLanguage = "zh"              # 默认内容语言
+hasCJKLanguage = true                      # 中日韩语言：影响摘要字数统计等
+enableEmoji = true                         # 支持 :emoji: 简写
+copyright = "MIT Licensed"                 # 页脚版权文案
+
+# 分页：每页显示的文章数
 [pagination]
   pagerSize = 10
 
-# 首页生成 JSON，供主题内置搜索使用
+# 输出格式：home 输出 JSON 供主题内置搜索使用（勿删 JSON）
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
-# ===== 主题参数 =====
+
+# ==============================================================
+# 2. 站点参数（全部位于 [params] 下，主题读取的核心配置）
+# ==============================================================
 [params]
-  favicon = "assets/favicon.ico"  # 站点图标，留空或不配置则用默认值
 
-  # 作者信息：替换成你自己的信息即可
-  author = "Hollson"
-  email = "hello@example.com"
-  city = "Xian"
-  avatar = "assets/avatar.jpg"
-  aphorism = "写代码，也写生活"
+  # ------------------------------------------------------------
+  # 2.1 站点图标与作者信息
+  # ------------------------------------------------------------
+  favicon = "assets/favicon.ico"           # 站点图标，留空则用默认 assets/favicon.ico
 
-  # 站点 Logo：文字和字体都可以在这里配置
-  logoText = "Dooz"
-  logoFontFamily = 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif'
-  logoFontWeight = 700
+  author = "Hollson"                       # 作者名，显示在作者卡片、署名等处
+  email = "hello@example.com"              # 联系邮箱
+  city = "Xian"                            # 所在城市，显示在作者卡片
+  avatar = "assets/avatar.jpg"             # 作者头像
+  aphorism = "写代码，也写生活"              # 作者格言，显示在作者卡片
 
-  # 社交链接：不需要的留空或删除即可
-  github = "https://github.com/example"
-  csdn = "https://blog.csdn.net/example"
-  cnblog = "https://www.cnblogs.com/example/"
-  # 微信二维码是可选能力；示例站不放置二维码
-  # wechat = "assets/wechat.png"
+  # ------------------------------------------------------------
+  # 2.2 站点 Logo（导航 + 页脚，字体走本地 Fraunces）
+  # ------------------------------------------------------------
+  logoText = "Dooz"                        # Logo 文字
+  logoFontFamily = 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif'  # 字体栈
+  logoFontWeight = 700                     # 字重
 
-  # 主题仓库地址，用于导航栏的 GitHub 按钮
+  # ------------------------------------------------------------
+  # 2.3 社交链接（不需要的留空或注释掉即可隐藏对应入口）
+  # ------------------------------------------------------------
+  github = "https://github.com/example"                # GitHub
+  csdn = "https://blog.csdn.net/example"               # CSDN
+  cnblog = "https://www.cnblogs.com/example/"          # 博客园
+  # wechat = "assets/wechat.png"                        # 微信二维码图片，配置后显示入口与弹窗
+
+  # 导航栏 GitHub 按钮指向的主题仓库地址（与社交 github 区分）
   repo = "https://github.com/hollson/hugo-theme-dooz"
 
-  # 公告（支持 Markdown）
+  # ------------------------------------------------------------
+  # 2.4 顶部公告（支持 Markdown；noticeEnable=false 可关闭）
+  # ------------------------------------------------------------
   noticeEnable = true
   notice = "📢 &nbsp; **[Dooz](https://github.com/hollson/hugo-theme-dooz)** 主题更新啦, 喜欢的话欢迎点个 Star 支持一下。 [更新日志...](https://github.com/hollson/hugo-theme-dooz/releases)"
 
-  # 首页 Hero 与文案
-  hero = "assets/hero.jpg"
-  slogan = "分享点滴心得，温暖每一段探索之路。"
-  timeOfMonth = "2006年1月"
-  timeOfDay = "2006年1月2日"
+  # ------------------------------------------------------------
+  # 2.5 首页 Hero 与文案
+  # ------------------------------------------------------------
+  hero = "assets/hero.jpg"                             # Hero 背景图
+  slogan = "分享点滴心得，温暖每一段探索之路。"           # 首页副标题
+  timeOfMonth = "2006年1月"                            # 日期显示格式（月）
+  timeOfDay = "2006年1月2日"                           # 日期显示格式（日）
 
-  # 分享 / 搜索 / 代码复制开关
-  openShare = true
-  openSearch = true
-  openCodeCopy = true
+  # ------------------------------------------------------------
+  # 2.6 功能开关
+  # ------------------------------------------------------------
+  openShare = true                         # 文章分享按钮
+  openSearch = true                        # 站内搜索（需 [outputs] 输出 JSON）
+  openCodeCopy = true                      # 代码块一键复制按钮
 
-  # 文章目录显示层级：数组写法，支持 "H1"..."H6" 或 1...6。
-  # 例如 ["H2","H3"] 只显示二级和三级标题；
-  # 只写 ["H3"] 时，为保留树状结构会自动带上它的上级 H2/H1。
+  # 文章目录显示层级：支持 "H1"~"H6" 或 1~6；
+  # 如 ["H2","H3"] 只显示二、三级标题；只写 ["H3"] 会自动带上其上级。
   tocLevels = ["H2","H3"]
 
-  # Mermaid 图表：全局启用写 mermaid = true；
-  # 也可以只在文章 front matter 中写 libraries: ["mermaid"]。
+  # 相关文章数量（widget-related），默认 10
+  # related_content_limit = 10
+
+  # Mermaid 图表：全局开启写 true；也可只在文章 front matter 写 libraries: ["mermaid"]
   # mermaid = true
-  # mermaidTheme = "default"
+  # mermaidTheme = "default"               # 可选，Mermaid 主题名
 
-  # 页脚
-  footerTagline = "代码是手艺，笔记是章法。"
+  # KaTeX 数学公式：全局开启写 true；也可只在文章 front matter 写 math=true
+  # math = true
 
-  # 页脚社交入口（可选）。配置后会覆盖 github / csdn / cnblog 的默认组合。
+  # ------------------------------------------------------------
+  # 2.7 页脚
+  # ------------------------------------------------------------
+  footerTagline = "代码是手艺，笔记是章法。"             # 页脚标语
+
+  # 备案号（显示在页脚，链接到工信部）：国内站点按需填写
+  # icp = "京ICP备12345678号"
+
+  # RSS 入口，默认 true
+  # footerRss = true
+
+  # 页脚社交入口：配置后覆盖 github / csdn / cnblog 的默认组合
   # footerSocial = [
   #   { name = "GitHub", url = "https://github.com/example" },
   #   { name = "博客园", url = "https://www.cnblogs.com/example/" },
   #   { name = "CSDN", url = "https://blog.csdn.net/example" },
   # ]
-  # 是否显示 RSS 入口，默认 true
-  # footerRss = true
 
-  # 页脚链接分组（可选）。每个分组有 title，items 为 name/url 数组。
+  # 页脚链接分组：每组有 title，items 为 name/url 数组
   # footerGroups = [
   #   { title = "技术社区", items = [
   #     { name = "GitHub", url = "https://github.com" },
@@ -91,13 +127,20 @@ copyright = "MIT Licensed"
   #   ]},
   # ]
 
-  # SEO
-  homeTitle = "Hugo静态博客演示"
-  keywords = "Hugo,主题,博客,程序员,静态站点"
-  description = "Mafool 是一个简洁优雅的 Hugo 主题，内置搜索、代码块工具条、文章目录和响应式布局。"
+  # ------------------------------------------------------------
+  # 2.8 SEO
+  # ------------------------------------------------------------
+  homeTitle = "Hugo静态博客演示"             # 首页浏览器标题后缀
+  keywords = "Hugo,主题,博客,程序员,静态站点" # 全站默认关键词
+  description = "Mafool 是一个简洁优雅的 Hugo 主题，内置搜索、代码块工具条、文章目录和响应式布局。"  # 全站默认描述
 
-# 需要多语言站点时，启用下面的结构并把 defaultContentLanguage 改为主语言；
+
+# ==============================================================
+# 3. 多语言（可选）
+# --------------------------------------------------------------
+# 需要多语言时启用下面的结构，并把 defaultContentLanguage 改为主语言。
 # i18n/zh.toml、i18n/en.toml 已内置，模板文案会自动跟随语言切换。
+# ==============================================================
 # [languages.zh]
 #   title = "我的中文站"
 #   languageName = "Chinese"
@@ -107,17 +150,22 @@ copyright = "MIT Licensed"
 #   languageName = "English"
 #   weight = 2
 
-# 固定链接
+
+# ==============================================================
+# 4. 固定链接与分类体系
+# ==============================================================
 [permalinks]
-  post = "/:year/:month/:title"
+  post = "/:year/:month/:title"            # 文章 URL 结构；也可在文章 front matter 用 url 覆盖
 
-# 分类体系
 [taxonomies]
-  tag = "tags"
-  category = "categories"
-  archive = "archives"
+  tag = "tags"                             # 标签
+  category = "categories"                  # 分类
+  archive = "archives"                     # 归档
 
-# ===== Markdown =====
+
+# ==============================================================
+# 5. Markdown 渲染（Goldmark）
+# ==============================================================
 [markup]
   defaultMarkdownHandler = "goldmark"
 
@@ -130,6 +178,7 @@ copyright = "MIT Licensed"
     taskList = true
     typographer = true
 
+    # 数学公式分隔符（配合 KaTeX）
     [markup.goldmark.extensions.passthrough]
       enable = true
       [markup.goldmark.extensions.passthrough.delimiters]
@@ -137,16 +186,17 @@ copyright = "MIT Licensed"
         inline = [['\(', '\)'], ['$', '$']]
 
   [markup.goldmark.parser]
-    attribute = true          # 支持标题上的 data-icon 等属性
-    autoHeadingID = true
+    attribute = true                       # 支持标题属性，如 ## 概述 {data-icon="book"}
+    autoHeadingID = true                   # 自动生成标题锚点
     autoHeadingIDType = "github"
 
   [markup.goldmark.renderer]
-    hardWraps = true
-    # 示例站需要渲染 Markdown 中的少量原生 HTML；不需要时可改为 false
+    hardWraps = true                       # 单个换行渲染为 <br>
+    # 示例站需要在 Markdown 中渲染少量原生 HTML（如 <br/>、<img>）；不需要可改为 false
     unsafe = true
     xHTML = false
 
+  # 代码高亮
   [markup.highlight]
     codeFences = true
     guessSyntax = true
@@ -156,6 +206,7 @@ copyright = "MIT Licensed"
     style = "dracula"
     tabWidth = 4
 
+  # 文章目录（主题另用 params.tocLevels 控制显示层级）
   [markup.tableOfContents]
     startLevel = 2
     endLevel = 4

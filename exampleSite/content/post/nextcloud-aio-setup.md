@@ -7,7 +7,7 @@ draft: false
 hideToc: false
 enableToc: true
 enableTocContent: false
-image: "/post/nextcloud-aio-cover.webp"
+image: "/assets/blog2.jpg"
 categories:
 - 工具软件
 archives:
