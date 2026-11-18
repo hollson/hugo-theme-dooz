@@ -13,11 +13,10 @@
 baseURL = "https://example.com/"           # 站点根地址，必须以协议开头、以 / 结尾
 title = "Dooz·花园"                         # 站点标题，显示在浏览器标签和 hero 区
 theme = "hugo-theme-dooz"                  # 使用的主题目录名（themes/ 下）
-locale = "zh-CN"                           # 语言/地区代码（替代旧版 languageCode）
-defaultContentLanguage = "zh"              # 默认内容语言
+locale = "zh-CN"                           # 语言/地区代码(zh-CN / en-US) ，用于日期、数字等
+defaultContentLanguage = "zh"              # 默认内容语言（zh/en），用于 i18n 多语言
 hasCJKLanguage = true                      # 中日韩语言：影响摘要字数统计等
 enableEmoji = true                         # 支持 :emoji: 简写
-copyright = "MIT Licensed"                 # 页脚版权文案
 
 # 分页：每页显示的文章数
 [pagination]
@@ -57,7 +56,7 @@ copyright = "MIT Licensed"                 # 页脚版权文案
   github = "https://github.com/example"                # GitHub
   csdn = "https://blog.csdn.net/example"               # CSDN
   cnblog = "https://www.cnblogs.com/example/"          # 博客园
-  # wechat = "assets/wechat.png"                        # 微信二维码图片，配置后显示入口与弹窗
+  wechat = "assets/wechat.png"                        # 微信二维码图片，配置后显示入口与弹窗
 
   # 导航栏 GitHub 按钮指向的主题仓库地址（与社交 github 区分）
   repo = "https://github.com/hollson/hugo-theme-dooz"
@@ -102,18 +101,21 @@ copyright = "MIT Licensed"                 # 页脚版权文案
   # ------------------------------------------------------------
   footerTagline = "代码是手艺，笔记是章法。"             # 页脚标语
 
+  # 版权主体（公司/个人名），显示在版权行；不配置默认 Mafool
+  copyright = "Mafool"
+
   # 备案号（显示在页脚，链接到工信部）：国内站点按需填写
-  # icp = "京ICP备12345678号"
+ # icp = "京ICP证000000号"
 
   # RSS 入口，默认 true
-  # footerRss = true
+  # footerRss = false
 
-  # 页脚社交入口：配置后覆盖 github / csdn / cnblog 的默认组合
-  # footerSocial = [
-  #   { name = "GitHub", url = "https://github.com/example" },
-  #   { name = "博客园", url = "https://www.cnblogs.com/example/" },
-  #   { name = "CSDN", url = "https://blog.csdn.net/example" },
-  # ]
+  # 页脚社交入口：必须显式配置，未配置则显示 social1/social2 占位
+  footerSocial = [
+    { name = "GitHub", url = "https://github.com/example" },
+    { name = "博客园", url = "https://www.cnblogs.com/example/" },
+    { name = "CSDN", url = "https://blog.csdn.net/example" },
+  ]
 
   # 页脚链接分组：每组有 title，items 为 name/url 数组。
   # 不配置时页脚显示 link1/link2 等演示文字；配置后覆盖为下面的真实分组。

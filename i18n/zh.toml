@@ -28,9 +28,6 @@ other = "分页导航"
 [gotoPage]
 other = "前往第 {{.Count}} 页"
 
-[featuredImage]
-other = "精选文章图片"
-
 [codeCollapse]
 other = "收起"
 
@@ -46,15 +43,6 @@ other = "已复制"
 [codeExpand]
 other = "展开"
 
-[choiceness]
-other="精选"
-
-[download]
-other = "下载"
-
-[emailAddress]
-other = "电邮地址"
-
 [featured]
 other="精选"
 
@@ -66,23 +54,17 @@ other = "篇文章"
 one = "个分类"
 other = "个分类"
 
-[footerContact]
-other = "联系"
-
 [footerBuiltWithPrefix]
 other = "由"
 
 [footerBuiltWithSuffix]
 other = "构建"
 
+[footerRights]
+other = "保留所有权利"
+
 [and]
 other = "与"
-
-[cnblogs]
-other = "博客园"
-
-[juejin]
-other = "掘金"
 
 [footerLinksLabel]
 other = "技术资源导航"
@@ -96,12 +78,6 @@ other = "订阅 RSS"
 [footerTagline]
 other = "代码是手艺，笔记是章法。"
 
-[footerTechnicalCommunity]
-other = "技术社区"
-
-[footerTechnology]
-other = "前沿技术"
-
 [footerTop]
 other = "回到顶部"
 
@@ -114,17 +90,8 @@ other = "没有匹配的文章"
 [forSearchMinLength]
 other = "再输入 1 个字符开始搜索"
 
-[forSearchMinLengthCount]
-other = "再输入 {{.Count}} 个字符开始搜索"
-
 [home]
 other = "首页"
-
-[links]
-other="友情链接"
-
-[myBlog]
-other = "我的博客"
 
 [noContent]
 other = "暂无内容。"
@@ -138,14 +105,8 @@ other = "下一页"
 [postCount]
 other = "{{.Count}} 篇文章"
 
-[notice]
-other="公告"
-
 [prevPage]
 other = "上一页"
-
-[publishedAt]
-other="文章发表于"
 
 [archiveSince]
 other = "始于 {{.Year}}"
@@ -165,9 +126,6 @@ other = "最常用"
 [tagMore]
 other = "更多标签"
 
-[tagCount]
-other = "{{.Count}} 个标签"
-
 [termCount]
 other = "{{.Count}} 个条目"
 
@@ -176,12 +134,6 @@ other = "共 {{.Count}} 篇文章"
 
 [termPinned]
 other = "置顶"
-
-[updatedAt]
-other = "更新于 {{.Date}}"
-
-[updated]
-other = "已更新"
 
 [calloutInfo]
 other = "信息"
@@ -253,14 +205,9 @@ other="主题"
 [toc]
 other="文章目录"
 
-[translations]
-other="翻译"
-
 [welcome]
 other="欢迎来到我的博客！"
 
-[yourName]
-other = "你的名字"
 [pageNotFoundKicker]
 other="404 · PAGE NOT FOUND"
 

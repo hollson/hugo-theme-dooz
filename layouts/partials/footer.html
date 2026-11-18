@@ -1,13 +1,11 @@
 {{- $tagline := .Site.Params.footerTagline | default (i18n "footerTagline") -}}
 
-{{- /* 页脚社交入口：可用 footerSocial 数组完全覆盖；否则沿用 github / csdn / cnblog */ -}}
+{{- /* 页脚社交入口：必须显式配置 footerSocial；未配置则显示占位 */ -}}
 {{- $social := slice -}}
 {{- with .Site.Params.footerSocial -}}
 {{- $social = . -}}
 {{- else -}}
-{{- with .Site.Params.github -}}{{- $social = $social | append (dict "name" "GitHub" "url" .) -}}{{- end -}}
-{{- with .Site.Params.csdn -}}{{- $social = $social | append (dict "name" "CSDN" "url" .) -}}{{- end -}}
-{{- with .Site.Params.cnblog -}}{{- $social = $social | append (dict "name" (i18n "cnblogs") "url" .) -}}{{- end -}}
+{{- $social = slice (dict "name" "social1" "url" "#") (dict "name" "social2" "url" "#") (dict "name" "social3" "url" "#") -}}
 {{- end -}}
 
 {{- /* 页脚链接分组：可用 footerGroups 覆盖；每个分组包含 title 和 items */ -}}
@@ -75,10 +73,9 @@
         </div>
 
         <div class="footer-bottom">
-            <p class="footer-copy">&copy; {{ now.Format "2006" }} {{ .Site.Title }}{{ with .Site.Copyright }} · {{ . }}{{ end }}</p>
+            <p class="footer-copy">&copy; {{ now.Format "2006" }} {{ .Site.Params.copyright | default "Mafool" }}. {{ i18n "footerRights" }}</p>
             <p class="footer-meta">
-                {{ with .Site.Params.icp }}<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">{{ . }}</a>{{ end }}
-                <span>{{ i18n "footerBuiltWithPrefix" }} <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> {{ i18n "and" }} <a href="https://bulma.io" target="_blank" rel="noopener">Bulma</a> {{ i18n "footerBuiltWithSuffix" }}</span>
+                {{ with .Site.Params.icp }}<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">{{ . }}</a>{{ else }}<span>{{ i18n "footerBuiltWithPrefix" }} <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> {{ i18n "and" }} <a href="{{ .Site.Params.repo | default "https://github.com/hollson/hugo-theme-dooz" }}" target="_blank" rel="noopener">Dooz</a> {{ i18n "footerBuiltWithSuffix" }}</span>{{ end }}
             </p>
         </div>
     </div>

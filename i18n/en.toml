@@ -29,9 +29,6 @@ other = "Pagination"
 [gotoPage]
 other = "Go to page {{.Count}}"
 
-[featuredImage]
-other = "Featured article image"
-
 [codeCollapse]
 other = "Collapse"
 
@@ -47,12 +44,6 @@ other = "Copied"
 [codeExpand]
 other = "Expand"
 
-[download]
-other = "Download"
-
-[emailAddress]
-other = "Email Address"
-
 [featured]
 other="Featured"
 
@@ -64,23 +55,17 @@ other = "articles"
 one = "category"
 other = "categories"
 
-[footerContact]
-other = "Contact"
-
 [footerBuiltWithPrefix]
 other = "Built with"
 
 [footerBuiltWithSuffix]
 other = ""
 
+[footerRights]
+other = "All rights reserved."
+
 [and]
 other = "and"
-
-[cnblogs]
-other = "Cnblogs"
-
-[juejin]
-other = "Juejin"
 
 [footerLinksLabel]
 other = "Technical resources"
@@ -94,12 +79,6 @@ other = "Subscribe to RSS"
 [footerTagline]
 other = "Code is a craft; notes bring order."
 
-[footerTechnicalCommunity]
-other = "Tech communities"
-
-[footerTechnology]
-other = "Emerging technologies"
-
 [footerTop]
 other = "Back to top"
 
@@ -112,17 +91,8 @@ other = "No matching articles"
 [forSearchMinLength]
 other = "Type 1 more character to search"
 
-[forSearchMinLengthCount]
-other = "Type {{.Count}} more characters to search"
-
 [home]
 other = "Home"
-
-[links]
-other="Links"
-
-[myBlog]
-other = "My Blog"
 
 [noContent]
 other = "No content yet."
@@ -131,20 +101,14 @@ other = "No content yet."
 other = "No tags yet."
 
 [nextPage]
-other = "Next"  
+other = "Next"
 
 [postCount]
 one = "{{.Count}} post"
 other = "{{.Count}} posts"
 
-[notice]
-other="Notice"
-
 [prevPage]
 other = "Previous"
-
-[publishedAt]
-other="Published at"
 
 [archiveSince]
 other = "Since {{.Year}}"
@@ -164,10 +128,6 @@ other = "Most popular"
 [tagMore]
 other = "More tags"
 
-[tagCount]
-one = "{{.Count}} tag"
-other = "{{.Count}} tags"
-
 [termCount]
 one = "{{.Count}} entry"
 other = "{{.Count}} entries"
@@ -178,12 +138,6 @@ other = "{{.Count}} posts"
 
 [termPinned]
 other = "Pinned"
-
-[updatedAt]
-other = "Updated {{.Date}}"
-
-[updated]
-other = "Updated"
 
 [calloutInfo]
 other = "Info"
@@ -255,14 +209,9 @@ other="Theme"
 [toc]
 other="Table of contents"
 
-[translations]
-other="Translations"
-
 [welcome]
 other="Welcome to my blog"
 
-[yourName]
-other = "Your Name"  
 [pageNotFoundKicker]
 other="404 · Page Not Found"
 
