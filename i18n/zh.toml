@@ -54,18 +54,6 @@ other = "篇文章"
 one = "个分类"
 other = "个分类"
 
-[footerBuiltWithPrefix]
-other = "由"
-
-[footerBuiltWithSuffix]
-other = "构建"
-
-[footerRights]
-other = "保留所有权利"
-
-[and]
-other = "与"
-
 [footerLinksLabel]
 other = "技术资源导航"
 

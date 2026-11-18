@@ -55,18 +55,6 @@ other = "articles"
 one = "category"
 other = "categories"
 
-[footerBuiltWithPrefix]
-other = "Built with"
-
-[footerBuiltWithSuffix]
-other = ""
-
-[footerRights]
-other = "All rights reserved."
-
-[and]
-other = "and"
-
 [footerLinksLabel]
 other = "Technical resources"
 

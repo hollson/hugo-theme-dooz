@@ -36,7 +36,6 @@ enableEmoji = true                         # 支持 :emoji: 简写
   # 2.1 站点图标与作者信息
   # ------------------------------------------------------------
   favicon = "assets/favicon.ico"           # 站点图标，留空则用默认 assets/favicon.ico
-
   author = "Hollson"                       # 作者名，显示在作者卡片、署名等处
   email = "hello@example.com"              # 联系邮箱
   city = "Xian"                            # 所在城市，显示在作者卡片
@@ -48,7 +47,8 @@ enableEmoji = true                         # 支持 :emoji: 简写
   # ------------------------------------------------------------
   logoText = "Dooz"                        # Logo 文字
   logoFontFamily = 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif'  # 字体栈
-  logoFontWeight = 700                     # 字重
+  logoFontWeight = 980                     # 字重,即字体加粗
+  repo = "https://github.com/hollson/hugo-theme-dooz"   # 导航栏主题按钮
 
   # ------------------------------------------------------------
   # 2.3 社交链接（不需要的留空或注释掉即可隐藏对应入口）
@@ -56,10 +56,7 @@ enableEmoji = true                         # 支持 :emoji: 简写
   github = "https://github.com/example"                # GitHub
   csdn = "https://blog.csdn.net/example"               # CSDN
   cnblog = "https://www.cnblogs.com/example/"          # 博客园
-  wechat = "assets/wechat.png"                        # 微信二维码图片，配置后显示入口与弹窗
-
-  # 导航栏 GitHub 按钮指向的主题仓库地址（与社交 github 区分）
-  repo = "https://github.com/hollson/hugo-theme-dooz"
+  wechat = "assets/wechat.png"                         # 微信二维码图片，配置后显示入口与弹窗
 
   # ------------------------------------------------------------
   # 2.4 顶部公告（支持 Markdown；noticeEnable=false 可关闭）
@@ -102,13 +99,13 @@ enableEmoji = true                         # 支持 :emoji: 简写
   footerTagline = "代码是手艺，笔记是章法。"             # 页脚标语
 
   # 版权主体（公司/个人名），显示在版权行；不配置默认 Mafool
-  copyright = "Mafool"
+  copyright = "Mafool科技"
 
   # 备案号（显示在页脚，链接到工信部）：国内站点按需填写
- # icp = "京ICP证000000号"
+  icp = "京ICP证000000号"
 
-  # RSS 入口，默认 true
-  # footerRss = false
+  # 页脚构建信息（支持 Markdown 链接）
+  footerCredit = "由 [Hugo](https://gohugo.io) 与 [Dooz](https://github.com/hollson/hugo-theme-dooz) 构建"
 
   # 页脚社交入口：必须显式配置，未配置则显示 social1/social2 占位
   footerSocial = [

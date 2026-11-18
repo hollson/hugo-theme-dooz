@@ -37,11 +37,6 @@
                     {{ range $social }}
                     <li><a href="{{ .url }}" target="_blank" rel="noopener me">{{ .name }}</a></li>
                     {{ end }}
-                    {{ if ne .Site.Params.footerRss false }}
-                    {{ with .Site.Home.OutputFormats.Get "rss" }}
-                    <li><a href="{{ .RelPermalink }}" aria-label="RSS">RSS</a></li>
-                    {{ end }}
-                    {{ end }}
                 </ul>
             </div>
 
@@ -72,11 +67,14 @@
             </nav>
         </div>
 
-        <div class="footer-bottom">
-            <p class="footer-copy">&copy; {{ now.Format "2006" }} {{ .Site.Params.copyright | default "Mafool" }}. {{ i18n "footerRights" }}</p>
-            <p class="footer-meta">
-                {{ with .Site.Params.icp }}<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">{{ . }}</a>{{ else }}<span>{{ i18n "footerBuiltWithPrefix" }} <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> {{ i18n "and" }} <a href="{{ .Site.Params.repo | default "https://github.com/hollson/hugo-theme-dooz" }}" target="_blank" rel="noopener">Dooz</a> {{ i18n "footerBuiltWithSuffix" }}</span>{{ end }}
-            </p>
+        <div class="footer-bottom{{ with .Site.Params.footerCredit }} has-credit{{ end }}">
+            <div class="footer-legal">
+                <span class="footer-copy">Copyright &copy; {{ now.Format "2006" }} {{ .Site.Params.copyright | default "Mafool" }}</span>
+                {{ with .Site.Params.icp }}<a class="footer-icp" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">{{ . }}</a>{{ end }}
+            </div>
+            {{ with .Site.Params.footerCredit }}
+            <div class="footer-credit">{{ . | markdownify }}</div>
+            {{ end }}
         </div>
     </div>
 </footer>
