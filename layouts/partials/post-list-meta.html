@@ -1,16 +1,18 @@
+{{- $page := .page -}}
+{{- $showSeries := not (.hideSeries | default false) -}}
 <div class="post-list-meta">
     <div class="post-list-meta-main">
-        {{ if .Params.pinned }}<span class="post-pinned">{{ i18n "termPinned" }}</span>{{ end }}
-        {{ if .Params.featured }}<span class="post-featured">{{ partial "icon" (dict "name" "star" "size" 12) }}<span>{{ i18n "featured" }}</span></span>{{ end }}
-        {{ with .Params.series }}<span class="post-series">{{ i18n "series" }}：{{ . }}</span>{{ end }}
-        {{ with .Params.categories }}
+        {{ if $page.Params.pinned }}<span class="post-pinned">{{ i18n "termPinned" }}</span>{{ end }}
+        {{ if $page.Params.featured }}<span class="post-featured">{{ partial "icon" (dict "name" "star" "size" 12) }}<span>{{ i18n "featured" }}</span></span>{{ end }}
+        {{ if $showSeries }}{{ with $page.Params.series }}<span class="post-series">{{ i18n "series" }}：{{ . }}</span>{{ end }}{{ end }}
+        {{ with $page.Params.categories }}
         <span class="post-list-category-group" aria-label="{{ i18n "categories" }}">
             {{ range . }}
             <a class="post-category-link" href="{{ "/categories/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>
             {{ end }}
         </span>
         {{ end }}
-        {{ with .Params.tags }}
+        {{ with $page.Params.tags }}
         <span class="post-list-tag-group" aria-label="{{ i18n "tags" }}">
             {{ range . }}
             <a class="post-tag-link" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/"><span class="post-tag-hash" aria-hidden="true">#</span>{{ . }}</a>
@@ -21,11 +23,11 @@
     <div class="post-list-meta-right">
         <span class="post-list-reading">
             {{ partial "icon" (dict "name" "clock" "size" 13) }}
-            <span>{{ i18n "readingTime" .ReadingTime }}</span>
+            <span>{{ i18n "readingTime" $page.ReadingTime }}</span>
         </span>
         <span class="post-list-date">
             {{ partial "icon" (dict "name" "calendar" "size" 13) }}
-            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+            <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "2006.01.02" }}</time>
         </span>
     </div>
 </div>
