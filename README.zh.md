@@ -155,12 +155,9 @@ pinned = false
 [MIT](LICENSE)
 
 
-# TODO: 1. 页脚内容可配置(页脚的博客园、github、技术社区、前沿技术等可配置)
-# TODO: 2. 支持mermaid语法（目前页面渲染不出来）
 # TODO: 3. 去掉打赏（hugo-theme-dooz主题中的打赏提升到主库（mafool-blog），主题中除了脚本之外，不保留打赏功能，包括示例和图片，打赏图片移到 /Users/sybs/github/mafool-blog/static/reward）
 # TODO：4. 微信公众号主题
 # TODO：5. 优化readme
-# TODO：6. 博客可配置
 # TODO：7. 优化页面滑动
 # TODO：8. 关联文章（应该有系列概念），分类、标签、系列
 # TODO：9. 增加评论

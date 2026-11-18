@@ -2210,18 +2210,26 @@ html {
     min-width: 0;
 }
 
-.post-pinned {
+.post-pinned,
+.post-featured {
     display: inline-flex;
     align-items: center;
     padding: 0.08rem 0.4rem 0.1rem;
     border-radius: 2px;
-    background: #e8750a;
     color: #fff;
     font-size: 0.65rem;
     font-weight: 600;
     letter-spacing: 0.06em;
     line-height: 1.4;
     white-space: nowrap;
+}
+
+.post-pinned {
+    background: #e8750a;
+}
+
+.post-featured {
+    background: #2f9e7e;
 }
 
 .post-list-category-group {

@@ -8,6 +8,7 @@ hideToc: false
 enableToc: true
 enableTocContent: false
 pinned: true
+featured: true
 author: "Hollson"
 cover: "https://markdown.com.cn/hero.png"
 categories:
