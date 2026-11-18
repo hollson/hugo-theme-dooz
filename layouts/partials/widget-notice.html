@@ -1,9 +1,5 @@
 {{ if and .Site.Params.noticeEnable .Site.Params.notice }}
-<div class="card">
-    <div class="card-content">
-        <h2 class="title is-6">{{i18n "notice"}}</h2>
-        <h6>{{.Site.Params.notice|markdownify}}</h6>
-    </div>
+<div id="announcement" class="site-announcement" role="note">
+    <div class="site-announcement-message">{{ .Site.Params.notice | markdownify }}</div>
 </div>
-<br>
 {{ end }}

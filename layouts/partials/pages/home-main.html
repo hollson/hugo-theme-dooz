@@ -7,6 +7,7 @@
 
 <div class="tile is-child box">
     <div class="content">
+        {{ partial "widget-notice" . }}
         <h3>{{ i18n "welcome" }}</h3>
         <hr>
         {{ range $paginator.Pages }}

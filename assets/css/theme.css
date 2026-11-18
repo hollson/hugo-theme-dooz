@@ -153,6 +153,38 @@ hr {
     margin-top: 0;
 }
 
+/* Site-wide announcement */
+.site-announcement {
+    margin: 0 0 1.25rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid #fed7aa;
+    border-left: 4px solid #ea580c;
+    border-radius: 8px;
+    background: #fff7ed;
+    color: #7c2d12;
+}
+
+.site-announcement-message {
+    color: #7c2d12;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+}
+
+.site-announcement-message > :first-child {
+    margin-top: 0;
+}
+
+.site-announcement-message > :last-child {
+    margin-bottom: 0;
+}
+
+.site-announcement-message a {
+    color: #b45309;
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+}
+
 /* 表格表头 */
 .content table th {
     background-color: #f2f2ee;
