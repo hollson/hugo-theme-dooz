@@ -2111,7 +2111,12 @@ html {
     box-shadow: 0 8px 22px rgba(15, 23, 42, 0.07);
 }
 
-/* 精选侧栏只保留文字信息 */
+/* 精选侧栏只保留文字信息：去掉 Bulma 默认条间分割线，仅用行距分隔 */
+.widget-featured .media + .media {
+    border-top: 0;
+    margin-top: 0.8rem;
+    padding-top: 0;
+}
 
 @media screen and (max-width: 768px) {
     .post-list-cover {
