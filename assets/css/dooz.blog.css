@@ -125,7 +125,7 @@ html,body {
   box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 0px rgba(10,10,10,.1);
 }
 
-#navbarExampleTransparentExample{
+#nav-menu{
   background-color:transparent;
   text-align: center;
 }

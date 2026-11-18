@@ -1,7 +1,7 @@
 {{- $page := .page -}}
 {{- $main := partial .mainPartial $page -}}
 {{- $sidebar := partial .sidebarPartial $page -}}
-<div id="page-layout" class="columns content-columns page-layout">
-    <div id="page-main" class="column is-9 main-column page-main">{{ $main }}</div>
-    <div id="page-sidebar" class="column is-3 sidebar-column page-sidebar">{{ $sidebar }}</div>
+<div id="layout" class="columns content-columns page-layout">
+    <main id="main" class="column is-9 main-column page-main">{{ $main }}</main>
+    <aside id="sidebar" class="column is-3 sidebar-column page-sidebar">{{ $sidebar }}</aside>
 </div>

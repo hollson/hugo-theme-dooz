@@ -1,8 +1,8 @@
-<section id="site-header" class="hero is-info is-medium hero-gradient site-header" style="--hero-image: url('{{ .Site.Params.Hero | relURL }}');">
+<header id="header" class="hero is-info is-medium hero-gradient site-header" style="--hero-image: url('{{ .Site.Params.Hero | relURL }}');">
     <div class="hero-head">
         {{ partial "nav" . }}
     </div>
-    <div class="hero-body">
+    <div id="hero" class="hero-body">
         <div class="container has-text-centered">
             <h1 class="title" style="font-size: 58px;">{{ .Site.Title }}</h1>
             <h2 class="subtitle">
@@ -10,4 +10,4 @@
             </h2>
         </div>
     </div>
-</section>
+</header>

@@ -6,7 +6,7 @@
 {{ $paginator := .Paginate ($pinned.ByWeight | append $normal.ByWeight) }}
 
 <div class="tile is-child box">
-    <div class="content page-body">
+    <div class="content">
         <h3>{{ i18n "welcome" }}</h3>
         <hr>
         {{ range $paginator.Pages }}

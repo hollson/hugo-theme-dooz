@@ -1,37 +1,18 @@
-<nav id="site-nav" class="navbar is-transparent container has-text-white site-nav">
+<nav id="nav" class="navbar is-transparent container has-text-white site-nav">
     <div class="navbar-brand">
         <div class="navbar-item">
             <a class="dooz-logo" href="{{ .Site.BaseURL | relLangURL }}" aria-label="{{ .Site.Params.logoText | default .Site.Title }}">{{ .Site.Params.logoText | default .Site.Title }}</a>
         </div>
 
         <!--for mobile-->
-        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+        <div class="navbar-burger burger" data-target="nav-menu">
             <span></span>
             <span></span>
             <span></span>
         </div>
     </div>
 
-    <div id="navbarExampleTransparentExample" class="navbar-menu has-text-dark">
-        <!-- <div class="navbar-start">
-            <a class="navbar-item" href="javascript:void(0);">
-                Home
-            </a>
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link" href="javascript:void(0);">
-                    Docs
-                </a>
-                <div class="navbar-dropdown is-boxed has-background-light">
-                    <a class="navbar-item" href="javascript:void(0);">
-                        Overview
-                    </a>
-                    <a class="navbar-item" href="javascript:void(0);">
-                        Modifiers
-                    </a>
-                </div>
-            </div>
-        </div> -->
-
+    <div id="nav-menu" class="navbar-menu has-text-dark">
         <div class="navbar-end">
             {{ if or (not (isset .Site.Params "opensearch")) .Site.Params.opensearch }}
             <div class="navbar-item nav-search">

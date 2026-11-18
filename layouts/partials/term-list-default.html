@@ -1,5 +1,5 @@
 <div class="container">
-    <div id="page-main" class="section tag-page page-main page-body">
+    <main id="main" class="section tag-page page-main">
         {{ if .Data.Terms }}
         <div class="tag-intro">
             <span class="tag-eyebrow">{{ .Type }}</span>
@@ -16,5 +16,5 @@
         {{ else }}
         <p class="tag-summary">{{ i18n "noContent" }}</p>
         {{ end }}
-    </div>
+    </main>
 </div>

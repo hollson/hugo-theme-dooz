@@ -1,6 +1,6 @@
 {{ $posts := .Pages.ByDate.Reverse }}
 <div class="tile is-child box">
-    <div class="content page-body">
+    <div class="content">
         <h3 class="term-title">{{ if eq .Type "tags" }}#{{ end }}{{ .Title }}</h3>
         <p class="term-count">{{ i18n "termPostCount" (len $posts) }}</p>
         <hr>
