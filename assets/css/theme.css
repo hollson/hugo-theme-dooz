@@ -2111,34 +2111,7 @@ html {
     box-shadow: 0 8px 22px rgba(15, 23, 42, 0.07);
 }
 
-/* 精选侧栏缩略图：按原图比例缩放，不裁切、不拉伸 */
-.widget-featured .media-left {
-    flex: 0 0 112px;
-}
-
-.widget-featured .media-left figure {
-    width: 112px;
-    height: auto;
-    margin: 0;
-    overflow: hidden;
-    border-radius: 8px;
-    background: #f3f7f9;
-}
-
-.widget-featured .media-left a {
-    display: block;
-    width: 100%;
-    height: auto;
-    line-height: 0;
-}
-
-.widget-featured .media-left img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: initial;
-    border-radius: 8px;
-}
+/* 精选侧栏只保留文字信息 */
 
 @media screen and (max-width: 768px) {
     .post-list-cover {

@@ -5,18 +5,8 @@
     <h2 class="title is-6">{{ i18n "featured" }}</h2>
     {{ range first 5 .ByWeight }}
     {{ $post := . }}
-    {{ $cover := .Params.cover | default .Params.image }}
     {{ $author := .Params.author | default $.Site.Params.Author }}
     <article class="media">
-        {{ with $cover }}
-        <div class="media-left">
-            <figure>
-                <a href="{{ $post.RelPermalink }}" tabindex="-1" aria-hidden="true">
-                    <img class="image is-64x64" src="{{ . | relURL }}" alt="" loading="lazy" decoding="async">
-                </a>
-            </figure>
-        </div>
-        {{ end }}
         <div class="media-content">
             <div class="content">
                 <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a><br>
