@@ -2218,8 +2218,7 @@ html {
 }
 
 .post-pinned,
-.post-featured,
-.post-series {
+.post-featured {
     display: inline-flex;
     align-items: center;
     padding: 0.08rem 0.4rem 0.1rem;
@@ -2246,7 +2245,10 @@ html {
 }
 
 .post-series {
-    background: #4a6fa5;
+    color: #5f6b76;
+    font-size: 0.72rem;
+    font-weight: 500;
+    line-height: 1.4;
 }
 
 .post-list-category-group {
