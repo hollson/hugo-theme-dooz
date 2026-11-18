@@ -2,5 +2,7 @@
 {{- with $comments -}}
   {{- if eq .provider "giscus" -}}
     {{ partial "comments/giscus.html" $ }}
+  {{- else if eq .provider "waline" -}}
+    {{ partial "comments/waline.html" $ }}
   {{- end -}}
 {{- end -}}

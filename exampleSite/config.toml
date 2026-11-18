@@ -155,6 +155,11 @@ enableEmoji = true                         # 支持 :emoji: 简写
       theme = "preferred_color_scheme"      # light / dark / preferred_color_scheme
       lang = "zh-CN"
 
+    [params.comments.waline]
+      serverURL = ""                        # 部署 Waline 后填写，例如 https://comments.example.com
+      lang = "zh-CN"                        # 界面语言
+      login = "disable"                     # disable 允许匿名评论；enable 强制登录
+
 
 # ==============================================================
 # 3. 多语言（可选）

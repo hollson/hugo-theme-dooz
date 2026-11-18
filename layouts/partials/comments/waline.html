@@ -1,0 +1,19 @@
+{{- $config := .Site.Params.comments.waline -}}
+{{- if $config.serverURL -}}
+<section class="comments comments-waline" id="comments">
+    <h3 class="title is-6">{{ i18n "comments" }}</h3>
+    <div id="waline"></div>
+    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+
+        init({
+            el: '#waline',
+            serverURL: '{{ $config.serverURL }}',
+            lang: '{{ $config.lang | default "zh-CN" }}',
+            login: '{{ $config.login | default "disable" }}',
+            dark: false
+        });
+    </script>
+</section>
+{{- end -}}
