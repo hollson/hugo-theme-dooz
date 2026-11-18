@@ -2,8 +2,8 @@
 
 {{- /* 页脚社交入口：可用 footerSocial 数组完全覆盖；否则沿用 github / csdn / cnblog */ -}}
 {{- $social := slice -}}
-{{- if isset .Site.Params "footerSocial" -}}
-{{- $social = .Site.Params.footerSocial -}}
+{{- with .Site.Params.footerSocial -}}
+{{- $social = . -}}
 {{- else -}}
 {{- with .Site.Params.github -}}{{- $social = $social | append (dict "name" "GitHub" "url" .) -}}{{- end -}}
 {{- with .Site.Params.csdn -}}{{- $social = $social | append (dict "name" "CSDN" "url" .) -}}{{- end -}}
@@ -12,20 +12,19 @@
 
 {{- /* 页脚链接分组：可用 footerGroups 覆盖；每个分组包含 title 和 items */ -}}
 {{- $groups := slice -}}
-{{- if isset .Site.Params "footerGroups" -}}
-{{- $groups = .Site.Params.footerGroups -}}
+{{- with .Site.Params.footerGroups -}}
+{{- $groups = . -}}
 {{- else -}}
+{{- /* 未配置 footerGroups 时显示无关的演示文字，提示用户自行配置 */ -}}
 {{- $groups = slice
-    (dict "title" (i18n "footerTechnicalCommunity") "items" (slice
-        (dict "name" "GitHub" "url" "https://github.com")
-        (dict "name" "Stack Overflow" "url" "https://stackoverflow.com")
-        (dict "name" (i18n "juejin") "url" "https://juejin.cn")
-        (dict "name" "Hacker News" "url" "https://news.ycombinator.com")))
-    (dict "title" (i18n "footerTechnology") "items" (slice
-        (dict "name" "Hugging Face" "url" "https://huggingface.co")
-        (dict "name" "PyTorch" "url" "https://pytorch.org")
-        (dict "name" "LangChain" "url" "https://www.langchain.com")
-        (dict "name" "Kubernetes" "url" "https://kubernetes.io")))
+    (dict "title" "分组一" "items" (slice
+        (dict "name" "link1" "url" "#")
+        (dict "name" "link2" "url" "#")
+        (dict "name" "link3" "url" "#")))
+    (dict "title" "分组二" "items" (slice
+        (dict "name" "link4" "url" "#")
+        (dict "name" "link5" "url" "#")
+        (dict "name" "link6" "url" "#")))
 -}}
 {{- end -}}
 
@@ -40,7 +39,7 @@
                     {{ range $social }}
                     <li><a href="{{ .url }}" target="_blank" rel="noopener me">{{ .name }}</a></li>
                     {{ end }}
-                    {{ if or (not (isset .Site.Params "footerRss")) .Site.Params.footerRss }}
+                    {{ if ne .Site.Params.footerRss false }}
                     {{ with .Site.Home.OutputFormats.Get "rss" }}
                     <li><a href="{{ .RelPermalink }}" aria-label="RSS">RSS</a></li>
                     {{ end }}

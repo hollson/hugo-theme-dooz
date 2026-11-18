@@ -115,17 +115,20 @@ copyright = "MIT Licensed"                 # 页脚版权文案
   #   { name = "CSDN", url = "https://blog.csdn.net/example" },
   # ]
 
-  # 页脚链接分组：每组有 title，items 为 name/url 数组
-  # footerGroups = [
-  #   { title = "技术社区", items = [
-  #     { name = "GitHub", url = "https://github.com" },
-  #     { name = "Stack Overflow", url = "https://stackoverflow.com" },
-  #   ]},
-  #   { title = "前沿技术", items = [
-  #     { name = "Hugging Face", url = "https://huggingface.co" },
-  #     { name = "PyTorch", url = "https://pytorch.org" },
-  #   ]},
-  # ]
+  # 页脚链接分组：每组有 title，items 为 name/url 数组。
+  # 不配置时页脚显示 link1/link2 等演示文字；配置后覆盖为下面的真实分组。
+  footerGroups = [
+    { title = "技术社区", items = [
+      { name = "GitHub", url = "https://github.com" },
+      { name = "Stack Overflow", url = "https://stackoverflow.com" },
+      { name = "掘金", url = "https://juejin.cn" },
+    ]},
+    { title = "前沿技术", items = [
+      { name = "Hugging Face", url = "https://huggingface.co" },
+      { name = "PyTorch", url = "https://pytorch.org" },
+      { name = "Kubernetes", url = "https://kubernetes.io" },
+    ]},
+  ]
 
   # ------------------------------------------------------------
   # 2.8 SEO
