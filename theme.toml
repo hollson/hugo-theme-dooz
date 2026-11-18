@@ -1,11 +1,11 @@
 name = "Dooz"
 license = "MIT"
-licenselink = "https://github.com/yourname/hugo-theme-dooz/blob/main/LICENSE"
+licenselink = "https://github.com/hollson/hugo-theme-dooz/blob/main/LICENSE"
 description = "Dooz is a clean, elegant Hugo theme for programmers and long-form writers, with built-in search, article TOC, and a CSDN-style code block toolbar."
-homepage = "https://github.com/yourname/hugo-theme-dooz"
+homepage = "https://github.com/hollson/hugo-theme-dooz"
 tags = ["blog", "tech", "search", "code", "responsive"]
 min_version = "0.158.0"
 
 [author]
   name = "Dooz Contributors"
-  homepage = "https://github.com/yourname/hugo-theme-dooz"
+  homepage = "https://github.com/hollson/hugo-theme-dooz"

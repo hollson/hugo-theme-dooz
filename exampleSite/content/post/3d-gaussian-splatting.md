@@ -7,6 +7,7 @@ draft: false
 hideToc: false
 enableToc: true
 enableTocContent: false
+featured: true
 author: "Hollson"
 libraries:
 - mermaid

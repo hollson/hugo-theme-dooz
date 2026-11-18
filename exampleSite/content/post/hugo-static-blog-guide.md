@@ -7,7 +7,6 @@ draft: false
 hideToc: false
 enableToc: true
 enableTocContent: false
-featured: true
 author: "Hollson"
 image: "https://gohugo.io/images/hugo-logo-wide.svg"
 # cover: "https://gohugo.io/images/hugo-logo-wide.svg"

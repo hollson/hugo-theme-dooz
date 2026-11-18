@@ -8,6 +8,7 @@ hideToc: false
 enableToc: true
 pinned: true
 enableTocContent: false
+featured: true
 author: "Hollson"
 image: "/post/zgn2.jpg"
 cover: "/post/zgn2.jpg"
