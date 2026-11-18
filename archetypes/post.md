@@ -23,7 +23,8 @@ categories: []                       # 分类，如 ["技术"]
 # ===== 五、主题扩展（按需）=====
 # subtitle: "副标题"                  # 标题下方的副标题
 # pinned: true                       # 置顶：首页排序靠前并显示「置顶」标记
-# featured: true                     # 精选：只进侧栏精选并显示「精选」标记
+# featured: true                     # 精选：只进侧栏精选并显示「精选」标记，与置顶互不影响
+# series: "xxx"                      # 系列：同系列文章互为「相关阅读」，优先于标签匹配
 # enableToc: true                    # 生成目录（主题默认开启）
 # hideToc: false                     # 正文里隐藏目录
 # enableTocContent: false            # 目录内容是否展开

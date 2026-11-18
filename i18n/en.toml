@@ -185,6 +185,9 @@ other = "{{.Count}} min"
 [related]
 other="Related posts"
 
+[series]
+other="Series"
+
 [recentPosts]
 other="Recent posts"
 

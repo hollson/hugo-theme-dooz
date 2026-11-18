@@ -15,6 +15,7 @@ tags:
 - wechat
 - markdown
 pinned: false
+series: "markdown"
 archives:
 - 2026
 url: "/post/wechat-article-formatter/"

@@ -2,6 +2,7 @@
     <div class="post-list-meta-main">
         {{ if .Params.pinned }}<span class="post-pinned">{{ i18n "termPinned" }}</span>{{ end }}
         {{ if .Params.featured }}<span class="post-featured">{{ i18n "featured" }}</span>{{ end }}
+        {{ with .Params.series }}<span class="post-series">{{ i18n "series" }}：{{ . }}</span>{{ end }}
         {{ with .Params.categories }}
         <span class="post-list-category-group" aria-label="{{ i18n "categories" }}">
             {{ range . }}
