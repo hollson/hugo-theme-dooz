@@ -16,6 +16,7 @@
 :root {
     --c-accent: #0f766e;        /* 主色：墨青 */
     --c-accent-strong: #0b5d57; /* 主色深，hover 用 */
+    --c-accent-warm: #d97706;   /* 暖橙：文章标题 hover */
     --c-ink: #222226;           /* 正文标题 */
     --c-ink-soft: #59636b;      /* 次要文字 */
     --c-bg: #f8fbfe;            /* 页面底色 */
@@ -1633,7 +1634,7 @@ hr {
 }
 
 .title.is-4 a:hover {
-    color: var(--c-accent);
+    color: var(--c-accent-warm);
 }
 
 .has-text-grey-light {
@@ -2072,8 +2073,35 @@ html {
     transition: background-color 0.18s ease;
 }
 
-.post-list-item:hover {
-    background-color: #fcfdfe;
+.post-list-item:hover,
+article.post-list-item:hover {
+    background: transparent;
+}
+
+.post-list-item .title.is-4 a {
+    color: var(--c-ink);
+    transition: color 0.18s ease;
+}
+
+.post-list-item:hover .title.is-4 a,
+.post-list-item .title.is-4 a:focus-visible {
+    color: var(--c-accent-warm);
+}
+
+.widget-featured .media-content .content > a,
+.widget-recent .card-content > h2 a,
+.widget-related .card-content > h2 a {
+    color: var(--c-ink);
+    transition: color 0.18s ease;
+}
+
+.widget-featured .media-content .content > a:hover,
+.widget-featured .media-content .content > a:focus-visible,
+.widget-recent .card-content > h2 a:hover,
+.widget-recent .card-content > h2 a:focus-visible,
+.widget-related .card-content > h2 a:hover,
+.widget-related .card-content > h2 a:focus-visible {
+    color: var(--c-accent-warm);
 }
 
 .post-list-item.has-cover {
@@ -2165,11 +2193,11 @@ html {
 }
 
 .content .post-list-head .title a {
-    color: #1f2937;
+    color: var(--c-ink);
 }
 
 .content .post-list-head .title a:hover {
-    color: #0f4c81;
+    color: var(--c-accent-warm);
 }
 
 /* 摘要最多两行，避免把卡片高度撑开 */

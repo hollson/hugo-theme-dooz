@@ -1,12 +1,13 @@
 ---
 title: "Whisper 模型实现语音识别"
-date: 2026-11-15T20:42:00+08:00
+date: 2026-11-12T20:42:00+08:00
 description: "想快速把语音消息、会议录音或采访转成文字？这篇教程用 OpenAI Whisper 加 Python 手把手实现语音转写，包含音频格式转换、25 MB 上传限制说明和可直接运行的脚本，照着做就能得到一份可搜索的文字稿。"
 keywords: "Whisper, 语音转文字, 转写, Python, OpenAI, 音频"
 hideToc: false
 enableToc: true
 enableTocContent: false
 pinned: true
+featured: true
 image: "/post/whisper-speech-to-text-cover.webp"
 cover: "/post/whisper-speech-to-text-cover.webp"
 categories:

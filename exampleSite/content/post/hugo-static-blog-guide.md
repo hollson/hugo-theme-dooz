@@ -1,6 +1,6 @@
 ---
 title: "Hugo 静态博客指南"
-date: 2026-11-17T00:00:00+08:00
+date: 2026-08-22T00:00:00+08:00
 description: "一份手把手的 Hugo 静态博客搭建教程，从安装配置、创建文章和主题，到本地预览与正式发布，完整演示 GitHub Pages 自动部署流程，并推荐其他免费托管平台，零基础也能快速建好个人博客。"
 keywords: "Hugo, 静态博客, Markdown, GitHub Pages"
 draft: false

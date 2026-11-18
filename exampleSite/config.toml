@@ -20,7 +20,7 @@ enableEmoji = true                         # 支持 :emoji: 简写
 
 # 分页：每页显示的文章数
 [pagination]
-  pagerSize = 5
+  pagerSize = 10
 
 # 输出格式：home 输出 JSON 供主题内置搜索使用（勿删 JSON）
 [outputs]
