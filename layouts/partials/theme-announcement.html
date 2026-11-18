@@ -1,0 +1,12 @@
+{{- $enabled := true -}}
+{{- if isset .Site.Params "themeannouncement" -}}
+  {{- $enabled = .Site.Params.themeAnnouncement -}}
+{{- end -}}
+{{- $url := .Site.Params.themeAnnouncementURL | default "https://cdn.jsdelivr.net/gh/hollson/hugo-theme-dooz@master/announcement.json" -}}
+{{- if $enabled -}}
+<div id="theme-announcement" class="theme-announcement-bar" role="note" data-announcement-url="{{ $url }}" hidden>
+    <div class="container theme-announcement-inner">
+        <div class="site-announcement-message theme-announcement-message"></div>
+    </div>
+</div>
+{{- end -}}

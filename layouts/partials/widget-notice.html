@@ -1,5 +1,5 @@
-{{ if and .Site.Params.noticeEnable .Site.Params.notice }}
-<div id="announcement" class="site-announcement" role="note">
+{{- if and .Site.Params.noticeEnable .Site.Params.notice -}}
+<div id="site-notice" class="site-announcement site-notice" role="note">
     <div class="site-announcement-message">{{ .Site.Params.notice | markdownify }}</div>
 </div>
-{{ end }}
+{{- end -}}

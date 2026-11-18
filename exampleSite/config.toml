@@ -26,7 +26,6 @@ enableEmoji = true                         # 支持 :emoji: 简写
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
-
 # ==============================================================
 # 2. 站点参数（全部位于 [params] 下，主题读取的核心配置）
 # ==============================================================
@@ -59,10 +58,10 @@ enableEmoji = true                         # 支持 :emoji: 简写
   wechat = "assets/wechat.png"                         # 微信二维码图片，配置后显示入口与弹窗
 
   # ------------------------------------------------------------
-  # 2.4 顶部公告（支持 Markdown；noticeEnable=false 可关闭）
+  # 2.4 主题公告（主题作者向使用者广播，不是站点公告）
   # ------------------------------------------------------------
-  noticeEnable = true
-  notice = "📢 &nbsp; **[Dooz](https://github.com/hollson/hugo-theme-dooz)** 主题更新啦, 喜欢的话欢迎点个 Star 支持一下。 [更新日志...](https://github.com/hollson/hugo-theme-dooz/releases)"
+  themeAnnouncement = true                # 默认开启；浏览器每天最多检查一次，不阻塞页面
+  themeAnnouncementURL = "https://cdn.jsdelivr.net/gh/hollson/hugo-theme-dooz@master/announcement.json"
 
   # ------------------------------------------------------------
   # 2.5 首页 Hero 与文案

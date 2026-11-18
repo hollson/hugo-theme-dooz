@@ -61,9 +61,15 @@
     <!-- 远程 Open Sans 已停用，改用系统字体栈（theme.css） -->
     {{ $blogJS := resources.Get "js/dooz.blog.js" | resources.Fingerprint }}
     <script defer src="{{ $blogJS.RelPermalink }}" integrity="{{ $blogJS.Data.Integrity }}"></script>
+    {{ if or (not (isset .Site.Params "themeannouncement")) .Site.Params.themeAnnouncement }}
+    {{ $themeAnnouncementJS := resources.Get "js/theme-announcement.js" | resources.Fingerprint }}
+    <script defer src="{{ $themeAnnouncementJS.RelPermalink }}" integrity="{{ $themeAnnouncementJS.Data.Integrity }}"></script>
+    {{ end }}
 </head>
 
 <body{{ block "bodyclass" . }}{{ end }}>
+    {{ partial "theme-announcement" . }}
+
     <!--Header-->
     {{ block "header" . }}
     <!-- { partial "header" . }} -->

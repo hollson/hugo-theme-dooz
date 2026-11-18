@@ -2690,3 +2690,35 @@ article.post-list-item:hover {
     font-size: 0.9rem;
     line-height: 1.7;
 }
+
+/* 页眉主题公告条 */
+.theme-announcement-bar {
+    padding: 0.55rem 1rem;
+    border-bottom: 1px solid #fed7aa;
+    background: #fff7ed;
+    color: #7c2d12;
+}
+
+.theme-announcement-bar[hidden] {
+    display: none;
+}
+
+.theme-announcement-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.theme-announcement-bar .site-announcement-message {
+    color: #7c2d12;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.theme-announcement-bar .site-announcement-message a {
+    color: #b45309;
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+}
