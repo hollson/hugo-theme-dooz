@@ -2238,6 +2238,11 @@ html {
 
 .post-featured {
     background: #2f9e7e;
+    gap: 0.22rem;
+}
+
+.post-featured .icon-svg {
+    flex: 0 0 auto;
 }
 
 .post-series {
