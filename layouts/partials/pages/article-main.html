@@ -1,0 +1,26 @@
+<div class="tile is-child box">
+    <div class="content page-body">
+        <div class="article-meta-banner">
+            {{ partial "post-list-meta" . }}
+        </div>
+        {{ if .Site.Params.OpenShare }}
+        <div class="share-component" data-disabled="google,diandian,tencent,qzone"
+            data-description='{{ i18n "shareDescription" }}'
+            data-mobile-sites="weibo,qq,qzone,tencent"
+            data-share-to='{{ i18n "shareTo" }}'
+            data-share-copied='{{ i18n "shareCopied" }}'
+            data-share-copy-failed='{{ i18n "shareCopyFailed" }}'
+            data-social-weibo='{{ i18n "socialWeibo" }}'
+            data-social-wechat='{{ i18n "socialWechat" }}'
+            data-social-douban='{{ i18n "socialDouban" }}'>
+        </div>
+        {{ end }}
+        {{ .Content }}
+
+        <!-- 文章底部扩展：站点可覆盖 partials/article-footer.html -->
+        {{ partial "article-footer.html" . }}
+
+        <br>
+        <br>
+    </div>
+</div>

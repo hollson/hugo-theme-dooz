@@ -24,11 +24,11 @@
 {{end}}
 
 {{ define "main" }}
-<div class="columns">
+<div id="page-layout" class="columns page-layout about-layout">
     <div class="column is-1"></div>
-    <div class="column is-10">
+    <div id="page-main" class="column is-10 page-main">
         <div class="tile is-child box">
-            <div class="content">
+            <div class="content page-body">
                 {{ .Content }}
             </div>
         </div>

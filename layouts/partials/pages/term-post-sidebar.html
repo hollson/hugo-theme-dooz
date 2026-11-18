@@ -1,0 +1,6 @@
+{{ partial "widget-recent.html" . }}<br>
+{{ if eq .Type "tags" }}
+{{ partial "widget-tags.html" . }}
+{{ else }}
+{{ partial "widget-category" . }}
+{{ end }}

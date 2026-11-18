@@ -1,0 +1,26 @@
+{{ $posts := .Pages.ByDate.Reverse }}
+<div class="tile is-child box">
+    <div class="content page-body">
+        <h3 class="term-title">{{ if eq .Type "tags" }}#{{ end }}{{ .Title }}</h3>
+        <p class="term-count">{{ i18n "termPostCount" (len $posts) }}</p>
+        <hr>
+        {{ range $posts }}
+        <article class="media post-list-item">
+            <div class="media-content">
+                <div class="content">
+                    <div class="post-list-head">
+                        <p class="title is-4">
+                            <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">{{ .LinkTitle }}</a>
+                        </p>
+                    </div>
+                    {{ $excerpt := "" }}
+                    {{ with .Description }}{{ $excerpt = . }}{{ else }}{{ $excerpt = .Summary }}{{ end }}
+                    <p class="summary">{{ $excerpt | plainify | htmlUnescape | replaceRE "\\[TOC\\]" "" | truncate 100 }}</p>
+                    {{ partial "post-list-meta" . }}
+                </div>
+            </div>
+        </article>
+        <hr>
+        {{ end }}
+    </div>
+</div>

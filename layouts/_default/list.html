@@ -3,34 +3,9 @@
 {{ end }}
 
 {{ define "main" }}
-{{ $paginator := .Paginator }}
-<div class="columns content-columns">
-  <div class="column is-9 main-column">
-    <div class="tile is-child box">
-      <div class="content">
-        {{ range $paginator.Pages }}
-        <article class="media post-list-item">
-          <div class="media-content">
-            <div class="content">
-              <div class="post-list-head">
-                <p class="title is-4"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></p>
-              </div>
-              {{ $excerpt := "" }}
-              {{ with .Description }}{{ $excerpt = . }}{{ else }}{{ $excerpt = .Summary }}{{ end }}
-              <p class="summary">{{ $excerpt | plainify | htmlUnescape | replaceRE "\\[TOC\\]" "" | truncate 100 }}</p>
-              {{ partial "post-list-meta" . }}
-            </div>
-          </div>
-        </article>
-        <hr>
-        {{ end }}
-      </div>
-      {{ partial "pagination" . }}
-    </div>
-  </div>
-  <div class="column is-3 sidebar-column">
-    {{ partial "widget-recent.html" . }}<br>
-    {{ partial "widget-category" . }}
-  </div>
-</div>
+{{ partial "layout/page-columns.html" (dict
+    "page" .
+    "mainPartial" "pages/list-main.html"
+    "sidebarPartial" "pages/list-sidebar.html"
+) }}
 {{ end }}
