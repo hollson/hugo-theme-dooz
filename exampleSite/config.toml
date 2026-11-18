@@ -136,6 +136,25 @@ enableEmoji = true                         # 支持 :emoji: 简写
   keywords = "Hugo,主题,博客,程序员,静态站点" # 全站默认关键词
   description = "Mafool 是一个简洁优雅的 Hugo 主题，内置搜索、代码块工具条、文章目录和响应式布局。"  # 全站默认描述
 
+  # ------------------------------------------------------------
+  # 2.9 评论（Giscus / Waline 二选一；账号和 ID 先留空）
+  # ------------------------------------------------------------
+  [params.comments]
+    provider = "none"                       # none / giscus / waline
+
+    [params.comments.giscus]
+      repo = ""                             # 例如 "owner/repo"，仓库必须公开
+      repoId = ""                           # 在 giscus.app 配置页生成
+      category = "Comments"                 # GitHub Discussions 分类名
+      categoryId = ""                       # 在 giscus.app 配置页生成
+      mapping = "pathname"                  # pathname / url / title / og:title
+      strict = "0"                          # 1 表示只匹配精确路径
+      reactionsEnabled = "1"                # 是否显示表情回应
+      emitMetadata = "0"
+      inputPosition = "top"                 # top / bottom
+      theme = "preferred_color_scheme"      # light / dark / preferred_color_scheme
+      lang = "zh-CN"
+
 
 # ==============================================================
 # 3. 多语言（可选）

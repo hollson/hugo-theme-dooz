@@ -2551,3 +2551,12 @@ article.post-list-item:hover {
     height: auto;
 }
 
+
+/* 评论区：与正文保持呼吸距离 */
+.comments {
+    margin-top: 2.5rem;
+}
+
+.comments .title.is-6 {
+    margin-bottom: 1rem;
+}

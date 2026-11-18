@@ -1,0 +1,22 @@
+{{- $config := .Site.Params.comments.giscus -}}
+{{- if and $config.repo $config.repoId $config.categoryId -}}
+<section class="comments comments-giscus" id="comments">
+    <h3 class="title is-6">{{ i18n "comments" }}</h3>
+    <script src="https://giscus.app/client.js"
+        data-repo="{{ $config.repo }}"
+        data-repo-id="{{ $config.repoId }}"
+        data-category="{{ $config.category | default "Comments" }}"
+        data-category-id="{{ $config.categoryId }}"
+        data-mapping="{{ $config.mapping | default "pathname" }}"
+        data-strict="{{ $config.strict | default "0" }}"
+        data-reactions-enabled="{{ $config.reactionsEnabled | default "1" }}"
+        data-emit-metadata="{{ $config.emitMetadata | default "0" }}"
+        data-input-position="{{ $config.inputPosition | default "top" }}"
+        data-theme="{{ $config.theme | default "preferred_color_scheme" }}"
+        data-lang="{{ $config.lang | default "zh-CN" }}"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+    </script>
+</section>
+{{- end -}}

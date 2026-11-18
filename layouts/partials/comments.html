@@ -1,0 +1,6 @@
+{{- $comments := .Site.Params.comments -}}
+{{- with $comments -}}
+  {{- if eq .provider "giscus" -}}
+    {{ partial "comments/giscus.html" $ }}
+  {{- end -}}
+{{- end -}}
