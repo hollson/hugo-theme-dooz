@@ -1,3 +1,15 @@
+const repo = 'https://github.com/hollson/hugo-theme-dooz';
+console.log(
+    '%c Dooz %c A clean Hugo theme for programmers & writers',
+    'background:#2f9e7e;color:#fff;padding:2px 6px;border-radius:2px;font-weight:bold;',
+    'color:#8b9b98;'
+);
+console.log(
+    '%cBuilt with %c' + repo,
+    'color:#8b9b98;',
+    'color:#e8750a;'
+);
+
 // 零依赖实现：外链新窗口打开、微信弹窗开关
 document.addEventListener('DOMContentLoaded', () => {
     // 正文外链加 target=_blank 与 rel=noopener
