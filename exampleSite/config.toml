@@ -140,7 +140,7 @@ enableEmoji = true                         # 支持 :emoji: 简写
   # 2.9 评论（Giscus / Waline 二选一；账号和 ID 先留空）
   # ------------------------------------------------------------
   [params.comments]
-    provider = "none"                       # none / giscus / waline
+    provider = "giscus"                     # none / giscus / waline
 
     [params.comments.giscus]
       repo = ""                             # 例如 "owner/repo"，仓库必须公开

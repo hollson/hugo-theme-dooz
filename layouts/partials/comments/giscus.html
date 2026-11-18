@@ -19,4 +19,35 @@
         async>
     </script>
 </section>
+{{- else -}}
+<section class="comments comments-giscus" id="comments">
+    <h3 class="title is-6">{{ i18n "comments" }}</h3>
+    <div class="giscus-mock" aria-label="Giscus 评论预览">
+        <div class="giscus-mock-head">
+            <span class="giscus-mock-count">0 条评论</span>
+            <button type="button" class="giscus-mock-login">使用 GitHub 登录</button>
+        </div>
+        <div class="giscus-mock-editor">
+            <div class="giscus-mock-avatar">G</div>
+            <div class="giscus-mock-input">
+                <div class="giscus-mock-placeholder">登录后参与评论…</div>
+                <div class="giscus-mock-actions">
+                    <span>支持 Markdown</span>
+                    <button type="button" disabled>评论</button>
+                </div>
+            </div>
+        </div>
+        <div class="giscus-mock-comment">
+            <div class="giscus-mock-avatar is-user">A</div>
+            <div class="giscus-mock-comment-body">
+                <div class="giscus-mock-comment-meta">
+                    <strong>示例用户</strong>
+                    <span>刚刚</span>
+                </div>
+                <p>这是一条示例评论，用来预览评论区的排版效果。</p>
+            </div>
+        </div>
+        <p class="comments-placeholder">预览效果：填写 Giscus 配置后显示真实评论。</p>
+    </div>
+</section>
 {{- end -}}

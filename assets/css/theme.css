@@ -2560,3 +2560,133 @@ article.post-list-item:hover {
 .comments .title.is-6 {
     margin-bottom: 1rem;
 }
+
+.comments-placeholder {
+    color: var(--c-ink-soft);
+    font-size: 0.9rem;
+}
+
+/* Giscus 未配置时的本地预览样式，仅用于查看评论区布局 */
+.giscus-mock {
+    border: 1px solid var(--c-line);
+    border-radius: 8px;
+    background: var(--c-surface);
+    overflow: hidden;
+}
+
+.giscus-mock-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    background: #f6f8fa;
+    border-bottom: 1px solid var(--c-line);
+}
+
+.giscus-mock-count {
+    color: var(--c-ink-soft);
+    font-size: 0.9rem;
+}
+
+.giscus-mock-login {
+    border: 0;
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+    background: var(--c-accent);
+    color: #fff;
+    font-size: 0.82rem;
+    cursor: pointer;
+}
+
+.giscus-mock-editor {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+}
+
+.giscus-mock-avatar {
+    flex: 0 0 2.1rem;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #e6f2f0;
+    color: var(--c-accent);
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.giscus-mock-avatar.is-user {
+    background: #fdf0df;
+    color: var(--c-accent-warm);
+}
+
+.giscus-mock-input {
+    flex: 1;
+    min-width: 0;
+}
+
+.giscus-mock-placeholder {
+    min-height: 4.5rem;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid var(--c-line);
+    border-radius: 6px;
+    background: #fff;
+    color: #8a949c;
+    font-size: 0.9rem;
+}
+
+.giscus-mock-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.55rem;
+    color: #8a949c;
+    font-size: 0.78rem;
+}
+
+.giscus-mock-actions button {
+    border: 0;
+    border-radius: 6px;
+    padding: 0.35rem 0.8rem;
+    background: #eef1f3;
+    color: #9aa3aa;
+    font-size: 0.82rem;
+}
+
+.giscus-mock-comment {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-top: 1px solid var(--c-line);
+}
+
+.giscus-mock-comment-body {
+    min-width: 0;
+}
+
+.giscus-mock-comment-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.86rem;
+}
+
+.giscus-mock-comment-meta strong {
+    color: var(--c-ink);
+}
+
+.giscus-mock-comment-meta span {
+    color: var(--c-ink-soft);
+    font-size: 0.78rem;
+}
+
+.giscus-mock-comment-body p {
+    margin: 0;
+    color: #4f5a62;
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
