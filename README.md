@@ -84,7 +84,6 @@ hasCJKLanguage = true
   repo = "https://github.com/yourname/hugo-theme-dooz"
   hero = "img/res/hero.jpg"
   slogan = "Simple and quiet, made for writing."
-  openShare = true
 ```
 
 ## Content

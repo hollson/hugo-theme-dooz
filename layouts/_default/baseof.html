@@ -39,21 +39,10 @@
     {{ $themeCSS := resources.Get "css/theme.css" | resources.Fingerprint }}
     <link rel="stylesheet" href="{{ $themeCSS.RelPermalink }}" integrity="{{ $themeCSS.Data.Integrity }}" />
 
-    <!-- Share -->
-    {{if .Site.Params.OpenShare}}
-    {{ $shareCSS := resources.Get "css/share.min.css" | resources.Fingerprint }}
-    <link rel="stylesheet" href="{{ $shareCSS.RelPermalink }}" integrity="{{ $shareCSS.Data.Integrity }}" />
-    {{ $shareJS := resources.Get "js/share.js" | resources.Fingerprint }}
-    <script defer src="{{ $shareJS.RelPermalink }}" integrity="{{ $shareJS.Data.Integrity }}"></script>
-    {{end}}
-    {{ if or (not (isset .Site.Params "opensearch")) .Site.Params.opensearch }}
     {{ $searchJS := resources.Get "js/search.js" | resources.Fingerprint }}
     <script defer src="{{ $searchJS.RelPermalink }}" integrity="{{ $searchJS.Data.Integrity }}"></script>
-    {{ end }}
-    {{ if or (not (isset .Site.Params "opencodecopy")) .Site.Params.opencodecopy }}
     {{ $copyCodeJS := resources.Get "js/copy-code.js" | resources.Fingerprint }}
     <script defer src="{{ $copyCodeJS.RelPermalink }}" integrity="{{ $copyCodeJS.Data.Integrity }}"></script>
-    {{ end }}
 
     <!--Head Extend-->
     {{ block "headex" . }}{{ end }}

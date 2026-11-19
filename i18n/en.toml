@@ -151,32 +151,11 @@ other = "Warning"
 [calloutDanger]
 other = "Danger"
 
-[shareTo]
-other = "Share to "
-
-[shareCopied]
-other = "Link copied. Share it on "
-
-[shareCopyFailed]
-other = "Copy failed. Please copy the URL from the address bar."
-
-[socialWeibo]
-other = "Weibo"
-
-[socialWechat]
-other = "WeChat"
-
-[socialDouban]
-other = "Douban"
-
 [authorAvatar]
 other = "Author avatar"
 
 [wechatQrCode]
 other = "WeChat QR code"
-
-[shareDescription]
-other = "Share this article"
 
 [readingTime]
 one = "{{.Count}} min"

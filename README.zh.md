@@ -87,7 +87,6 @@ hasCJKLanguage = true
 
   hero = "img/res/hero.jpg"
   slogan = "简单、克制，适合长期写作。"
-  openShare = true
 ```
 
 ### Logo

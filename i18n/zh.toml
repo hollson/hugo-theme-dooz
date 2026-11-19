@@ -147,32 +147,11 @@ other = "警告"
 [calloutDanger]
 other = "危险"
 
-[shareTo]
-other = "分享到"
-
-[shareCopied]
-other = "链接已复制，去"
-
-[shareCopyFailed]
-other = "复制失败，请手动复制地址栏链接"
-
-[socialWeibo]
-other = "微博"
-
-[socialWechat]
-other = "微信"
-
-[socialDouban]
-other = "豆瓣"
-
 [authorAvatar]
 other = "作者头像"
 
 [wechatQrCode]
 other = "微信二维码"
-
-[shareDescription]
-other = "分享这篇文章"
 
 [readingTime]
 one = "{{.Count}} 分钟"
