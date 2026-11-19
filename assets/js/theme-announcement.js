@@ -138,22 +138,27 @@
         revealTimer = window.setTimeout(show, randomRevealDelay());
     }
 
-    function hide(closeForToday) {
+    function hide(closeForToday, immediate) {
         if (revealTimer) window.clearTimeout(revealTimer);
         if (autoCloseTimer) window.clearTimeout(autoCloseTimer);
         revealPending = false;
         if (closeForToday) write(CLOSED_KEY, dayKey());
         root.classList.remove('is-visible');
         if (hideTimer) window.clearTimeout(hideTimer);
+        if (immediate) {
+            root.hidden = true;
+            isShown = false;
+            return;
+        }
         hideTimer = window.setTimeout(function () {
             root.hidden = true;
             isShown = false;
-        }, 650);
+        }, 1250);
     }
 
     function dismiss() {
         if (autoCloseTimer) window.clearTimeout(autoCloseTimer);
-        hide(true);
+        hide(true, true);
     }
 
     if (closeButton) {
