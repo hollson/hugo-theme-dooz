@@ -11,7 +11,7 @@
         <h3>{{ i18n "welcome" }}</h3>
         <hr>
         {{ range $paginator.Pages }}
-        {{ $cover := .Params.cover }}
+        {{ $cover := .Params.cover_image }}
         {{ $permalink := .RelPermalink }}
         <article class="media post-list-item{{ if $cover }} has-cover{{ end }}">
             {{ with $cover }}

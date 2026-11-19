@@ -8,7 +8,7 @@ tags: []                             # 标签，如 ["架构", "设计"]
 categories: []                       # 分类，如 ["技术设计"]
 
 # ===== 按需取消注释 =====
-# image: "/post/cover.jpg"
+# hero_image: "/post/cover.jpg"
 # keywords: "关键词1,关键词2"
 # libraries: ["mermaid"]             # 架构图 / 流程图
 ---

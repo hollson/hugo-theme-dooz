@@ -97,7 +97,7 @@ hugo new content post/my-first-post.md
 title = "My first post"
 date = 2026-03-22
 description = "One sentence for the list and SEO."
-cover = "img/res/hero.jpg"
+hero_image = "img/res/hero.jpg"
 categories = ["Notes"]
 tags = ["Hugo"]
 archives = "2026"

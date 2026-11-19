@@ -1,4 +1,4 @@
-<header id="header" class="hero is-info is-medium hero-gradient site-header" style="--hero-image: url('{{ if .Params.Image }}{{ .Params.Image|relURL}}{{ else }}{{ .Site.Params.Hero|relURL}}{{ end }}');">
+<header id="header" class="hero is-info is-medium hero-gradient site-header" style="--hero-image: url('{{ if .Params.hero_image }}{{ .Params.hero_image|relURL}}{{ else if eq .Type "post" }}{{ "/assets/blog.jpg" | relURL }}{{ else }}{{ .Site.Params.Hero|relURL}}{{ end }}');">
     <div class="hero-head">
         {{ partial "nav" .}}
     </div>

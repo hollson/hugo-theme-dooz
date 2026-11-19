@@ -18,7 +18,7 @@
     <meta property="og:description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}">
     <meta property="og:url" content="{{ .Permalink }}">
     {{ with .Params.images }}<meta property="og:image" content="{{ index . 0 | absURL }}">{{ end }}
-    {{ with .Params.image }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
+    {{ with .Params.hero_image }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
     <meta name="twitter:card" content="summary_large_image">
 
     <!--Head Common-->

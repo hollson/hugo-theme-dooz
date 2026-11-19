@@ -8,7 +8,7 @@ tags: []                             # 标签，如 ["公众号", "排版"]
 categories: []                       # 分类，如 ["随笔"]
 
 # ===== 按需取消注释 =====
-# image: "/post/cover.jpg"           # 题图，公众号首图
+# hero_image: "/post/cover.jpg"       # 题图，公众号首图
 # keywords: "关键词1,关键词2"
 ---
 

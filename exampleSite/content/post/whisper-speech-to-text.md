@@ -8,8 +8,8 @@ enableToc: true
 enableTocContent: false
 pinned: true
 featured: true
-image: "/post/whisper-speech-to-text-cover.webp"
-cover: "/post/whisper-speech-to-text-cover.webp"
+hero_image: "/post/whisper-speech-to-text-cover.webp"
+cover_image: "/post/whisper-speech-to-text-cover.webp"
 categories:
 - 人工智能
 tags:

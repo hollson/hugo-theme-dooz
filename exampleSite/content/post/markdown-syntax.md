@@ -11,7 +11,7 @@ pinned: true
 series: "markdown"
 featured: true
 author: "Hollson"
-cover: "https://markdown.com.cn/hero.png"
+cover_image: "https://markdown.com.cn/hero.png"
 categories:
 - 教程指南
 tags:

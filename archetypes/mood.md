@@ -8,7 +8,7 @@ tags: []                             # 标签，如 ["生活", "随笔"]
 categories: []                       # 分类，如 ["心情随笔"]
 
 # ===== 按需取消注释 =====
-image: "/post/zgn2.jpg"              # 配图，放在 static/post/ 下，发布前换成自己的
+hero_image: "/post/zgn2.jpg"         # 配图，放在 static/post/ 下，发布前换成自己的
 # keywords: "关键词1,关键词2"
 ---
 

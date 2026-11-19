@@ -8,7 +8,7 @@ tags: []                             # 标签，如 ["教程", "工具"]
 categories: []                       # 分类，如 ["教程指南"]
 
 # ===== 按需取消注释 =====
-# image: "/post/cover.jpg"
+# hero_image: "/post/cover.jpg"
 # keywords: "关键词1,关键词2"
 # libraries: ["mermaid", "katex"]    # 流程图 / 数学公式
 ---

@@ -8,7 +8,7 @@ hideToc: false
 enableToc: true
 enableTocContent: false
 author: "Hollson"
-image: "/assets/blog4.jpg"
+hero_image: "/assets/blog4.jpg"
 categories:
 - 工具软件
 tags:

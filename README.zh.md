@@ -112,7 +112,7 @@ Front matter 示例：
 title = "我的第一篇文章"
 date = 2026-03-22
 description = "用于列表摘要和 SEO 的一句话。"
-cover = "img/res/hero.jpg"
+hero_image = "img/res/hero.jpg"
 categories = ["随笔"]
 tags = ["Hugo", "写作"]
 archives = "2026"

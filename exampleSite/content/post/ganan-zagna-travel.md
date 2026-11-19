@@ -10,8 +10,8 @@ pinned: true
 enableTocContent: false
 featured: true
 author: "Hollson"
-image: "/post/zgn2.jpg"
-cover: "/post/zgn2.jpg"
+hero_image: "/post/zgn2.jpg"
+cover_image: "/post/zgn2.jpg"
 categories:
 - 旅行随笔
 tags:

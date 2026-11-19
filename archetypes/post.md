@@ -12,8 +12,8 @@ categories: []                       # 分类，如 ["技术"]
 # archives: ["2026"]                 # 归档年份；不填则按 date 自动归档
 
 # ===== 三、封面图片（按需）=====
-# image: "/post/cover.jpg"           # 列表封面；不填用站点默认图
-# cover: "/post/cover.jpg"           # 文章头图；优先级高于 image
+# hero_image: "/post/cover.jpg"       # 文章头图（og:image）；不填用站点默认图
+# cover_image: "/post/cover.jpg"      # 列表缩略图，显示在首页文章列表
 
 # ===== 四、SEO 与链接（按需）=====
 # keywords: "SEO,关键字"              # 不填则取 description

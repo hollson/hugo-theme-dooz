@@ -7,7 +7,7 @@ draft: false
 hideToc: false
 enableToc: true
 enableTocContent: false
-image: "/assets/blog2.jpg"
+hero_image: "/assets/blog2.jpg"
 categories:
 - 工具软件
 archives:

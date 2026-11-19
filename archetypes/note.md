@@ -8,7 +8,7 @@ tags: []                             # 标签，如 ["随笔", "效率"]
 categories: []                       # 分类，如 ["随手记"]
 
 # ===== 按需取消注释 =====
-# image: "/post/cover.jpg"           # 列表封面
+# cover_image: "/post/cover.jpg"      # 列表缩略图
 # keywords: "关键词1,关键词2"         # 不填取站点 keywords
 # libraries: ["mermaid", "katex"]    # 流程图 / 数学公式
 ---

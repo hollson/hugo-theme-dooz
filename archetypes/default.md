@@ -12,8 +12,8 @@ categories: []                       # 分类，如 ["技术"]
 # ===== 三、以下按需取消注释 =====
 # author: "{{ .Site.Params.author | default "Mafool" }}"
 # subtitle: "副标题"
-# image: "/post/cover.jpg"           # 列表封面；不填用站点默认图
-# cover: "/post/cover.jpg"           # 文章头图；优先级高于 image
+# hero_image: "/post/cover.jpg"       # 文章头图（og:image）；不填用站点默认图
+# cover_image: "/post/cover.jpg"      # 列表缩略图，显示在首页文章列表
 # keywords: "SEO,关键字"             # 不填取站点 keywords
 # archives: ["2026"]                 # 不填按 date 自动归档
 # pinned: true                       # 置顶显示
