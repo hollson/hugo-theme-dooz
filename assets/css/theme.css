@@ -2693,14 +2693,23 @@ article.post-list-item:hover {
 
 /* 页眉主题公告条 */
 .theme-announcement-bar {
+    position: relative;
     padding: 0.55rem 1rem;
-    border-bottom: 1px solid #fed7aa;
-    background: #fff7ed;
-    color: #7c2d12;
+    border-bottom: 1px solid #ea580c;
+    background: #fb923c;
+    color: #431407;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .theme-announcement-bar[hidden] {
     display: none;
+}
+
+.theme-announcement-bar.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .theme-announcement-inner {
@@ -2708,17 +2717,50 @@ article.post-list-item:hover {
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding-right: 2.25rem;
 }
 
 .theme-announcement-bar .site-announcement-message {
-    color: #7c2d12;
+    color: #431407;
     font-size: 0.88rem;
     line-height: 1.6;
     overflow-wrap: anywhere;
 }
 
+.theme-announcement-close {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    transform: translateY(-50%);
+    border: 0;
+    background: transparent;
+    color: #431407;
+    font-size: 1.35rem;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.85;
+}
+
+.theme-announcement-close:hover,
+.theme-announcement-close:focus-visible {
+    opacity: 1;
+}
+
+@media screen and (max-width: 48em) {
+    .theme-announcement-inner {
+        padding-right: 2.25rem;
+    }
+
+    .theme-announcement-close {
+        right: 0;
+    }
+}
+
 .theme-announcement-bar .site-announcement-message a {
-    color: #b45309;
+    color: #431407;
     text-decoration: underline;
     text-underline-offset: 0.12em;
 }

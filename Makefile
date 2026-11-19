@@ -8,7 +8,7 @@ build:
 ## run@本地预览示例站（含草稿）
 .PHONY: run
 run:
-	@cd exampleSite && hugo server -D --themesDir "$$(dirname "$$(dirname "$$(pwd)")")" -p 1314
+	@cd exampleSite && hugo server -D --themesDir "$$(dirname "$$(dirname "$$(pwd)")")" --bind 0.0.0.0 -p 1314
 
 ## clean@清理示例站构建产物与缓存
 .PHONY: clean

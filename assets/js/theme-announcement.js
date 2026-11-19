@@ -16,6 +16,41 @@
 
     var DATA_KEY = 'dooz:theme-announcement:data';
     var CHECK_KEY = 'dooz:theme-announcement:last-check';
+    var SHOWN_KEY = 'dooz:theme-announcement:shown';
+    var CLOSED_KEY = 'dooz:theme-announcement:closed';
+    var EXPIRE_KEY = 'dooz:theme-announcement:auto-close-until';
+    var AUTO_CLOSE_MS = 5 * 60 * 1000;
+    var autoCloseTimer = null;
+    var revealTimer = null;
+    var hideTimer = null;
+    var isShown = false;
+    var revealPending = false;
+    var closeButton = root.querySelector('.theme-announcement-close');
+
+    function randomRevealDelay() {
+        return 5000 + Math.floor(Math.random() * 5001);
+    }
+
+    function show() {
+        if (isShown) return;
+        revealPending = false;
+        isShown = true;
+        root.hidden = false;
+        window.requestAnimationFrame(function () {
+            root.classList.add('is-visible');
+        });
+
+        var now = Date.now();
+        var expiresAt = Number(read(EXPIRE_KEY) || 0);
+        if (!expiresAt || expiresAt <= now) {
+            expiresAt = now + AUTO_CLOSE_MS;
+            write(EXPIRE_KEY, String(expiresAt));
+        }
+        var remaining = expiresAt - now;
+        autoCloseTimer = window.setTimeout(function () {
+            hide(true);
+        }, remaining);
+    }
 
     function dayKey() {
         var d = new Date();
@@ -82,12 +117,47 @@
     }
 
     function apply(data) {
-        if (isActive(data)) {
-            root.hidden = false;
-            messageEl.innerHTML = renderMessage(data.message);
+        if (!isActive(data) || read(CLOSED_KEY) === dayKey()) {
+            hide(false);
             return;
         }
-        root.hidden = true;
+
+        messageEl.innerHTML = renderMessage(data.message);
+        if (revealTimer) window.clearTimeout(revealTimer);
+        if (hideTimer) window.clearTimeout(hideTimer);
+
+        if (read(SHOWN_KEY) === dayKey()) {
+            if (revealPending) return;
+            show();
+            return;
+        }
+
+        write(SHOWN_KEY, dayKey());
+        root.classList.remove('is-visible');
+        revealPending = true;
+        revealTimer = window.setTimeout(show, randomRevealDelay());
+    }
+
+    function hide(closeForToday) {
+        if (revealTimer) window.clearTimeout(revealTimer);
+        if (autoCloseTimer) window.clearTimeout(autoCloseTimer);
+        revealPending = false;
+        if (closeForToday) write(CLOSED_KEY, dayKey());
+        root.classList.remove('is-visible');
+        if (hideTimer) window.clearTimeout(hideTimer);
+        hideTimer = window.setTimeout(function () {
+            root.hidden = true;
+            isShown = false;
+        }, 650);
+    }
+
+    function dismiss() {
+        if (autoCloseTimer) window.clearTimeout(autoCloseTimer);
+        hide(true);
+    }
+
+    if (closeButton) {
+        closeButton.addEventListener('click', dismiss);
     }
 
     var cached = readCache();
