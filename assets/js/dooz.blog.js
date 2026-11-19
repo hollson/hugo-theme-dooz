@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dshangType = document.getElementById('pay-type');
     const dshangImage = document.getElementById('pay-image');
     const dshangText = document.getElementById('pay-text');
-    const dshangImageBase = dshangBox.dataset.imageBase || '/reward';
+    const dshangImageBase = dshangBox.dataset.imageBase || '/assets';
 
     const showDshang = el => { if (el) el.style.display = 'block'; };
     const hideDshang = el => { if (el) el.style.display = 'none'; };
