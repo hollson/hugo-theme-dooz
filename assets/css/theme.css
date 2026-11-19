@@ -902,53 +902,98 @@ body {
     color: #7dd3c7;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1215px) {
     .footer-main {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.75rem;
     }
 
-    .footer-links {
-        grid-column: 1 / -1;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 1.8rem 1.6rem;
-    }
-}
-
-@media (max-width: 560px) {
-    .footer {
-        padding: 2.4rem 0 1.4rem;
-    }
-
-    .footer-main {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-links {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.7rem 1.2rem;
-    }
-
-    .footer-col-sub {
-        grid-column: 1 / -1;
-    }
-
-    .footer-bottom {
-        grid-template-columns: 1fr;
-        justify-items: center;
-        gap: 0.6rem;
-        margin-top: 1.8rem;
-    }
-
-    .footer-legal,
-    .footer-credit {
-        grid-column: 1;
-        justify-self: center;
+    .footer-brand {
         text-align: center;
     }
 
-    .footer-bottom.has-credit .footer-legal {
+    .footer-tagline {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .footer-social {
         justify-content: center;
+    }
+
+    .footer-links {
+        grid-column: 1;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        text-align: center;
+    }
+
+    .footer-col-sub {
+        display: none;
+    }
+
+    .footer-title {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .footer-title::before {
+        display: none;
+    }
+
+    .footer-col li {
+        margin-bottom: 0.35rem;
+    }
+
+    .footer-col a {
+        display: inline-block;
+        padding: 0.15rem 0;
+    }
+
+    .footer-bottom,
+    .footer-bottom.has-credit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.45rem;
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        text-align: center;
+    }
+
+    .footer-legal,
+    .footer-bottom.has-credit .footer-legal {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+    }
+
+    .footer-credit {
+        text-align: center;
+    }
+
+    #rocket {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .footer {
+        padding: 2.1rem 0 1.2rem;
+    }
+
+    .footer .container {
+        width: calc(100% - 2rem);
+    }
+
+    .footer-tagline {
+        max-width: 30rem;
+        margin: 0.45rem auto 0.9rem;
+    }
+
+    .footer-col a {
+        font-size: 0.92rem;
     }
 }
 
@@ -1764,13 +1809,21 @@ body.page-404 {
     order: 1;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1215px) {
+    .content-columns {
+        flex-direction: column;
+    }
+
     .content-columns > .main-column {
         order: 1;
+        flex: none;
+        width: 100%;
     }
 
     .content-columns > .sidebar-column {
         order: 2;
+        flex: none;
+        width: 100%;
     }
 }
 
@@ -1887,9 +1940,9 @@ body:not(.page-404) > .container > .section {
     margin: 0 !important;
 }
 
-/* 文章详情页：左侧栏固定，目录导航始终可见；
+/* 宽屏文章页：侧栏固定，目录导航始终可见；
  * 列表页与首页保持普通页面滚动，侧栏随页面一起到底。 */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1216px) {
     body.is-article .content-columns > .sidebar-column {
         position: sticky;
         top: 0.75rem;
@@ -1919,6 +1972,13 @@ body:not(.page-404) > .container > .section {
 /* 文章目录移到左侧栏后，保持与侧栏其他卡片一致的轻量排版 */
 .toc-widget .card-content {
     padding-bottom: 1rem;
+}
+
+@media screen and (max-width: 1215px) {
+    .toc-widget,
+    .toc-widget + br {
+        display: none;
+    }
 }
 
 .toc-sidebar nav {

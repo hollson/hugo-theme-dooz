@@ -12,6 +12,28 @@ console.log(
 
 // 零依赖实现：外链新窗口打开、微信弹窗开关
 document.addEventListener('DOMContentLoaded', () => {
+    const comments = document.getElementById('comments');
+    const contentColumns = document.querySelector('.content-columns');
+    if (comments && contentColumns) {
+        const originalPosition = document.createComment('comments-position');
+        comments.parentNode.insertBefore(originalPosition, comments);
+        const stackedLayout = window.matchMedia('(max-width: 1215px)');
+        const placeComments = () => {
+            if (stackedLayout.matches) {
+                contentColumns.parentNode.insertBefore(comments, contentColumns.nextSibling);
+            } else {
+                originalPosition.parentNode.insertBefore(comments, originalPosition.nextSibling);
+            }
+        };
+
+        placeComments();
+        if (stackedLayout.addEventListener) {
+            stackedLayout.addEventListener('change', placeComments);
+        } else {
+            stackedLayout.addListener(placeComments);
+        }
+    }
+
     // 正文外链加 target=_blank 与 rel=noopener
     document.querySelectorAll('.content a[href^="http"]').forEach(a => {
         a.setAttribute('target', '_blank');
