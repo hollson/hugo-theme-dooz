@@ -18,7 +18,7 @@ categories: []                       # 分类，如 ["技术"]
 # cover_image: "/post/cover.jpg"      # 列表缩略图，显示在首页文章列表
 # archives: ["2026"]                 # 不填按 date 自动归档
 # pinned: true                       # 置顶显示
-# enableToc: true                    # 生成目录
+# enable_toc: true                    # 生成目录
 # libraries: ["mermaid", "katex"]    # 流程图 / 数学公式
 # weight: 10                         # 排序权重，越小越靠前
 # lastmod: {{ now.Format "2006-01-02T15:04:05Z07:00" }}

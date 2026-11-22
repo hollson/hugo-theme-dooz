@@ -5,11 +5,11 @@ date: 2026-11-17T10:02:00+08:00
 description: "用大白话讲透 3D 高斯溅射（3DGS）这项热门技术：它如何把普通照片重建为可实时漫游的 3D 场景，完整流程、典型应用与当前局限是什么，再与 NeRF 等方案横向对比，帮你快速看懂 3D 重建的新方向。"
 keywords: "3D 高斯溅射, 3DGS, 三维重建, 实时渲染"
 draft: false
-hideToc: false
-enableToc: true
-enableTocContent: false
+hide_toc: false
+enable_toc: true
+enable_toc_content: false
 featured: true
-sidebarPosition: "right"
+sidebar_position: "right"
 author: "Hollson"
 libraries:
 - mermaid

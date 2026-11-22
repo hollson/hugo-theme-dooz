@@ -6,12 +6,12 @@ date: 2025-06-17T00:10:00+08:00
 description: "2025 年 6 月甘南旅行记：从迭部出发，登达日观景台俯瞰扎尕那石头城的晨光，漫步仙女滩与洛克观景台，寻访仙女湖，再奔赴若尔盖黄河九曲第一湾看长河落日，记录山野与江河之间的感动。"
 keywords: "扎尕那, 甘南旅行, 洛克之路, 仙女滩, 黄河九曲第一湾, 旅行游记"
 draft: false
-hideToc: false
-enableToc: true
+hide_toc: false
+enable_toc: true
 pinned: true
-enableTocContent: false
+enable_toc_content: false
 featured: true
-sidebarPosition: "right"
+sidebar_position: "right"
 author: "Hollson"
 hero_image: "/post/zhagana.jpg"
 cover_image: "/post/zhagana.jpg"

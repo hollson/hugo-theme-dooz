@@ -5,9 +5,9 @@ date: 2026-11-16T12:00:00+08:00
 description: "想快速排出好看的微信公众号文章？这篇指南带你用 Markdown 排版工具 markdown.com.cn 轻松搞定：标题层级、加粗斜体、引用提示框、列表、代码块和表格都有现成示例，一键复制粘贴到公众号后台，让写作排版更省心。"
 keywords: "微信公众号, Markdown, 排版, markdown.com.cn"
 draft: false
-hideToc: false
-enableToc: true
-enableTocContent: false
+hide_toc: false
+enable_toc: true
+enable_toc_content: false
 author: "Hollson"
 hero_image: "/assets/blog4.jpg"
 categories:
