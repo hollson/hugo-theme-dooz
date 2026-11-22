@@ -11,7 +11,7 @@ author: "Hollson"
 hero_image: "https://gohugo.io/images/hugo-logo-wide.svg"
 # cover: "https://gohugo.io/images/hugo-logo-wide.svg"
 categories:
-- 教程指南
+- 写作指南
 tags:
 - Hugo
 pinned: false

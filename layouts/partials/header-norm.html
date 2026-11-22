@@ -1,17 +1,18 @@
-<header id="header" class="hero is-info is-medium hero-gradient site-header" style="--hero-image: url('{{ if .Params.hero_image }}{{ .Params.hero_image|relURL}}{{ else if eq .Type "post" }}{{ "/assets/blog.jpg" | relURL }}{{ else }}{{ .Site.Params.Hero|relURL}}{{ end }}');">
-    <div class="hero-head">
-        {{ partial "nav" .}}
-    </div>
-    <div id="hero" class="hero-body">
+{{- $heroEnable := true -}}
+{{- if isset .Site.Params "heroenable" -}}{{- $heroEnable = .Site.Params.heroEnable -}}{{- end -}}
+<header id="header" class="site-header">
+    {{ partial "nav" . }}
+    {{ if $heroEnable }}
+    <section id="hero" class="hero is-info is-medium hero-gradient" style="--hero-image: url('{{ if .Params.hero_image }}{{ .Params.hero_image|relURL}}{{ else if eq .Type "post" }}{{ "/assets/blog.jpg" | relURL }}{{ else }}{{ .Site.Params.Hero|relURL}}{{ end }}');">
         <div class="container has-text-centered">
             <div class='container{{if eq .Type "post"}} has-text-left{{end}} column is-7'>
-                <h1 class="title is-size-2" style="margin-bottom:0.2rem;">
+                <h1 id="hero_title" class="title is-size-2" style="margin-bottom:0.2rem;">
                     {{ if eq .Type "tags" }}
                     {{ if eq .Kind "taxonomy" }}{{i18n "tags"}}{{ else }}{{ .Title }}{{ end }}
                     {{ else if eq .Type "archives" }}
                     {{ if eq .Kind "taxonomy" }}{{ i18n "archives" }}{{ else }}{{ .Title }}{{ end }}
                     {{ else if eq .Type "categories" }}
-                    {{ if eq .Kind "taxonomy" }}{{ i18n "categories" }}{{ else }}{{ .Title }}{{ end }}
+                    {{ if eq .Kind "taxonomy" }}{{i18n "categories"}}{{ else }}{{ .Title }}{{ end }}
                     {{ else if eq .Type "about" }}
                     {{i18n "about"}}
                     {{ else }}
@@ -19,14 +20,15 @@
                     {{ end }}
                 </h1>
                 {{ with .Params.tags }}
-                <div class="hero-tag-list" aria-label="{{ i18n "tags" }}">
+                <div id="hero_tags" class="hero-tag-list" aria-label="{{ i18n "tags" }}">
                     {{ range . }}
                     <span><a class="bar_tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/" title="{{ . }}">{{ . }}</a></span>
                     {{ end }}
                 </div>
                 {{ end }}
-                <span class="title is-size-6" style="font-style: italic;"> {{.Params.subtitle}}</span><br>
+                <span id="hero_subtitle" class="title is-size-6" style="font-style: italic;"> {{.Params.subtitle}}</span><br>
             </div>
         </div>
-    </div>
+    </section>
+    {{ end }}
 </header>

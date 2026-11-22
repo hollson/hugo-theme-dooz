@@ -13,7 +13,7 @@ featured: true
 author: "Hollson"
 cover_image: "https://markdown.com.cn/hero.png"
 categories:
-- 教程指南
+- 写作指南
 tags:
 - markdown
 archives:
@@ -26,6 +26,9 @@ url: "/post/markdown-syntax/"
 
 
 # Markdown 语法指南与示例
+
+## 简介
+Markdown 是一种流行的轻量级标记语言，只需几个简单符号就能排出标题、列表、链接等格式，让写作更专注于内容本身。这里是一份 Markdown 语言演示，用大量实例讲清常用语法，帮助初学者快速看懂并轻松上手。
 
 ## 功能特性
 

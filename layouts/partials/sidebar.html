@@ -1,0 +1,26 @@
+{{- $page := . -}}
+{{- $site := $page.Site -}}
+{{- $widgets := slice -}}
+{{- if isset $page.Params "sidebarwidgets" -}}
+    {{- $widgets = $page.Params.sidebarWidgets -}}
+{{- else if $page.IsHome -}}
+    {{- $widgets = $site.Params.sidebarHome | default (slice "featured" "categories" "tags" "archives") -}}
+{{- else if $page.IsPage -}}
+    {{- $widgets = $site.Params.sidebarArticle | default (slice "toc" "related" "tags") -}}
+{{- else if and (eq $page.Kind "taxonomy") (eq $page.Type "tags") -}}
+    {{- $widgets = $site.Params.sidebarTags | default (slice "categories" "archives") -}}
+{{- else if and (eq $page.Kind "taxonomy") (eq $page.Type "archives") -}}
+    {{- $widgets = $site.Params.sidebarArchives | default (slice "categories" "tags") -}}
+{{- else if and (eq $page.Kind "term") (eq $page.Type "tags") -}}
+    {{- $widgets = $site.Params.sidebarTermTags | default (slice "recent" "tags") -}}
+{{- else if and (eq $page.Kind "term") (eq $page.Type "archives") -}}
+    {{- $widgets = $site.Params.sidebarTermArchives | default (slice "recent" "categories" "tags") -}}
+{{- else if eq $page.Kind "term" -}}
+    {{- $widgets = $site.Params.sidebarTermCategories | default (slice "recent" "categories") -}}
+{{- else -}}
+    {{- $widgets = $site.Params.sidebarDefault | default (slice "recent" "categories") -}}
+{{- end -}}
+{{- if $page.IsHome -}}
+    {{ partial "widget-author" $page }}<br>
+{{- end -}}
+{{- partial "sidebar-widgets" (dict "page" $page "widgets" $widgets) -}}

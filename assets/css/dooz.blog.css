@@ -118,7 +118,7 @@ html,body {
     max-height: 20rem;
 }
 
-.hero.is-info .navbar-item, .hero.is-info .navbar-link {
+.site-header .navbar-item, .site-header .navbar-link {
   color: #fff !important;
 }
 .card,.box{

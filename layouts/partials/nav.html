@@ -1,7 +1,7 @@
 <nav id="nav" class="navbar is-transparent container has-text-white site-nav">
     <div class="navbar-brand">
         <div class="navbar-item">
-            <a class="dooz-logo" href="{{ .Site.BaseURL | relLangURL }}" aria-label="{{ .Site.Params.logoText | default .Site.Title }}">{{ with .Site.Params.logo }}<img src="{{ . | relURL }}" alt="{{ $.Site.Params.logoText | default $.Site.Title }}">{{ else }}{{ $.Site.Params.logoText | default $.Site.Title }}{{ end }}</a>
+            <a id="nav_logo" class="dooz-logo" href="{{ .Site.BaseURL | relLangURL }}" aria-label="{{ .Site.Params.logoText | default .Site.Title }}">{{ with .Site.Params.logo }}<img src="{{ . | relURL }}" alt="{{ $.Site.Params.logoText | default $.Site.Title }}">{{ else }}{{ $.Site.Params.logoText | default $.Site.Title }}{{ end }}</a>
         </div>
 
         <!--for mobile-->

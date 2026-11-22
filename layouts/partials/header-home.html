@@ -1,13 +1,15 @@
-<header id="header" class="hero is-info is-medium hero-gradient site-header" style="--hero-image: url('{{ .Site.Params.Hero | relURL }}');">
-    <div class="hero-head">
-        {{ partial "nav" . }}
-    </div>
-    <div id="hero" class="hero-body">
+{{- $heroEnable := true -}}
+{{- if isset .Site.Params "heroenable" -}}{{- $heroEnable = .Site.Params.heroEnable -}}{{- end -}}
+<header id="header" class="site-header">
+    {{ partial "nav" . }}
+    {{ if $heroEnable }}
+    <section id="hero" class="hero is-info is-medium hero-gradient" style="--hero-image: url('{{ .Site.Params.Hero | relURL }}');">
         <div class="container has-text-centered">
-            <h1 class="title" style="font-size: 58px;">{{ .Site.Title }}</h1>
-            <h2 class="subtitle">
+            <h1 id="hero_title" class="title" style="font-size: 58px;">{{ .Site.Title }}</h1>
+            <h2 id="hero_subtitle" class="subtitle">
                 {{.Site.Params.Slogan}}
             </h2>
         </div>
-    </div>
+    </section>
+    {{ end }}
 </header>

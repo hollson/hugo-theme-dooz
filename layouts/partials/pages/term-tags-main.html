@@ -3,7 +3,7 @@
 {{- $max := 1 -}}
 {{- with index $terms 0 }}{{ $max = .Count }}{{ end -}}
 
-<div class="tag-page">
+<div class="tag-page box">
     {{ if $terms }}
     <div class="tag-intro">
         <span class="tag-eyebrow">{{ i18n "topics" }}</span>

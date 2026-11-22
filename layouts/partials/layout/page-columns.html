@@ -1,7 +1,9 @@
 {{- $page := .page -}}
 {{- $main := partial .mainPartial $page -}}
 {{- $sidebar := partial .sidebarPartial $page -}}
-<div id="layout" class="columns content-columns page-layout">
+{{- $position := $page.Site.Params.sidebarPosition | default "left" -}}
+{{- if ne $position "right" }}{{ $position = "left" }}{{ end -}}
+<div id="layout" class="columns content-columns page-layout sidebar-{{ $position }}">
     <main id="main" class="column is-9 main-column page-main">{{ $main }}</main>
     <aside id="sidebar" class="column is-3 sidebar-column page-sidebar">{{ $sidebar }}</aside>
 </div>

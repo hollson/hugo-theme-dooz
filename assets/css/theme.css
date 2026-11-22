@@ -243,6 +243,14 @@ a {
     transition: background-color 0.18s ease, color 0.18s ease;
 }
 
+/* 深色导航上的链接悬停 / 键盘聚焦反馈。
+   Bulma 的 is-transparent 把 hover 背景强制透明，dooz.blog.css 又把链接色锁成白色 !important，
+   这里用同等 !important 覆盖；仅文字变色，青绿色与页脚 hover 保持一致 */
+.site-header #nav a.navbar-item:hover,
+.site-header #nav a.navbar-item:focus-visible {
+    color: #7dd3c7 !important;
+}
+
 /* 标签胶囊 */
 .bar_tag {
     transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
@@ -329,15 +337,35 @@ article.media:hover {
     pointer-events: none;
 }
 
-/* 内容层压在遮罩之上；导航层必须高于正文层，否则搜索结果面板会被正文区挡住点击 */
-.hero-head {
+/* 站点头部：nav 与 section#hero 平级；导航层高于正文，避免搜索面板被遮挡。
+   背景与页脚统一为同一组深青灰渐变，关闭 hero 时导航不再显得死黑 */
+.site-header {
     position: relative;
-    z-index: 5;
+    z-index: 10;
+    background-color: #16211f;
+    background-image: linear-gradient(180deg, #182422 0%, #141e1c 100%);
 }
 
-.hero-body {
+.site-header > .navbar {
     position: relative;
-    z-index: 1;
+    z-index: 5;
+    background-color: transparent;
+}
+
+/* hero 标题层压在背景图与遮罩之上 */
+.site-header #hero {
+    position: relative;
+    padding: 7rem 0 !important;
+}
+
+.site-header #hero > .container {
+    position: relative;
+    z-index: 2;
+    transform: translateY(-2.75rem);
+    /* .hero 是 flex 列，.container 的 margin:auto 会令宽度按内容收缩（短标题竖排）；
+       显式撑满并保持水平居中，让标题始终横排 */
+    align-self: stretch;
+    width: 100%;
 }
 
 /* ============================================================
@@ -366,8 +394,8 @@ article.media:hover {
 
 .dooz-logo img {
     display: block;
-    width: 142px;
-    height: 58px;
+    width: 132px;
+    height: 48px;
     max-height: none;
     object-fit: contain;
 }
@@ -1017,7 +1045,15 @@ body {
  * ============================================================ */
 .tag-page {
     position: relative;
-    padding: 2rem 0 4.4rem;
+    padding: 2rem 1.25rem 4.4rem;
+}
+
+/* 标签页已有白色内容框，装饰光晕收进框内，避免透出框外 */
+.tag-page.box::before {
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 0;
 }
 
 .tag-page::before {
@@ -1305,9 +1341,19 @@ body {
 }
 
 .archive-page {
+    /* box 宽度与其他页面 main 框一致（占满 main-column），不再自身限宽 */
+    max-width: none;
+    margin: 0;
+    padding: 2rem 1.25rem 4.4rem;
+}
+
+/* 框占满后，时间轴内容仍保持原有的 760px 布局并在框内居中 */
+.archive-page > .tag-intro,
+.archive-page > .archive-timeline,
+.archive-page > .tl-undated {
     max-width: 760px;
-    margin: 0 auto;
-    padding: 2rem 0 4.4rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .archive-timeline {
@@ -1815,13 +1861,23 @@ body.page-404 {
  * 侧栏比例沿用 9/3（约 25% / 75%），与参考页 24% / 76% 接近
  * ============================================================ */
 
-/* 桌面端：侧栏在左，主内容在右；手机端仍保持正文在前 */
-.content-columns > .main-column {
-    order: 2;
-}
+/* 桌面端：默认侧栏在左；sidebar-right 时交换；手机端仍保持正文在前 */
+@media screen and (min-width: 1216px) {
+    .content-columns > .main-column {
+        order: 2;
+    }
 
-.content-columns > .sidebar-column {
-    order: 1;
+    .content-columns > .sidebar-column {
+        order: 1;
+    }
+
+    .content-columns.sidebar-right > .main-column {
+        order: 1;
+    }
+
+    .content-columns.sidebar-right > .sidebar-column {
+        order: 2;
+    }
 }
 
 @media screen and (max-width: 1215px) {
@@ -1858,6 +1914,13 @@ body.page-404 {
     background-size: cover;
 }
 
+/* 导航已独立到 header 首层，hero 承担主要视觉高度（由原 326px 提高到约 1.5 倍）。
+   定位保持 static：视觉伪元素以整个 header 为定位参照，背景图因此向上铺满 nav */
+.site-header #hero.hero-gradient {
+    min-height: 490px;
+    position: static;
+}
+
 /* 背景图单独一层，底部渐隐交给上方的同色遮罩，避免 mask 合成时的闪块 */
 .hero-gradient::after {
     content: "";
@@ -1892,8 +1955,22 @@ body.page-404 {
             rgba(12, 60, 56, 0) 100%);
 }
 
-.hero-gradient .hero-body {
-    z-index: 2;
+/* 视觉融合：hero 底部渐变向下渗入 container 顶部。
+   单独用一层从 hero 末端的页面底色淡出到透明，而不是把已收尾的实色遮罩整体下移，
+   否则延伸段会成为一块与页面底色/白卡片都不吻合的平涂条带 */
+.site-header:has(#hero)::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 4rem;
+    z-index: 1;
+    background: linear-gradient(180deg,
+        var(--c-bg, #f8fbfe) 0%,
+        rgba(248, 251, 254, 0.55) 45%,
+        rgba(248, 251, 254, 0) 100%);
+    pointer-events: none;
 }
 
 /* 文章 Hero：沿用原主题的白色描边标签 */
@@ -1905,23 +1982,43 @@ body.page-404 {
     margin-top: 0.45rem;
 }
 
+/* 阻止内部 .columns 的负 margin-top 折叠到容器，避免 container 被网格负边距整体上移；
+   header 与 container 之间保留约 26px 的呼吸间距 */
+body > .container.page-container {
+    display: flow-root;
+    margin-top: 1.625rem;
+}
+
+/* hero 开启时：header 因图片放大而变高，这里用负 margin 把容器拉回原位并略微上提，
+   让卡片叠在 hero 图片下沿形成融合；提升层级使卡片浮于图片之上，
+   同时搜索面板展开时把 header 提级，避免被容器遮住 */
+body:has(#hero) > .container.page-container {
+    position: relative;
+    z-index: 11;
+    margin-top: -16.25rem;
+}
+
+body:has(.search-results.is-open) .site-header {
+    z-index: 12;
+}
+
 /* Hero 之后内容直接贴上来，形成参考页那种“卡片压着 Hero 下沿”的关系 */
 body:not(.page-404) > .container > .section {
     padding-top: 0;
 }
 
 /* 文章页 hero 标题与参考页一致：居中，而不是偏在侧栏上方 */
-.hero-gradient .hero-body > .container > .column {
+.site-header #hero > .container > .column {
     text-align: center !important;
 }
 
-/* 移动端导航折叠按钮在深色渐变上保持可见 */
-.hero-gradient .navbar-burger {
+/* 移动端导航折叠按钮在深色导航条上保持可见 */
+.site-header .navbar-burger {
     color: #ffffff;
 }
 
 /* 导航栏与正文列（侧栏 + 主列）同宽，左右边缘和内容卡片对齐 */
-.hero-head .navbar.container {
+.site-header > .navbar.container {
     width: calc(100% - 1.5rem);
     max-width: 1272px;
     margin-left: auto;
@@ -1929,13 +2026,13 @@ body:not(.page-404) > .container > .section {
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
-    .hero-head .navbar.container {
+    .site-header > .navbar.container {
         max-width: 888px;
     }
 }
 
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
-    .hero-head .navbar.container {
+    .site-header > .navbar.container {
         max-width: 1080px;
     }
 }

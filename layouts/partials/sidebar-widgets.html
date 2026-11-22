@@ -1,0 +1,30 @@
+{{- $page := .page -}}
+{{- $widgets := .widgets -}}
+{{- range $widgets -}}
+    {{- $name := lower . -}}
+    {{- if eq $name "featured" -}}
+        {{ partial "widget-featured" $page }}
+    {{- else if eq $name "recent" -}}
+        {{ partial "widget-recent" $page }}
+    {{- else if or (eq $name "categories") (eq $name "category") -}}
+        {{ partial "widget-category" $page }}
+    {{- else if eq $name "tags" -}}
+        {{ partial "widget-tags" $page }}
+    {{- else if or (eq $name "archives") (eq $name "archive") -}}
+        {{ partial "widget-archives" $page }}
+    {{- else if eq $name "related" -}}
+        {{ partial "widget-related" $page }}
+    {{- else if eq $name "toc" -}}
+        {{ if not (eq ($page.Param "showtoc") false) }}
+        {{ with partial "toc.html" $page }}
+        <div class="card toc-widget">
+            <div class="card-content">
+                <h2 class="title is-6">{{ i18n "toc" }}</h2>
+                <div class="toc-sidebar">{{ . | safeHTML }}</div>
+            </div>
+        </div>
+        <br>
+        {{ end }}
+        {{ end }}
+    {{- end -}}
+{{- end -}}
