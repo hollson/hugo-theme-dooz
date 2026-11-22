@@ -154,11 +154,9 @@ pinned = false
 [MIT](LICENSE)
 
 
-# TODO: 3. 去掉打赏（hugo-theme-dooz主题中的打赏提升到主库（mafool-blog），主题中除了脚本之外，不保留打赏功能，包括示例和图片，打赏图片移到 /Users/sybs/github/mafool-blog/static/reward）
 # TODO: 4. 微信公众号主题
 # TODO: 5. 优化readme
 # TODO: 7. 优化页面滑动
-# TODO: 9. 增加评论
 # TODO: 11. 适应宽屏可移动端（页面适配工具）
 # TODO: 12. Logo可替换成图片
 # TODO: 13. 首页布局和侧边栏模板可定制，如侧边栏放左还是右，侧边栏显示哪些模块
@@ -166,4 +164,5 @@ pinned = false
 # TODO: 15. 导航栏需要显示哪些也可以定制
 # TODO: 16. 文章详情页的侧边栏模块也能配置
 # TODO: 17. 文章的front matter可以执行markdown文章主题，如微信公众号风格等
+# TODO: 版本已经是最新时，不弹公告
 

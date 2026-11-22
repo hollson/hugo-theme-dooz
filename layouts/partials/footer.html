@@ -30,7 +30,7 @@
     <div class="container">
         <div class="footer-main">
             <div class="footer-brand">
-                <a class="footer-logo" href="{{ .Site.BaseURL | relLangURL }}" aria-label="{{ .Site.Params.logoText | default .Site.Title }}">{{ .Site.Params.logoText | default .Site.Title }}</a>
+                <a class="footer-logo" href="{{ .Site.BaseURL | relLangURL }}" aria-label="{{ .Site.Params.logoText | default .Site.Title }}">{{ with .Site.Params.logo }}<img src="{{ . | relURL }}" alt="{{ $.Site.Params.logoText | default $.Site.Title }}">{{ else }}{{ $.Site.Params.logoText | default $.Site.Title }}{{ end }}</a>
                 <p class="footer-tagline">{{ $tagline }}</p>
 
                 <ul class="footer-social">

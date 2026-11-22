@@ -42,9 +42,10 @@ enableEmoji = true                         # 支持 :emoji: 简写
   aphorism = "写代码，也写生活"              # 作者格言，显示在作者卡片
 
   # ------------------------------------------------------------
-  # 2.2 站点 Logo（导航 + 页脚，字体走本地 Fraunces）
+  # 2.2 站点 Logo（导航 + 页脚）
   # ------------------------------------------------------------
-  logoText = "Dooz"                        # Logo 文字
+  logo = "assets/logo.png"                 # 图片 Logo，优先级高于 logoText
+  logoText = "Dooz"                        # 文字 Logo
   logoFontFamily = 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif'  # 字体栈
   logoFontWeight = 980                     # 字重,即字体加粗
   repo = "https://github.com/hollson/hugo-theme-dooz"   # 导航栏主题按钮

@@ -364,6 +364,14 @@ article.media:hover {
     opacity: 0.82;
 }
 
+.dooz-logo img {
+    display: block;
+    width: 142px;
+    height: 58px;
+    max-height: none;
+    object-fit: contain;
+}
+
 @media screen and (max-width: 768px) {
     .dooz-logo {
         font-size: 1.6rem;
@@ -712,6 +720,13 @@ body {
 
 .footer-logo:hover {
     color: #7dd3c7;
+}
+
+.footer-logo img {
+    display: block;
+    width: 122px;
+    height: 38px;
+    object-fit: contain;
 }
 
 .footer-tagline {
