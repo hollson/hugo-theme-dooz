@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ $.Site.Language.Locale | default "en" }}">
+<html lang="{{ $.Site.Language.Locale | default "en" }}" data-color-theme="{{ .Site.Params.colorTheme | default "default" }}">
 
 <head>
     <meta charset="utf-8">
@@ -58,7 +58,7 @@
     {{ end }}
 </head>
 
-<body data-color-theme="{{ .Site.Params.colorTheme | default "default" }}"{{ block "bodyclass" . }}{{ end }}>
+<body{{ block "bodyclass" . }}{{ end }}>
     {{ partial "theme-announcement" . }}
 
     <!--Header-->

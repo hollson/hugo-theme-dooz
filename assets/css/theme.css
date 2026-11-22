@@ -1,7 +1,8 @@
 /* ============================================================
  * theme.css — 配色与视觉层
  * 前面定义颜色变量与颜色替换；末尾“淡雅视觉层”统一页面表面与正文排版
- * 换色只改下面 :root 里的值
+ * 基础变量位于 @layer dooz-theme；dooz.override.css 为无层最终覆盖。
+ * 改主题默认色只改下面 :root；站点定制请写 dooz.override.css。
  * ============================================================ */
 
 @font-face {
@@ -13,34 +14,35 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-:root {
-    --c-accent: #0f766e;        /* 主色：墨青 */
-    --c-accent-strong: #0b5d57; /* 主色深，hover 用 */
-    --c-accent-warm: #d97706;   /* 暖橙：文章标题 hover */
-    --c-ink: #222226;           /* 正文标题 */
-    --c-ink-soft: #59636b;      /* 次要文字 */
-    --c-bg: #f8fbfe;            /* 页面底色：极浅蓝灰，保留卡片与背景的色差 */
-    --c-surface: #ffffff;       /* 浮层/内容白 */
-    --c-surface-soft: rgba(255, 255, 255, 0.58); /* 无边框卡片 */
-    --c-line: #e8eef3;          /* 分隔线 */
-    --c-border: rgba(34, 34, 38, 0.10);    /* 侧栏/标签卡浅边框 */
-    --c-border-faint: rgba(34, 34, 38, 0.06); /* 正文区极淡边框 */
+@layer dooz-theme {
+    :root {
+        --c-accent: #0f766e;        /* 主色：墨青 */
+        --c-accent-strong: #0b5d57; /* 主色深，hover 用 */
+        --c-accent-warm: #d97706;   /* 暖橙：文章标题 hover */
+        --c-ink: #222226;           /* 正文标题 */
+        --c-ink-soft: #59636b;      /* 次要文字 */
+        --c-bg: #f8fbfe;            /* 页面底色：极浅蓝灰，保留卡片与背景的色差 */
+        --c-surface: #ffffff;       /* 浮层/内容白 */
+        --c-surface-soft: rgba(255, 255, 255, 0.58); /* 无边框卡片 */
+        --c-line: #e8eef3;          /* 分隔线 */
+        --c-border: rgba(34, 34, 38, 0.10);    /* 侧栏/标签卡浅边框 */
+        --c-border-faint: rgba(34, 34, 38, 0.06); /* 正文区极淡边框 */
 
-    /* 页眉 / 页脚背景 */
-    --site-header-bg: #16211f;
-    --site-header-bg-image: linear-gradient(180deg, #182422 0%, #141e1c 100%);
-    --site-footer-bg: #16211f;
-    --site-footer-bg-image: linear-gradient(180deg, #182422 0%, #141e1c 100%);
+        /* 页眉 / 页脚背景 */
+        --site-header-bg: #16211f;
+        --site-header-bg-image: linear-gradient(180deg, #182422 0%, #141e1c 100%);
+        --site-footer-bg: #16211f;
+        --site-footer-bg-image: linear-gradient(180deg, #182422 0%, #141e1c 100%);
 
-    /* 导航文字与页脚文字 */
-    --site-nav-text: #ffffff;
-    --site-nav-hover: #7dd3c7;
-    --site-footer-text: #f4f8f6;
-    --site-footer-link: #ffffff;
-    --site-footer-muted: #dfe9e6;
-    --site-footer-strong: #ffffff;
-    --site-footer-hover: #7dd3c7;
-
+        /* 导航文字与页脚文字 */
+        --site-nav-text: #ffffff;
+        --site-nav-hover: #7dd3c7;
+        --site-footer-text: #f4f8f6;
+        --site-footer-link: #ffffff;
+        --site-footer-muted: #dfe9e6;
+        --site-footer-strong: #ffffff;
+        --site-footer-hover: #7dd3c7;
+    }
 }
 
 /* 页面底色 */
