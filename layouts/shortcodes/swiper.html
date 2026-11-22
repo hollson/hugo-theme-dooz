@@ -1,7 +1,7 @@
-{{ $swiper_style := resources.Get "lib/swiper/swiper.min.css" | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $swiper_style.RelPermalink }}">
-{{ $swiper_script := resources.Get "lib/swiper/swiper.min.js" | resources.Fingerprint }}
-<script defer src="{{ $swiper_script.RelPermalink }}"></script>
+{{ $swiper_style := partial "asset" (dict "path" "lib/swiper/swiper.min.css") }}
+<link rel="stylesheet" href="{{ $swiper_style.url }}" integrity="{{ $swiper_style.integrity }}">
+{{ $swiper_script := partial "asset" (dict "path" "lib/swiper/swiper.min.js") }}
+<script defer src="{{ $swiper_script.url }}" integrity="{{ $swiper_script.integrity }}"></script>
 
 {{ $id := substr (md5 .Inner) 0 16 }}
 {{ $enableNavigation := .Get "enableNavigation" }}

@@ -31,28 +31,28 @@
             --logo-font-weight: {{ $logoWeight }};
         }
     </style>
-    {{ $bulma := resources.Get "css/bulma.min.css" | resources.Fingerprint }}
-    <link rel="stylesheet" href="{{ $bulma.RelPermalink }}" integrity="{{ $bulma.Data.Integrity }}" />
+    {{ $bulma := partial "asset" (dict "path" "css/bulma.min.css") }}
+    <link rel="stylesheet" href="{{ $bulma.url }}" integrity="{{ $bulma.integrity }}" />
 
-    {{ $blogCSS := resources.Get "css/dooz.blog.css" | resources.Fingerprint }}
-    <link rel="stylesheet" href="{{ $blogCSS.RelPermalink }}" integrity="{{ $blogCSS.Data.Integrity }}" />
-    {{ $themeCSS := resources.Get "css/theme.css" | resources.Fingerprint }}
-    <link rel="stylesheet" href="{{ $themeCSS.RelPermalink }}" integrity="{{ $themeCSS.Data.Integrity }}" />
+    {{ $blogCSS := partial "asset" (dict "path" "css/dooz.blog.css") }}
+    <link rel="stylesheet" href="{{ $blogCSS.url }}" integrity="{{ $blogCSS.integrity }}" />
+    {{ $themeCSS := partial "asset" (dict "path" "css/theme.css") }}
+    <link rel="stylesheet" href="{{ $themeCSS.url }}" integrity="{{ $themeCSS.integrity }}" />
 
-    {{ $searchJS := resources.Get "js/search.js" | resources.Fingerprint }}
-    <script defer src="{{ $searchJS.RelPermalink }}" integrity="{{ $searchJS.Data.Integrity }}"></script>
-    {{ $copyCodeJS := resources.Get "js/copy-code.js" | resources.Fingerprint }}
-    <script defer src="{{ $copyCodeJS.RelPermalink }}" integrity="{{ $copyCodeJS.Data.Integrity }}"></script>
+    {{ $searchJS := partial "asset" (dict "path" "js/search.js") }}
+    <script defer src="{{ $searchJS.url }}" integrity="{{ $searchJS.integrity }}"></script>
+    {{ $copyCodeJS := partial "asset" (dict "path" "js/copy-code.js") }}
+    <script defer src="{{ $copyCodeJS.url }}" integrity="{{ $copyCodeJS.integrity }}"></script>
 
     <!--Head Extend-->
     {{ block "headex" . }}{{ end }}
 
     <!-- 远程 Open Sans 已停用，改用系统字体栈（theme.css） -->
-    {{ $blogJS := resources.Get "js/dooz.blog.js" | resources.Fingerprint }}
-    <script defer src="{{ $blogJS.RelPermalink }}" integrity="{{ $blogJS.Data.Integrity }}"></script>
+    {{ $blogJS := partial "asset" (dict "path" "js/dooz.blog.js") }}
+    <script defer src="{{ $blogJS.url }}" integrity="{{ $blogJS.integrity }}"></script>
     {{ if or (not (isset .Site.Params "themeannouncement")) .Site.Params.themeAnnouncement }}
-    {{ $themeAnnouncementJS := resources.Get "js/theme-announcement.js" | resources.Fingerprint }}
-    <script defer src="{{ $themeAnnouncementJS.RelPermalink }}" integrity="{{ $themeAnnouncementJS.Data.Integrity }}"></script>
+    {{ $themeAnnouncementJS := partial "asset" (dict "path" "js/theme-announcement.js") }}
+    <script defer src="{{ $themeAnnouncementJS.url }}" integrity="{{ $themeAnnouncementJS.integrity }}"></script>
     {{ end }}
 </head>
 

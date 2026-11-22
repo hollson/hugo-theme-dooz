@@ -81,5 +81,5 @@
 
 <!-- 回到顶部（火箭） -->
 <a id="rocket" href="#top" aria-label="{{ i18n "footerTop" }}" title="{{ i18n "footerTop" }}"><i></i></a>
-{{ $totopJS := resources.Get "js/dooz.totop.js" | resources.Fingerprint }}
-<script defer src="{{ $totopJS.RelPermalink }}" integrity="{{ $totopJS.Data.Integrity }}"></script>
+{{ $totopJS := partial "asset" (dict "path" "js/dooz.totop.js") }}
+<script defer src="{{ $totopJS.url }}" integrity="{{ $totopJS.integrity }}"></script>

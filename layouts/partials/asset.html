@@ -1,0 +1,10 @@
+{{- $resource := resources.Get .path -}}
+{{- if not $resource -}}
+    {{- errorf "Asset not found: %s" .path -}}
+{{- end -}}
+{{- $alreadyMinified := in .path ".min." -}}
+{{- if and (eq hugo.Environment "production") (not $alreadyMinified) -}}
+    {{- $resource = $resource | resources.Minify -}}
+{{- end -}}
+{{- $resource = $resource | resources.Fingerprint -}}
+{{- return dict "url" $resource.RelPermalink "integrity" $resource.Data.Integrity -}}

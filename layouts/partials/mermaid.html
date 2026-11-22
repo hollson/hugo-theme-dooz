@@ -3,8 +3,8 @@
 {{- if in $libraries "mermaid" -}}{{- $enabled = true -}}{{- end -}}
 {{- if or .Params.mermaid .Site.Params.mermaid -}}{{- $enabled = true -}}{{- end -}}
 {{- if $enabled -}}
-{{- $mermaid := resources.Get "vendor/mermaid/mermaid.min.js" | resources.Fingerprint -}}
-<script src="{{ $mermaid.RelPermalink }}" integrity="{{ $mermaid.Data.Integrity }}" defer></script>
+{{- $mermaid := partial "asset" (dict "path" "vendor/mermaid/mermaid.min.js") -}}
+<script src="{{ $mermaid.url }}" integrity="{{ $mermaid.integrity }}" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     if (!window.mermaid) {

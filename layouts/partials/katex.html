@@ -1,15 +1,15 @@
 {{- $libraries := .Params.libraries | default (slice) -}}
 {{- $enabled := or (in $libraries "katex") .Params.math .Site.Params.math -}}
 {{- if $enabled }}
-{{- $katexCSS := resources.Get "vendor/katex/katex.min.css" | resources.Fingerprint -}}
-{{- $katexJS := resources.Get "vendor/katex/katex.min.js" | resources.Fingerprint -}}
-{{- $autoRenderJS := resources.Get "vendor/katex/contrib/auto-render.min.js" | resources.Fingerprint -}}
+{{- $katexCSS := partial "asset" (dict "path" "vendor/katex/katex.min.css") -}}
+{{- $katexJS := partial "asset" (dict "path" "vendor/katex/katex.min.js") -}}
+{{- $autoRenderJS := partial "asset" (dict "path" "vendor/katex/contrib/auto-render.min.js") -}}
 {{- range resources.Match "vendor/katex/fonts/*" -}}
     {{- $fontURL := .RelPermalink -}}
 {{- end -}}
-<link rel="stylesheet" href="{{ $katexCSS.RelPermalink }}" integrity="{{ $katexCSS.Data.Integrity }}">
-<script defer src="{{ $katexJS.RelPermalink }}" integrity="{{ $katexJS.Data.Integrity }}"></script>
-<script defer src="{{ $autoRenderJS.RelPermalink }}" integrity="{{ $autoRenderJS.Data.Integrity }}"></script>
+<link rel="stylesheet" href="{{ $katexCSS.url }}" integrity="{{ $katexCSS.integrity }}">
+<script defer src="{{ $katexJS.url }}" integrity="{{ $katexJS.integrity }}"></script>
+<script defer src="{{ $autoRenderJS.url }}" integrity="{{ $autoRenderJS.integrity }}"></script>
 <script>
 (function () {
     function renderMath() {
