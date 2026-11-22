@@ -38,6 +38,8 @@
     <link rel="stylesheet" href="{{ $blogCSS.url }}" integrity="{{ $blogCSS.integrity }}" />
     {{ $themeCSS := partial "asset" (dict "path" "css/theme.css") }}
     <link rel="stylesheet" href="{{ $themeCSS.url }}" integrity="{{ $themeCSS.integrity }}" />
+    {{ $overrideCSS := partial "asset" (dict "path" "css/dooz.override.css") }}
+    <link rel="stylesheet" href="{{ $overrideCSS.url }}" integrity="{{ $overrideCSS.integrity }}" />
 
     {{ $searchJS := partial "asset" (dict "path" "js/search.js") }}
     <script defer src="{{ $searchJS.url }}" integrity="{{ $searchJS.integrity }}"></script>
@@ -65,8 +67,8 @@
     {{ end }}
 
     <!--Main Container-->
-    <div id="container" class="container page-container">
-        <div id="content" class="section page-content">
+    <div id="container" class="container page-container site-container">
+        <div id="content" class="section page-content site-content">
             {{ block "main" . }}{{ end }}
         </div>
     </div>

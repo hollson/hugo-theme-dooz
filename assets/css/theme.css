@@ -26,6 +26,12 @@
     --c-border: rgba(34, 34, 38, 0.10);    /* 侧栏/标签卡浅边框 */
     --c-border-faint: rgba(34, 34, 38, 0.06); /* 正文区极淡边框 */
     --c-bg-gradient: linear-gradient(90deg, #edf7ff 0%, #f8fcff 34%, #ffffff 78%);
+
+    /* 页眉 / 页脚可覆盖背景 */
+    --site-header-bg: #16211f;
+    --site-header-bg-image: linear-gradient(180deg, #182422 0%, #141e1c 100%);
+    --site-footer-bg: #16211f;
+    --site-footer-bg-image: linear-gradient(180deg, #182422 0%, #141e1c 100%);
 }
 
 /* 页面底色 */
@@ -342,8 +348,8 @@ article.media:hover {
 .site-header {
     position: relative;
     z-index: 10;
-    background-color: #16211f;
-    background-image: linear-gradient(180deg, #182422 0%, #141e1c 100%);
+    background-color: var(--site-header-bg, #16211f);
+    background-image: var(--site-header-bg-image, linear-gradient(180deg, #182422 0%, #141e1c 100%));
 }
 
 .site-header > .navbar {
@@ -434,7 +440,7 @@ body {
  * 页脚（阶段 5c：深色底 + 浅色文字）
  * ============================================================ */
 .footer {
-    background-color: #16211f;
+    background-color: var(--site-footer-bg, #16211f);
     color: #b6c0bd;
     padding: 2.8rem 1.5rem 2.2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -704,7 +710,7 @@ body {
  * ============================================================ */
 .footer {
     padding: 3rem 0 1.6rem;
-    background-image: linear-gradient(180deg, #182422 0%, #141e1c 100%);
+    background-image: var(--site-footer-bg-image, linear-gradient(180deg, #182422 0%, #141e1c 100%));
 }
 
 /* 页脚内容与 Hero 导航、正文列同宽 */

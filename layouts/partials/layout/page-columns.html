@@ -4,8 +4,8 @@
 {{- $position := $page.Site.Params.sidebarPosition | default "left" -}}
 {{- if ne $position "right" }}{{ $position = "left" }}{{ end -}}
 <div id="layout" class="columns content-columns page-layout sidebar-{{ $position }}">
-    <main id="main" class="column is-9 main-column page-main">{{ $main }}</main>
-    <aside id="sidebar" class="column is-3 sidebar-column page-sidebar">
+    <main id="main" class="column is-9 main-column page-main site-main">{{ $main }}</main>
+    <aside id="sidebar" class="column is-3 sidebar-column page-sidebar site-sidebar">
         <div class="sidebar-inner">{{ $sidebar }}</div>
     </aside>
 </div>

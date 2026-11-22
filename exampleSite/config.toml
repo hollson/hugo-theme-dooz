@@ -68,7 +68,7 @@ enableEmoji = true                         # 支持 :emoji: 简写
   # 2.5 首页 Hero 与文案
   # ------------------------------------------------------------
   hero = "assets/hero.jpg"                             # Hero 背景图
-  heroEnable = false                                # Hero 开关，默认开启；关闭后 #hero 不渲染，只保留导航
+  # heroEnable = false                                # 👮‍♂️ Hero 开关，默认开启；关闭后 #hero 不渲染，只保留导航
   slogan = "分享点滴心得，温暖每一段探索之路。"             # 首页副标题
   timeOfMonth = "2006年1月"                            # 日期显示格式（月）
   timeOfDay = "2006年1月2日"                           # 日期显示格式（日）

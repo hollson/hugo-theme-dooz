@@ -3,7 +3,7 @@ all: help
 ## build@构建示例站（生产压缩）
 .PHONY: build
 build:
-	@cd exampleSite && hugo --gc --cleanDestinationDir --minify --themesDir "$$(dirname "$$(dirname "$$(pwd)")")"
+	@cd exampleSite && hugo --gc --cleanDestinationDir --minify --themesDir "$$(dirname "$$(dirname "$$(pwd)")")" && echo "✅ 示例站构建完成：exampleSite/public"
 
 ## run@本地预览示例站（含草稿）
 .PHONY: run

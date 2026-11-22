@@ -1,9 +1,9 @@
 {{- $heroEnable := true -}}
 {{- if isset .Site.Params "heroenable" -}}{{- $heroEnable = .Site.Params.heroEnable -}}{{- end -}}
-<header id="header" class="site-header">
+<header id="header" class="site-header header-norm">
     {{ partial "nav" . }}
     {{ if $heroEnable }}
-    <section id="hero" class="hero is-info is-medium hero-gradient" style="--hero-image: url('{{ if .Params.hero_image }}{{ .Params.hero_image|relURL}}{{ else if eq .Type "post" }}{{ "/assets/blog.jpg" | relURL }}{{ else }}{{ .Site.Params.Hero|relURL}}{{ end }}');">
+    <section id="hero" class="hero is-info is-medium hero-gradient site-hero" style="--hero-image: url('{{ if .Params.hero_image }}{{ .Params.hero_image|relURL}}{{ else if eq .Type "post" }}{{ "/assets/blog.jpg" | relURL }}{{ else }}{{ .Site.Params.Hero|relURL}}{{ end }}');">
         <div class="container has-text-centered">
             <div class='container{{if eq .Type "post"}} has-text-left{{end}} column is-7'>
                 <h1 id="hero_title" class="title is-size-2" style="margin-bottom:0.2rem;">
