@@ -1,6 +1,7 @@
 ---
 # ===== 一、基础信息（必填）=====
 title: "{{ .Name }}"
+slug: "{{ now.Unix }}"                 # 由创建时间自动生成，无需手改
 description: "文章简介，用于列表摘要和 SEO，请认真填写"
 date: {{ now.Format "2006-01-02T15:04:05Z07:00" }}
 author: "{{ .Site.Params.author | default "Mafool" }}"
@@ -17,7 +18,6 @@ categories: []                       # 分类，如 ["技术"]
 
 # ===== 四、SEO 与链接（按需）=====
 # keywords: "SEO,关键字"              # 不填则取 description
-# url: "/post/xxx/"                  # 自定义链接；不填按 permalinks 自动生成
 # aliases: ["/posts/old-url/"]       # 旧链接重定向（改过 URL 时用）
 
 # ===== 五、主题扩展（按需）=====

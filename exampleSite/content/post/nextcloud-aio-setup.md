@@ -1,5 +1,6 @@
 ---
 title: "用 Nextcloud 部署私有网盘"
+slug: "nextcloud-aio"
 date: 2024-10-27T21:00:00+08:00
 description: "手把手教你用 Nextcloud 官方 All-in-One 镜像搭建自己的私有网盘：从 Docker 一键启动、HTTPS 证书配置，到日常使用设置、版本升级与数据备份，步骤清晰可照抄，让你把照片和文件牢牢掌握在自己手里。"
 keywords: "Nextcloud, 私有云, 私有网盘, Docker, AIO"
@@ -12,7 +13,6 @@ categories:
 - 工具软件
 archives:
 - 2024
-url: "/post/nextcloud-aio/"
 ---
 
 

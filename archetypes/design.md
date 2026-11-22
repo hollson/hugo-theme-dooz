@@ -1,6 +1,7 @@
 ---
 # ===== 基础信息（必填）=====
 title: "{{ .Name }}"
+slug: "{{ now.Unix }}"                 # 由创建时间自动生成，无需手改
 description: "一句话说清设计目标与核心结论"
 date: {{ now.Format "2006-01-02T15:04:05Z07:00" }}
 draft: true                          # 📢 设为 false 才会发布

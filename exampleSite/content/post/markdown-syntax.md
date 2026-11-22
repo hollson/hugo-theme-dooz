@@ -1,5 +1,6 @@
 ---
 title: "Markdown 语法指南与示例"
+slug: "markdown-syntax-guide"
 date: 2024-03-22T09:00:00+08:00
 description: "一份通俗易懂的 Markdown 语法中文教程，用丰富示例讲清标题、段落、文字强调、引用、列表、代码块、链接、图片、转义和 HTML 等常用写法，新手也能快速上手，适合作为日常写作的速查手册。"
 keywords: "Markdown, 基础语法, 写作"
@@ -21,7 +22,6 @@ archives:
 libraries:
 - mermaid
 - katex
-url: "/post/markdown-syntax/"
 ---
 
 

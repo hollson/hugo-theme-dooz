@@ -1,6 +1,7 @@
 ---
 # ===== 一、基础信息（必填）=====
 title: "{{with slicestr .Name (len (index (split .Name "-") 0))}}{{replace . "-" " "|strings.TrimLeft " "|title}}{{end}}"
+slug: "{{ now.Unix }}"                 # 由创建时间自动生成，无需手改
 description: "文章简介，用于列表摘要和 SEO，请认真填写"
 date: {{ now.Format "2006-01-02T15:04:05Z07:00" }}
 draft: true                          # 📢 设为 false 才会发布
@@ -19,7 +20,6 @@ categories: []                       # 分类，如 ["技术"]
 # pinned: true                       # 置顶显示
 # enableToc: true                    # 生成目录
 # libraries: ["mermaid", "katex"]    # 流程图 / 数学公式
-# url: "/post/xxx/"                  # 自定义链接
 # weight: 10                         # 排序权重，越小越靠前
 # lastmod: {{ now.Format "2006-01-02T15:04:05Z07:00" }}
 ---

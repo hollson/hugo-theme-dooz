@@ -1,6 +1,7 @@
 ---
 # ===== 基础信息（必填）=====
 title: "{{ .Name }}"
+slug: "{{ now.Unix }}"                 # 由创建时间自动生成，无需手改
 description: "一句话说清这篇指南解决什么问题、给谁用"
 date: {{ now.Format "2006-01-02T15:04:05Z07:00" }}
 draft: true                          # 📢 设为 false 才会发布

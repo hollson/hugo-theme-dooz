@@ -1,5 +1,6 @@
 ---
 title: "设计模式之抽象工厂"
+slug: "abstract-factory-pattern"
 date: 2025-09-12T10:05:00+08:00
 description: "用通俗示例讲清抽象工厂设计模式：它解决什么问题、结构与角色如何分工、代码怎么写、什么时候该用，并结合优缺点分析帮你判断它与工厂方法模式的区别，适合初学者系统掌握这一创建型模式。"
 keywords: "抽象工厂, 设计模式, 创建型模式, 软件设计"
@@ -17,7 +18,6 @@ tags:
 pinned: false
 archives:
 - 2026
-url: "/post/abstract-factory-design-pattern/"
 ---
 
 # 🏭 设计模式之抽象工厂
