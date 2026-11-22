@@ -2118,6 +2118,15 @@ body:not(.page-404) > .container > .section {
     margin: 0;
 }
 
+/* 平板与手机统一使用手机端头像尺寸；PC 保持原来的 66% 尺寸 */
+@media screen and (max-width: 1215px) {
+    #widget_author figure {
+        width: 96px !important;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
 /* 宽屏下所有带侧边栏的页面：内层侧栏固定并完整显示，不制造独立滚动；
  * 外层列仍与正文等高，正文区保持普通页面滚动。 */
 @media screen and (min-width: 1216px) {
