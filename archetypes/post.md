@@ -1,8 +1,9 @@
 ---
 # ===== 一、基础信息（必填）=====
 title: "{{ .Name }}"
-slug: "{{ now.Unix }}"                 # 由创建时间自动生成，无需手改
-description: "文章简介，用于列表摘要和 SEO，请认真填写"
+slug: "{{ now.Unix }}"                 # URL 标识，生成 /post/<slug>
+description: "文章简介，用于列表摘要、SEO和搜索摘要"
+keywords: ""                           # 搜索关键词，多个用逗号分隔
 date: {{ now.Format "2006-01-02T15:04:05Z07:00" }}
 author: "{{ .Site.Params.author | default "Mafool" }}"
 draft: true                          # 📢 设为 false 才会发布
@@ -16,11 +17,8 @@ categories: []                       # 分类，如 ["技术"]
 # hero_image: "/post/cover.jpg"       # 文章头图（og:image）；不填用站点默认图
 # cover_image: "/post/cover.jpg"      # 列表缩略图，显示在首页文章列表
 
-# ===== 四、SEO 与链接（按需）=====
-# keywords: "SEO,关键字"              # 不填则取 description
-# aliases: ["/posts/old-url/"]       # 旧链接重定向（改过 URL 时用）
-
-# ===== 五、主题扩展（按需）=====
+# ===== 四、兼容与扩展（按需）=====
+# aliases: ["/posts/old-url/"]       # 旧 URL 的访问入口，改过链接时保留
 # subtitle: "副标题"                  # 标题下方的副标题
 # pinned: true                       # 置顶：首页排序靠前并显示「置顶」标记
 # featured: true                     # 精选：只进侧栏精选并显示「精选」标记，与置顶互不影响

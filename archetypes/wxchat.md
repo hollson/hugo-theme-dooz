@@ -1,16 +1,16 @@
 ---
 # ===== 基础信息（必填）=====
 title: "{{ .Name }}"
-slug: "{{ now.Unix }}"                 # 由创建时间自动生成，无需手改
+slug: "{{ now.Unix }}"                 # URL 标识，生成 /post/<slug>
 description: "一句话概括文章内容，适合公众号分享转发"
+keywords: ""                           # 搜索关键词，多个用逗号分隔
 date: {{ now.Format "2006-01-02T15:04:05Z07:00" }}
 draft: true                          # 📢 设为 false 才会发布
 tags: []                             # 标签，如 ["公众号", "排版"]
 categories: []                       # 分类，如 ["随笔"]
 
-# ===== 按需取消注释 =====
+# ===== 可选字段（按需取消注释）=====
 # hero_image: "/post/cover.jpg"       # 题图，公众号首图
-# keywords: "关键词1,关键词2"
 ---
 
 

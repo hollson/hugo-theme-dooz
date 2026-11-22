@@ -1,8 +1,9 @@
 ---
 # ===== 一、基础信息（必填）=====
 title: "{{with slicestr .Name (len (index (split .Name "-") 0))}}{{replace . "-" " "|strings.TrimLeft " "|title}}{{end}}"
-slug: "{{ now.Unix }}"                 # 由创建时间自动生成，无需手改
-description: "文章简介，用于列表摘要和 SEO，请认真填写"
+slug: "{{ now.Unix }}"                 # URL 标识，生成 /post/<slug>
+description: "文章简介，用于列表摘要、SEO和搜索摘要"
+keywords: ""                           # 搜索关键词，多个用逗号分隔
 date: {{ now.Format "2006-01-02T15:04:05Z07:00" }}
 draft: true                          # 📢 设为 false 才会发布
 
@@ -10,12 +11,11 @@ draft: true                          # 📢 设为 false 才会发布
 tags: []                             # 标签，如 ["Hugo", "教程"]
 categories: []                       # 分类，如 ["技术"]
 
-# ===== 三、以下按需取消注释 =====
+# ===== 三、可选字段（按需取消注释）=====
 # author: "{{ .Site.Params.author | default "Mafool" }}"
 # subtitle: "副标题"
 # hero_image: "/post/cover.jpg"       # 文章头图（og:image）；不填用站点默认图
 # cover_image: "/post/cover.jpg"      # 列表缩略图，显示在首页文章列表
-# keywords: "SEO,关键字"             # 不填取站点 keywords
 # archives: ["2026"]                 # 不填按 date 自动归档
 # pinned: true                       # 置顶显示
 # enableToc: true                    # 生成目录
