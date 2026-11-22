@@ -259,7 +259,7 @@ a {
 }
 
 /* 深色导航上的链接悬停 / 键盘聚焦反馈。
-   Bulma 的 is-transparent 把 hover 背景强制透明，dooz.blog.css 又把链接色锁成白色 !important，
+   Bulma 的 is-transparent 把 hover 背景强制透明，dooz.css 又把链接色锁成白色 !important，
    这里用同等 !important 覆盖；仅文字变色，青绿色与页脚 hover 保持一致 */
 .site-header #nav a.navbar-item:hover,
 .site-header #nav a.navbar-item:focus-visible {

@@ -34,8 +34,8 @@
     {{ $bulma := partial "asset" (dict "path" "css/bulma.min.css") }}
     <link rel="stylesheet" href="{{ $bulma.url }}" integrity="{{ $bulma.integrity }}" />
 
-    {{ $blogCSS := partial "asset" (dict "path" "css/dooz.blog.css") }}
-    <link rel="stylesheet" href="{{ $blogCSS.url }}" integrity="{{ $blogCSS.integrity }}" />
+    {{ $doozCSS := partial "asset" (dict "path" "css/dooz.css") }}
+    <link rel="stylesheet" href="{{ $doozCSS.url }}" integrity="{{ $doozCSS.integrity }}" />
     {{ $themeCSS := partial "asset" (dict "path" "css/theme.css") }}
     <link rel="stylesheet" href="{{ $themeCSS.url }}" integrity="{{ $themeCSS.integrity }}" />
     {{ $colorThemes := partial "asset" (dict "path" "css/color-themes.css") }}
@@ -45,15 +45,13 @@
 
     {{ $searchJS := partial "asset" (dict "path" "js/search.js") }}
     <script defer src="{{ $searchJS.url }}" integrity="{{ $searchJS.integrity }}"></script>
-    {{ $copyCodeJS := partial "asset" (dict "path" "js/copy-code.js") }}
-    <script defer src="{{ $copyCodeJS.url }}" integrity="{{ $copyCodeJS.integrity }}"></script>
 
     <!--Head Extend-->
     {{ block "headex" . }}{{ end }}
 
     <!-- 远程 Open Sans 已停用，改用系统字体栈（theme.css） -->
-    {{ $blogJS := partial "asset" (dict "path" "js/dooz.blog.js") }}
-    <script defer src="{{ $blogJS.url }}" integrity="{{ $blogJS.integrity }}"></script>
+    {{ $doozJS := partial "asset" (dict "path" "js/dooz.js") }}
+    <script defer src="{{ $doozJS.url }}" integrity="{{ $doozJS.integrity }}"></script>
     {{ if or (not (isset .Site.Params "themeannouncement")) .Site.Params.themeAnnouncement }}
     {{ $themeAnnouncementJS := partial "asset" (dict "path" "js/theme-announcement.js") }}
     <script defer src="{{ $themeAnnouncementJS.url }}" integrity="{{ $themeAnnouncementJS.integrity }}"></script>
