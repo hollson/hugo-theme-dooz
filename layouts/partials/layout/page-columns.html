@@ -1,7 +1,8 @@
 {{- $page := .page -}}
 {{- $main := partial .mainPartial $page -}}
 {{- $sidebar := partial .sidebarPartial $page -}}
-{{- $position := $page.Site.Params.sidebarPosition | default "left" -}}
+{{- /* 优先级：文章 front matter > 站点 sidebarPosition > left */ -}}
+{{- $position := $page.Params.sidebarPosition | default $page.Site.Params.sidebarPosition | default "left" | lower -}}
 {{- if ne $position "right" }}{{ $position = "left" }}{{ end -}}
 <div id="layout" class="columns content-columns page-layout sidebar-{{ $position }}">
     <main id="main" class="column is-9 main-column page-main site-main">{{ $main }}</main>

@@ -16,6 +16,10 @@ categories: []                       # 分类，如 ["技术"]
 # ===== 三、封面图片（按需）=====
 # hero_image: "/post/cover.jpg"       # 文章头图（og:image）；不填用站点默认图
 # cover_image: "/post/cover.jpg"      # 列表缩略图，显示在首页文章列表
+# cover_position: "left"              # 首页封面裁切位置：left | right；不填默认 center
+
+# ===== 三、布局（按需）=====
+# sidebarPosition: "right"            # 侧栏位置：left（默认）| right
 
 # ===== 四、兼容与扩展（按需）=====
 # aliases: ["/posts/old-url/"]       # 旧 URL 的访问入口，改过链接时保留

@@ -11,7 +11,7 @@
 # 1. 站点基础（Hugo 顶层配置）
 # ==============================================================
 baseURL = "https://example.com/"           # 站点根地址，必须以协议开头、以 / 结尾
-title = "Dooz·花园"                         # 站点标题，显示在浏览器标签和 hero 区
+title = "Dooz·乐园"                         # 站点标题，显示在浏览器标签和 hero 区
 theme = "hugo-theme-dooz"                  # 使用的主题目录名（themes/ 下）
 locale = "zh-CN"                           # 语言/地区代码(zh-CN / en-US) ，用于日期、数字等
 defaultContentLanguage = "zh"              # 默认内容语言（zh/en），用于 i18n 多语言
@@ -80,7 +80,7 @@ enableEmoji = true                         # 支持 :emoji: 简写
   # 2.6 功能开关
   # ------------------------------------------------------------
   # 侧边栏位置：left / right，默认 left
-  # sidebarPosition = "right"
+  # sidebarPosition = "right"                            # 站点默认；文章 front matter 可单独覆盖
 
   # 侧边栏模块：featured / recent / categories / tags / archives / toc / related(即series，相关文章)
   sidebarHome = ["featured", "categories", "tags", "archives"]

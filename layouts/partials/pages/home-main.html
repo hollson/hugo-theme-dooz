@@ -12,12 +12,16 @@
         <hr>
         {{ range $paginator.Pages }}
         {{ $cover := .Params.cover_image }}
+        {{ $coverPosition := .Params.cover_position | default "center" | lower }}
+        {{ if not (in (slice "left" "right") $coverPosition) }}
+        {{ $coverPosition = "center" }}
+        {{ end }}
         {{ $permalink := .RelPermalink }}
         <article class="media post-list-item{{ if $cover }} has-cover{{ end }}">
             {{ with $cover }}
             <div class="media-left post-list-cover">
                 <a href="{{ $permalink }}" aria-hidden="true" tabindex="-1">
-                    <img src="{{ . | relURL }}" alt="" loading="lazy" decoding="async">
+                    <img src="{{ . | relURL }}" alt="" loading="lazy" decoding="async" style="object-position: {{ $coverPosition | safeCSS }};">
                 </a>
             </div>
             {{ end }}

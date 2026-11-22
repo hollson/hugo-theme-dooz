@@ -19,13 +19,12 @@
     --c-accent-warm: #d97706;   /* 暖橙：文章标题 hover */
     --c-ink: #222226;           /* 正文标题 */
     --c-ink-soft: #59636b;      /* 次要文字 */
-    --c-bg: #f8fbfe;            /* 页面底色 */
+    --c-bg: #f8fbfe;            /* 页面底色：极浅蓝灰，保留卡片与背景的色差 */
     --c-surface: #ffffff;       /* 浮层/内容白 */
     --c-surface-soft: rgba(255, 255, 255, 0.58); /* 无边框卡片 */
     --c-line: #e8eef3;          /* 分隔线 */
     --c-border: rgba(34, 34, 38, 0.10);    /* 侧栏/标签卡浅边框 */
     --c-border-faint: rgba(34, 34, 38, 0.06); /* 正文区极淡边框 */
-    --c-bg-gradient: linear-gradient(90deg, #edf7ff 0%, #f8fcff 34%, #ffffff 78%);
 
     /* 页眉 / 页脚背景 */
     --site-header-bg: #16211f;
@@ -1647,15 +1646,15 @@ body.page-404 > .container > .section {
  * header、9/3 栅格、侧栏顺序、深色 footer 均保持原结构。
  * ============================================================ */
 
-/* 页面底色：雾蓝到白的横向渐变，正文直接落在背景上 */
+/* 页面底色：极浅蓝灰，正文直接落在背景上；不使用渐变 */
 body,
 body.has-background-light {
     background-color: var(--c-bg);
-    background-image: var(--c-bg-gradient);
+    background-image: none;
     color: var(--c-ink);
 }
 
-/* 卡片内部统一白底，页面保持很淡的渐变背景；不描边 */
+/* 卡片内部统一白底，页面保持极浅底色；不描边 */
 .box {
     background-color: var(--c-surface, #ffffff);
     border: 0;
@@ -1873,10 +1872,10 @@ article.media:hover {
     border: 1px solid var(--c-border);
 }
 
-/* 404：沿用同一片底色渐变，内容区不再自带实色背景 */
+/* 404：沿用同一片极浅底色，内容区不再自带实色背景 */
 body.page-404 {
     background-color: var(--c-bg);
-    background-image: var(--c-bg-gradient);
+    background-image: none;
 }
 
 .nf-page {
@@ -1925,9 +1924,9 @@ body.page-404 {
     }
 }
 
-/* Hero：背景图 + 同色系渐变遮罩，底部渐隐进内容区 */
+/* Hero：背景图自身渐隐，底部落到极浅内容区 */
 .hero.hero-gradient {
-    background-color: var(--c-bg, #edf7ff);
+    background-color: var(--c-bg, #f8fbfe);
 }
 
 .hero-gradient {
@@ -1935,10 +1934,8 @@ body.page-404 {
     z-index: 10;
     isolation: isolate;
     min-height: 400px;
-    background-color: var(--c-bg, #edf7ff);
-    background-image: var(--c-bg-gradient);
-    background-position: center center;
-    background-size: cover;
+    background-color: var(--c-bg, #f8fbfe);
+    background-image: none;
 }
 
 /* 导航已独立到 header 首层，hero 承担主要视觉高度（由原 326px 提高到约 1.5 倍）。
@@ -1961,12 +1958,45 @@ body.page-404 {
     transform: translateZ(0);
     backface-visibility: hidden;
     pointer-events: none;
-    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 58%, rgba(0, 0, 0, 0.88) 72%, rgba(0, 0, 0, 0.45) 88%, transparent 100%);
-    mask-image: linear-gradient(180deg, #000 0%, #000 58%, rgba(0, 0, 0, 0.88) 72%, rgba(0, 0, 0, 0.45) 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg,
+        #000 0%,
+        #000 38%,
+        rgba(0, 0, 0, 0.92) 52%,
+        rgba(0, 0, 0, 0.78) 65%,
+        rgba(0, 0, 0, 0.55) 78%,
+        rgba(0, 0, 0, 0.28) 90%,
+        transparent 100%);
+    mask-image: linear-gradient(180deg,
+        #000 0%,
+        #000 38%,
+        rgba(0, 0, 0, 0.92) 52%,
+        rgba(0, 0, 0, 0.78) 65%,
+        rgba(0, 0, 0, 0.55) 78%,
+        rgba(0, 0, 0, 0.28) 90%,
+        transparent 100%);
 }
 
 /* Hero 只让图片自身渐隐：不叠加任何主题色遮罩，
    底部通过 mask 透明过渡到页面底色，标题用中性文字阴影保证可读性 */
+
+/* 图片尾部用 main 区底色收口：只叠 #f8fbfe，不参与主题色，
+   避免 mask 结束时出现一条可感知的横向边界 */
+.hero-gradient::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg,
+        rgba(248, 251, 254, 0) 0%,
+        rgba(248, 251, 254, 0) 46%,
+        rgba(248, 251, 254, 0.06) 56%,
+        rgba(248, 251, 254, 0.16) 68%,
+        rgba(248, 251, 254, 0.34) 78%,
+        rgba(248, 251, 254, 0.58) 87%,
+        rgba(248, 251, 254, 0.82) 94%,
+        var(--c-bg, #f8fbfe) 100%);
+}
 
 /* 视觉融合：hero 底部渐变向下渗入 container 顶部。
    单独用一层从 hero 末端的页面底色淡出到透明，而不是把已收尾的实色遮罩整体下移，

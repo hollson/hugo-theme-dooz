@@ -9,6 +9,7 @@ hideToc: false
 enableToc: true
 enableTocContent: false
 featured: true
+sidebarPosition: "right"
 author: "Hollson"
 libraries:
 - mermaid
