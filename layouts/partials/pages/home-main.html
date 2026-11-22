@@ -5,7 +5,7 @@
 {{ $normal := $posts | complement $pinned }}
 {{ $paginator := .Paginate ($pinned.ByWeight | append $normal.ByWeight) }}
 
-<div class="tile is-child box">
+<div class="tile is-child box home-post-list">
     <div class="content">
         {{ partial "widget-notice" . }}
         <h3>{{ i18n "welcome" }}</h3>

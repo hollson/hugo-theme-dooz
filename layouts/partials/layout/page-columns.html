@@ -5,5 +5,7 @@
 {{- if ne $position "right" }}{{ $position = "left" }}{{ end -}}
 <div id="layout" class="columns content-columns page-layout sidebar-{{ $position }}">
     <main id="main" class="column is-9 main-column page-main">{{ $main }}</main>
-    <aside id="sidebar" class="column is-3 sidebar-column page-sidebar">{{ $sidebar }}</aside>
+    <aside id="sidebar" class="column is-3 sidebar-column page-sidebar">
+        <div class="sidebar-inner">{{ $sidebar }}</div>
+    </aside>
 </div>

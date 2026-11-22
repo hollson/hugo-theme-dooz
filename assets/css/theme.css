@@ -1729,6 +1729,17 @@ body.has-background-light {
     line-height: 1.6;
 }
 
+/* 首页欢迎区：压缩标题与列表之间的默认标题 / 分割线留白 */
+.home-post-list > .content > h3:first-of-type {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.home-post-list > .content > h3:first-of-type + hr {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
 hr {
     height: 1px;
     background-color: var(--c-line);
@@ -2052,32 +2063,33 @@ body:not(.page-404) > .container > .section {
     margin: 0 !important;
 }
 
-/* 宽屏文章页：侧栏固定，目录导航始终可见；
- * 列表页与首页保持普通页面滚动，侧栏随页面一起到底。 */
+/* 所有带侧边栏的页面：外层列与正文等高，并沿用正文列的上下留白；
+ * 内层内容负责 sticky，卡片间距统一由 gap 控制。 */
+.content-columns > .sidebar-column {
+    align-self: stretch;
+    padding: 0.75rem 0.3rem 0.75rem 0.75rem;
+}
+
+.content-columns > .sidebar-column > .sidebar-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.content-columns > .sidebar-column > .sidebar-inner > br {
+    display: none;
+}
+
+.content-columns > .sidebar-column > .sidebar-inner > .card {
+    margin: 0;
+}
+
+/* 宽屏下所有带侧边栏的页面：内层侧栏固定并完整显示，不制造独立滚动；
+ * 外层列仍与正文等高，正文区保持普通页面滚动。 */
 @media screen and (min-width: 1216px) {
-    body.is-article .content-columns > .sidebar-column {
+    .content-columns > .sidebar-column > .sidebar-inner {
         position: sticky;
-        top: 0.75rem;
-        align-self: flex-start;
-        max-height: calc(100vh - 1.5rem);
-        overflow-y: auto;
-        overscroll-behavior: contain;
-        scrollbar-width: thin;
-        scrollbar-color: rgba(15, 118, 110, 0.28) transparent;
-        padding-right: 0.3rem;
-    }
-
-    body.is-article .content-columns > .sidebar-column::-webkit-scrollbar {
-        width: 6px;
-    }
-
-    body.is-article .content-columns > .sidebar-column::-webkit-scrollbar-thumb {
-        background: rgba(15, 118, 110, 0.24);
-        border-radius: 999px;
-    }
-
-    body.is-article .content-columns > .sidebar-column::-webkit-scrollbar-track {
-        background: transparent;
+        top: 5px;
     }
 }
 
@@ -2650,8 +2662,7 @@ article.post-list-item:hover {
 .code-body {
     position: relative;
     max-height: none;
-    overflow: auto;
-    overscroll-behavior: contain;
+    overflow: visible;
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
     transition: max-height 0.25s ease;
@@ -2659,7 +2670,10 @@ article.post-list-item:hover {
 
 .code-block.is-collapsed .code-body {
     max-height: 410px;
-    overflow-y: auto;
+    overflow: auto;
+    overscroll-behavior: contain auto;
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: auto;
 }
 
 /* 折叠时不再用渐变遮住代码，保留完整可读性 */
