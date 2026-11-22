@@ -1,0 +1,28 @@
+{{- $current := . -}}
+{{- $related := partial "related-pages" $current -}}
+{{- $excluded := slice $current.Permalink -}}
+{{- range $related -}}
+    {{- $excluded = $excluded | append .Permalink -}}
+{{- end -}}
+{{- $pool := where $current.Site.RegularPages "Section" $current.Section -}}
+{{- $pool = where $pool "Permalink" "not in" $excluded -}}
+{{- $pool = $pool.ByDate.Reverse -}}
+{{- with $pool -}}
+<div class="card widget-recommended recommended-widget" data-recommended-bucket-minutes="30" data-recommended-count="6">
+  <div class="card-content">
+    <h2 class="title is-6">{{ i18n "recommended" }}</h2>
+    <div class="recommended-list">
+      {{ range first 6 $pool }}
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      <time class="has-text-grey-light is-size-7" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+      {{ end }}
+    </div>
+    {{- $payload := slice -}}
+    {{- range $pool -}}
+        {{- $payload = $payload | append (dict "u" .RelPermalink "t" .Title "d" .Date.Unix "iso" (.Date.Format "2006-01-02") "dt" (.Date.Format "2006.01.02")) -}}
+    {{- end -}}
+    <script type="application/json" class="recommended-pool">{{ $payload | jsonify | safeJS }}</script>
+  </div>
+</div>
+<br>
+{{- end -}}

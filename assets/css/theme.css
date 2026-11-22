@@ -2317,7 +2317,8 @@ article.post-list-item:hover {
 
 .widget-featured .media-content .content > a,
 .widget-recent .card-content > h2 a,
-.widget-related .card-content > h2 a {
+.widget-related .card-content h2:not(.title) a,
+.widget-recommended .card-content h2:not(.title) a {
     color: var(--c-ink);
     transition: color 0.18s ease;
 }
@@ -2326,9 +2327,17 @@ article.post-list-item:hover {
 .widget-featured .media-content .content > a:focus-visible,
 .widget-recent .card-content > h2 a:hover,
 .widget-recent .card-content > h2 a:focus-visible,
-.widget-related .card-content > h2 a:hover,
-.widget-related .card-content > h2 a:focus-visible {
+.widget-related .card-content h2:not(.title) a:hover,
+.widget-related .card-content h2:not(.title) a:focus-visible,
+.widget-recommended .card-content h2:not(.title) a:hover,
+.widget-recommended .card-content h2:not(.title) a:focus-visible {
     color: var(--c-accent-warm);
+}
+
+/* 推荐阅读复用“相关文章”的标题与日期排版 */
+.widget-recommended .recommended-list {
+    margin: 0;
+    padding: 0;
 }
 
 .post-list-item.has-cover {

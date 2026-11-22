@@ -14,6 +14,8 @@
         {{ partial "widget-archives" $page }}
     {{- else if eq $name "related" -}}
         {{ partial "widget-related" $page }}
+    {{- else if eq $name "recommended" -}}
+        {{ partial "widget-recommended" $page }}
     {{- else if eq $name "toc" -}}
         {{ if not (eq ($page.Param "showtoc") false) }}
         {{ with partial "toc.html" $page }}

@@ -6,7 +6,7 @@
 {{- else if $page.IsHome -}}
     {{- $widgets = $site.Params.sidebarHome | default (slice "featured" "categories" "tags" "archives") -}}
 {{- else if $page.IsPage -}}
-    {{- $widgets = $site.Params.sidebarArticle | default (slice "toc" "related" "tags") -}}
+    {{- $widgets = $site.Params.sidebarArticle | default (slice "toc" "related" "recommended" "tags") -}}
 {{- else if and (eq $page.Kind "taxonomy") (eq $page.Type "tags") -}}
     {{- $widgets = $site.Params.sidebarTags | default (slice "categories" "archives") -}}
 {{- else if and (eq $page.Kind "taxonomy") (eq $page.Type "archives") -}}

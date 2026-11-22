@@ -3,11 +3,8 @@
         <h2 class="title is-6">{{i18n "recentPosts"}}</h2>
         {{ range first 5 (where .Site.RegularPages "Section" "post").ByPublishDate.Reverse }}
         <h2><a class="is-size-6" href="{{ .Permalink | relURL }}">{{ .Title }}</a></h2>
-        {{ if  eq .Site.Language.Lang "zh"}}
-        <time class="has-text-grey-light is-size-7">{{ .Date.Format "2006年1月2日" }} </time>
-        {{ else }}
-        <time class="has-text-grey-light is-size-7">{{ .Date.Day }} {{ .Date.Month }} {{ .Date.Year }}</time>
-        {{ end }} {{ end }}
+        <time class="has-text-grey-light is-size-7" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+        {{ end }}
     </div>
 </div>
 <br>

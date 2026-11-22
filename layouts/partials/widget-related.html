@@ -1,20 +1,14 @@
 {{- /* 相关阅读：有 series 时按系列精确匹配；无 series 时回退到标签交集 */ -}}
 {{- $current := . -}}
 {{- $num_to_show := .Site.Params.related_content_limit | default 10 -}}
-{{- $related := slice -}}
-{{- with .Params.series -}}
-    {{- $related = where $current.Site.RegularPages "Params.series" . -}}
-{{- else -}}
-    {{- $related = where $current.Site.RegularPages ".Params.tags" "intersect" $current.Params.tags -}}
-{{- end -}}
-{{- $related = where $related "Permalink" "!=" $current.Permalink -}}
+{{- $related := partial "related-pages" $current -}}
 {{- with $related -}}
-<div class="card">
+<div class="card widget-related">
   <div class="card-content">
     <h2 class="title is-6">{{ i18n "related" }}</h2>
     {{ range first $num_to_show . }}
     <h2><a href="{{ .Permalink | relURL }}">{{ .Title }}</a></h2>
-    <time class="has-text-grey-light is-size-7">{{ .Date.Day }} {{ .Date.Month }} {{ .Date.Year }}</time>
+    <time class="has-text-grey-light is-size-7" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
     {{ end }}
   </div>
 </div>

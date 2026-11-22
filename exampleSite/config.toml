@@ -83,9 +83,9 @@ enableEmoji = true                         # 支持 :emoji: 简写
   # 侧边栏位置：left / right，默认 left
   # sidebarPosition = "right"                            # 站点默认；文章 front matter 可单独覆盖
 
-  # 侧边栏模块：featured / recent / categories / tags / archives / toc / related(即series，相关文章)
+  # 侧边栏模块：featured / recent / categories / tags / archives / toc / related(即series，相关文章) / recommended(推荐阅读)
   sidebarHome = ["featured", "categories", "tags", "archives"]
-  sidebarArticle = ["toc", "related","categories", "tags"]
+  sidebarArticle = ["toc", "related", "recommended", "categories", "tags"]
   sidebarTags = ["categories", "archives"]
   sidebarArchives = ["categories", "tags"]
 

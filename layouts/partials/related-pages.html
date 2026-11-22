@@ -1,0 +1,10 @@
+{{- /* 计算“相关文章”：有 series 按系列，否则按标签交集，并排除当前页。 */ -}}
+{{- $current := . -}}
+{{- $related := slice -}}
+{{- with .Params.series -}}
+    {{- $related = where $current.Site.RegularPages "Params.series" . -}}
+{{- else -}}
+    {{- $related = where $current.Site.RegularPages ".Params.tags" "intersect" $current.Params.tags -}}
+{{- end -}}
+{{- $related = where $related "Permalink" "!=" $current.Permalink -}}
+{{- return $related -}}

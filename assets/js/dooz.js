@@ -375,3 +375,109 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })();
 })();
+
+/* ===== 推荐阅读：30 分钟时间桶轮换 ===== */
+(function () {
+    'use strict';
+
+    var DEFAULT_COUNT = 6;
+    var DEFAULT_BUCKET_MINUTES = 30;
+
+    function hashString(value) {
+        var hash = 2166136261;
+        for (var i = 0; i < value.length; i++) {
+            hash ^= value.charCodeAt(i);
+            hash = Math.imul(hash, 16777619);
+        }
+        return hash >>> 0;
+    }
+
+    function mulberry32(seed) {
+        return function () {
+            seed |= 0;
+            seed = seed + 0x6D2B79F5 | 0;
+            var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+            t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+            return ((t ^ t >>> 14) >>> 0) / 4294967296;
+        };
+    }
+
+    function shuffle(items, random) {
+        for (var i = items.length - 1; i > 0; i--) {
+            var j = Math.floor(random() * (i + 1));
+            var temp = items[i];
+            items[i] = items[j];
+            items[j] = temp;
+        }
+    }
+
+    function render(widget, items) {
+        var list = widget.querySelector('.recommended-list');
+        if (!list) return;
+
+        while (list.firstChild) {
+            list.removeChild(list.firstChild);
+        }
+
+        var fragment = document.createDocumentFragment();
+        items.forEach(function (item) {
+            var heading = document.createElement('h2');
+
+            var link = document.createElement('a');
+            link.href = item.u;
+            link.textContent = item.t;
+            heading.appendChild(link);
+
+            var time = document.createElement('time');
+            time.className = 'has-text-grey-light is-size-7';
+            time.dateTime = item.iso;
+            time.textContent = item.dt;
+
+            fragment.appendChild(heading);
+            fragment.appendChild(time);
+        });
+
+        list.appendChild(fragment);
+    }
+
+    function initWidget(widget) {
+        var data = widget.querySelector('.recommended-pool');
+        if (!data) return;
+
+        var pool;
+        try {
+            pool = JSON.parse(data.textContent);
+        } catch (error) {
+            return;
+        }
+
+        if (!Array.isArray(pool) || !pool.length) return;
+
+        var count = parseInt(widget.dataset.recommendedCount, 10) || DEFAULT_COUNT;
+        if (pool.length <= count) return;
+
+        var minutes = parseInt(widget.dataset.recommendedBucketMinutes, 10) || DEFAULT_BUCKET_MINUTES;
+        var bucket = Math.floor(Date.now() / (minutes * 60 * 1000));
+        var seed = hashString(window.location.pathname + '|' + bucket + '|' + count);
+        var random = mulberry32(seed);
+
+        var picked = pool.slice();
+        shuffle(picked, random);
+        picked = picked.slice(0, count).sort(function (a, b) {
+            return (Number(b.d) || 0) - (Number(a.d) || 0);
+        });
+
+        render(widget, picked);
+    }
+
+    function init() {
+        var widgets = document.querySelectorAll('.recommended-widget');
+        Array.prototype.forEach.call(widgets, initWidget);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
