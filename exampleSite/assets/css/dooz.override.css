@@ -2,10 +2,10 @@
    默认保持注释，避免改变示例站外观；需要时取消注释即可看到效果。 */
 
 
-:root {
+/* :root {
     --site-header-bg: #1e3a5f;
     --site-header-bg-image: none;
     --site-footer-bg: #172554;
     --site-footer-bg-image: none;
-}
+} */
 

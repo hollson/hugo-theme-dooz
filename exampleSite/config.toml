@@ -50,6 +50,9 @@ enableEmoji = true                         # 支持 :emoji: 简写
   logoFontWeight = 980                     # 字重,即字体加粗
   repo = "https://github.com/hollson/hugo-theme-dooz"   # 导航栏主题按钮
 
+  # 主题色预设：default（墨青） | purple（紫檀） | navy（夜蓝） | terracotta（赤陶） | amber（琥珀）
+  colorTheme = "purple"
+
   # ------------------------------------------------------------
   # 2.3 社交链接（不需要的留空或注释掉即可隐藏对应入口）
   # ------------------------------------------------------------

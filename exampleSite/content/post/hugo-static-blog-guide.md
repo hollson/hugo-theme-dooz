@@ -9,7 +9,7 @@ hideToc: false
 enableToc: true
 enableTocContent: false
 author: "Hollson"
-hero_image: "https://gohugo.io/images/hugo-logo-wide.svg"
+# hero_image: "https://gohugo.io/images/hugo-logo-wide.svg"
 # cover: "https://gohugo.io/images/hugo-logo-wide.svg"
 categories:
 - 写作指南

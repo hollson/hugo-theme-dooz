@@ -1,0 +1,77 @@
+/* ============================================================
+ * color-themes.css — 预设主题色
+ * 由 config.toml 的 colorTheme 选择，body[data-color-theme] 生效。
+ * 主题只调整页眉、页脚、导航和强调色，不改正文排版。
+ * ============================================================ */
+
+/* 紫檀 */
+body[data-color-theme="purple"] {
+    --site-header-bg: #560a76;
+    --site-header-bg-image: none;
+    --site-footer-bg: #560a76;
+    --site-footer-bg-image: none;
+    --site-nav-text: #f7edff;
+    --site-nav-hover: #ffd166;
+    --site-footer-text: #fbf7ff;
+    --site-footer-link: #ffffff;
+    --site-footer-muted: #efe3f8;
+    --site-footer-strong: #ffffff;
+    --site-footer-hover: #ffd166;
+    --c-accent: #8b5cf6;
+    --c-accent-strong: #7c3aed;
+    --c-accent-warm: #f59e0b;
+}
+
+/* 夜蓝 */
+body[data-color-theme="navy"] {
+    --site-header-bg: #1e3a5f;
+    --site-header-bg-image: none;
+    --site-footer-bg: #172554;
+    --site-footer-bg-image: none;
+    --site-nav-text: #e8f1ff;
+    --site-nav-hover: #7dd3fc;
+    --site-footer-text: #f4f9ff;
+    --site-footer-link: #ffffff;
+    --site-footer-muted: #deebfa;
+    --site-footer-strong: #ffffff;
+    --site-footer-hover: #7dd3fc;
+    --c-accent: #2563eb;
+    --c-accent-strong: #1d4ed8;
+    --c-accent-warm: #f59e0b;
+}
+
+/* 赤陶 */
+body[data-color-theme="terracotta"] {
+    --site-header-bg: #7c2d12;
+    --site-header-bg-image: none;
+    --site-footer-bg: #7c2d12;
+    --site-footer-bg-image: none;
+    --site-nav-text: #fff7ed;
+    --site-nav-hover: #fdba74;
+    --site-footer-text: #fff9f4;
+    --site-footer-link: #ffffff;
+    --site-footer-muted: #f6e3d6;
+    --site-footer-strong: #ffffff;
+    --site-footer-hover: #fdba74;
+    --c-accent: #c2410c;
+    --c-accent-strong: #9a3412;
+    --c-accent-warm: #d97706;
+}
+
+/* 琥珀 */
+body[data-color-theme="amber"] {
+    --site-header-bg: #78350f;
+    --site-header-bg-image: none;
+    --site-footer-bg: #451a03;
+    --site-footer-bg-image: none;
+    --site-nav-text: #fffbeb;
+    --site-nav-hover: #fcd34d;
+    --site-footer-text: #fffbf2;
+    --site-footer-link: #ffffff;
+    --site-footer-muted: #f7ead4;
+    --site-footer-strong: #ffffff;
+    --site-footer-hover: #fcd34d;
+    --c-accent: #b45309;
+    --c-accent-strong: #92400e;
+    --c-accent-warm: #d97706;
+}

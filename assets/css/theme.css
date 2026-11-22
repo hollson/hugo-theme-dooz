@@ -27,11 +27,21 @@
     --c-border-faint: rgba(34, 34, 38, 0.06); /* 正文区极淡边框 */
     --c-bg-gradient: linear-gradient(90deg, #edf7ff 0%, #f8fcff 34%, #ffffff 78%);
 
-    /* 页眉 / 页脚可覆盖背景 */
+    /* 页眉 / 页脚背景 */
     --site-header-bg: #16211f;
     --site-header-bg-image: linear-gradient(180deg, #182422 0%, #141e1c 100%);
     --site-footer-bg: #16211f;
     --site-footer-bg-image: linear-gradient(180deg, #182422 0%, #141e1c 100%);
+
+    /* 导航文字与页脚文字 */
+    --site-nav-text: #ffffff;
+    --site-nav-hover: #7dd3c7;
+    --site-footer-text: #f4f8f6;
+    --site-footer-link: #ffffff;
+    --site-footer-muted: #dfe9e6;
+    --site-footer-strong: #ffffff;
+    --site-footer-hover: #7dd3c7;
+
 }
 
 /* 页面底色 */
@@ -254,7 +264,7 @@ a {
    这里用同等 !important 覆盖；仅文字变色，青绿色与页脚 hover 保持一致 */
 .site-header #nav a.navbar-item:hover,
 .site-header #nav a.navbar-item:focus-visible {
-    color: #7dd3c7 !important;
+    color: var(--site-nav-hover, #7dd3c7) !important;
 }
 
 /* 标签胶囊 */
@@ -335,13 +345,6 @@ article.media:hover {
     position: relative;
 }
 
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(11, 24, 22, 0.30) 0%, rgba(11, 24, 22, 0.52) 100%);
-    pointer-events: none;
-}
 
 /* 站点头部：nav 与 section#hero 平级；导航层高于正文，避免搜索面板被遮挡。
    背景与页脚统一为同一组深青灰渐变，关闭 hero 时导航不再显得死黑 */
@@ -358,10 +361,16 @@ article.media:hover {
     background-color: transparent;
 }
 
-/* hero 标题层压在背景图与遮罩之上 */
+/* hero 标题层压在背景图之上 */
 .site-header #hero {
     position: relative;
     padding: 7rem 0 !important;
+}
+
+/* 图片上直接压白字，用中性阴影增强可读性，不引入主题色 */
+.site-header #hero_title,
+.site-header #hero_subtitle {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.42), 0 8px 28px rgba(0, 0, 0, 0.26);
 }
 
 .site-header #hero > .container {
@@ -388,13 +397,13 @@ article.media:hover {
     line-height: 1.15;
     font-optical-sizing: auto;
     font-variation-settings: "SOFT" 0, "WONK" 1;
-    color: #ffffff;
+    color: var(--site-nav-text, #ffffff);
     text-decoration: none;
     transition: opacity 0.18s ease, color 0.18s ease;
 }
 
 .dooz-logo:hover {
-    color: #ffffff;
+    color: var(--site-nav-text, #ffffff);
     opacity: 0.82;
 }
 
@@ -441,33 +450,33 @@ body {
  * ============================================================ */
 .footer {
     background-color: var(--site-footer-bg, #16211f);
-    color: #b6c0bd;
+    color: var(--site-footer-text, #b6c0bd);
     padding: 2.8rem 1.5rem 2.2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .footer .content,
 .footer p {
-    color: #b6c0bd;
+    color: var(--site-footer-text, #b6c0bd);
 }
 
 .footer a {
-    color: #dde5e2;
+    color: var(--site-footer-link, #dde5e2);
     text-decoration: none;
     transition: color 0.18s ease;
 }
 
 .footer a:hover {
-    color: #7dd3c7;
+    color: var(--site-footer-hover, #7dd3c7);
 }
 
 /* 社交图标：默认压低，hover 提亮 */
 .footer .icon a {
-    color: #7d8f8c;
+    color: var(--site-footer-text, #f4f8f6);
 }
 
 .footer .icon a:hover {
-    color: #ffffff;
+    color: var(--site-footer-strong, #ffffff);
 }
 
 .footer .icon.is-large {
@@ -570,7 +579,7 @@ body {
     padding: 0.4rem 0.9rem;
     font-size: 0.8125rem;
     line-height: 1.5;
-    color: #ffffff;
+    color: var(--site-nav-text, #ffffff);
     background-color: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.24);
     border-radius: 999px;
@@ -579,7 +588,8 @@ body {
 }
 
 .nav-search-input::placeholder {
-    color: rgba(255, 255, 255, 0.62);
+    color: var(--site-nav-text, #ffffff);
+    opacity: 0.62;
 }
 
 .nav-search-input:focus {
@@ -748,12 +758,12 @@ body {
     letter-spacing: -0.015em;
     font-optical-sizing: auto;
     font-variation-settings: "SOFT" 0, "WONK" 1;
-    color: #ffffff;
+    color: var(--site-footer-strong, #ffffff);
     text-decoration: none;
 }
 
 .footer-logo:hover {
-    color: #7dd3c7;
+    color: var(--site-footer-hover, #7dd3c7);
 }
 
 .footer-logo img {
@@ -768,7 +778,7 @@ body {
     max-width: 20rem;
     font-size: 0.95rem;
     line-height: 1.75;
-    color: #9aa6a3;
+    color: var(--site-footer-muted, #9aa6a3);
 }
 
 .footer-social {
@@ -785,12 +795,12 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    color: #9aa6a3;
+    color: var(--site-footer-text, #f4f8f6);
     text-decoration: none;
 }
 
 .footer-social a:hover {
-    color: #7dd3c7;
+    color: var(--site-footer-hover, #7dd3c7);
 }
 
 .footer-social svg {
@@ -811,7 +821,7 @@ body {
     font-size: 0.86rem;
     font-weight: 600;
     letter-spacing: 0.06em;
-    color: #9fb0ac;
+    color: var(--site-footer-link, #ffffff);
 }
 
 .footer-title::before {
@@ -821,7 +831,7 @@ body {
     top: 0.1em;
     width: 2px;
     height: 1em;
-    background-color: #7dd3c7;
+    background-color: var(--site-footer-hover, #7dd3c7);
     opacity: 0.55;
 }
 
@@ -838,22 +848,22 @@ body {
 
 .footer-col a {
     font-size: 0.97rem;
-    color: #c3ccca;
+    color: var(--site-footer-text, #c3ccca);
     text-decoration: none;
     transition: color 0.18s ease, border-color 0.18s ease;
     border-bottom: 1px solid transparent;
 }
 
 .footer-col a:hover {
-    color: #7dd3c7;
-    border-bottom-color: rgba(125, 211, 199, 0.5);
+    color: var(--site-footer-hover, #7dd3c7);
+    border-bottom-color: currentColor;
 }
 
 .footer-note {
     margin: 0 0 1.1rem;
     font-size: 0.85rem;
     line-height: 1.7;
-    color: #8b9b98;
+    color: var(--site-footer-muted, #8b9b98);
 }
 
 .footer-subscribe {
@@ -862,7 +872,7 @@ body {
     gap: 0.4rem;
     padding: 0.4rem 0.95rem;
     font-size: 0.9rem;
-    color: #d7e2df;
+    color: var(--site-footer-link, #d7e2df);
     text-decoration: none;
     background-color: rgba(125, 211, 199, 0.08);
     border: 1px solid rgba(125, 211, 199, 0.28);
@@ -871,7 +881,7 @@ body {
 }
 
 .footer-subscribe:hover {
-    color: #ffffff;
+    color: var(--site-footer-strong, #ffffff);
     background-color: rgba(125, 211, 199, 0.16);
     border-color: rgba(125, 211, 199, 0.55);
 }
@@ -898,13 +908,13 @@ body {
 .footer-stats strong {
     font-size: 1.05rem;
     font-weight: 700;
-    color: #e4ecea;
+    color: var(--site-footer-strong, #e4ecea);
     line-height: 1.3;
 }
 
 .footer-stats span {
     font-size: 0.78rem;
-    color: #8b9b98;
+    color: var(--site-footer-muted, #8b9b98);
 }
 
 .footer-bottom {
@@ -916,7 +926,7 @@ body {
     padding-top: 1.3rem;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     font-size: 0.85rem;
-    color: #8b9b98;
+    color: var(--site-footer-muted, #8b9b98);
 }
 
 .footer-legal {
@@ -944,11 +954,11 @@ body {
 }
 
 .footer-bottom a {
-    color: #9aa6a3;
+    color: var(--site-footer-muted, #9aa6a3);
 }
 
 .footer-bottom a:hover {
-    color: #7dd3c7;
+    color: var(--site-footer-hover, #7dd3c7);
 }
 
 @media (max-width: 1215px) {
@@ -1951,26 +1961,12 @@ body.page-404 {
     transform: translateZ(0);
     backface-visibility: hidden;
     pointer-events: none;
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 58%, rgba(0, 0, 0, 0.88) 72%, rgba(0, 0, 0, 0.45) 88%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 58%, rgba(0, 0, 0, 0.88) 72%, rgba(0, 0, 0, 0.45) 88%, transparent 100%);
 }
 
-/* 深青压暗 + 标题周围柔光，并在底部渐隐到页面底色，保证白字可读又看得到图 */
-.hero-gradient::before {
-    z-index: 1;
-    background:
-        radial-gradient(900px 300px at 50% 48%, rgba(4, 26, 24, 0.30), transparent 70%),
-        linear-gradient(180deg,
-            rgba(248, 251, 254, 0) 0%,
-            rgba(248, 251, 254, 0) 46%,
-            rgba(248, 251, 254, 0.40) 64%,
-            rgba(248, 251, 254, 0.86) 82%,
-            var(--c-bg, #f8fbfe) 100%),
-        linear-gradient(180deg,
-            rgba(4, 24, 22, 0.82) 0%,
-            rgba(8, 44, 40, 0.62) 34%,
-            rgba(12, 60, 56, 0.45) 58%,
-            rgba(12, 60, 56, 0.10) 82%,
-            rgba(12, 60, 56, 0) 100%);
-}
+/* Hero 只让图片自身渐隐：不叠加任何主题色遮罩，
+   底部通过 mask 透明过渡到页面底色，标题用中性文字阴影保证可读性 */
 
 /* 视觉融合：hero 底部渐变向下渗入 container 顶部。
    单独用一层从 hero 末端的页面底色淡出到透明，而不是把已收尾的实色遮罩整体下移，
@@ -2031,7 +2027,7 @@ body:not(.page-404) > .container > .section {
 
 /* 移动端导航折叠按钮在深色导航条上保持可见 */
 .site-header .navbar-burger {
-    color: #ffffff;
+    color: var(--site-nav-text, #ffffff);
 }
 
 /* 导航栏与正文列（侧栏 + 主列）同宽，左右边缘和内容卡片对齐 */

@@ -38,6 +38,8 @@
     <link rel="stylesheet" href="{{ $blogCSS.url }}" integrity="{{ $blogCSS.integrity }}" />
     {{ $themeCSS := partial "asset" (dict "path" "css/theme.css") }}
     <link rel="stylesheet" href="{{ $themeCSS.url }}" integrity="{{ $themeCSS.integrity }}" />
+    {{ $colorThemes := partial "asset" (dict "path" "css/color-themes.css") }}
+    <link rel="stylesheet" href="{{ $colorThemes.url }}" integrity="{{ $colorThemes.integrity }}" />
     {{ $overrideCSS := partial "asset" (dict "path" "css/dooz.override.css") }}
     <link rel="stylesheet" href="{{ $overrideCSS.url }}" integrity="{{ $overrideCSS.integrity }}" />
 
@@ -58,7 +60,7 @@
     {{ end }}
 </head>
 
-<body{{ block "bodyclass" . }}{{ end }}>
+<body data-color-theme="{{ .Site.Params.colorTheme | default "default" }}"{{ block "bodyclass" . }}{{ end }}>
     {{ partial "theme-announcement" . }}
 
     <!--Header-->
