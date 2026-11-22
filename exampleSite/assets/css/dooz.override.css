@@ -1,12 +1,28 @@
-/* 站点级覆盖示例：覆盖主题内置的同名文件，最后加载。
-   主题预设位于 @layer dooz-theme，本文件为无层样式，因此 :root 覆盖自动优先。
-   当前示例启用一组夜蓝覆盖；不需要时把下面 :root 块注释掉即可。 */
-
+/* ============================================================
+ * 站点样式级覆盖文件：dooz.override.css
+ * 不修改布局、卡片、Hero、文章列表等结构样式。
+ *
+ * 需要改回默认色时，直接清空本文件即可。
+ * ============================================================ */
 
 :root {
-    --site-header-bg: #1e3a5f;
-    --site-header-bg-image: none;
-    --site-footer-bg: #172554;
-    --site-footer-bg-image: none;
-}
+    /* 微信后台的强调色：链接、标签、hover 等 */
+    --c-accent: #1aad19;
+    --c-accent-strong: #149614;
+    --c-accent-warm: #1aad19;
 
+    /* 顶栏 */
+    --site-header-bg: #2b2b2b;
+    --site-header-bg-image: none;
+    --site-nav-text: #f5f5f5;
+    --site-nav-hover: #1aad19;
+
+    /* 页脚 */
+    --site-footer-bg: #2b2b2b;
+    --site-footer-bg-image: none;
+    --site-footer-text: #f5f5f5;
+    --site-footer-link: #ffffff;
+    --site-footer-muted: #c8c8c8;
+    --site-footer-strong: #ffffff;
+    --site-footer-hover: #1aad19;
+}
