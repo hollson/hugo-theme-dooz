@@ -80,8 +80,6 @@ enableEmoji = true                         # 支持 :emoji: 简写
   # sidebarPosition = "right"
 
   # 侧边栏模块：featured / recent / categories / tags / archives / toc / related(即series，相关文章)
-  # related 读取文章 front matter 的 series（系列）：同系列优先，未填则回退到标签交集
-  # 个人信息 card 固定在首页；单页可用 front matter sidebarWidgets 覆盖
   sidebarHome = ["featured", "categories", "tags", "archives"]
   sidebarArticle = ["toc", "related","categories", "tags"]
   sidebarTags = ["categories", "archives"]
