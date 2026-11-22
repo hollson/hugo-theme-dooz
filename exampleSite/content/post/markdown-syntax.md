@@ -8,11 +8,11 @@ draft: false
 hide_toc: false
 enable_toc: true
 enable_toc_content: false
-pinned: true
+# pinned: true
 series: "markdown"
 featured: true
 author: "Hollson"
-cover_image: "https://markdown.com.cn/hero.png"
+# cover_image: "https://markdown.com.cn/hero.png"
 categories:
 - 写作指南
 tags:

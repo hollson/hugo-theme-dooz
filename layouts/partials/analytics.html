@@ -1,0 +1,43 @@
+{{- /* 站点统计：国内百度统计 + 国外 Google Analytics 4。账号留空则不加载。 */ -}}
+{{- with site.Params.analytics -}}
+{{- $baidu := .baidu_site_id | default "" | strings.TrimSpace -}}
+{{- $ga := .google_measurement_id | default "" | strings.TrimSpace -}}
+{{- if and .enable (or $baidu $ga) -}}
+{{- if not hugo.IsServer -}}
+<script>
+(function () {
+    'use strict';
+
+    var host = window.location.hostname;
+    if (!host || host === 'localhost' || host === '127.0.0.1' || host === '0.0.0.0' || host === '::1' || host === '[::1]') {
+        return;
+    }
+
+    var baiduId = {{ $baidu | jsonify | safeJS }};
+    var gaId = {{ $ga | jsonify | safeJS }};
+
+    if (baiduId) {
+        var hmt = window._hmt = window._hmt || [];
+        var hm = document.createElement('script');
+        hm.async = true;
+        hm.src = 'https://hm.baidu.com/hm.js?' + encodeURIComponent(baiduId);
+        document.head.appendChild(hm);
+    }
+
+    if (gaId) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', gaId);
+
+        var gs = document.createElement('script');
+        gs.async = true;
+        gs.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(gaId);
+        document.head.appendChild(gs);
+    }
+})();
+</script>
+{{- end -}}
+{{- end -}}
+{{- end -}}

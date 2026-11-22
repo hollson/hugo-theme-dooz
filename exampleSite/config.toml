@@ -170,6 +170,18 @@ enableEmoji = true                         # 支持 :emoji: 简写
     #   lang = "zh-CN"                        # 界面语言
     #   login = "disable"                     # disable 允许匿名评论；enable 强制登录
 
+  # ------------------------------------------------------------
+  # 2.10 站点统计（国内 + 国外，账号留空则不加载）
+  # 国内：百度统计（tongji.baidu.com）
+  # 国外：Google Analytics 4（analytics.google.com）
+  # 两套数据分别统计，不合并；本地 localhost 预览会自动跳过
+  # 两者都默认使用 Cookie；面向欧盟等地区时请自行配置隐私同意
+  # ------------------------------------------------------------
+  [params.analytics]
+    enable = true                           # 总开关；没有填写任何 ID 时不会发请求
+    baidu_site_id = ""                      # 百度统计站点 ID；留空不加载
+    google_measurement_id = ""              # GA4 Measurement ID，如 G-XXXXXXXXXX；留空不加载
+
 
 # ==============================================================
 # 3. 多语言（可选）

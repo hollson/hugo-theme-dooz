@@ -56,6 +56,7 @@
     {{ $themeAnnouncementJS := partial "asset" (dict "path" "js/theme-announcement.js") }}
     <script defer src="{{ $themeAnnouncementJS.url }}" integrity="{{ $themeAnnouncementJS.integrity }}"></script>
     {{ end }}
+    {{ partial "analytics" . }}
 </head>
 
 <body{{ block "bodyclass" . }}{{ end }}>
