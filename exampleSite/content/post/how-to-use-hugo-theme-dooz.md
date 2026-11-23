@@ -213,7 +213,7 @@ hasCJKLanguage = true
 sidebarArticle = ["toc", "related", "recommended"]
 ```
 
-主题色可以在 `colorTheme` 里换：`default`、`purple`、`navy`、`terracotta`、`amber`。
+主题色可以在 `themeName` 里换：`default`、`purple`、`navy`、`terracotta`、`amber`。想隐藏首页 Hero、只保留导航，把 `themeSlim` 设为 `true`。
 
 <br/>
 

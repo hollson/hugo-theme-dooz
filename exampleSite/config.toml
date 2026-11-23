@@ -50,9 +50,10 @@ enableEmoji = true                         # 支持 :emoji: 简写
   logoFontWeight = 980                     # 字重,即字体加粗
   repo = "https://github.com/hollson/hugo-theme-dooz"   # 导航栏主题按钮
 
-  # 主题色预设：default（墨青） | purple（紫檀） | navy（夜蓝） | terracotta（赤陶） | amber（琥珀）
-  # 优先级从高到低：dooz.override.css > colorTheme > 主题默认色。
-  colorTheme = "purple"
+  # 🌈 主题色预设：default（墨青） | purple（紫檀） | navy（夜蓝） | terracotta（赤陶） | amber（琥珀）
+  # 优先级从高到低：dooz.override.css > themeName > 主题默认色。
+  themeName = "default"
+  # themeSlim = true      # 精简模式
 
   # ------------------------------------------------------------
   # 2.3 社交链接（不需要的留空或注释掉即可隐藏对应入口）
@@ -72,7 +73,6 @@ enableEmoji = true                         # 支持 :emoji: 简写
   # 2.5 首页 Hero 与文案
   # ------------------------------------------------------------
   hero = "assets/hero.jpg"                             # Hero 背景图
-  # heroEnable = false                                # 👮‍♂️ Hero 开关，默认开启；关闭后 #hero 不渲染，只保留导航
   slogan = "分享点滴心得，温暖每一段探索之路。"             # 首页副标题
   timeOfMonth = "2006年1月"                            # 日期显示格式（月）
   timeOfDay = "2006年1月2日"                           # 日期显示格式（日）

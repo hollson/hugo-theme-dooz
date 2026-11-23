@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ $.Site.Language.Locale | default "en" }}" data-color-theme="{{ .Site.Params.colorTheme | default "default" }}">
+<html lang="{{ $.Site.Language.Locale | default "en" }}" data-color-theme="{{ .Site.Params.themeName | default "default" }}">
 
 <head>
     <meta charset="utf-8">
@@ -38,8 +38,8 @@
     <link rel="stylesheet" href="{{ $doozCSS.url }}" integrity="{{ $doozCSS.integrity }}" />
     {{ $themeCSS := partial "asset" (dict "path" "css/theme.css") }}
     <link rel="stylesheet" href="{{ $themeCSS.url }}" integrity="{{ $themeCSS.integrity }}" />
-    {{ $colorThemes := partial "asset" (dict "path" "css/color-themes.css") }}
-    <link rel="stylesheet" href="{{ $colorThemes.url }}" integrity="{{ $colorThemes.integrity }}" />
+    {{ $presetCSS := partial "asset" (dict "path" "css/color-themes.css") }}
+    <link rel="stylesheet" href="{{ $presetCSS.url }}" integrity="{{ $presetCSS.integrity }}" />
     {{ $overrideCSS := partial "asset" (dict "path" "css/dooz.override.css") }}
     <link rel="stylesheet" href="{{ $overrideCSS.url }}" integrity="{{ $overrideCSS.integrity }}" />
 

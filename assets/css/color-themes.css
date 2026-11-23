@@ -1,6 +1,6 @@
 /* ============================================================
  * color-themes.css — 预设主题色
- * 由 config.toml 的 colorTheme 选择，html[data-color-theme] 生效。
+ * 由 config.toml 的 themeName 选择，html[data-color-theme] 生效。
  * 主题只调整页眉、页脚、导航和强调色，不改正文排版。
  *
  * 变量位于 @layer dooz-theme；站点 dooz.override.css 为无层样式，
