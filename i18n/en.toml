@@ -11,9 +11,6 @@ other="Categories"
 one = "{{.Count}} category"
 other = "{{.Count}} categories"
 
-[topics]
-other = "Topics"
-
 [expandButton]
 other = "Expand or collapse"
 

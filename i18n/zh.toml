@@ -10,9 +10,6 @@ other="分类"
 [categoryCount]
 other = "{{.Count}} 个分类"
 
-[topics]
-other = "主题"
-
 [expandButton]
 other = "展开或收起"
 

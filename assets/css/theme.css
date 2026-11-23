@@ -268,6 +268,34 @@ a {
     color: var(--site-nav-hover, #7dd3c7) !important;
 }
 
+/* 分类下拉：深色导航上的悬浮菜单 */
+.site-header #nav .navbar-link:hover,
+.site-header #nav .navbar-link:focus-visible {
+    color: var(--site-nav-hover, #7dd3c7) !important;
+    cursor: pointer;
+}
+
+.site-header #nav .navbar-link::after {
+    border-color: var(--site-nav-text, #ffffff);
+    border-width: 0 0 1px 1px;
+}
+
+.site-header #nav .navbar-dropdown {
+    border-top-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 10px 24px rgba(10, 20, 18, 0.18);
+}
+
+.site-header #nav .navbar-dropdown .navbar-item {
+    color: #26312d !important;
+}
+
+.site-header #nav .navbar-dropdown .navbar-item:hover,
+.site-header #nav .navbar-dropdown .navbar-item:focus-visible {
+    color: #0f766e !important;
+    background-color: #f5f7f6;
+}
+
+
 /* 标签胶囊 */
 .bar_tag {
     transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
@@ -1071,6 +1099,7 @@ body {
     right: 0;
     top: 0;
     z-index: 0;
+    border-radius: inherit;
 }
 
 .tag-page::before {
@@ -3001,4 +3030,65 @@ article.post-list-item:hover {
     color: #431407;
     text-decoration: underline;
     text-underline-offset: 0.12em;
+}
+
+/* 侧栏“分类 / 归档 / 标签”：文字统一用正文墨色，不跟随主题强调色 */
+.widget-category .card-content,
+.widget-archives .card-content,
+.widget-tags .card-content {
+    color: var(--c-ink);
+}
+
+.widget-category .card-content .title.is-6,
+.widget-archives .card-content .title.is-6,
+.widget-tags .card-content .title.is-6,
+.widget-category .widget-list a,
+.widget-archives .card-content a,
+.widget-tags .card-content .tag,
+.widget-tags .card-content .tag a {
+    color: var(--c-ink) !important;
+}
+
+.widget-category .widget-list a:hover,
+.widget-archives .card-content a:hover,
+.widget-tags .card-content .tag:hover,
+.widget-tags .card-content .tag a:hover {
+    color: var(--c-ink) !important;
+}
+
+/* 聚焦/按下时也保持墨色，不回到主题强调色 */
+.widget-category .widget-list a:focus,
+.widget-category .widget-list a:focus-visible,
+.widget-category .widget-list a:active,
+.widget-archives .card-content a:focus,
+.widget-archives .card-content a:focus-visible,
+.widget-archives .card-content a:active,
+.widget-tags .card-content .tag:focus-within,
+.widget-tags .card-content .tag a:focus,
+.widget-tags .card-content .tag a:focus-visible,
+.widget-tags .card-content .tag a:active {
+    color: var(--c-ink) !important;
+}
+
+/* 侧栏统一配色：除“标签”和“文章目录”外，默认墨色，交互暖橙；均为固定色 */
+.sidebar-inner > .card:not(.widget-tags):not(.toc-widget),
+.sidebar-inner > .box {
+    color: #222226;
+}
+
+.sidebar-inner > .card:not(.widget-tags):not(.toc-widget) .title,
+.sidebar-inner > .card:not(.widget-tags):not(.toc-widget) .subtitle,
+.sidebar-inner > .card:not(.widget-tags):not(.toc-widget) a,
+.sidebar-inner > .card:not(.widget-tags):not(.toc-widget) time,
+.sidebar-inner > .card:not(.widget-tags):not(.toc-widget) .has-text-grey-light,
+.sidebar-inner > .box .title,
+.sidebar-inner > .box a,
+.sidebar-inner > .box time,
+.sidebar-inner > .box .has-text-grey-light {
+    color: #222226 !important;
+}
+
+.sidebar-inner > .card:not(.widget-tags):not(.toc-widget) a:hover,
+.sidebar-inner > .box a:hover {
+    color: #d97706 !important;
 }

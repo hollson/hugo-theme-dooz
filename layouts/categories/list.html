@@ -1,0 +1,15 @@
+{{- $home := "" | relURL -}}
+<!DOCTYPE html>
+<html lang="{{ site.Language.Locale | default "en" }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+    <meta http-equiv="refresh" content="0; url={{ $home }}">
+    <link rel="canonical" href="{{ $home }}">
+    <title>{{ i18n "categories" }}</title>
+    <script>location.replace({{ $home | jsonify | safeJS }});</script>
+</head>
+<body>
+    <p><a href="{{ $home }}">{{ i18n "home" }}</a></p>
+</body>
+</html>

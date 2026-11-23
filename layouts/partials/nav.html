@@ -24,6 +24,16 @@
                 </div>
             </div>
             <a class="navbar-item" href='{{ "" | relURL }}'>{{i18n "home"}}</a>
+            {{ with .Site.Taxonomies.categories }}
+            <div class="navbar-item has-dropdown is-hoverable">
+                <span class="navbar-link" tabindex="0" role="button" aria-haspopup="true">{{ i18n "categories" }}</span>
+                <div class="navbar-dropdown is-boxed">
+                    {{ range first 8 .ByCount }}
+                    <a class="navbar-item" href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a>
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
             <a class="navbar-item" href='{{ "tags/" | relURL }}'>{{i18n "tags"}}</a>
             <a class="navbar-item" href='{{ "archives" | relURL }}'>{{i18n "archives"}} </a>
             <a class="navbar-item" href='{{ "about" | relURL }}'>{{i18n "about"}}</a>
