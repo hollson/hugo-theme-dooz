@@ -1,4 +1,10 @@
 {{- $posts := where site.RegularPages "Section" "post" -}}
+{{- if and (eq .Kind "term") (findRE `^[0-9]{4}$` .Title) -}}
+  {{- $year := .Title -}}
+  {{- $start := time.AsTime (printf "%s-01-01" $year) -}}
+  {{- $end := time.AsTime (printf "%d-01-01" (add (int $year) 1)) -}}
+  {{- $posts = where (where $posts "Date" "ge" $start) "Date" "lt" $end -}}
+{{- end -}}
 {{- $cutoff := time.AsTime "1900-01-01" -}}
 {{- $dated := where $posts "Date" "ge" $cutoff -}}
 {{- $undated := where $posts "Date" "lt" $cutoff -}}

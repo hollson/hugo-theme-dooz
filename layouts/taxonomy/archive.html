@@ -3,38 +3,5 @@
 {{ end }}
 
 {{ define "main" }}
-{{ $year := .Title }}
-{{ $posts := .Pages.ByDate.Reverse }}
-{{ if findRE `^[0-9]{4}$` $year }}
-{{ $start := time.AsTime (printf "%s-01-01" $year) }}
-{{ $end := time.AsTime (printf "%d-01-01" (add (int $year) 1)) }}
-{{ $posts = (where (where (where site.RegularPages "Section" "post") "Date" "ge" $start) "Date" "lt" $end).ByDate.Reverse }}
-{{ end }}
-{{- $position := .Site.Params.sidebarPosition | default "left" -}}
-{{- if ne $position "right" }}{{ $position = "left" }}{{ end -}}
-<div class="columns content-columns sidebar-{{ $position }}">
-    <div class="column is-9 main-column">
-        <div class="archive-page">
-            <div class="archive-timeline">
-        <section class="tl-year">
-            <h2 class="tl-year-title">{{ $year }}<span class="tl-year-count">{{ i18n "postCount" (len $posts) }}</span></h2>
-            <ul class="tl-list">
-                {{ range $posts }}
-                <li>
-                    <a class="tl-item" href="{{ .RelPermalink }}">
-                        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01-02" }}</time>
-                        <span class="tl-title">{{ .LinkTitle }}</span>
-                        {{ with .Params.categories }}<span class="tl-cat">{{ index . 0 }}</span>{{ end }}
-                    </a>
-                </li>
-                {{ end }}
-            </ul>
-        </section>
-            </div>
-        </div>
-    </div>
-    <div class="column is-3 sidebar-column">
-        {{ partial "sidebar" . }}
-    </div>
-</div>
+{{ partial "term-list-archives.html" . }}
 {{ end }}
