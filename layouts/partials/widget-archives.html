@@ -1,9 +1,16 @@
 <div class="card widget-archives">
     <div class="card-content">
         <h2 class="title is-6">{{i18n "archives"}}</h2>
-        {{ range (where .Site.RegularPages "Section" "post").GroupByDate "2006" }}
-        <a href="{{ "archives" | relURL }}/{{ .Key }}">{{ .Key }}</a> ({{ len .Pages }})<br>
-        {{ end }}
+        <ul class="widget-list">
+            {{ range (where .Site.RegularPages "Section" "post").GroupByDate "2006" }}
+            <li class="widget-list-item">
+                <a class="widget-list-link" href="{{ "archives" | relURL }}/{{ .Key }}">
+                    <span class="widget-list-label">{{ .Key }}</span>
+                    <span class="widget-list-count">{{ i18n "postCountShort" (len .Pages) }}</span>
+                </a>
+            </li>
+            {{ end }}
+        </ul>
     </div>
 </div>
 <br />

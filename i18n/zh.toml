@@ -87,6 +87,9 @@ other = "还没有标签。"
 [nextPage]
 other = "下一页"
 
+[postCountShort]
+other = "{{.Count}} 篇"
+
 [postCount]
 other = "{{.Count}} 篇文章"
 

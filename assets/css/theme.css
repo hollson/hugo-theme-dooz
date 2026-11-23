@@ -21,6 +21,7 @@
         --c-accent-warm: #d97706;   /* 暖橙：文章标题 hover */
         --c-ink: #222226;           /* 正文标题 */
         --c-ink-soft: #59636b;      /* 次要文字 */
+        --c-meta: #6b747b;          /* 元信息：日期、计数等 */
         --c-bg: #f8fbfe;            /* 页面底色：极浅蓝灰，保留卡片与背景的色差 */
         --c-surface: #ffffff;       /* 浮层/内容白 */
         --c-surface-soft: rgba(255, 255, 255, 0.58); /* 无边框卡片 */
@@ -3091,4 +3092,44 @@ article.post-list-item:hover {
 .sidebar-inner > .card:not(.widget-tags):not(.toc-widget) a:hover,
 .sidebar-inner > .box a:hover {
     color: #d97706 !important;
+}
+
+/* 侧栏分类 / 归档：名称左对齐，篇数右对齐 */
+.widget-category .widget-list,
+.widget-archives .widget-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.widget-category .widget-list-item,
+.widget-archives .widget-list-item {
+    margin: 0;
+    padding: 0;
+}
+
+.widget-category .widget-list-link,
+.widget-archives .widget-list-link {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.3rem 0;
+    text-decoration: none;
+}
+
+.widget-category .widget-list-label,
+.widget-archives .widget-list-label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.widget-category .widget-list-count,
+.widget-archives .widget-list-count {
+    flex: none;
+    color: var(--c-meta);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
 }

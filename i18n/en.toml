@@ -88,6 +88,10 @@ other = "No tags yet."
 [nextPage]
 other = "Next"
 
+[postCountShort]
+one = "{{.Count}} post"
+other = "{{.Count}} posts"
+
 [postCount]
 one = "{{.Count}} post"
 other = "{{.Count}} posts"
