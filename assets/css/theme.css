@@ -30,6 +30,10 @@
         --c-border: rgba(34, 34, 38, 0.10);    /* 侧栏/标签卡浅边框 */
         --c-border-faint: rgba(34, 34, 38, 0.06); /* 正文区极淡边框 */
 
+        /* 页面整体宽度：导航、正文容器与页脚共用 */
+        --site-wide-max: 2640px;
+        --site-wide-gutter: 1.5rem;
+
         /* 页眉 / 页脚背景 */
         --site-header-bg: #16211f;
         --site-header-bg-image: linear-gradient(180deg, #182422 0%, #141e1c 100%);
@@ -437,7 +441,10 @@ article.media:hover {
     /* .hero 是 flex 列，.container 的 margin:auto 会令宽度按内容收缩（短标题竖排）；
        显式撑满并保持水平居中，让标题始终横排 */
     align-self: stretch;
-    width: 100%;
+    width: min(var(--site-wide-max), calc(100% - var(--site-wide-gutter)));
+    max-width: var(--site-wide-max);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* ============================================================
@@ -782,21 +789,10 @@ body {
 
 /* 页脚内容与 Hero 导航、正文列同宽 */
 .footer .container {
-    width: min(1272px, calc(100% - 1.5rem));
+    width: min(var(--site-wide-max), calc(100% - var(--site-wide-gutter)));
+    max-width: var(--site-wide-max);
     margin-left: auto;
     margin-right: auto;
-}
-
-@media screen and (min-width: 1024px) and (max-width: 1215px) {
-    .footer .container {
-        width: min(888px, calc(100% - 1.5rem));
-    }
-}
-
-@media screen and (min-width: 1216px) and (max-width: 1407px) {
-    .footer .container {
-        width: min(1080px, calc(100% - 1.5rem));
-    }
 }
 
 .footer-main {
@@ -1105,10 +1101,6 @@ body {
 @media (max-width: 767px) {
     .footer {
         padding: 2.1rem 0 1.2rem;
-    }
-
-    .footer .container {
-        width: calc(100% - 2rem);
     }
 
     .footer-tagline {
@@ -1973,10 +1965,17 @@ body.page-404 {
 @media screen and (min-width: 1216px) {
     .content-columns > .main-column {
         order: 2;
+        flex: 1 1 0;
+        width: auto;
+        max-width: none;
+        min-width: 0;
     }
 
     .content-columns > .sidebar-column {
         order: 1;
+        flex: 0 0 clamp(300px, 18vw, 420px);
+        width: clamp(300px, 18vw, 420px);
+        max-width: none;
     }
 
     .content-columns.sidebar-right > .main-column {
@@ -2110,8 +2109,18 @@ body.page-404 {
 /* 阻止内部 .columns 的负 margin-top 折叠到容器，避免 container 被网格负边距整体上移；
    header 与 container 之间保留约 26px 的呼吸间距 */
 body > .container.page-container {
+    width: min(var(--site-wide-max), calc(100% - var(--site-wide-gutter)));
+    max-width: var(--site-wide-max);
+    margin-left: auto;
+    margin-right: auto;
     display: flow-root;
     margin-top: 1.625rem;
+}
+
+/* 让正文列与导航、页脚同宽：section 的左右内边距抵消 columns 的负外边距 */
+body > .container.page-container > .section.page-content {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
 }
 
 /* hero 开启时：header 因图片放大而变高，这里用负 margin 把容器拉回原位并略微上提，
@@ -2140,22 +2149,10 @@ body:not(.page-404) > .container > .section {
 
 /* 导航栏与正文列（侧栏 + 主列）同宽，左右边缘和内容卡片对齐 */
 .site-header > .navbar.container {
-    width: calc(100% - 1.5rem);
-    max-width: 1272px;
+    width: min(var(--site-wide-max), calc(100% - var(--site-wide-gutter)));
+    max-width: var(--site-wide-max);
     margin-left: auto;
     margin-right: auto;
-}
-
-@media screen and (min-width: 1024px) and (max-width: 1215px) {
-    .site-header > .navbar.container {
-        max-width: 888px;
-    }
-}
-
-@media screen and (min-width: 1216px) and (max-width: 1407px) {
-    .site-header > .navbar.container {
-        max-width: 1080px;
-    }
 }
 
 /* 分页：上一页/下一页并排居中，不再分列两端 */
