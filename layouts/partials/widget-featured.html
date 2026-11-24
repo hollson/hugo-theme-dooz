@@ -9,9 +9,14 @@
     <article class="media">
         <div class="media-content">
             <div class="content">
-                <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a><br>
-                {{ with $author }}<small>{{ . }}</small>{{ end }}
-                <time class="has-text-grey-light is-size-7" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+                <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">{{ .LinkTitle }}</a>
+                <div class="widget-entry-meta">
+                    {{ with $author }}<span class="widget-entry-author">{{ . }}</span>{{ end }}
+                    <span class="widget-entry-date">
+                        {{ partial "icon" (dict "name" "calendar" "size" 13) }}
+                        <time class="has-text-grey-light is-size-7" datetime="{{ $post.Date.Format "2006-01-02" }}">{{ $post.Date.Format "2006.01.02" }}</time>
+                    </span>
+                </div>
             </div>
         </div>
     </article>

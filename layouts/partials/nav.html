@@ -1,4 +1,9 @@
 <nav id="nav" class="navbar is-transparent container has-text-white site-nav">
+    {{ $currentRel := .RelPermalink }}
+    {{ $tagsURL := "tags/" | relURL }}
+    {{ $archivesURL := "archives/" | relURL }}
+    {{ $aboutURL := "about/" | relURL }}
+    {{ $isCategoriesPage := or (eq .Type "categories") (hasPrefix $currentRel ("categories/" | relURL)) }}
     <div class="navbar-brand">
         <div class="navbar-item">
             <a id="nav_logo" class="dooz-logo" href="{{ .Site.BaseURL | relLangURL }}" aria-label="{{ .Site.Params.logoText | default .Site.Title }}">{{ with .Site.Params.logo }}<img src="{{ . | relURL }}" alt="{{ $.Site.Params.logoText | default $.Site.Title }}">{{ else }}{{ $.Site.Params.logoText | default $.Site.Title }}{{ end }}</a>
@@ -23,10 +28,10 @@
                     <div class="search-results" id="search-results" role="listbox"></div>
                 </div>
             </div>
-            <a class="navbar-item" href='{{ "" | relURL }}'>{{i18n "home"}}</a>
+            <a class="navbar-item{{ if .IsHome }} is-current{{ end }}" href='{{ "" | relURL }}'{{ if .IsHome }} aria-current="page"{{ end }}>{{i18n "home"}}</a>
             {{ with .Site.Taxonomies.categories }}
             <div class="navbar-item has-dropdown is-hoverable">
-                <span class="navbar-link" tabindex="0" role="button" aria-haspopup="true">{{ i18n "categories" }}</span>
+                <span class="navbar-link{{ if $isCategoriesPage }} is-current{{ end }}" tabindex="0" role="button" aria-haspopup="true">{{ i18n "categories" }}</span>
                 <div class="navbar-dropdown is-boxed">
                     {{ range .ByCount }}
                     <a class="navbar-item" href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a>
@@ -34,9 +39,9 @@
                 </div>
             </div>
             {{ end }}
-            <a class="navbar-item" href='{{ "tags/" | relURL }}'>{{i18n "tags"}}</a>
-            <a class="navbar-item" href='{{ "archives" | relURL }}'>{{i18n "archives"}} </a>
-            <a class="navbar-item" href='{{ "about" | relURL }}'>{{i18n "about"}}</a>
+            <a class="navbar-item{{ if hasPrefix $currentRel $tagsURL }} is-current{{ end }}" href='{{ "tags/" | relURL }}'{{ if hasPrefix $currentRel $tagsURL }} aria-current="page"{{ end }}>{{i18n "tags"}}</a>
+            <a class="navbar-item{{ if hasPrefix $currentRel $archivesURL }} is-current{{ end }}" href='{{ "archives" | relURL }}'{{ if hasPrefix $currentRel $archivesURL }} aria-current="page"{{ end }}>{{i18n "archives"}} </a>
+            <a class="navbar-item{{ if hasPrefix $currentRel $aboutURL }} is-current{{ end }}" href='{{ "about" | relURL }}'{{ if hasPrefix $currentRel $aboutURL }} aria-current="page"{{ end }}>{{i18n "about"}}</a>
             {{ with .Site.Params.repo }}
             <span class="navbar-item">
                 <a class="button is-primary is-inverted" href="{{ . }}">

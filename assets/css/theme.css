@@ -22,6 +22,7 @@
         --c-ink: #222226;           /* 正文标题 */
         --c-ink-soft: #59636b;      /* 次要文字 */
         --c-meta: #6b747b;          /* 元信息：日期、计数等 */
+        --fs-aux: 0.72rem;          /* 辅助信息字号：列表元数据、侧栏条目 */
         --c-bg: #f8fbfe;            /* 页面底色：极浅蓝灰，保留卡片与背景的色差 */
         --c-surface: #ffffff;       /* 浮层/内容白 */
         --c-surface-soft: rgba(255, 255, 255, 0.58); /* 无边框卡片 */
@@ -37,7 +38,7 @@
 
         /* 导航文字与页脚文字 */
         --site-nav-text: #ffffff;
-        --site-nav-hover: #7dd3c7;
+        --site-nav-hover: #d97706;
         --site-footer-text: #f4f8f6;
         --site-footer-link: #ffffff;
         --site-footer-muted: #dfe9e6;
@@ -262,17 +263,29 @@ a {
 }
 
 /* 深色导航上的链接悬停 / 键盘聚焦反馈。
-   Bulma 的 is-transparent 把 hover 背景强制透明，dooz.css 又把链接色锁成白色 !important，
-   这里用同等 !important 覆盖；仅文字变色，青绿色与页脚 hover 保持一致 */
-.site-header #nav a.navbar-item:hover,
-.site-header #nav a.navbar-item:focus-visible {
-    color: var(--site-nav-hover, #7dd3c7) !important;
+   文字始终保持白色，只用文字下方的 1px 白色细线和轻微上移提示。 */
+.site-header #nav .navbar-end > a.navbar-item,
+.site-header #nav .navbar-end > .has-dropdown > .navbar-link {
+    color: var(--site-nav-text, #ffffff) !important;
+    text-decoration-line: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.42em;
+    transition: transform 0.2s ease, color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.site-header #nav .navbar-end > a.navbar-item:hover,
+.site-header #nav .navbar-end > a.navbar-item:focus-visible,
+.site-header #nav .navbar-end > .has-dropdown > .navbar-link:hover,
+.site-header #nav .navbar-end > .has-dropdown > .navbar-link:focus-visible {
+    color: var(--site-nav-text, #ffffff) !important;
+    text-decoration-color: #ffffff;
+    transform: translateY(-1px);
 }
 
 /* 分类下拉：深色导航上的悬浮菜单 */
 .site-header #nav .navbar-link:hover,
 .site-header #nav .navbar-link:focus-visible {
-    color: var(--site-nav-hover, #7dd3c7) !important;
     cursor: pointer;
 }
 
@@ -306,7 +319,7 @@ a {
 
 .site-header #nav .navbar-dropdown .navbar-item:hover,
 .site-header #nav .navbar-dropdown .navbar-item:focus-visible {
-    color: #0f766e !important;
+    color: #d97706 !important;
     background-color: #f5f7f6;
 }
 
@@ -1857,6 +1870,14 @@ article.media:hover {
     color: var(--c-accent) !important;
 }
 
+/* 侧栏标签列表：标签之间保留水平与垂直呼吸空间 */
+.sidebar-tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 0.4rem 0.45rem;
+}
+
 /* 侧栏标签的小图标：只做视觉引导，不抢文字层级 */
 .tag.sidebar-tag {
     display: inline-flex;
@@ -2381,10 +2402,67 @@ article.post-list-item:hover {
     color: var(--c-accent-warm);
 }
 
+/* 侧栏文章标题单行省略；完整标题通过 title 提示 */
+#sidebar .widget-featured .media-content {
+    min-width: 0;
+}
+
+#sidebar .widget-featured .media-content .content > a,
+#sidebar .widget-recent .card-content > h2 a,
+#sidebar .widget-related .card-content h2:not(.title) a,
+#sidebar .widget-recommended .card-content h2:not(.title) a {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 /* 推荐阅读复用“相关文章”的标题与日期排版 */
 .widget-recommended .recommended-list {
     margin: 0;
     padding: 0;
+}
+
+/* 侧栏文章条目：标题下只保留作者与日期，左右分布 */
+.widget-featured .widget-entry-meta,
+.widget-recent .widget-entry-meta,
+.widget-related .widget-entry-meta,
+.widget-recommended .widget-entry-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 0.15rem;
+    color: var(--c-meta);
+    font-size: var(--fs-aux);
+    line-height: 1.4;
+}
+
+.widget-entry-meta .widget-entry-author {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.widget-entry-meta .widget-entry-date {
+    display: inline-flex;
+    align-items: center;
+    flex: none;
+    gap: 0.3rem;
+    margin-left: auto;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.widget-entry-meta .widget-entry-date .icon-svg {
+    flex: 0 0 auto;
+    color: var(--c-meta);
+}
+
+.widget-entry-meta time {
+    white-space: nowrap;
 }
 
 .post-list-item.has-cover {
@@ -2502,8 +2580,8 @@ article.post-list-item:hover {
     justify-content: space-between;
     gap: 0.45rem 0.9rem;
     margin: 0.55rem 0 0;
-    color: #7d8794;
-    font-size: 0.72rem;
+    color: var(--c-meta);
+    font-size: var(--fs-aux);
     font-style: normal;
     line-height: 1.4;
 }
@@ -2556,9 +2634,9 @@ article.post-list-item:hover {
 }
 
 .post-series {
-    color: #5f6b76;
-    font-size: 0.72rem;
-    font-weight: 500;
+    color: var(--c-meta);
+    font-size: var(--fs-aux);
+    font-weight: 400;
     line-height: 1.4;
 }
 
@@ -2573,23 +2651,23 @@ article.post-list-item:hover {
     display: inline-flex;
     align-items: center;
     padding: 0.08rem 0.45rem 0.1rem;
-    border: 1px solid #f0d6bc;
+    border: 1px solid var(--c-line);
     border-radius: 2px;
-    background: #fbeedd;
-    color: #955320;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
+    background: var(--c-surface-soft);
+    color: var(--c-meta);
+    font-size: var(--fs-aux);
+    font-weight: 400;
+    letter-spacing: 0;
     line-height: 1.4;
-    text-transform: uppercase;
+    text-transform: none;
     text-decoration: none;
     white-space: nowrap;
 }
 
 .post-category-link:hover {
-    border-color: #e8c6a5;
-    background: #f6e3ce;
-    color: #7e4318;
+    border-color: var(--c-accent-warm);
+    background: var(--c-surface-soft);
+    color: var(--c-accent-warm) !important;
 }
 
 .post-list-tag-group {
@@ -2601,20 +2679,20 @@ article.post-list-item:hover {
 }
 
 .post-tag-link {
-    color: #6b7280;
-    font-size: 0.72rem;
+    color: var(--c-meta);
+    font-size: var(--fs-aux);
     text-decoration: none;
     white-space: nowrap;
 }
 
 .post-tag-hash {
     margin-right: 0.08rem;
-    color: #adb8c3;
-    font-weight: 500;
+    color: #9aa4ae;
+    font-weight: 400;
 }
 
 .post-tag-link:hover {
-    color: #0f4c81;
+    color: var(--c-accent-warm);
     text-decoration: underline;
     text-underline-offset: 2px;
 }
@@ -2634,8 +2712,8 @@ article.post-list-item:hover {
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
-    color: #4b5563;
-    font-size: 0.7rem;
+    color: var(--c-meta);
+    font-size: var(--fs-aux);
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
 }
@@ -2643,7 +2721,7 @@ article.post-list-item:hover {
 .post-list-reading .icon-svg,
 .post-list-date .icon-svg {
     flex: 0 0 auto;
-    color: #111827;
+    color: var(--c-meta);
 }
 
 .post-list-date {
@@ -3149,4 +3227,77 @@ article.post-list-item:hover {
     color: var(--c-meta);
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
+}
+
+/* 侧栏辅助信息统一：条目、日期、篇数与标签使用浅色小字号；
+ * 模块标题、博主姓名和头像不纳入该规则。 */
+#sidebar .widget-featured .media-content .content > a,
+#sidebar .widget-featured .media-content .content small,
+#sidebar .widget-featured time,
+#sidebar .widget-recent .card-content > h2 a,
+#sidebar .widget-recent time,
+#sidebar .widget-related .card-content h2:not(.title) a,
+#sidebar .widget-related time,
+#sidebar .widget-recommended .card-content h2:not(.title) a,
+#sidebar .widget-recommended time,
+#sidebar .widget-category .widget-list-link,
+#sidebar .widget-category .widget-list-label,
+#sidebar .widget-category .widget-list-count,
+#sidebar .widget-archives .widget-list-link,
+#sidebar .widget-archives .widget-list-label,
+#sidebar .widget-archives .widget-list-count,
+#sidebar .widget-tags .tag,
+#sidebar .widget-tags .tag a {
+    color: var(--c-meta) !important;
+    font-size: var(--fs-aux) !important;
+    font-weight: 400;
+}
+
+#sidebar .widget-featured .media-content .content > a:hover,
+#sidebar .widget-featured .media-content .content > a:focus-visible,
+#sidebar .widget-recent .card-content > h2 a:hover,
+#sidebar .widget-recent .card-content > h2 a:focus-visible,
+#sidebar .widget-related .card-content h2:not(.title) a:hover,
+#sidebar .widget-related .card-content h2:not(.title) a:focus-visible,
+#sidebar .widget-recommended .card-content h2:not(.title) a:hover,
+#sidebar .widget-recommended .card-content h2:not(.title) a:focus-visible,
+#sidebar .widget-category .widget-list-link:hover,
+#sidebar .widget-category .widget-list-link:focus-visible,
+#sidebar .widget-category .widget-list-link:hover .widget-list-label,
+#sidebar .widget-category .widget-list-link:focus-visible .widget-list-label,
+#sidebar .widget-archives .widget-list-link:hover,
+#sidebar .widget-archives .widget-list-link:focus-visible,
+#sidebar .widget-archives .widget-list-link:hover .widget-list-label,
+#sidebar .widget-archives .widget-list-link:focus-visible .widget-list-label,
+#sidebar .widget-tags .card-content .tag:hover,
+#sidebar .widget-tags .card-content .tag:focus-within,
+#sidebar .widget-tags .card-content .tag:hover a,
+#sidebar .widget-tags .card-content .tag:focus-within a,
+#sidebar .widget-tags .card-content .tag a:hover,
+#sidebar .widget-tags .card-content .tag a:focus-visible {
+    color: var(--c-accent-warm) !important;
+}
+
+/* 侧栏模块标题统一为 1em；标签云文字保持现有辅助字号 */
+#sidebar .widget-featured .title.is-6,
+#sidebar .widget-recent .title.is-6,
+#sidebar .widget-related .title.is-6,
+#sidebar .widget-recommended .title.is-6,
+#sidebar .widget-category .title.is-6,
+#sidebar .widget-archives .title.is-6,
+#sidebar .widget-tags .title.is-6,
+#sidebar .toc-widget .title.is-6 {
+    font-size: 1em;
+}
+
+/* 侧栏文章标题与分类/归档名称改为 1em；日期、作者、篇数和标签维持辅助字号 */
+#sidebar .widget-featured .media-content .content > a,
+#sidebar .widget-recent .card-content > h2 a,
+#sidebar .widget-related .card-content h2:not(.title) a,
+#sidebar .widget-recommended .card-content h2:not(.title) a,
+#sidebar .widget-category .widget-list-link,
+#sidebar .widget-category .widget-list-label,
+#sidebar .widget-archives .widget-list-link,
+#sidebar .widget-archives .widget-list-label {
+    font-size: 1em !important;
 }

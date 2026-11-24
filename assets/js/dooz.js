@@ -425,6 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             var link = document.createElement('a');
             link.href = item.u;
+            link.title = item.t;
             link.textContent = item.t;
             heading.appendChild(link);
 
@@ -433,8 +434,24 @@ document.addEventListener('DOMContentLoaded', () => {
             time.dateTime = item.iso;
             time.textContent = item.dt;
 
+            var meta = document.createElement('div');
+            meta.className = 'widget-entry-meta';
+
+            if (item.a) {
+                var author = document.createElement('span');
+                author.className = 'widget-entry-author';
+                author.textContent = item.a;
+                meta.appendChild(author);
+            }
+
+            var date = document.createElement('span');
+            date.className = 'widget-entry-date';
+            date.innerHTML = '<svg class="icon-svg" width="13" height="13" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"></rect><line x1="8" y1="3" x2="8" y2="7"></line><line x1="16" y1="3" x2="16" y2="7"></line><line x1="3" y1="11" x2="21" y2="11"></line></svg>';
+            date.appendChild(time);
+            meta.appendChild(date);
+
             fragment.appendChild(heading);
-            fragment.appendChild(time);
+            fragment.appendChild(meta);
         });
 
         list.appendChild(fragment);

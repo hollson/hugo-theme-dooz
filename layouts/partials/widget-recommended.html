@@ -13,13 +13,21 @@
     <h2 class="title is-6">{{ i18n "recommended" }}</h2>
     <div class="recommended-list">
       {{ range first 6 $pool }}
-      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-      <time class="has-text-grey-light is-size-7" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+      {{ $author := .Params.author | default $current.Site.Params.Author }}
+      <h2><a href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a></h2>
+      <div class="widget-entry-meta">
+        {{ with $author }}<span class="widget-entry-author">{{ . }}</span>{{ end }}
+        <span class="widget-entry-date">
+          {{ partial "icon" (dict "name" "calendar" "size" 13) }}
+          <time class="has-text-grey-light is-size-7" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+        </span>
+      </div>
       {{ end }}
     </div>
     {{- $payload := slice -}}
     {{- range $pool -}}
-        {{- $payload = $payload | append (dict "u" .RelPermalink "t" .Title "d" .Date.Unix "iso" (.Date.Format "2006-01-02") "dt" (.Date.Format "2006.01.02")) -}}
+        {{- $author := .Params.author | default $current.Site.Params.Author -}}
+        {{- $payload = $payload | append (dict "u" .RelPermalink "t" .Title "a" $author "d" .Date.Unix "iso" (.Date.Format "2006-01-02") "dt" (.Date.Format "2006.01.02")) -}}
     {{- end -}}
     <script type="application/json" class="recommended-pool">{{ $payload | jsonify | safeJS }}</script>
   </div>

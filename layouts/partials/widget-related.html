@@ -7,8 +7,15 @@
   <div class="card-content">
     <h2 class="title is-6">{{ i18n "related" }}</h2>
     {{ range first $num_to_show . }}
-    <h2><a href="{{ .Permalink | relURL }}">{{ .Title }}</a></h2>
-    <time class="has-text-grey-light is-size-7" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+    {{ $author := .Params.author | default $.Site.Params.Author }}
+    <h2><a href="{{ .Permalink | relURL }}" title="{{ .Title }}">{{ .Title }}</a></h2>
+    <div class="widget-entry-meta">
+        {{ with $author }}<span class="widget-entry-author">{{ . }}</span>{{ end }}
+        <span class="widget-entry-date">
+            {{ partial "icon" (dict "name" "calendar" "size" 13) }}
+            <time class="has-text-grey-light is-size-7" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+        </span>
+    </div>
     {{ end }}
   </div>
 </div>

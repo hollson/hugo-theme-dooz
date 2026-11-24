@@ -1,7 +1,7 @@
 <div class="card widget-tags">
     <div class="card-content">
         <h2 class="title is-6">{{i18n "tags"}}</h2>
-        <div>
+        <div class="sidebar-tag-list">
             {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
             <span class="tag is-size-7 sidebar-tag">
                 <svg class="sidebar-tag-icon" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
