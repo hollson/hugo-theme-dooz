@@ -28,7 +28,7 @@
             <div class="navbar-item has-dropdown is-hoverable">
                 <span class="navbar-link" tabindex="0" role="button" aria-haspopup="true">{{ i18n "categories" }}</span>
                 <div class="navbar-dropdown is-boxed">
-                    {{ range first 8 .ByCount }}
+                    {{ range .ByCount }}
                     <a class="navbar-item" href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a>
                     {{ end }}
                 </div>

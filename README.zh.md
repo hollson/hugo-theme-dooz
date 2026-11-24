@@ -184,7 +184,6 @@ pinned = false
 <!-- # 写一篇“如何使用dooz主题”的文章 -->
 # 一键publish命令
 # 推荐到hugo主题库
-/Users/sybs/github/mafool-blog/docs/article-context-navigation.md
 
 
 

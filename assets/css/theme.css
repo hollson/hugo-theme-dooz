@@ -282,8 +282,22 @@ a {
 }
 
 .site-header #nav .navbar-dropdown {
+    max-height: 22rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
     border-top-color: rgba(255, 255, 255, 0.18);
     box-shadow: 0 10px 24px rgba(10, 20, 18, 0.18);
+}
+
+.site-header #nav .navbar-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+.site-header #nav .navbar-dropdown::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background-color: rgba(38, 49, 45, 0.22);
 }
 
 .site-header #nav .navbar-dropdown .navbar-item {
@@ -376,18 +390,18 @@ article.media:hover {
 }
 
 
-/* 站点头部：nav 与 section#hero 平级；导航层高于正文，避免搜索面板被遮挡。
-   背景与页脚统一为同一组深青灰渐变，关闭 hero 时导航不再显得死黑 */
+/* 站点头部：nav 与 section#hero 平级；只让导航层高于正文，页眉整体不建立高层叠上下文，
+   避免 Hero 随页眉一起压住正文卡片 */
 .site-header {
     position: relative;
-    z-index: 10;
+    z-index: auto;
     background-color: var(--site-header-bg, #16211f);
     background-image: var(--site-header-bg-image, linear-gradient(180deg, #182422 0%, #141e1c 100%));
 }
 
 .site-header > .navbar {
     position: relative;
-    z-index: 5;
+    z-index: 12;
     background-color: transparent;
 }
 
@@ -1820,6 +1834,12 @@ article.media:hover {
     padding: 1.1rem 1.15rem 1.35rem;
 }
 
+/* 首页博主信息卡：上下各增加 5px 呼吸空间，整体比其它侧栏卡片略高 */
+#widget_author .card-content {
+    padding-top: calc(1.1rem + 5px);
+    padding-bottom: calc(1.35rem + 5px);
+}
+
 /* 侧栏标签：去掉 Bulma 默认灰底，改为极淡的墨青水洗 */
 .tag {
     background: rgba(15, 118, 110, 0.06) !important;
@@ -2065,16 +2085,12 @@ body > .container.page-container {
 }
 
 /* hero 开启时：header 因图片放大而变高，这里用负 margin 把容器拉回原位并略微上提，
-   让卡片叠在 hero 图片下沿形成融合；提升层级使卡片浮于图片之上，
-   同时搜索面板展开时把 header 提级，避免被容器遮住 */
+   让卡片叠在 hero 图片下沿形成融合；提升层级使卡片浮于图片之上。
+   导航自带更高的 z-index，搜索面板和分类下拉无需再抬整块 header */
 body:has(#hero) > .container.page-container {
     position: relative;
     z-index: 11;
     margin-top: -16.25rem;
-}
-
-body:has(.search-results.is-open) .site-header {
-    z-index: 12;
 }
 
 /* Hero 之后内容直接贴上来，形成参考页那种“卡片压着 Hero 下沿”的关系 */
@@ -2144,7 +2160,8 @@ body:not(.page-404) > .container > .section {
     display: none;
 }
 
-.content-columns > .sidebar-column > .sidebar-inner > .card {
+.content-columns > .sidebar-column > .sidebar-inner > .card,
+.content-columns > .sidebar-column > .sidebar-inner > .box {
     margin: 0;
 }
 
