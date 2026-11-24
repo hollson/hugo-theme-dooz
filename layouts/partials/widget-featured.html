@@ -4,19 +4,10 @@
 <div class="box widget-featured">
     <h2 class="title is-6">{{ i18n "featured" }}</h2>
     {{ range first 5 .ByWeight }}
-    {{ $post := . }}
-    {{ $author := .Params.author | default $.Site.Params.Author }}
     <article class="media">
         <div class="media-content">
             <div class="content">
                 <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">{{ .LinkTitle }}</a>
-                <div class="widget-entry-meta">
-                    {{ with $author }}<span class="widget-entry-author">{{ . }}</span>{{ end }}
-                    <span class="widget-entry-date">
-                        {{ partial "icon" (dict "name" "calendar" "size" 13) }}
-                        <time class="has-text-grey-light is-size-7" datetime="{{ $post.Date.Format "2006-01-02" }}">{{ $post.Date.Format "2006.01.02" }}</time>
-                    </span>
-                </div>
             </div>
         </div>
     </article>
