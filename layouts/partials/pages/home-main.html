@@ -32,8 +32,8 @@
                             <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">{{ .LinkTitle }}</a></p>
                     </div>
                     {{ $excerpt := "" }}
-                    {{ with .Description }}{{ $excerpt = . }}{{ else }}{{ $excerpt = .Summary }}{{ end }}
-                    <p class="summary">{{ $excerpt | plainify | htmlUnescape | replaceRE "\\[TOC\\]" "" | truncate 100 }}</p>
+                    {{ with .Description }}{{ $excerpt = . }}{{ else }}{{ $excerpt = .Plain }}{{ end }}
+                    <p class="summary">{{ $excerpt | plainify | htmlUnescape | replaceRE "\\[TOC\\]" "" | truncate 300 }}</p>
                     {{ partial "post-list-meta" (dict "page" . "hideSeries" true) }}
                 </div>
             </div>

@@ -497,4 +497,112 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         init();
     }
+
+    // 文章列表摘要：超过两行时，按实际字符宽度截断，并在省略号后留出约 5 个汉字空白
+    var summarySource = new WeakMap();
+
+    function measureSummaryText(container, text) {
+        container.textContent = text;
+        var range = document.createRange();
+        range.selectNodeContents(container);
+        var rects = range.getClientRects();
+        if (!rects.length) return { lines: 0, right: 0 };
+
+        var tops = [];
+        var lastTop = null;
+        var lastRight = 0;
+        for (var i = 0; i < rects.length; i++) {
+            var rect = rects[i];
+            if (!rect.width && !rect.height) continue;
+            var top = Math.round(rect.top);
+            if (tops.indexOf(top) === -1) tops.push(top);
+            if (lastTop === null || top > lastTop) {
+                lastTop = top;
+                lastRight = rect.right;
+            } else if (top === lastTop && rect.right > lastRight) {
+                lastRight = rect.right;
+            }
+        }
+        return { lines: tops.length, right: lastRight };
+    }
+
+    function updateSummaryClamp() {
+        var summaries = document.querySelectorAll('.post-list-item .summary');
+        Array.prototype.forEach.call(summaries, function (summary) {
+            var fullText = summarySource.get(summary);
+            if (fullText === undefined) {
+                fullText = summary.textContent.trim();
+                summarySource.set(summary, fullText);
+            }
+            summary.textContent = fullText;
+            if (!fullText) return;
+
+            var style = window.getComputedStyle(summary);
+            var fontSize = parseFloat(style.fontSize) || 16;
+            var width = summary.clientWidth;
+            if (!width) return;
+
+            var clone = summary.cloneNode(false);
+            clone.style.position = 'fixed';
+            clone.style.visibility = 'hidden';
+            clone.style.pointerEvents = 'none';
+            clone.style.left = '0';
+            clone.style.top = '0';
+            clone.style.width = width + 'px';
+            clone.style.maxHeight = 'none';
+            clone.style.height = 'auto';
+            clone.style.overflow = 'visible';
+            clone.style.display = 'block';
+            clone.style.webkitLineClamp = 'unset';
+            clone.style.lineClamp = 'unset';
+            clone.style.margin = '0';
+            summary.parentNode.appendChild(clone);
+
+            var full = measureSummaryText(clone, fullText);
+            if (full.lines <= 2) {
+                summary.parentNode.removeChild(clone);
+                return;
+            }
+
+            // 6em = 省略号约 1em + 其后预留的 5em 空白
+            var limitRight = clone.getBoundingClientRect().left + width - fontSize * 6;
+            var chars = Array.from(fullText);
+            var low = 0;
+            var high = chars.length;
+            var best = 0;
+            while (low <= high) {
+                var mid = Math.floor((low + high) / 2);
+                var metrics = measureSummaryText(clone, chars.slice(0, mid).join(''));
+                if (metrics.lines <= 2 && metrics.right <= limitRight) {
+                    best = mid;
+                    low = mid + 1;
+                } else {
+                    high = mid - 1;
+                }
+            }
+
+            while (best > 0 && /\s/.test(chars[best - 1])) best--;
+            summary.textContent = chars.slice(0, best).join('') + '…';
+            summary.parentNode.removeChild(clone);
+        });
+    }
+
+    function scheduleSummaryClamp() {
+        window.requestAnimationFrame(updateSummaryClamp);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', scheduleSummaryClamp);
+    } else {
+        scheduleSummaryClamp();
+    }
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(scheduleSummaryClamp);
+    }
+
+    var summaryResizeTimer;
+    window.addEventListener('resize', function () {
+        window.clearTimeout(summaryResizeTimer);
+        summaryResizeTimer = window.setTimeout(scheduleSummaryClamp, 150);
+    });
 })();

@@ -1,10 +1,11 @@
 {{ $posts := .Pages.ByDate.Reverse }}
+{{ $paginator := .Paginate $posts }}
 <div class="tile is-child box">
     <div class="content">
         <h3 class="term-title">{{ if eq .Type "tags" }}#{{ end }}{{ .Title }}</h3>
         <p class="term-count">{{ i18n "termPostCount" (len $posts) }}</p>
         <hr>
-        {{ range $posts }}
+        {{ range $paginator.Pages }}
         <article class="media post-list-item">
             <div class="media-content">
                 <div class="content">
@@ -14,8 +15,8 @@
                         </p>
                     </div>
                     {{ $excerpt := "" }}
-                    {{ with .Description }}{{ $excerpt = . }}{{ else }}{{ $excerpt = .Summary }}{{ end }}
-                    <p class="summary">{{ $excerpt | plainify | htmlUnescape | replaceRE "\\[TOC\\]" "" | truncate 100 }}</p>
+                    {{ with .Description }}{{ $excerpt = . }}{{ else }}{{ $excerpt = .Plain }}{{ end }}
+                    <p class="summary">{{ $excerpt | plainify | htmlUnescape | replaceRE "\\[TOC\\]" "" | truncate 300 }}</p>
                     {{ partial "post-list-meta" (dict "page" . "hideSeries" true) }}
                 </div>
             </div>
@@ -23,4 +24,5 @@
         <hr>
         {{ end }}
     </div>
+    {{ partial "pagination" . }}
 </div>
