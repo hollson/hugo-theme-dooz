@@ -31,7 +31,7 @@
         --c-border-faint: rgba(34, 34, 38, 0.06); /* 正文区极淡边框 */
 
         /* 页面整体宽度：导航、正文容器与页脚共用 */
-        --site-wide-max: 2640px;
+        --site-wide-max: 1344px;
         --site-wide-gutter: 1.5rem;
 
         /* 页眉 / 页脚背景 */
