@@ -3,7 +3,16 @@
         <div class="article-meta-banner">
             {{ partial "post-list-meta" (dict "page" . "hideSeries" false) }}
         </div>
+        {{- $mdTheme := .Params.mdTheme | default .Site.Params.markdownTheme -}}
+        {{- $mdNum := true -}}
+        {{- if isset .Params "mdthemenumbering" -}}{{- $mdNum = .Params.mdThemeNumbering -}}{{- end -}}
+        {{- if $mdTheme -}}
+        <div class="md-body" data-md-theme="{{ $mdTheme }}"{{ if $mdNum }} data-md-num="true"{{ end }}>
+            {{ .Content }}
+        </div>
+        {{- else -}}
         {{ .Content }}
+        {{- end -}}
 
         <!-- 文章底部扩展：站点可覆盖 partials/article-footer.html -->
         {{ partial "article-footer.html" . }}

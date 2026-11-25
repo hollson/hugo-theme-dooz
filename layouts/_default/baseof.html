@@ -40,6 +40,10 @@
     <link rel="stylesheet" href="{{ $themeCSS.url }}" integrity="{{ $themeCSS.integrity }}" />
     {{ $presetCSS := partial "asset" (dict "path" "css/color-themes.css") }}
     <link rel="stylesheet" href="{{ $presetCSS.url }}" integrity="{{ $presetCSS.integrity }}" />
+    {{- if or .Params.mdTheme .Site.Params.markdownTheme }}
+    {{ $mdThemesCSS := partial "asset" (dict "path" "css/themes.wx.css") }}
+    <link rel="stylesheet" href="{{ $mdThemesCSS.url }}" integrity="{{ $mdThemesCSS.integrity }}" />
+    {{- end }}
     {{ $overrideCSS := partial "asset" (dict "path" "css/dooz.override.css") }}
     <link rel="stylesheet" href="{{ $overrideCSS.url }}" integrity="{{ $overrideCSS.integrity }}" />
 

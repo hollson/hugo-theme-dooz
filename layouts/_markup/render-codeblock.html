@@ -1,4 +1,14 @@
 {{- $lang := .Type | default "text" -}}
+{{- $mdTheme := .Page.Params.mdTheme | default .Page.Site.Params.markdownTheme -}}
+{{- $opts := .Options -}}
+{{- if $mdTheme -}}
+{{- /* mdTheme 文章走浅色「微信代码主题」：输出 Chroma 类名、不显示行号 */ -}}
+{{- if reflect.IsMap $opts -}}
+{{- $opts = merge $opts (dict "noClasses" false "lineNos" false) -}}
+{{- else -}}
+{{- $opts = printf "%s noClasses=false lineNos=false" $opts -}}
+{{- end -}}
+{{- end -}}
 <div class="code-block" data-lang="{{ $lang }}"
     data-copy-label="{{ i18n "codeCopy" }}"
     data-copy-copied="{{ i18n "codeCopied" }}"
@@ -16,6 +26,6 @@
         </div>
     </div>
     <div class="code-body">
-        {{ highlight .Inner $lang .Options }}
+        {{ highlight .Inner $lang $opts }}
     </div>
 </div>

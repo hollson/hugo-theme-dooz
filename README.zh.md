@@ -140,6 +140,35 @@ pinned = false
 
 当前内置图标：`book`、`tools`、`file`、`code`、`play`、`link`。
 
+### 正文排版主题
+
+内置 [markdown.com.cn/wechat](https://markdown.com.cn/wechat/) 的十套正文风格，可逐篇指定：
+
+```toml
++++
+title = "我的第一篇文章"
+mdTheme = "editorial-sspai"     # 不写则沿用站点默认排版
+mdThemeNumbering = false        # 关闭 H2 自动序号，默认开启
++++
+```
+
+| 主题 id | 风格 | H2 形态 |
+| --- | --- | --- |
+| `editorial-sspai` | 数字生活·少数派风 | 下划线 |
+| `editorial-latepost` | 商业深度·晚点风 | 下划线 |
+| `essay-songyan` | 人文随笔·松烟墨 | 下划线（标题居中、虚线） |
+| `dev-linear` | 极简科技·Linear 风 | 下划线 |
+| `dev-tech-blue` | 开发者·极客蓝 | 左侧色块 |
+| `dev-wechat-green` | 开发者·开源绿 | 左侧色块 |
+| `meetup-vibrant` | Meetup·活力橙 | 居中胶囊 |
+| `meetup-aurora` | Meetup·极光紫 | 居中胶囊 |
+| `daily-festive-red` | 节日·喜庆红 | 居中胶囊 |
+| `plain-github` | 极简·GitHub 原生 | 下划线（无装饰） |
+
+代码块统一使用该站的「微信代码主题」（浅色底 + 绿色关键字），行号在主题文章里自动隐藏。想全站默认启用某一套，把 `params.toml` 的 `markdownTheme` 设为对应 id 即可。
+
+细节与覆盖方式见 [docs/markdown-themes.md](docs/markdown-themes.md)。
+
 ## 文档
 
 - [Hugo 静态博客指南](docs/Hugo静态博客指南.md)：安装、内容、主题、部署

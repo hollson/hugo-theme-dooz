@@ -1,0 +1,787 @@
+/* ============================================================
+ * themes.wx.css — 正文排版主题（markdown.com.cn/wechat 十套主题）
+ *
+ * 来源：https://markdown.com.cn/wechat/ 的 js/themes.js
+ * 取色、字号、间距、边框均按源码 buildStyles() 一比一还原；
+ * 代码块统一使用该站的「微信代码主题」（浅色），其余选项默认。
+ *
+ * 生效方式：文章 front matter 写 mdTheme = "<主题 id>"，
+ * 模板会给 .md-body 打上 data-md-theme，未配置则不套用任何规则。
+ * 主题 id 见文件末尾的变量表。
+ * ============================================================ */
+
+.md-body[data-md-theme] {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--md-text);
+    text-align: left;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* ---------- 标题 ---------- */
+
+.md-body[data-md-theme] h1 {
+    margin: 26px 0 20px;
+    padding: 0 0 12px;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--md-heading);
+    border-bottom: var(--md-h1-bw) var(--md-line) var(--md-accent);
+    text-align: var(--md-h1-align);
+    letter-spacing: .4px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.md-body[data-md-theme] h2 {
+    margin: 30px 0 16px;
+    padding: 0 0 9px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--md-heading);
+    text-align: left;
+    letter-spacing: .4px;
+    border-bottom: 1px var(--md-line) var(--md-border);
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.md-body[data-md-theme] h3 {
+    margin: 22px 0 10px;
+    padding-left: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--md-heading);
+    text-align: left;
+    letter-spacing: .3px;
+    border-left: 3px solid var(--md-accent);
+}
+
+.md-body[data-md-theme] h4 {
+    margin: 18px 0 8px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.55;
+    color: var(--md-heading);
+    text-align: left;
+    letter-spacing: .3px;
+}
+
+/* 二级标题自动序号：默认开启，front matter mdThemeNumbering = false 可关闭 */
+.md-body[data-md-theme][data-md-num="true"] {
+    counter-reset: md-h2;
+}
+
+.md-body[data-md-theme][data-md-num="true"] h2:not([data-icon]) {
+    counter-increment: md-h2;
+}
+
+.md-body[data-md-theme][data-md-num="true"] h2:not([data-icon])::before {
+    content: counter(md-h2, decimal-leading-zero) var(--md-num-sep, "");
+    display: inline-block;
+    margin-right: var(--md-num-gap, 9px);
+    padding: var(--md-num-pad, 2px 8px);
+    font-size: var(--md-num-size, 12px);
+    font-weight: var(--md-num-weight, 700);
+    line-height: 1.45;
+    color: var(--md-num-color, #ffffff);
+    background-color: var(--md-num-bg, var(--md-accent));
+    border-radius: var(--md-num-radius, 4px);
+    vertical-align: 1px;
+    letter-spacing: .4px;
+}
+
+/* ---------- 正文与行内元素 ---------- */
+
+.md-body[data-md-theme] p {
+    margin: 0 0 16px;
+    font-size: 15px;
+    line-height: var(--md-p-lh);
+    color: var(--md-text);
+    text-align: var(--md-p-align);
+    letter-spacing: .4px;
+}
+
+.md-body[data-md-theme] strong {
+    font-weight: 700;
+    color: var(--md-strong);
+    background-color: var(--md-strong-bg, transparent);
+    padding: var(--md-strong-pad, 0);
+    border-radius: var(--md-strong-radius, 0);
+}
+
+.md-body[data-md-theme] em {
+    font-style: italic;
+    color: var(--md-text);
+}
+
+.md-body[data-md-theme] del {
+    text-decoration: line-through;
+    color: #71717a;
+}
+
+.md-body[data-md-theme] code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--md-strong);
+    background-color: var(--md-soft);
+    border: 1px solid var(--md-border);
+    padding: 2px 6px;
+    margin: 0 2px;
+    border-radius: 5px;
+    word-break: break-word;
+}
+
+.md-body[data-md-theme] a {
+    color: var(--md-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--md-border);
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.md-body[data-md-theme] ul,
+.md-body[data-md-theme] ol {
+    margin: 0 0 16px;
+    padding-left: 22px;
+    color: var(--md-text);
+    text-align: left;
+}
+
+.md-body[data-md-theme] li {
+    margin: 6px 0;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--md-text);
+    text-align: left;
+    letter-spacing: .3px;
+}
+
+/* 定义列表（goldmark definitionList） */
+
+.md-body[data-md-theme] dl {
+    margin: 0 0 16px;
+    text-align: left;
+}
+
+.md-body[data-md-theme] dt {
+    margin: 10px 0 2px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.7;
+    color: var(--md-heading);
+}
+
+.md-body[data-md-theme] dd {
+    margin: 0 0 4px 1.25em;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--md-text);
+}
+
+.md-body[data-md-theme] hr {
+    margin: 28px 0;
+    border: none;
+    border-top: 1px var(--md-line) var(--md-border);
+}
+
+/* ---------- 引用与提示框 ---------- */
+
+.md-body[data-md-theme] blockquote {
+    margin: 20px 0;
+    padding: 14px 17px;
+    background-color: var(--md-soft);
+    border: 1px solid var(--md-border);
+    border-left: 4px solid var(--md-accent);
+    border-radius: var(--md-bq-radius, 8px);
+    color: var(--md-text);
+    font-size: 14px;
+    line-height: 1.8;
+    text-align: left;
+}
+
+.md-body[data-md-theme] blockquote p {
+    margin: 0 0 8px;
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: .3px;
+}
+
+.md-body[data-md-theme] blockquote > :last-child {
+    margin-bottom: 0;
+}
+
+/* GitHub 提示框：沿用该站六种语义色，结构走 Dooz 的 .callout */
+.md-body[data-md-theme] .callout {
+    margin: 20px 0;
+    padding: 14px 16px;
+    border: 1px solid var(--callout-border, var(--md-border));
+    border-left: 4px solid var(--callout-accent);
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.md-body[data-md-theme] .callout-note,
+.md-body[data-md-theme] .callout-info {
+    --callout-accent: #2563eb;
+    --callout-bg: #eff6ff;
+    --callout-border: #bfdbfe;
+}
+
+.md-body[data-md-theme] .callout-tip,
+.md-body[data-md-theme] .callout-success {
+    --callout-accent: #047857;
+    --callout-bg: #ecfdf5;
+    --callout-border: #a7f3d0;
+}
+
+.md-body[data-md-theme] .callout-important {
+    --callout-accent: #6d28d9;
+    --callout-bg: #f5f3ff;
+    --callout-border: #c4b5fd;
+}
+
+.md-body[data-md-theme] .callout-warning {
+    --callout-accent: #b45309;
+    --callout-bg: #fffbeb;
+    --callout-border: #fde68a;
+}
+
+.md-body[data-md-theme] .callout-caution,
+.md-body[data-md-theme] .callout-danger {
+    --callout-accent: #b91c1c;
+    --callout-bg: #fef2f2;
+    --callout-border: #fecaca;
+}
+
+.md-body[data-md-theme] .callout-speaker {
+    --callout-accent: #c2410c;
+    --callout-bg: #fff7ed;
+    --callout-border: #fdba74;
+}
+
+.md-body[data-md-theme] .callout-head {
+    margin-bottom: 8px;
+}
+
+.md-body[data-md-theme] .callout-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    font-size: .76rem;
+}
+
+.md-body[data-md-theme] .callout-title {
+    color: var(--callout-accent);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+.md-body[data-md-theme] .callout-body {
+    color: var(--md-text);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.md-body[data-md-theme] .callout-body > p {
+    margin: 0 0 8px;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.md-body[data-md-theme] .callout-body > p:first-child {
+    margin-top: 0;
+}
+
+.md-body[data-md-theme] .callout-body > :last-child {
+    margin-bottom: 0;
+}
+
+/* ---------- 表格 ---------- */
+
+.md-body[data-md-theme] table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 13.5px;
+    line-height: 1.65;
+    text-align: left;
+    border: 1px solid var(--md-border);
+}
+
+.md-body[data-md-theme] th {
+    padding: 10px 12px;
+    background-color: var(--md-th-bg);
+    color: var(--md-th-color);
+    font-weight: 700;
+    text-align: left;
+    border: 1px solid var(--md-border);
+    word-break: break-word;
+}
+
+.md-body[data-md-theme] td {
+    padding: 9px 12px;
+    border: 1px solid var(--md-border);
+    color: var(--md-text);
+    text-align: left;
+    vertical-align: top;
+    word-break: break-word;
+}
+
+.md-body[data-md-theme] tbody tr:nth-child(even) {
+    background-color: var(--md-soft);
+}
+
+/* ---------- 图片 ---------- */
+
+.md-body[data-md-theme] img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--md-border);
+    display: block;
+    margin: 0 auto;
+}
+
+.md-body[data-md-theme] figure {
+    margin: 22px 0;
+    text-align: center;
+}
+
+.md-body[data-md-theme] figcaption {
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #71717a;
+    text-align: center;
+}
+
+/* ---------- 代码块：统一用「微信代码主题」 ---------- */
+
+.md-body[data-md-theme] .code-block {
+    margin: 18px 0;
+    background-color: #f7f7f7;
+    border: 1px solid #dddddd;
+    border-radius: 9px;
+    box-shadow: none;
+}
+
+.md-body[data-md-theme] .code-head {
+    background-image: none;
+    background-color: #ededed;
+    border-bottom: 1px solid #dddddd;
+}
+
+.md-body[data-md-theme] .code-lang {
+    color: #333333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 11px;
+}
+
+/* 头部左侧还原 Mac 红黄绿三个窗口点 */
+.md-body[data-md-theme] .code-dot {
+    width: 42px;
+    height: 10px;
+    background-color: transparent;
+    background-image:
+        radial-gradient(circle at 5px 5px, #ff5f57 0 4.6px, transparent 4.6px),
+        radial-gradient(circle at 21px 5px, #febc2e 0 4.6px, transparent 4.6px),
+        radial-gradient(circle at 37px 5px, #28c840 0 4.6px, transparent 4.6px);
+    background-repeat: no-repeat;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.md-body[data-md-theme] .code-copy,
+.md-body[data-md-theme] .code-expand {
+    color: #57606a;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+}
+
+.md-body[data-md-theme] .code-copy:hover,
+.md-body[data-md-theme] .code-expand:hover {
+    color: #07c160;
+    background-color: #ffffff;
+    border-color: #07c160;
+}
+
+.md-body[data-md-theme] .code-copy.is-copied {
+    color: #07c160;
+    border-color: #07c160;
+}
+
+.md-body[data-md-theme] .code-copy:focus-visible,
+.md-body[data-md-theme] .code-expand:focus-visible {
+    outline: 2px solid #07c160;
+}
+
+.md-body[data-md-theme] .code-body .highlight,
+.md-body[data-md-theme] .code-body .chroma,
+.md-body[data-md-theme] .code-body pre {
+    background: transparent;
+}
+
+.md-body[data-md-theme] .code-body pre {
+    margin: 0;
+    padding: 14px 16px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #333333;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* 代码块内的 <code> 去掉行内代码的底色与边框 */
+.md-body[data-md-theme] .code-body code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #333333;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+}
+
+/* Chroma 词法着色 → 微信代码主题的五种颜色 */
+.md-body[data-md-theme] .chroma :is(.c, .c1, .cm, .cs, .ch, .cp, .cpf) {
+    color: #8e908c;
+}
+
+.md-body[data-md-theme] .chroma :is(.s, .sa, .sb, .sc, .dl, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss) {
+    color: #183691;
+}
+
+.md-body[data-md-theme] .chroma :is(.k, .kc, .kd, .kn, .kp, .kr, .kt) {
+    color: #07c160;
+}
+
+.md-body[data-md-theme] .chroma :is(.m, .mb, .mf, .mh, .mi, .il, .mo) {
+    color: #0086b3;
+}
+
+.md-body[data-md-theme] .chroma :is(.nf, .fm) {
+    color: #795da3;
+}
+
+/* ---------- 脚注 ---------- */
+
+.md-body[data-md-theme] .footnotes {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--md-border);
+    text-align: left;
+}
+
+.md-body[data-md-theme] .footnotes li,
+.md-body[data-md-theme] .footnotes p {
+    margin: 4px 0;
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: #71717a;
+}
+
+/* ============================================================
+ * 主题差异：pill（胶囊标题）、filled（色块标题）
+ * ============================================================ */
+
+/* pill：Meetup 活力橙 / Meetup 极光紫 / 节日喜庆红 */
+.md-body[data-md-theme="meetup-vibrant"] h1,
+.md-body[data-md-theme="meetup-aurora"] h1,
+.md-body[data-md-theme="daily-festive-red"] h1 {
+    margin: 20px 0 22px;
+    padding: 14px 18px;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    background-color: var(--md-accent);
+    border-bottom: 0;
+    border-radius: 10px;
+    letter-spacing: .5px;
+}
+
+.md-body[data-md-theme="daily-festive-red"] h1 {
+    border-bottom: 3px solid #f59e0b;
+}
+
+.md-body[data-md-theme="meetup-vibrant"] h2,
+.md-body[data-md-theme="meetup-aurora"] h2,
+.md-body[data-md-theme="daily-festive-red"] h2 {
+    width: fit-content;
+    max-width: 100%;
+    margin: 30px auto 16px;
+    padding: 6px 22px;
+    font-size: 16.5px;
+    color: #ffffff;
+    text-align: center;
+    background-color: var(--md-accent);
+    border: 0;
+    border-radius: 999px;
+    letter-spacing: 1px;
+}
+
+.md-body[data-md-theme="daily-festive-red"] h2 {
+    border: 1px solid #fbbf24;
+}
+
+/* filled：极客蓝 / 开源绿 */
+.md-body[data-md-theme="dev-tech-blue"] h2,
+.md-body[data-md-theme="dev-wechat-green"] h2 {
+    padding: 8px 12px;
+    text-align: left;
+    background-color: var(--md-soft);
+    border-bottom: 0;
+    border-left: 4px solid var(--md-accent);
+    border-radius: 0 6px 6px 0;
+}
+
+/* editorial：少数派 / 晚点 / 松烟墨，表格用粗顶线 + 细底线 */
+.md-body[data-md-theme="editorial-sspai"] table,
+.md-body[data-md-theme="editorial-latepost"] table,
+.md-body[data-md-theme="essay-songyan"] table {
+    border: 0;
+    border-top: 2px solid var(--md-heading);
+    border-bottom: 1px solid var(--md-border);
+}
+
+/* ============================================================
+ * 主题变量表（数值取自 markdown.com.cn/wechat 的 definitions）
+ * ============================================================ */
+
+/* 数字生活·少数派风 */
+.md-body[data-md-theme="editorial-sspai"] {
+    --md-accent: #d93829;
+    --md-strong: #b91c1c;
+    --md-text: #27272a;
+    --md-heading: #18181b;
+    --md-soft: #f7f7f7;
+    --md-border: #e5e5e5;
+    --md-line: solid;
+    --md-p-lh: 1.85;
+    --md-p-align: justify;
+    --md-bq-radius: 8px;
+    --md-h1-bw: 2px;
+    --md-h1-align: left;
+    --md-num-radius: 999px;
+    --md-th-bg: var(--md-soft);
+    --md-th-color: var(--md-heading);
+}
+
+/* 商业深度·晚点风 */
+.md-body[data-md-theme="editorial-latepost"] {
+    --md-accent: #b45309;
+    --md-strong: #92400e;
+    --md-text: #262626;
+    --md-heading: #171717;
+    --md-soft: #fffbeb;
+    --md-border: #d4d4d4;
+    --md-line: solid;
+    --md-p-lh: 1.9;
+    --md-p-align: justify;
+    --md-bq-radius: 8px;
+    --md-h1-bw: 2px;
+    --md-h1-align: left;
+    --md-num-radius: 999px;
+    --md-th-bg: var(--md-soft);
+    --md-th-color: var(--md-heading);
+}
+
+/* 人文随笔·松烟墨 */
+.md-body[data-md-theme="essay-songyan"] {
+    --md-accent: #2f5d50;
+    --md-strong: #1b4332;
+    --md-text: #262626;
+    --md-heading: #1b4332;
+    --md-soft: #f4f8f5;
+    --md-border: #b7e4c7;
+    --md-line: dashed;
+    --md-p-lh: 1.85;
+    --md-p-align: justify;
+    --md-bq-radius: 8px;
+    --md-h1-bw: 2px;
+    --md-h1-align: center;
+    --md-num-radius: 999px;
+    --md-th-bg: var(--md-soft);
+    --md-th-color: var(--md-heading);
+}
+
+/* 极简科技·Linear 风 */
+.md-body[data-md-theme="dev-linear"] {
+    --md-accent: #4f46e5;
+    --md-strong: #3730a3;
+    --md-text: #27272a;
+    --md-heading: #09090b;
+    --md-soft: #f5f5f7;
+    --md-border: #e5e5e5;
+    --md-line: solid;
+    --md-p-lh: 1.85;
+    --md-p-align: justify;
+    --md-bq-radius: 8px;
+    --md-h1-bw: 1px;
+    --md-h1-align: left;
+    --md-num-radius: 4px;
+    --md-th-bg: var(--md-soft);
+    --md-th-color: var(--md-heading);
+}
+
+/* 开发者·极客蓝 */
+.md-body[data-md-theme="dev-tech-blue"] {
+    --md-accent: #2563eb;
+    --md-strong: #1d4ed8;
+    --md-text: #334155;
+    --md-heading: #0f172a;
+    --md-soft: #f0f7ff;
+    --md-border: #dbeafe;
+    --md-line: solid;
+    --md-p-lh: 1.85;
+    --md-p-align: justify;
+    --md-bq-radius: 8px;
+    --md-h1-bw: 1px;
+    --md-h1-align: left;
+    --md-num-radius: 4px;
+    --md-th-bg: var(--md-soft);
+    --md-th-color: var(--md-heading);
+}
+
+/* 开发者·开源绿 */
+.md-body[data-md-theme="dev-wechat-green"] {
+    --md-accent: #07c160;
+    --md-strong: #047857;
+    --md-text: #374151;
+    --md-heading: #065f46;
+    --md-soft: #ecfdf5;
+    --md-border: #bbf7d0;
+    --md-line: solid;
+    --md-p-lh: 1.85;
+    --md-p-align: justify;
+    --md-bq-radius: 8px;
+    --md-h1-bw: 1px;
+    --md-h1-align: left;
+    --md-num-radius: 4px;
+    --md-th-bg: var(--md-soft);
+    --md-th-color: var(--md-heading);
+}
+
+/* Meetup·活力橙 */
+.md-body[data-md-theme="meetup-vibrant"] {
+    --md-accent: #ea580c;
+    --md-strong: #9a3412;
+    --md-text: #292524;
+    --md-heading: #9a3412;
+    --md-soft: #fff7ed;
+    --md-border: #fdba74;
+    --md-line: solid;
+    --md-p-lh: 1.85;
+    --md-p-align: justify;
+    --md-bq-radius: 8px;
+    --md-h1-bw: 1px;
+    --md-h1-align: left;
+    --md-num-radius: 4px;
+    --md-th-bg: var(--md-accent);
+    --md-th-color: #ffffff;
+    --md-strong-bg: #ffedd5;
+    --md-strong-pad: 1px 4px;
+    --md-strong-radius: 3px;
+    --md-num-bg: transparent;
+    --md-num-color: #ffffff;
+    --md-num-pad: 0;
+    --md-num-gap: 0;
+    --md-num-size: inherit;
+    --md-num-weight: 800;
+    --md-num-sep: " · ";
+}
+
+/* Meetup·极光紫 */
+.md-body[data-md-theme="meetup-aurora"] {
+    --md-accent: #6d28d9;
+    --md-strong: #5b21b6;
+    --md-text: #1e1b4b;
+    --md-heading: #4c1d95;
+    --md-soft: #f5f3ff;
+    --md-border: #c4b5fd;
+    --md-line: solid;
+    --md-p-lh: 1.85;
+    --md-p-align: justify;
+    --md-bq-radius: 8px;
+    --md-h1-bw: 1px;
+    --md-h1-align: left;
+    --md-num-radius: 4px;
+    --md-th-bg: var(--md-accent);
+    --md-th-color: #ffffff;
+    --md-strong-bg: #ede9fe;
+    --md-strong-pad: 1px 4px;
+    --md-strong-radius: 3px;
+    --md-num-bg: transparent;
+    --md-num-color: #ffffff;
+    --md-num-pad: 0;
+    --md-num-gap: 0;
+    --md-num-size: inherit;
+    --md-num-weight: 800;
+    --md-num-sep: " · ";
+}
+
+/* 节日·喜庆红 */
+.md-body[data-md-theme="daily-festive-red"] {
+    --md-accent: #dc2626;
+    --md-strong: #991b1b;
+    --md-text: #292524;
+    --md-heading: #991b1b;
+    --md-soft: #fef2f2;
+    --md-border: #fca5a5;
+    --md-line: solid;
+    --md-p-lh: 1.85;
+    --md-p-align: justify;
+    --md-bq-radius: 8px;
+    --md-h1-bw: 1px;
+    --md-h1-align: left;
+    --md-num-radius: 4px;
+    --md-th-bg: var(--md-accent);
+    --md-th-color: #ffffff;
+    --md-strong-bg: #fee2e2;
+    --md-strong-pad: 1px 4px;
+    --md-strong-radius: 3px;
+    --md-num-bg: transparent;
+    --md-num-color: #fef08a;
+    --md-num-pad: 0;
+    --md-num-gap: 0;
+    --md-num-size: inherit;
+    --md-num-weight: 800;
+    --md-num-sep: " · ";
+}
+
+/* 极简·GitHub 原生 */
+.md-body[data-md-theme="plain-github"] {
+    --md-accent: #0969da;
+    --md-strong: #1f2328;
+    --md-text: #1f2328;
+    --md-heading: #1f2328;
+    --md-soft: #f6f8fa;
+    --md-border: #d0d7de;
+    --md-line: solid;
+    --md-p-lh: 1.85;
+    --md-p-align: left;
+    --md-bq-radius: 0;
+    --md-h1-bw: 1px;
+    --md-h1-align: left;
+    --md-num-radius: 0;
+    --md-th-bg: var(--md-soft);
+    --md-th-color: var(--md-heading);
+    --md-num-bg: transparent;
+    --md-num-color: #57606a;
+    --md-num-pad: 0;
+    --md-num-gap: 0;
+    --md-num-size: inherit;
+    --md-num-weight: 600;
+    --md-num-sep: ". ";
+}

@@ -124,6 +124,22 @@ Then use:
 
 Available icons: `book`, `tools`, `file`, `code`, `play`, `link`.
 
+### Article typography themes
+
+Ten article styles ported from [markdown.com.cn/wechat](https://markdown.com.cn/wechat/), switchable per post:
+
+```toml
++++
+title = "My post"
+mdTheme = "editorial-sspai"     # omit to keep the default Dooz layout
+mdThemeNumbering = false        # turn off H2 auto numbering (on by default)
++++
+```
+
+`editorial-sspai`, `editorial-latepost`, `essay-songyan`, `dev-linear`, `dev-tech-blue`, `dev-wechat-green`, `meetup-vibrant`, `meetup-aurora`, `daily-festive-red`, `plain-github`.
+
+Code blocks always use that site's WeChat code theme (light background, green keywords). Set `markdownTheme` in `params.toml` to make one style the site-wide default. See [docs/markdown-themes.md](docs/markdown-themes.md).
+
 ## Docs
 
 - [Hugo static blog guide](docs/Hugo静态博客指南.md)
