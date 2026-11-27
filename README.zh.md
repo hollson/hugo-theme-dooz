@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://raw.githubusercontent.com/hollson/hugo-theme-dooz/main/static/assets/logo2.png" width="380" alt="Dooz Logo"><br/>
+<img src="https://github.com/hollson/hugo-theme-dooz/blob/master/static/assets/logo2.png?raw=true" width="380" alt="Dooz Logo"><br/>
 <img src="https://img.shields.io/badge/Hugo-0.158%2B-ff4088?style=flat-square&logo=hugo&logoColor=white" alt="Hugo">
 <img src="https://img.shields.io/badge/Hugo%20Theme-Dooz-07c160?style=flat-square" alt="Hugo Theme">
 <img src="https://img.shields.io/badge/Markdown-supported-000000?style=flat-square&logo=markdown&logoColor=white" alt="Markdown">
@@ -13,16 +13,17 @@
 </div>
 
 
+
 Dooz 是一款专注阅读与写作的 Hugo 博客主题：文章用 Markdown 写，十套排版样式可按篇切换，搜索、目录与评论开箱即用。
 
 <br/>
 
 <div align="left">
-<img src="https://github.com/hollson/hugo-theme-dooz/blob/master/images/screenshot.png" width="80%" alt="首页预览">
-<img src="https://github.com/hollson/hugo-theme-dooz/blob/master/images/preview-article.png" width="80%" alt="文章页预览">
+<img src="https://github.com/hollson/hugo-theme-dooz/blob/master/images/screenshot.png?raw=true" width="100%" alt="首页预览">
 <br/>
-<sub>左：首页列表　右：文章页（十套正文样式任选）</sub>
+<img src="https://github.com/hollson/hugo-theme-dooz/blob/master/images/preview-article.png?raw=true" width="100%" alt="文章页预览">
 </div>
+
 
 
 <br/>

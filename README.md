@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://github.com/hollson/hugo-theme-dooz/blob/master/static/assets/logo2.png" width="380" alt="Dooz Logo"><br/>
+<img src="https://github.com/hollson/hugo-theme-dooz/blob/master/static/assets/logo2.png?raw=true" width="380" alt="Dooz Logo"><br/>
 <img src="https://img.shields.io/badge/Hugo-0.158%2B-ff4088?style=flat-square&logo=hugo&logoColor=white" alt="Hugo">
 <img src="https://img.shields.io/badge/Hugo%20Theme-Dooz-07c160?style=flat-square" alt="Hugo Theme">
 <img src="https://img.shields.io/badge/Markdown-supported-000000?style=flat-square&logo=markdown&logoColor=white" alt="Markdown">
@@ -18,8 +18,9 @@ Dooz is a Hugo blog theme focused on reading and writing: write in Markdown, pic
 
 <div align="center">
 <!-- Preview images live in images/ -->
-<img src="https://github.com/hollson/hugo-theme-dooz/blob/master/images/screenshot.png" width="48%" alt="Home page preview">
-<img src="https://github.com/hollson/hugo-theme-dooz/blob/master/images/preview-article.png" width="48%" alt="Article page preview">
+<img src="https://github.com/hollson/hugo-theme-dooz/blob/master/images/screenshot.png?raw=true" width="100%" alt="Home page preview">
+<br/>
+<img src="https://github.com/hollson/hugo-theme-dooz/blob/master/images/preview-article.png?raw=true" width="100%" alt="Article page preview">
 <br/>
 <sub>Left: home list　Right: article page (any of ten typography styles)</sub>
 </div>
