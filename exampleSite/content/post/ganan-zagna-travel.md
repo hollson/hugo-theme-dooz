@@ -15,7 +15,7 @@ sidebar_position: "right"
 author: "Hollson"
 hero_image: "/post/zhagana.jpg"
 cover_image: "/post/zhagana.jpg"
-cover_position: "right"
+# cover_position: "right"
 categories:
 - 旅行随笔
 tags:

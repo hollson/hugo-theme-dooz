@@ -9,18 +9,21 @@
         <hr>
         {{ range $paginator.Pages }}
         {{ $cover := .Params.cover_image }}
-        {{ $coverPosition := .Params.cover_position | default "center" | lower }}
+        {{ $coverPosition := .Params.cover_position | default "left" | lower }}
         {{ if not (in (slice "left" "right") $coverPosition) }}
-        {{ $coverPosition = "center" }}
+        {{ $coverPosition = "left" }}
         {{ end }}
+        {{ $coverOnRight := eq $coverPosition "right" }}
         {{ $permalink := .RelPermalink }}
-        <article class="media post-list-item{{ if $cover }} has-cover{{ end }}">
+        <article class="media post-list-item{{ if $cover }} has-cover{{ end }}{{ if $coverOnRight }} cover-right{{ end }}">
             {{ with $cover }}
+            {{ if not $coverOnRight }}
             <div class="media-left post-list-cover">
                 <a href="{{ $permalink }}" aria-hidden="true" tabindex="-1">
-                    <img src="{{ . | relURL }}" alt="" loading="lazy" decoding="async" style="object-position: {{ $coverPosition | safeCSS }};">
+                    <img src="{{ . | relURL }}" alt="" loading="lazy" decoding="async">
                 </a>
             </div>
+            {{ end }}
             {{ end }}
             <div class="media-content">
                 <div class="content">
@@ -34,6 +37,15 @@
                     {{ partial "post-list-meta" (dict "page" . "hideSeries" true) }}
                 </div>
             </div>
+            {{ with $cover }}
+            {{ if $coverOnRight }}
+            <div class="media-right post-list-cover">
+                <a href="{{ $permalink }}" aria-hidden="true" tabindex="-1">
+                    <img src="{{ . | relURL }}" alt="" loading="lazy" decoding="async">
+                </a>
+            </div>
+            {{ end }}
+            {{ end }}
         </article>
         <hr>
         {{ end }}

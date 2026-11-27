@@ -2445,6 +2445,7 @@ article.post-list-item:hover {
     flex: 0 0 200px;
     width: 200px;
     margin-right: 0;
+    margin-left: 0;
     align-self: stretch;
     display: flex;
 }

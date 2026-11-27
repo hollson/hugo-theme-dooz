@@ -17,7 +17,7 @@ categories: []                       # 分类，如 ["技术"]
 # ===== 三、封面图片（按需）=====
 # hero_image: "/post/cover.jpg"       # 文章头图（og:image）；不填用站点默认图
 # cover_image: "/post/cover.jpg"      # 列表缩略图，显示在首页文章列表
-# cover_position: "left"              # 首页封面裁切位置：left | right；不填默认 center
+# cover_position: "left"              # 首页列表封面位置：left（默认）| right
 
 # ===== 四、布局（按需）=====
 # sidebar_position: "right"            # 侧栏位置：left（默认）| right
