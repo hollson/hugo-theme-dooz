@@ -1,9 +1,6 @@
-<!--Default: Weight > Date > LinkTitle > FilePath, eg: .Pages.ByPublishDate.Reverse-->
-<!-- 置顶文章优先，其余保持 Weight > Date 的原有排序 -->
+<!-- 排序：pinned 优先 > weight（默认 100）> 日期倒序，见 partials/sorted-pages.html -->
 {{ $posts := where .Site.RegularPages "Section" "post" }}
-{{ $pinned := where $posts "Params.pinned" true }}
-{{ $normal := $posts | complement $pinned }}
-{{ $paginator := .Paginate ($pinned.ByWeight | append $normal.ByWeight) }}
+{{ $paginator := .Paginate (partial "sorted-pages.html" $posts) }}
 
 <div class="tile is-child box home-post-list">
     <div class="content">

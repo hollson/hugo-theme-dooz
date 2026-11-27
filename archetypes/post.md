@@ -23,15 +23,15 @@ categories: []                       # 分类，如 ["技术"]
 # sidebar_position: "right"            # 侧栏位置：left（默认）| right
 
 # ===== 五、兼容与扩展（按需）=====
-# aliases: ["/posts/old-url/"]       # 旧 URL 的访问入口，改过链接时保留
-# subtitle: "副标题"                  # 标题下方的副标题
-# pinned: true                       # 置顶：首页排序靠前并显示「置顶」标记
-# featured: true                     # 精选：只进侧栏精选并显示「精选」标记，与置顶互不影响
+# aliases: ["/posts/old-url/"]        # 旧 URL 的访问入口，改过链接时保留
+# subtitle: "副标题"                   # 标题下方的副标题
+# pinned: true                        # 置顶：首页排序靠前并显示「置顶」标记
+# featured: true                      # 精选：只进侧栏精选并显示「精选」标记，与置顶互不影响
 # enable_toc: true                    # 生成目录（主题默认开启）
 # hide_toc: false                     # 正文里隐藏目录
 # enable_toc_content: false           # 目录内容是否展开
-# libraries: ["mermaid", "katex"]    # 按需加载流程图 / 数学公式
-# weight: 0                          # 排序权重，越小越靠前，可为负；排序优先级：pinned > weight > date
+# libraries: ["mermaid", "katex"]     # 按需加载流程图 / 数学公式
+# weight: 100    # 排序权重，越小越靠前，可为负；默认100；排序优先级：pinned > weight > date
 # lastmod: {{ now.Format "2006-01-02T15:04:05Z07:00" }}  # 最后修改时间
 ---
 

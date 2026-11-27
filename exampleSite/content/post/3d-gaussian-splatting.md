@@ -11,6 +11,8 @@ enable_toc_content: false
 featured: true
 sidebar_position: "right"
 author: "Hollson"
+cover_image: "/post/3dgs.jpg"
+cover_position: "right" 
 libraries:
 - mermaid
 categories:

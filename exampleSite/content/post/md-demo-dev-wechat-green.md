@@ -10,12 +10,12 @@ enable_toc: true
 enable_toc_content: false
 author: "Hollson"
 categories:
-- 微信主题
+- 主题示例
 tags:
 - Markdown
 - 排版
 mdTheme: "dev-wechat-green"
-series: "微信主题"
+series: "主题示例"
 archives:
 - 2026
 ---

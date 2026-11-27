@@ -10,12 +10,12 @@ enable_toc: true
 enable_toc_content: false
 author: "Hollson"
 categories:
-- 微信主题
+- 主题示例
 tags:
 - 并发
 - 性能优化
 mdTheme: "dev-linear"
-series: "微信主题"
+series: "主题示例"
 archives:
 - 2026
 ---

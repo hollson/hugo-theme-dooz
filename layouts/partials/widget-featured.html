@@ -3,7 +3,7 @@
 {{- with $featured -}}
 <div class="box widget-featured">
     <h2 class="title is-6">{{ i18n "featured" }}</h2>
-    {{ range first 5 .ByWeight }}
+    {{ range first 5 (partial "sorted-pages.html" $featured) }}
     <article class="media">
         <div class="media-content">
             <div class="content">

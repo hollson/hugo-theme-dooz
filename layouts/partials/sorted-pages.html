@@ -1,0 +1,24 @@
+{{- /*
+  文章排序：pinned 优先 > weight（默认 100）> 日期倒序
+  未写 weight 的文章按 100 参与排序，不依赖站点 cascade 配置。
+  用法：{{ $sorted := partial "sorted-pages.html" $pages }}
+*/ -}}
+{{- $items := slice -}}
+{{- range . -}}
+    {{- $w := 100 -}}
+    {{- if isset .Params "weight" -}}
+        {{- $w = int (index .Params "weight") -}}
+    {{- end -}}
+    {{- $pin := 1 -}}
+    {{- if .Params.pinned -}}
+        {{- $pin = 0 -}}
+    {{- end -}}
+    {{- /* 权重偏移到非负区间，保证负权重也能按字符串正确排序；日期取「未来常量 - unix」实现倒序且恒为正 */ -}}
+    {{- $key := printf "%d|%09d|%010d" $pin (add $w 1000000) (sub 4102416000 .Date.Unix) -}}
+    {{- $items = $items | append (dict "key" $key "page" .) -}}
+{{- end -}}
+{{- $sorted := slice -}}
+{{- range sort $items "key" -}}
+    {{- $sorted = $sorted | append .page -}}
+{{- end -}}
+{{- return $sorted -}}

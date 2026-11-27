@@ -118,8 +118,11 @@ tags = ["Hugo", "写作"]
 archives = "2026"
 author = "Hollson"
 pinned = false
+weight = 100
 +++
 ```
+
+排序规则：`pinned` > `weight` > 日期倒序。`weight` 不写按 **100** 处理（已在模板内实现，不需要站点 cascade 配置），写 `90` 提前、写 `110` 靠后。
 
 ### H2 标题图标
 

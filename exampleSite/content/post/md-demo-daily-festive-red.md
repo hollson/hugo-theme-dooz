@@ -1,5 +1,5 @@
 ---
-title: "节庆红：一篇用来检验排版的样张"
+title: "🎨 节庆红：一篇用来检验排版的样张"
 slug: "md-demo-festive-red"
 date: 2026-11-16T09:00:00+08:00
 description: "Markdown 全要素排版样张（daily-festive-red）：热闹场合里的可读性。覆盖标题层级、行内元素、五类提示框、列表与表格、代码块、图片与脚注，用于对比这一套主题的实际阅读效果。"
@@ -10,12 +10,13 @@ enable_toc: true
 enable_toc_content: false
 author: "Hollson"
 categories:
-- 微信主题
+- 主题示例
 tags:
 - Markdown
 - 排版
 mdTheme: "daily-festive-red"
-series: "微信主题"
+series: "主题示例"
+weight: -1
 archives:
 - 2026
 ---

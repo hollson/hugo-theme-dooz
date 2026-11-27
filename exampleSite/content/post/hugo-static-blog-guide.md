@@ -9,8 +9,9 @@ hide_toc: false
 enable_toc: true
 enable_toc_content: false
 author: "Hollson"
-# hero_image: "https://gohugo.io/images/hugo-logo-wide.svg"
-# cover: "https://gohugo.io/images/hugo-logo-wide.svg"
+featured: true
+weight: 90
+hero_image: "/post/mnst.jpg"
 categories:
 - 写作指南
 tags:

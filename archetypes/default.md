@@ -20,7 +20,7 @@ categories: []                       # 分类，如 ["技术"]
 # pinned: true                       # 置顶显示
 # enable_toc: true                    # 生成目录
 # libraries: ["mermaid", "katex"]    # 流程图 / 数学公式
-# weight: 10                         # 排序权重，越小越靠前
+# weight: 100                        # 排序权重，越小越靠前；不写默认 100
 # lastmod: {{ now.Format "2006-01-02T15:04:05Z07:00" }}
 ---
 
