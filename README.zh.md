@@ -17,12 +17,13 @@ Dooz 是一款专注阅读与写作的 Hugo 博客主题：文章用 Markdown �
 
 <br/>
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/hollson/hugo-theme-dooz/main/images/screenshot.png" width="48%" alt="首页预览">
-<img src="https://raw.githubusercontent.com/hollson/hugo-theme-dooz/main/images/preview-article.png" width="48%" alt="文章页预览">
+<div align="left">
+<img src="https://github.com/hollson/hugo-theme-dooz/blob/master/images/screenshot.png" width="80%" alt="首页预览">
+<img src="https://github.com/hollson/hugo-theme-dooz/blob/master/images/preview-article.png" width="80%" alt="文章页预览">
 <br/>
 <sub>左：首页列表　右：文章页（十套正文样式任选）</sub>
 </div>
+
 
 <br/>
 
