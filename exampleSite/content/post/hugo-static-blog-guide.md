@@ -10,7 +10,7 @@ enable_toc: true
 enable_toc_content: false
 author: "Hollson"
 featured: true
-weight: 90
+weight: 10
 hero_image: "/post/mnst.jpg"
 categories:
 - 写作指南

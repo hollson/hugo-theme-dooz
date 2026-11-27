@@ -11,7 +11,7 @@ enable_toc_content: false
 author: "Hollson"
 hero_image: "/assets/blog4.jpg"
 categories:
-- 工具软件
+- 写作指南
 tags:
 - wechat
 - markdown

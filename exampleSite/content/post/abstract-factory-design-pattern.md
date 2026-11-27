@@ -12,7 +12,7 @@ author: "Hollson"
 libraries:
 - mermaid
 categories:
-- 设计模式
+- 软件工程
 tags:
 - design-pattern
 pinned: false

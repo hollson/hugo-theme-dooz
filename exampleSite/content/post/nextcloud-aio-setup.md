@@ -10,7 +10,7 @@ enable_toc: true
 enable_toc_content: false
 hero_image: "/assets/blog2.jpg"
 categories:
-- 工具软件
+- 软件工程
 archives:
 - 2024
 ---
