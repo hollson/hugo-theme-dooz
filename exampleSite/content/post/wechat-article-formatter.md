@@ -13,7 +13,6 @@ hero_image: "/assets/blog4.jpg"
 categories:
 - 写作指南
 tags:
-- wechat
 - markdown
 pinned: false
 series: "markdown"

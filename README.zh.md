@@ -1,222 +1,152 @@
-> [English Doc](./README.md)
+<div align="center">
+<img src="https://raw.githubusercontent.com/hollson/hugo-theme-dooz/main/static/assets/logo2.png" width="380" alt="Dooz Logo"><br/>
+<img src="https://img.shields.io/badge/Hugo-0.158%2B-ff4088?style=flat-square&logo=hugo&logoColor=white" alt="Hugo">
+<img src="https://img.shields.io/badge/Hugo%20Theme-Dooz-07c160?style=flat-square" alt="Hugo Theme">
+<img src="https://img.shields.io/badge/Markdown-supported-000000?style=flat-square&logo=markdown&logoColor=white" alt="Markdown">
+<img src="https://img.shields.io/badge/Typography-10%20themes-6f42c1?style=flat-square" alt="Typography">
+<img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
+<br/>
+<b>一款注重阅读体验、可自由定制的 Hugo 博客主题</b>
+<br/>
+<a href="README.md">English</a> | <a href="README.zh.md">中文</a>
+<br/><br/>
+</div>
 
-# Dooz
 
-一个适合程序员和长期写作者的 Hugo 主题：克制的排版、内置搜索、文章目录、代码块工具条，以及可配置的 Logo 和社交链接。
+Dooz 是一款专注阅读与写作的 Hugo 博客主题：文章用 Markdown 写，十套排版样式可按篇切换，搜索、目录与评论开箱即用。
 
-## 特性
+<br/>
 
-- 首页 Hero、文章列表、分类、标签、归档
-- 全站搜索：标题优先评分，输入至少 2 个字符，结果列表可滚动
-- CSDN 风格代码块：语言标识、复制、展开/收起，超过 20 行自动折叠
-- 详情页左侧目录固定，正文自然滚动
-- Logo 文本、字体、字重全部可配置
-- GitHub / CSDN / 博客园 / 邮箱等社交入口按需显示
-- 微信二维码为可选能力，示例站默认不包含
-- 响应式布局，移动端折叠导航
-- 支持中英文与自定义 i18n
+<div align="center">
+<img src="https://raw.githubusercontent.com/hollson/hugo-theme-dooz/main/images/screenshot.png" width="48%" alt="首页预览">
+<img src="https://raw.githubusercontent.com/hollson/hugo-theme-dooz/main/images/preview-article.png" width="48%" alt="文章页预览">
+<br/>
+<sub>左：首页列表　右：文章页（十套正文样式任选）</sub>
+</div>
 
-## 安装
+<br/>
 
-需要 Hugo **0.158.0** 或更高版本。
+## 快速上手
 
-```bash
-hugo new site myblog
-cd myblog
-git clone https://github.com/yourname/hugo-theme-dooz.git themes/hugo-theme-dooz
-```
+只需 Hugo 0.158 或更高版本。
 
-或者作为子模块：
+**1. 安装 Hugo**：按[官方文档](https://gohugo.io/installation/)选择对应系统的安装方式。安装完成后执行 `hugo version`，能输出版本号即表示安装成功。
 
-```bash
-git submodule add https://github.com/yourname/hugo-theme-dooz.git themes/hugo-theme-dooz
-```
-
-在 `hugo.toml` 中启用：
-
-```toml
-theme = "hugo-theme-dooz"
-```
-
-## 快速体验示例站
+**2. 创建站点并引入主题**
 
 ```bash
-cp -rp themes/hugo-theme-dooz/exampleSite/* ./
+hugo new site my-blog
+cd my-blog
+git init
+
+# 引入 Dooz 主题
+git submodule add https://github.com/hollson/hugo-theme-dooz themes/hugo-theme-dooz
+
+# 使用已配置好的示例配置
+cp themes/hugo-theme-dooz/exampleSite/config.toml .
+```
+
+**3. 本地预览**
+
+```bash
 hugo server -D
 ```
 
-打开 <http://localhost:1313>。示例站里的作者、邮箱、社交链接、头像都是占位数据，可直接替换。
+访问 `http://localhost:1313`，即可看到一个包含文章、分类、标签、搜索与侧栏的完整博客。
 
-主题运行所需的 CSS、JavaScript、字体及 KaTeX、Mermaid 资源均随主题本地提供，页面渲染不依赖 CDN。示例文章中的外部链接仅在点击时访问。
-
-## 配置
-
-最小配置如下，完整示例见 [`exampleSite/config.toml`](exampleSite/config.toml)：
-
-```toml
-baseURL = "https://example.com/"
-title = "Dooz Demo"
-theme = "hugo-theme-dooz"
-locale = "zh-CN"
-defaultContentLanguage = "zh"
-hasCJKLanguage = true
-
-[pagination]
-  pagerSize = 10
-
-[outputs]
-  home = ["HTML", "RSS", "JSON"]  # JSON 供站内搜索使用
-
-[params]
-  author = "Hollson"
-  email = "hello@example.com"
-  city = "示例城市"
-  avatar = "img/res/avatar.svg"
-  aphorism = "写代码，也写生活。"
-
-  logoText = "Dooz"
-  logoFontFamily = '"Fraunces", "Bodoni 72", Didot, Georgia, serif'
-  logoFontWeight = 700
-
-  github = "https://github.com/example"
-  csdn = "https://blog.csdn.net/example"
-  cnblog = "https://www.cnblogs.com/example/"
-  # wechat = "img/wechat.png"    # 可选，不填则不显示二维码入口
-
-  repo = "https://github.com/yourname/hugo-theme-dooz"
-
-  hero = "img/res/hero.jpg"
-  slogan = "简单、克制，适合长期写作。"
-```
-
-### Logo
-
-- `logoText`：显示在导航和页脚的 Logo 文本
-- `logoFontFamily`：CSS 字体栈
-- `logoFontWeight`：字重
-
-### 社交链接
-
-只渲染已配置的入口。设为空字符串或删除对应键即可隐藏；`wechat` 只在配置了二维码图片时显示入口和弹窗。
-
-## 写文章
+如需先查看效果，可直接运行示例站。示例站包含近二十篇文章，覆盖全部十套正文样式：
 
 ```bash
-hugo new content post/my-first-post.md
+cd themes/hugo-theme-dooz/exampleSite
+hugo server --themesDir ../..
 ```
 
-Front matter 示例：
+<br/>
+
+## 写作与排版
+
+文章放在 `content/post/` 目录下。执行下面的命令会按主题模板生成一篇带注释的新文章，填写 front matter 后即可写作：
+
+```bash
+hugo new post/hello.md
+```
+
+```yaml
+---
+title: "我的第一篇文章"
+date: 2026-01-01T10:00:00+08:00
+description: "一句话概括文章内容，用于列表展示与搜索结果。"
+tags: ["随笔"]
+cover_image: "/post/cover.jpg"   # 列表缩略图，可省略
+mdTheme: "essay-songyan"         # 本篇正文样式，可省略
+pinned: false                    # 置顶
+weight: 100                      # 数值越小越靠前
+---
+```
+
+常用字段的作用：
+
+| 字段 | 作用 |
+| :--- | :--- |
+| `title` / `date` | 标题与发布时间，列表按时间倒序排列 |
+| `description` | 摘要，显示在列表与搜索结果中 |
+| `tags` / `categories` | 标签与分类，自动生成归档页 |
+| `cover_image` | 列表缩略图，不填则显示纯文字卡片 |
+| `mdTheme` | 本篇使用的正文样式，优先于全站默认 |
+| `pinned` / `weight` | 置顶与排序，`weight` 不写时按 100 处理 |
+
+正文使用标准 Markdown：标题、列表、表格、图片、引用、任务清单、代码块均可直接书写。代码块自动识别语言、支持一键复制与长代码折叠；需要流程图或公式时，在 front matter 加 `libraries: ["mermaid"]` 或 `["katex"]` 按需加载。
+
+<br/>
+
+## 样式外观
+
+**正文样式**可按文章切换，也可设置全站默认：
+
+```yaml
+mdTheme: "dev-linear"
+```
 
 ```toml
-+++
-title = "我的第一篇文章"
-date = 2026-03-22
-description = "用于列表摘要和 SEO 的一句话。"
-hero_image = "img/res/hero.jpg"
-categories = ["随笔"]
-tags = ["Hugo", "写作"]
-archives = "2026"
-author = "Hollson"
-pinned = false
-weight = 100
-+++
+# config.toml
+[params]
+  markdownTheme = "dev-linear"
 ```
 
-排序规则：`pinned` > `weight` > 日期倒序。`weight` 不写按 **100** 处理（已在模板内实现，不需要站点 cascade 配置），写 `90` 提前、写 `110` 靠后。
+十套样式按适用场景划分：
 
-### H2 标题图标
+- 产品评论、行业长文：`editorial-sspai`、`editorial-latepost`
+- 散文、随笔、书评：`essay-songyan`
+- 技术文档、接口说明、教程：`dev-linear`、`dev-tech-blue`、`dev-wechat-green`
+- 活动通知、工作坊招募：`meetup-vibrant`、`meetup-aurora`
+- 节日公告、年末总结：`daily-festive-red`
+- 说明文档、配置手册：`plain-github`
 
-主题支持给文章内的 H2 加轻量线性图标，需要开启 Goldmark 的属性解析：
+**主题色**共五套，改一个参数即可整站生效：
 
 ```toml
-[markup.goldmark.parser]
-  attribute = true
+[params]
+  themeName = "navy"   # default / amber / navy / purple / terracotta
 ```
 
-然后在标题后加属性：
+**站点信息**：标题、作者、头像、标语、页脚与社交账号均在 `config.toml` 中，每项附有中文注释。搜索、目录、评论与远程公告默认已配置，评论填入自己的仓库信息后即可启用。
 
-```markdown
-## 概述 {data-icon="book"}
-## 准备工作 {data-icon="tools"}
-## 示例代码 {data-icon="code"}
-```
+<br/>
 
-当前内置图标：`book`、`tools`、`file`、`code`、`play`、`link`。
+## 发布上线
 
-### 正文排版主题
+从本地写作到域名绑定与自动部署，完整步骤见示例站中的这篇文章：[**Hugo 静态博客搭建与发布指南 →**](exampleSite/content/post/hugo-static-blog-guide.md)
 
-内置 [markdown.com.cn/wechat](https://markdown.com.cn/wechat/) 的十套正文风格，可逐篇指定：
+GitHub Pages、Vercel 与 Netlify 均可用于托管，免费额度通常可以满足个人博客的需求。
 
-```toml
-+++
-title = "我的第一篇文章"
-mdTheme = "editorial-sspai"     # 不写则沿用站点默认排版
-mdThemeNumbering = false        # 关闭 H2 自动序号，默认开启
-+++
-```
+<br/>
 
-| 主题 id | 风格 | H2 形态 |
-| --- | --- | --- |
-| `editorial-sspai` | 数字生活·少数派风 | 下划线 |
-| `editorial-latepost` | 商业深度·晚点风 | 下划线 |
-| `essay-songyan` | 人文随笔·松烟墨 | 下划线（标题居中、虚线） |
-| `dev-linear` | 极简科技·Linear 风 | 下划线 |
-| `dev-tech-blue` | 开发者·极客蓝 | 左侧色块 |
-| `dev-wechat-green` | 开发者·开源绿 | 左侧色块 |
-| `meetup-vibrant` | Meetup·活力橙 | 居中胶囊 |
-| `meetup-aurora` | Meetup·极光紫 | 居中胶囊 |
-| `daily-festive-red` | 节日·喜庆红 | 居中胶囊 |
-| `plain-github` | 极简·GitHub 原生 | 下划线（无装饰） |
+## 问题反馈
 
-代码块统一使用该站的「微信代码主题」（浅色底 + 绿色关键字），行号在主题文章里自动隐藏。想全站默认启用某一套，把 `params.toml` 的 `markdownTheme` 设为对应 id 即可。
+使用中遇到问题或有改进建议，欢迎[提交 Issue](https://github.com/hollson/hugo-theme-dooz/issues)；如果这个主题对你有帮助，欢迎点一个 **Star**。
 
-细节与覆盖方式见 [docs/markdown-themes.md](docs/markdown-themes.md)。
-
-## 文档
-
-- [Hugo 静态博客指南](docs/Hugo静态博客指南.md)：安装、内容、主题、部署
-- [主题功能与配置](docs/theme-features.md)：搜索、代码块、目录、Logo、页脚
-
-## 贡献
-
-欢迎提交 Issue 或 Pull Request。请勿在示例站、截图或文档中提交真实个人二维码、邮箱、手机号等隐私信息。
+<br/>
 
 ## License
 
-[MIT](LICENSE)
-
-
-特点：
-- 评论
-- 自定义 logo
-- 文章 置顶、精选、分类、标签、系列灵活配置
-- 丰富的主题色
-
-
-- 代码块：复制、展开/收起、折叠、语言标识、行号、行高亮、复制按钮
-- 目录：自动生成、固定、滚动
-- 响应式布局，移动端折叠导航
-- 支持中英文与自定义 i18n
-- 可选的微信二维码入口
-- 导航栏需要显示哪些也可以定制
-
-# TODO: 4. 微信公众号主题
-# TODO: 5. 优化readme
-<!-- # TODO: 7. 优化页面滑动 -->
-# TODO: 11. 适应宽屏可移动端（页面适配工具）
-<!-- # TODO: 12. Logo可替换成图片 -->
-<!-- # TODO: 13. 首页布局和侧边栏模板可定制，如侧边栏放左还是右，侧边栏显示哪些模块 -->
-<!-- # TODO: 14. 清理主题中的所有注释，代码中的内容中文换英文，如alt和console.log的内容 -->
-<!-- # TODO: 15. 导航栏需要显示哪些也可以定制 -->
-<!-- # TODO: 16. 文章详情页的侧边栏模块也能配置 -->
-# TODO: 17. 文章的front matter可以执行markdown文章主题，如微信公众号风格等
-# TODO: 版本已经是最新时，不弹公告
-<!-- # TODO：文章页面，增加上一页下一页，如果是分类进去的，则下一页是同类的下一篇，如果s归档，则是同档的下一篇等 -->
-<!-- # TODO：站长统计 -->
-<!-- # 写一篇“如何使用dooz主题”的文章 -->
-# 一键publish命令
-# 推荐到hugo主题库
-
-
-
-
+本项目采用 [MIT](LICENSE) 协议开源。

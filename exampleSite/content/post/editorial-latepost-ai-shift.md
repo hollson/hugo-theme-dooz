@@ -11,9 +11,6 @@ enable_toc_content: false
 author: "Hollson"
 categories:
 - 主题示例
-tags:
-- 行业
-- AI
 mdTheme: "editorial-latepost"
 series: "主题示例"
 archives:

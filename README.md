@@ -1,154 +1,154 @@
-> [中文文档](./README-ZH.md)
+<div align="center">
+<img src="https://raw.githubusercontent.com/hollson/hugo-theme-dooz/main/static/assets/logo2.png" width="380" alt="Dooz Logo"><br/>
+<img src="https://img.shields.io/badge/Hugo-0.158%2B-ff4088?style=flat-square&logo=hugo&logoColor=white" alt="Hugo">
+<img src="https://img.shields.io/badge/Hugo%20Theme-Dooz-07c160?style=flat-square" alt="Hugo Theme">
+<img src="https://img.shields.io/badge/Markdown-supported-000000?style=flat-square&logo=markdown&logoColor=white" alt="Markdown">
+<img src="https://img.shields.io/badge/Typography-10%20themes-6f42c1?style=flat-square" alt="Typography">
+<img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
+<br/>
+<b>A Hugo blog theme built for reading, with typography you can pick per article</b>
+<br/>
+<a href="README.md">English</a> | <a href="README.zh.md">中文</a>
+<br/><br/>
+</div>
 
-# Dooz
+Dooz is a Hugo blog theme focused on reading and writing: write in Markdown, pick one of ten typography styles for each article, and get search, table of contents and comments out of the box.
 
-A clean, elegant Hugo theme for programmers and long-form writers. It ships with site search, an article table of contents, a CSDN-style code block toolbar, and configurable branding.
+<br/>
 
-## Features
+<div align="center">
+<!-- Preview images live in images/ -->
+<img src="https://raw.githubusercontent.com/hollson/hugo-theme-dooz/main/images/screenshot.png" width="48%" alt="Home page preview">
+<img src="https://raw.githubusercontent.com/hollson/hugo-theme-dooz/main/images/preview-article.png" width="48%" alt="Article page preview">
+<br/>
+<sub>Left: home list　Right: article page (any of ten typography styles)</sub>
+</div>
 
-- Home page, post list, categories, tags and archives
-- Built-in search with title-first scoring
-- CSDN-style code blocks: language label, copy, expand/collapse
-- Sticky article TOC on the left, natural page scroll for the body
-- Configurable logo text, font family and font weight
-- Optional GitHub / CSDN / CNBlog / email / WeChat links
-- Responsive layout with a collapsed mobile navbar
-- Chinese and English UI strings
+<br/>
 
-## Install
+## Quick start
 
-Requires Hugo **0.158.0** or newer.
+Requires Hugo 0.158 or newer.
 
-```bash
-hugo new site myblog
-cd myblog
-git clone https://github.com/yourname/hugo-theme-dooz.git themes/hugo-theme-dooz
-```
+**1. Install Hugo**: follow the [official guide](https://gohugo.io/installation/) for your platform. Run `hugo version` afterwards; a version number means it is ready.
 
-Or as a submodule:
-
-```bash
-git submodule add https://github.com/yourname/hugo-theme-dooz.git themes/hugo-theme-dooz
-```
-
-Enable it in `hugo.toml`:
-
-```toml
-theme = "hugo-theme-dooz"
-```
-
-## Try the demo
+**2. Create a site and add the theme**
 
 ```bash
-cp -rp themes/hugo-theme-dooz/exampleSite/* ./
+hugo new site my-blog
+cd my-blog
+git init
+
+# Add the Dooz theme
+git submodule add https://github.com/hollson/hugo-theme-dooz themes/hugo-theme-dooz
+
+# Use the prepared example configuration
+cp themes/hugo-theme-dooz/exampleSite/config.toml .
+```
+
+**3. Preview locally**
+
+```bash
 hugo server -D
 ```
 
-Open <http://localhost:1313>. All author details, emails, social links and avatars in `exampleSite` are placeholders.
+Open `http://localhost:1313` and you get a complete blog with posts, categories, tags, search and a sidebar.
 
-Runtime CSS, JavaScript, fonts, KaTeX, and Mermaid assets are bundled locally, so page rendering does not require a CDN. External links in sample content are only followed when clicked.
-
-## Configuration
-
-See [`exampleSite/config.toml`](exampleSite/config.toml) for the full example.
-
-```toml
-baseURL = "https://example.com/"
-title = "Dooz Demo"
-theme = "hugo-theme-dooz"
-locale = "zh-CN"
-defaultContentLanguage = "zh"
-hasCJKLanguage = true
-
-[pagination]
-  pagerSize = 10
-
-[outputs]
-  home = ["HTML", "RSS", "JSON"]  # JSON is used by the built-in search
-
-[params]
-  author = "Example Author"
-  email = "hello@example.com"
-  avatar = "img/res/avatar.svg"
-  aphorism = "Code, and a life around it."
-
-  logoText = "Dooz"
-  logoFontFamily = '"Fraunces", "Bodoni 72", Didot, Georgia, serif'
-  logoFontWeight = 700
-
-  github = "https://github.com/example"
-  csdn = "https://blog.csdn.net/example"
-  cnblog = "https://www.cnblogs.com/example/"
-  # wechat = "img/wechat.png"
-
-  repo = "https://github.com/yourname/hugo-theme-dooz"
-  hero = "img/res/hero.jpg"
-  slogan = "Simple and quiet, made for writing."
-```
-
-## Content
+To explore first, run the example site instead. It contains nearly twenty posts and covers all ten typography styles:
 
 ```bash
-hugo new content post/my-first-post.md
+cd themes/hugo-theme-dooz/exampleSite
+hugo server --themesDir ../..
+```
+
+<br/>
+
+## Writing and formatting
+
+Posts live in `content/post/`. The command below creates a new post from the theme's archetype, with comments explaining each field:
+
+```bash
+hugo new post/hello.md
+```
+
+```yaml
+---
+title: "My first post"
+date: 2026-01-01T10:00:00+08:00
+description: "One sentence summarising the post, used in lists and search results."
+tags: ["notes"]
+cover_image: "/post/cover.jpg"   # list thumbnail, optional
+mdTheme: "essay-songyan"         # typography style for this post, optional
+pinned: false                    # pin to top
+weight: 100                      # lower value ranks higher
+---
+```
+
+What the common fields do:
+
+| Field | Purpose |
+| :--- | :--- |
+| `title` / `date` | Title and publish time; lists are ordered newest first |
+| `description` | Summary shown in lists and search results |
+| `tags` / `categories` | Tags and categories; taxonomy pages are generated automatically |
+| `cover_image` | List thumbnail; without it the card is text only |
+| `mdTheme` | Typography style for this post, overriding the site default |
+| `pinned` / `weight` | Pinning and ordering; `weight` defaults to 100 when omitted |
+
+Body text uses standard Markdown: headings, lists, tables, images, blockquotes, task lists and code blocks all work directly. Code blocks detect the language, support one-click copy and collapse long code; for diagrams or formulas, add `libraries: ["mermaid"]` or `["katex"]` to load them on demand.
+
+<br/>
+
+## Styles and appearance
+
+**Typography** can be set per post or as a site-wide default:
+
+```yaml
+mdTheme: "dev-linear"
 ```
 
 ```toml
-+++
-title = "My first post"
-date = 2026-03-22
-description = "One sentence for the list and SEO."
-hero_image = "img/res/hero.jpg"
-categories = ["Notes"]
-tags = ["Hugo"]
-archives = "2026"
-author = "Example Author"
-+++
+# config.toml
+[params]
+  markdownTheme = "dev-linear"
 ```
 
-### H2 icons
+Ten styles by use case:
 
-Enable Goldmark attributes:
+- Product reviews and long-form analysis: `editorial-sspai`, `editorial-latepost`
+- Essays, notes and book reviews: `essay-songyan`
+- Technical docs, API references and tutorials: `dev-linear`, `dev-tech-blue`, `dev-wechat-green`
+- Event notices and workshop invitations: `meetup-vibrant`, `meetup-aurora`
+- Holiday announcements and year-end reviews: `daily-festive-red`
+- Manuals and configuration guides: `plain-github`
+
+**Color themes**: five presets, one parameter for the whole site:
 
 ```toml
-[markup.goldmark.parser]
-  attribute = true
+[params]
+  themeName = "navy"   # default / amber / navy / purple / terracotta
 ```
 
-Then use:
+**Site details**: title, author, avatar, slogan, footer and social accounts are all in `config.toml`, each field annotated. Search, table of contents, comments and the remote announcement are preconfigured; comments start working once your own repository details are filled in.
 
-```markdown
-## Overview {data-icon="book"}
-## Setup {data-icon="tools"}
-## Code {data-icon="code"}
-```
+<br/>
 
-Available icons: `book`, `tools`, `file`, `code`, `play`, `link`.
+## Publishing
 
-### Article typography themes
+From writing locally to binding a domain and deploying automatically, the full steps are in this example post: [**Build and publish a Hugo blog →**](exampleSite/content/post/hugo-static-blog-guide.md)
 
-Ten article styles ported from [markdown.com.cn/wechat](https://markdown.com.cn/wechat/), switchable per post:
+GitHub Pages, Vercel and Netlify all work; free tiers are usually enough for a personal blog.
 
-```toml
-+++
-title = "My post"
-mdTheme = "editorial-sspai"     # omit to keep the default Dooz layout
-mdThemeNumbering = false        # turn off H2 auto numbering (on by default)
-+++
-```
+<br/>
 
-`editorial-sspai`, `editorial-latepost`, `essay-songyan`, `dev-linear`, `dev-tech-blue`, `dev-wechat-green`, `meetup-vibrant`, `meetup-aurora`, `daily-festive-red`, `plain-github`.
+## Feedback
 
-Code blocks always use that site's WeChat code theme (light background, green keywords). Set `markdownTheme` in `params.toml` to make one style the site-wide default. See [docs/markdown-themes.md](docs/markdown-themes.md).
+Found a problem or have a suggestion? [Open an issue](https://github.com/hollson/hugo-theme-dooz/issues). If the theme helps you, a **Star** is appreciated.
 
-## Docs
+Please remove real personal QR codes, email addresses and phone numbers from examples, screenshots and docs before submitting.
 
-- [Hugo static blog guide](docs/Hugo静态博客指南.md)
-- [Theme features and configuration](docs/theme-features.md)
-
-## Contributing
-
-Issues and pull requests are welcome. Do not include real personal QR codes, email addresses or phone numbers in demos, screenshots or docs.
+<br/>
 
 ## License
 
-[MIT](LICENSE)
+This theme is released under the [MIT](LICENSE) license.

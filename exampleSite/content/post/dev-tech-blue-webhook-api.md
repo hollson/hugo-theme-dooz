@@ -11,9 +11,6 @@ enable_toc_content: false
 author: "Hollson"
 categories:
 - 主题示例
-tags:
-- API
-- 文档
 mdTheme: "dev-tech-blue"
 series: "主题示例"
 libraries: ["mermaid"]

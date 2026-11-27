@@ -16,8 +16,6 @@ pinned: true
 categories:
 - 写作指南
 tags:
-- Hugo
-- Dooz
 - 博客搭建
 archives:
 - 2026

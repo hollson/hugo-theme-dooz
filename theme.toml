@@ -1,9 +1,10 @@
 name = "Dooz"
 license = "MIT"
 licenselink = "https://github.com/hollson/hugo-theme-dooz/blob/main/LICENSE"
-description = "Dooz is a clean, elegant Hugo theme for programmers and long-form writers, with built-in search, article TOC, and a CSDN-style code block toolbar."
+description = "A clean Hugo blog theme focused on reading and writing, with ten article typography styles, built-in search, table of contents and comments."
 homepage = "https://github.com/hollson/hugo-theme-dooz"
-tags = ["blog", "tech", "search", "code", "responsive"]
+tags = ["blog", "tech", "search", "code", "responsive", "markdown"]
+features = ["blog", "personal", "minimal", "search", "responsive", "multilingual"]
 min_version = "0.158.0"
 
 [author]
