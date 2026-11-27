@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://github.com/hollson/hugo-theme-dooz/blob/master/static/assets/logo2.png?raw=true" width="380" alt="Dooz Logo"><br/>
+<img src="https://github.com/hollson/hugo-theme-dooz/blob/master/static/assets/logo2.png?raw=true" width="180" alt="Dooz Logo"><br/>
 <img src="https://img.shields.io/badge/Hugo-0.158%2B-ff4088?style=flat-square&logo=hugo&logoColor=white" alt="Hugo">
 <img src="https://img.shields.io/badge/Hugo%20Theme-Dooz-07c160?style=flat-square" alt="Hugo Theme">
 <img src="https://img.shields.io/badge/Markdown-supported-000000?style=flat-square&logo=markdown&logoColor=white" alt="Markdown">
@@ -11,6 +11,7 @@
 <a href="README.md">English</a> | <a href="README.zh.md">中文</a>
 <br/><br/>
 </div>
+
 
 Dooz is a Hugo blog theme focused on reading and writing: write in Markdown, pick one of ten typography styles for each article, and get search, table of contents and comments out of the box.
 
