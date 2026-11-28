@@ -15,7 +15,7 @@ categories: []                       # 分类，如 ["技术"]
 # archives: ["2026"]                 # 归档年份；不填则按 date 自动归档
 
 # ===== 三、封面图片（按需）=====
-# hero_image: "/post/cover.jpg"       # 文章头图（og:image）；不填用站点默认图
+# hero_image: "/assets/blog.jpg"      # 文章头图（og:image），备选“/assets/blog[1-4].jpg”
 # cover_image: "/post/cover.jpg"      # 列表缩略图，显示在首页文章列表
 # cover_position: "left"              # 首页列表封面位置：left（默认）| right
 
