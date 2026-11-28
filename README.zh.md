@@ -11,7 +11,7 @@
 <a href="README.md">English</a> | <a href="README.zh.md">中文</a>
 <br/><br/>
 </div>
-
+<br/>
 
 Dooz 是一款专注阅读与写作的 [Hugo](https://gohugo.io) 博客主题：文章用 Markdown 写，多套排版样式可按篇切换，搜索、目录与评论开箱即用。
 

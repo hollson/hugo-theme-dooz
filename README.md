@@ -11,7 +11,7 @@
 <a href="README.md">English</a> | <a href="README.zh.md">中文</a>
 <br/><br/>
 </div>
-
+<br/>
 
 Dooz is a [Hugo](https://gohugo.io) blog theme built for reading and writing: posts in Markdown, typography switchable per article, and search, table of contents and comments ready out of the box.
 
