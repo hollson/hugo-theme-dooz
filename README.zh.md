@@ -1,10 +1,10 @@
 <div align="center">
 <img src="https://github.com/hollson/hugo-theme-dooz/blob/master/static/assets/logo2.png?raw=true" width="180" alt="Dooz Logo"><br/>
-<img src="https://img.shields.io/badge/Hugo-0.158%2B-ff4088?style=flat-square&logo=hugo&logoColor=white" alt="Hugo">
-<img src="https://img.shields.io/badge/Hugo%20Theme-Dooz-07c160?style=flat-square" alt="Hugo Theme">
-<img src="https://img.shields.io/badge/Markdown-supported-000000?style=flat-square&logo=markdown&logoColor=white" alt="Markdown">
-<img src="https://img.shields.io/badge/Typography-10%20themes-6f42c1?style=flat-square" alt="Typography">
-<img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
+<a href="https://gohugo.io/"><img src="https://img.shields.io/badge/Hugo-0.158%2B-ff4088?style=flat-square&logo=hugo&logoColor=white" alt="Hugo"></a>
+<a href="https://github.com/hollson/hugo-theme-dooz"><img src="https://img.shields.io/badge/Hugo%20Theme-Dooz-07c160?style=flat-square" alt="Hugo Theme"></a>
+<a href="https://commonmark.org/"><img src="https://img.shields.io/badge/Markdown-supported-000000?style=flat-square&logo=markdown&logoColor=white" alt="Markdown"></a>
+<a href="https://github.com/hollson/hugo-theme-dooz/tree/master/exampleSite/content/post"><img src="https://img.shields.io/badge/Typography-10%20themes-6f42c1?style=flat-square" alt="Typography"></a>
+<a href="https://github.com/hollson/hugo-theme-dooz/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License"></a>
 <br/>
 <b>一款注重阅读体验、可自由定制的 Hugo 博客主题</b>
 <br/>
@@ -17,22 +17,37 @@ Dooz 是一款专注阅读与写作的 [Hugo](https://gohugo.io) 博客主题：
 
 ---
 
-<div align="left">
-<img src="https://github.com/hollson/hugo-theme-dooz/blob/master/images/screenshot.png?raw=true" width="100%" alt="首页预览">
-<hr/>
-<img src="https://github.com/hollson/hugo-theme-dooz/blob/master/images/preview-article.png?raw=true" width="100%" alt="文章页预览">
-</div>
+![首页预览](https://github.com/hollson/hugo-theme-dooz/blob/master/images/screenshot-zh.png?raw=true)
 
 
 <br/>
 
 ## 快速上手
 
-只需 Hugo 0.158 或更高版本。
+> 只需 Hugo 0.158 或更高版本。
 
 **1. 安装 Hugo**：按[官方文档](https://gohugo.io/installation/)选择对应系统的安装方式。安装完成后执行 `hugo version`，能输出版本号即表示安装成功。
 
-**2. 创建站点并引入主题**
+**2. 体验示例站**：先看效果再决定怎么搭，示例站包含近二十篇文章，覆盖全部多套正文样式。
+
+```bash
+git clone --depth 1 https://github.com/hollson/hugo-theme-dooz.git
+cd hugo-theme-dooz
+
+# 快捷方式：启动示例站（端口 1314）
+make run
+```
+
+没有安装 make，或想手动启动时，进入示例站目录执行：
+
+```bash
+cd exampleSite
+hugo server --themesDir ../.. -p 1314
+```
+
+访问 `http://localhost:1314` 即可浏览首页、文章页、分类、标签、搜索与侧栏。体验完可直接删除该目录。
+
+**3. 创建自己的站点并引入主题**
 
 ```bash
 hugo new site my-blog
@@ -44,27 +59,18 @@ git submodule add https://github.com/hollson/hugo-theme-dooz themes/hugo-theme-d
 
 # 使用已配置好的示例配置
 cp themes/hugo-theme-dooz/exampleSite/config.toml .
-```
 
-**3. 本地预览**
-
-```bash
-# 使用hugo命令
+# 本地预览
 hugo server -D
 ```
 
-访问 `http://localhost:1313`，即可看到一个包含文章、分类、标签、搜索与侧栏的完整博客。
-
-如需先查看效果，可直接运行示例站。示例站包含近二十篇文章，覆盖全部多套正文样式：
-
-```bash
-cd themes/hugo-theme-dooz/exampleSite
-hugo server --themesDir ../..
-```
+再次访问 `http://localhost:1313`，看到的就是你自己的站点，配置、文章与样式都可以逐步替换。
 
 <br/>
 
 ## 写作与排版
+
+![文章页预览](https://github.com/hollson/hugo-theme-dooz/blob/master/images/preview-article-zh.png?raw=true)
 
 文章放在 `content/post/` 目录下。执行下面的命令会按主题模板生成一篇带注释的新文章，填写 front matter 后即可写作：
 
