@@ -11,9 +11,6 @@ enable_toc_content: false
 author: "Hollson"
 categories:
 - 主题示例
-tags:
-- 产品
-- 阅读
 mdTheme: "editorial-sspai"
 series: "主题示例"
 archives:

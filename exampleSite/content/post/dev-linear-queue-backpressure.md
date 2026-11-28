@@ -11,9 +11,6 @@ enable_toc_content: false
 author: "Hollson"
 categories:
 - 主题示例
-tags:
-- 后端
-- 性能
 mdTheme: "dev-linear"
 series: "主题示例"
 libraries: ["mermaid"]

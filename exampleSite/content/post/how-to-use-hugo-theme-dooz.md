@@ -15,8 +15,6 @@ featured: true
 pinned: true
 categories:
 - 写作指南
-tags:
-- 博客搭建
 archives:
 - 2026
 ---

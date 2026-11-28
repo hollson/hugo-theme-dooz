@@ -12,7 +12,6 @@ author: "Hollson"
 categories:
 - 主题示例
 tags:
-- 公告
 - 生活
 mdTheme: "daily-festive-red"
 series: "主题示例"

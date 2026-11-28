@@ -13,17 +13,15 @@
 </div>
 
 
+Dooz 是一款专注阅读与写作的 [Hugo](https://gohugo.io) 博客主题：文章用 Markdown 写，多套排版样式可按篇切换，搜索、目录与评论开箱即用。
 
-Dooz 是一款专注阅读与写作的 Hugo 博客主题：文章用 Markdown 写，十套排版样式可按篇切换，搜索、目录与评论开箱即用。
-
-<br/>
+---
 
 <div align="left">
 <img src="https://github.com/hollson/hugo-theme-dooz/blob/master/images/screenshot.png?raw=true" width="100%" alt="首页预览">
-<br/>
+<hr/>
 <img src="https://github.com/hollson/hugo-theme-dooz/blob/master/images/preview-article.png?raw=true" width="100%" alt="文章页预览">
 </div>
-
 
 
 <br/>
@@ -51,12 +49,13 @@ cp themes/hugo-theme-dooz/exampleSite/config.toml .
 **3. 本地预览**
 
 ```bash
+# 使用hugo命令
 hugo server -D
 ```
 
 访问 `http://localhost:1313`，即可看到一个包含文章、分类、标签、搜索与侧栏的完整博客。
 
-如需先查看效果，可直接运行示例站。示例站包含近二十篇文章，覆盖全部十套正文样式：
+如需先查看效果，可直接运行示例站。示例站包含近二十篇文章，覆盖全部多套正文样式：
 
 ```bash
 cd themes/hugo-theme-dooz/exampleSite
@@ -115,7 +114,7 @@ mdTheme: "dev-linear"
   markdownTheme = "dev-linear"
 ```
 
-十套样式按适用场景划分：
+样式按适用场景划分：
 
 - 产品评论、行业长文：`editorial-sspai`、`editorial-latepost`
 - 散文、随笔、书评：`essay-songyan`
@@ -124,7 +123,7 @@ mdTheme: "dev-linear"
 - 节日公告、年末总结：`daily-festive-red`
 - 说明文档、配置手册：`plain-github`
 
-**主题色**共五套，改一个参数即可整站生效：
+**主题色**可选，改一个参数即可整站生效：
 
 ```toml
 [params]

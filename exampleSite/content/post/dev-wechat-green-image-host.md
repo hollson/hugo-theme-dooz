@@ -11,9 +11,6 @@ enable_toc_content: false
 author: "Hollson"
 categories:
 - 主题示例
-tags:
-- 教程
-- 图床
 mdTheme: "dev-wechat-green"
 series: "主题示例"
 archives:

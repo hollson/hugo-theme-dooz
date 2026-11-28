@@ -19,7 +19,6 @@ cover_image: "/post/zhagana.jpg"
 categories:
 - 旅行随笔
 tags:
-- 甘南
 - 扎尕那
 archives:
 - 2026

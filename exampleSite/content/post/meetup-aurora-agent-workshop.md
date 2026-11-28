@@ -11,9 +11,6 @@ enable_toc_content: false
 author: "Hollson"
 categories:
 - 主题示例
-tags:
-- 活动
-- AI
 mdTheme: "meetup-aurora"
 series: "主题示例"
 archives:

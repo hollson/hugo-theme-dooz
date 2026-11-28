@@ -13,7 +13,6 @@ categories:
 - 主题示例
 tags:
 - Hugo
-- 文档
 mdTheme: "plain-github"
 series: "主题示例"
 archives:
